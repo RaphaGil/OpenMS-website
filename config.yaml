@@ -616,6 +616,7 @@ languages:
       openmsLibGettingStarted:
         eyebrow: Get started
         title: Explore OpenMS-lib
+        lead: Documentation, tools, and community resources to start building with OpenMS-lib.
         items:
           - title: TOPP Tools
             tag: Tools
