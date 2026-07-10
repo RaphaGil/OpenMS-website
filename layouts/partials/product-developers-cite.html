@@ -54,10 +54,10 @@
     {{- end }}
     <div class="openms-lib-developers__cite-actions">
       {{- with $pubUrl }}
-      <a class="publications-cite-card__action" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $actionText }}</a>
+      <a class="openms-lib-btn openms-lib-btn--primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $actionText }}</a>
       {{- end }}
       {{- with $moreUrl }}
-      <a class="openms-lib-developers__cite-more" href="{{ . }}">{{ $moreText }}<span aria-hidden="true"> →</span></a>
+      <a class="openms-lib-btn openms-lib-btn--outline" href="{{ . }}">{{ $moreText }}</a>
       {{- end }}
     </div>
   </article>

@@ -591,20 +591,14 @@ languages:
         layout: facts
         items:
           - text: 20+ years of development
-            icon: fas fa-history
           - text: Open source under the BSD-3 clause license
-            icon: fas fa-unlock-alt
           - text: Backed by an active community of researchers and developers
-            icon: fas fa-users
           - text: High performance and optimized for scale
-            icon: fas fa-bolt
 
       openmsLibTopp:
         eyebrow: Pipeline
         title: Ships with the TOPP command-line tools
         lead: Modular command-line tools covering the complete MS analysis pipeline
-        ctaKicker: Command-line suite
-        ctaBlurb: Browse modular TOPP tools for every stage of the mass spectrometry pipeline.
         features:
           - text: Chain them together to build custom workflows tailored to your data.
           - text: Integrates with common workflow engines
@@ -619,27 +613,36 @@ languages:
         lead: Documentation, tools, and community resources to start building with OpenMS-lib.
         items:
           - title: TOPP Tools
-            tag: Tools
+            text: Browse the full suite of processing and analysis tools in the TOPP pipeline.
             url: https://archive.openms.de/openms/Documentation/release/latest/html/TOPP_documentation.html
             linkText: Explore TOPP tools
           - title: Featured Apps
             tag: Apps
+            icon: fas fa-window-maximize
+            text: Web applications and workflows built on top of OpenMS-lib.
             url: /webapps/#featured-webapps
             linkText: Featured Apps
           - title: Python bindings
             tag: pyOpenMS
+            icon: fab fa-python
+            text: Use OpenMS algorithms and data structures directly from Python.
             url: /pyopenms/
             linkText: Explore pyOpenMS
           - title: Read Documentation
             tag: Docs
+            icon: fas fa-book-open
+            text: Tutorials and guides to help you get productive quickly.
             url: https://openms.readthedocs.io/en/latest/getting-started/introduction.html
             linkText: Read documentation
           - title: API Reference
             tag: API
+            icon: fas fa-code
+            text: Full C++ class and method reference for OpenMS-lib.
             url: https://archive.openms.de/openms/Documentation/release/latest/
             linkText: API reference
           - title: Ask for help
             type: online
+            text: Reach the community on Discord or open a GitHub issue.
             links:
               - name: Discord
                 icon: fab fa-discord

@@ -16,24 +16,38 @@
   }
 
   page.querySelectorAll(".openms-lib-page__body > .openms-lib-page__anchor > .openms-lib-block").forEach(function (block, index) {
+    if (block.closest("#what-is-openms")) return;
     markReveal(block, index);
   });
 
+  var whatIsHead = page.querySelector("#what-is-openms .openms-lib-highlights__head");
+  if (whatIsHead) {
+    whatIsHead.querySelectorAll(".openms-lib-block__eyebrow, .openms-lib-block__title").forEach(function (el, index) {
+      markReveal(el, index, "left");
+    });
+  }
+
+  var whatIsList = page.querySelector("#what-is-openms .openms-lib-highlights__list--facts");
+  if (whatIsList) {
+    markReveal(whatIsList, 2, "scale");
+  }
+
   page.querySelectorAll("#what-is-openms .openms-lib-highlights__fact").forEach(function (card, index) {
-    markReveal(card, index, index % 2 === 0 ? "left" : "right");
+    markReveal(card, index + 3, index % 2 === 0 ? "left" : "right");
   });
 
-  page.querySelectorAll(".openms-lib-topp__cta-card").forEach(function (el) {
-    markReveal(el, 0, "scale");
+  page.querySelectorAll(".openms-lib-topp__intro").forEach(function (el) {
+    markReveal(el, 0, "left");
   });
 
   page.querySelectorAll(".openms-lib-topp__feature").forEach(function (el, index) {
     markReveal(el, index + 1, "right");
   });
 
-  page.querySelectorAll(".openms-lib-list--resource-grid .openms-lib-resource-card, .openms-lib-list--resource-grid .openms-lib-list__row").forEach(function (card, index) {
-    markReveal(card, index % 6, index === 0 ? "scale" : index % 2 === 0 ? "left" : "right");
-  });
+  var exploreRoutes = page.querySelector(".openms-lib-explore__routes");
+  if (exploreRoutes) {
+    markReveal(exploreRoutes, 1, "scale");
+  }
 
   page.querySelectorAll(".openms-lib-developers__card").forEach(function (card, index) {
     markReveal(card, index % 6, index % 3 === 0 ? "scale" : index % 2 === 0 ? "left" : "right");

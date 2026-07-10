@@ -12,7 +12,7 @@ sidebar: false
     <div class="openms-lib-hero__content">
       <p class="openms-lib-hero__eyebrow">OpenMS-lib</p>
       <h1 class="openms-lib-hero__title">
-        The <span class="openms-lib-hero__accent">Open Source</span> toolkit for <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">mass spectrometry</span>.
+        The Open Source toolkit for <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">mass spectrometry</span>.
       </h1>
       <p class="openms-lib-hero__lead">
         OpenMS-lib is a mature and reliable C++ framework for omics based mass spectrometry data analysis.
