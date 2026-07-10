@@ -7,6 +7,10 @@
 {{ partial "openms-lib-main.html" . }}
 {{- else if eq .File.BaseFileName "calendar" -}}
 {{ partial "community-calendar-main.html" . }}
+{{- else if eq .File.BaseFileName "developer-retreat" -}}
+{{ partial "developer-retreat-main.html" . }}
+{{- else if eq .File.BaseFileName "fellowship" -}}
+{{ partial "fellowship-main.html" . }}
 {{- else if eq .File.BaseFileName "donate" -}}
 {{ partial "donate-main.html" . }}
 {{- else if eq .File.BaseFileName "contribute" -}}
@@ -23,6 +27,8 @@
 {{ partial "help-main.html" . }}
 {{- else if eq .File.BaseFileName "sponsor-us" -}}
 {{ partial "sponsor-us-main.html" . }}
+{{- else if eq .File.BaseFileName "code-of-conduct" -}}
+{{ partial "code-of-conduct-main.html" . }}
 {{- else -}}
 {{ partial "single/content.html" . }}
 {{- end -}}

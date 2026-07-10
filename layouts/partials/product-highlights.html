@@ -5,9 +5,12 @@
 {{- $items := index $cfg "items" | default (slice) -}}
 {{- $note := index $cfg "note" -}}
 {{- $id := .id | default "product-highlights-title" -}}
+{{- $layout := index $cfg "layout" | default "" -}}
+{{- $isChecklist := eq $layout "checklist" -}}
+{{- $isFacts := eq $layout "facts" -}}
 {{- $itemCount := len $items -}}
 <section
-  class="openms-lib-block openms-lib-block--highlights keyfeatures-modern keyfeatures-modern--openms-lib"
+  class="openms-lib-block openms-lib-block--highlights keyfeatures-modern keyfeatures-modern--openms-lib{{- if $isChecklist }} openms-lib-block--highlights-checklist{{- else if $isFacts }} openms-lib-block--highlights-facts{{- end }}"
   aria-labelledby="{{ $id }}"
 >
   <div class="openms-lib-highlights__inner openms-lib-band__inner">
@@ -23,10 +26,22 @@
 
     {{- with $items }}
     <ul
-      class="openms-lib-highlights__list openms-lib-highlights__list--grid{{ with $itemCount }} openms-lib-highlights__list--count-{{ . }}{{ end }}"
+      class="openms-lib-highlights__list{{- if $isFacts }} openms-lib-highlights__list--facts{{- else if $isChecklist }} openms-lib-highlights__list--checklist{{- else }} openms-lib-highlights__list--grid{{ with $itemCount }} openms-lib-highlights__list--count-{{ . }}{{ end }}{{- end }}"
       role="list"
     >
       {{- range $item := . }}
+      {{- if $isFacts }}
+      <li class="openms-lib-highlights__fact" role="listitem">
+        {{- with $item.icon }}
+        <span class="openms-lib-highlights__fact-icon" aria-hidden="true">
+          <i class="{{ . }}"></i>
+        </span>
+        {{- else }}
+        <span class="openms-lib-highlights__check openms-lib-highlights__fact-check" aria-hidden="true"></span>
+        {{- end }}
+        <p class="openms-lib-highlights__fact-text">{{ $item.text }}</p>
+      </li>
+      {{- else }}
       <li class="openms-lib-highlights__item" role="listitem">
         {{- if $item.title }}
         {{- if $item.icon }}
@@ -47,6 +62,7 @@
         </div>
         {{- end }}
       </li>
+      {{- end }}
       {{- end }}
     </ul>
     {{- end }}

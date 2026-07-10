@@ -6,9 +6,12 @@
 {{- $citeText := index $cfg "citeText" -}}
 {{- $citation := index $cfg "citation" | default dict -}}
 {{- $citeVariant := index $citation "variant" | default "primary" -}}
+{{- $citeSeparate := index $cfg "citeSeparate" | default false -}}
+{{- $hasCite := or $citeText $citation -}}
 {{- $sectionId := .id | default "product-developers-title" -}}
 {{- $citeLabel := index $cfg "citeLabel" | default (printf "Cite %s" (index $citation "topic" | default "OpenMS")) -}}
 {{- $boxCount := len $boxes -}}
+{{- $citeCtx := dict "citeText" $citeText "citation" $citation "citeVariant" $citeVariant "citeLabel" $citeLabel -}}
 <section class="openms-lib-block openms-lib-block--developers" id="for-developers" aria-labelledby="{{ $sectionId }}">
   <header class="openms-lib-block__head openms-lib-developers__head">
     <p class="openms-lib-block__eyebrow">{{ $eyebrow }}</p>
@@ -18,7 +21,7 @@
     {{- end }}
   </header>
 
-  <div class="openms-lib-developers__content{{ if or $citeText $citation }} openms-lib-developers__content--with-cite{{ end }}">
+  <div class="openms-lib-developers__content{{ if and $hasCite (not $citeSeparate) }} openms-lib-developers__content--with-cite{{ end }}">
     <div
       class="openms-lib-developers__grid{{ with $boxCount }} openms-lib-developers__grid--count-{{ . }}{{ end }}"
       aria-label="Contributor resources"
@@ -81,58 +84,12 @@
       {{- end }}
     </div>
 
-    {{- if or $citeText $citation }}
-    <aside class="openms-lib-developers__cite openms-lib-developers__cite--panel" aria-label="{{ $citeLabel }}">
-      {{- with $citeText }}
-      <p class="openms-lib-developers__cite-intro">{{ . }}</p>
-      {{- end }}
-      {{- with $citation }}
-      {{- $pubUrl := .url -}}
-      {{- $actionText := .actionText | default "View on PubMed" -}}
-      {{- $moreUrl := .moreUrl -}}
-      {{- $moreText := .moreText | default "More citations" -}}
-      <article class="publications-cite-card publications-cite-card--{{ $citeVariant }} openms-lib-developers__cite-card">
-        <div class="publications-cite-card__top">
-          {{- with .badge }}
-          <span class="publications-cite-card__badge">{{ . }}</span>
-          {{- end }}
-          {{- with .topic }}
-          <span class="publications-cite-card__topic">{{ . }}</span>
-          {{- end }}
-        </div>
-        {{- with .title }}
-        <h3 class="publications-cite-card__title">
-          {{- if $pubUrl }}
-          <a href="{{ $pubUrl }}" target="_blank" rel="noopener noreferrer">{{ . }}</a>
-          {{- else }}
-          {{ . }}
-          {{- end }}
-        </h3>
-        {{- end }}
-        {{- if or .journal .year }}
-        <p class="publications-cite-card__meta">
-          {{- with .journal }}
-          <span class="publications-cite-card__journal">{{ . }}</span>
-          {{- end }}
-          {{- with .year }}
-          <span class="publications-cite-card__year">{{ . }}</span>
-          {{- end }}
-        </p>
-        {{- end }}
-        {{- with .authors }}
-        <p class="publications-cite-card__authors">{{ . }}</p>
-        {{- end }}
-        <div class="openms-lib-developers__cite-actions">
-          {{- with $pubUrl }}
-          <a class="publications-cite-card__action" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $actionText }}</a>
-          {{- end }}
-          {{- with $moreUrl }}
-          <a class="openms-lib-developers__cite-more" href="{{ . }}">{{ $moreText }}<span aria-hidden="true"> →</span></a>
-          {{- end }}
-        </div>
-      </article>
-      {{- end }}
-    </aside>
+    {{- if and $hasCite (not $citeSeparate) }}
+    {{ partial "product-developers-cite.html" $citeCtx }}
     {{- end }}
   </div>
+
+  {{- if and $hasCite $citeSeparate }}
+  {{ partial "product-developers-cite.html" (merge $citeCtx (dict "separate" true)) }}
+  {{- end }}
 </section>

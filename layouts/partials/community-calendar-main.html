@@ -6,6 +6,9 @@
 {{- $upcomingTitle := index $cfg "upcomingTitle" | default "Upcoming events" -}}
 {{- $emptyUpcoming := index $cfg "emptyUpcoming" | default "No upcoming events scheduled right now. Check back soon or join the community to hear about the next meetup." -}}
 {{- $readMore := index $cfg "readMoreLabel" | default "View details" -}}
+{{- $retreat := index $cfg "developerRetreat" | default dict -}}
+{{- $retreatText := index $retreat "text" | default "Developer Retreat" -}}
+{{- $retreatUrl := index $retreat "url" | default "/developer-retreat/" -}}
 {{- $allEvents := index (.Site.Data.community_events | default dict) "events" | default (slice) -}}
 {{- $upcoming := slice -}}
 {{- $past := slice -}}
@@ -42,13 +45,15 @@
         </h1>
         <p class="openms-lib-hero__lead">{{ $subtitle }}</p>
         <div class="openms-lib-hero__actions" aria-label="Related resources">
+          {{- with $retreatUrl }}
+          <a class="openms-lib-btn openms-lib-btn--primary" href="{{ . }}">{{ $retreatText }}</a>
+          {{- end }}
           <a
-            class="openms-lib-btn openms-lib-btn--primary"
+            class="openms-lib-btn openms-lib-btn--ghost"
             href="https://github.com/OpenMS/OpenMS-website/blob/main/docs/common-tasks/update-community-calendar.md"
             target="_blank"
             rel="noopener noreferrer"
           >Add an event</a>
-          <a class="openms-lib-btn openms-lib-btn--ghost" href="/contribute/">Contribute</a>
           <a class="openms-lib-btn openms-lib-btn--ghost" href="/news/">News</a>
         </div>
       </div>

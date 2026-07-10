@@ -1,0 +1,58 @@
+{{- $cfg := .cfg | default dict -}}
+{{- $eyebrow := index $cfg "eyebrow" -}}
+{{- $title := index $cfg "title" | default "Ships with the TOPP command-line tools" -}}
+{{- $lead := index $cfg "lead" -}}
+{{- $features := index $cfg "features" | default (slice) -}}
+{{- $ctaText := index $cfg "ctaText" | default "Explore the tools" -}}
+{{- $ctaUrl := index $cfg "ctaUrl" -}}
+{{- $ctaKicker := index $cfg "ctaKicker" | default "Command-line suite" -}}
+{{- $ctaBlurb := index $cfg "ctaBlurb" | default "Browse modular TOPP tools for every stage of the mass spectrometry pipeline." -}}
+{{- $id := .id | default "openms-lib-topp-title" -}}
+<section class="openms-lib-block openms-lib-block--topp" aria-labelledby="{{ $id }}">
+  <div class="openms-lib-topp__inner openms-lib-band__inner">
+    <header class="openms-lib-block__head openms-lib-topp__head">
+      {{- with $eyebrow }}
+      <p class="openms-lib-block__eyebrow">{{ . }}</p>
+      {{- end }}
+      <h2 id="{{ $id }}" class="openms-lib-block__title">{{ $title }}</h2>
+      {{- with $lead }}
+      <p class="openms-lib-block__lead">{{ . }}</p>
+      {{- end }}
+    </header>
+
+    <div class="openms-lib-topp__layout">
+      {{- with $features }}
+      <ul class="openms-lib-topp__features" role="list">
+        {{- range . }}
+        {{- $feature := . }}
+        <li class="openms-lib-topp__feature" role="listitem">
+          <span class="openms-lib-highlights__check" aria-hidden="true"></span>
+          <p class="openms-lib-topp__feature-text">
+            {{ $feature.text }}
+            {{- with $feature.linkUrl }}
+            <a
+              class="openms-lib-topp__feature-link"
+              href="{{ . }}"
+              {{- if in . "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+            >{{ $feature.linkText | default "Learn more" }}</a>
+            {{- end }}
+          </p>
+        </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+
+      {{- with $ctaUrl }}
+      <aside class="openms-lib-topp__cta-card" aria-label="TOPP tools">
+        <p class="openms-lib-topp__cta-kicker">{{ $ctaKicker }}</p>
+        <p class="openms-lib-topp__cta-blurb">{{ $ctaBlurb }}</p>
+        <a
+          class="openms-lib-btn openms-lib-btn--primary openms-lib-topp__cta-btn"
+          href="{{ . }}"
+          {{- if in . "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        >{{ $ctaText }}</a>
+      </aside>
+      {{- end }}
+    </div>
+  </div>
+</section>

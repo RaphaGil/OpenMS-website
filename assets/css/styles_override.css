@@ -59,21 +59,15 @@
   gap: 0.25rem;
 }
 
-@media (min-width: 1280px) {
-  .navbar.is-fresh .navbar-item.has-dropdown .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown .navbar-link::after {
-    border-color: var(--openms-navbar-link-color) !important;
-  }
-}
-
-@media (min-width: 1280px) {
-  .navbar.is-fresh .navbar-item.has-dropdown > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown > .navbar-link::after {
-    position: relative;
-    top: 0.1em;
-    right: auto;
-    margin-left: 0.25rem;
-  }
+.navbar.is-fresh .navbar-item.has-dropdown > .navbar-link::after,
+.navbar.is-fresh .navbar-item.has-dropdown .navbar-link::after,
+#navbar-clone.navbar.is-fresh .navbar-item.has-dropdown > .navbar-link::after,
+#navbar-clone.navbar.is-fresh .navbar-item.has-dropdown .navbar-link::after {
+  display: none !important;
+  content: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
 }
 
 .navbar.is-fresh .navbar-item.has-dropdown .navbar-dropdown,
@@ -143,20 +137,6 @@
     background-color: var(--openms-navbar-link-hover-bg) !important;
   }
 
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown .navbar-link::after {
-    border-color: rgba(var(--openms-navy-rgb), 0.5) !important;
-  }
-
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown.is-active > .navbar-link::after,
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown:hover > .navbar-link::after,
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown > .navbar-link:hover::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown.is-active > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown:hover > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown > .navbar-link:hover::after {
-    border-color: rgba(var(--openms-navy-rgb), 0.5) !important;
-  }
-
   .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown .navbar-dropdown,
   #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown .navbar-dropdown {
     border: none !important;
@@ -170,10 +150,9 @@
 @media (min-width: 1280px) {
   .navbar.is-fresh .navbar-item.has-dropdown .navbar-dropdown,
   #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown .navbar-dropdown {
-    --openms-navbar-dropdown-width: 18.5rem;
-    width: var(--openms-navbar-dropdown-width);
-    min-width: var(--openms-navbar-dropdown-width);
-    max-width: var(--openms-navbar-dropdown-width);
+    width: max-content;
+    min-width: max-content;
+    max-width: min(92vw, max-content);
     box-sizing: border-box;
     margin-top: 0;
     padding-top: 0.45rem;
@@ -187,7 +166,7 @@
   #navbar-clone.navbar.is-fresh .navbar-dropdown-heading {
     white-space: nowrap;
     width: 100%;
-    max-width: 100%;
+    max-width: none;
     box-sizing: border-box;
   }
 
@@ -233,31 +212,28 @@
     display: inline-flex;
     align-items: center;
     border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px transparent;
     box-sizing: border-box;
+    font-synthesis: none;
+    font-weight: 500;
     transition:
       color 0.2s ease,
-      background-color 0.2s ease,
-      border-color 0.2s ease;
+      background-color 0.2s ease;
   }
 
   /* Navbar links — pill hover on navy bar */
   .navbar.is-fresh .navbar-links > a.navbar-item.is-secondary:hover,
-  .navbar.is-fresh .navbar-item.has-dropdown:hover > .navbar-link,
-  .navbar.is-fresh .navbar-item.has-dropdown > .navbar-link:hover,
+  .navbar.is-fresh .navbar-links > .navbar-item.has-dropdown:hover > .navbar-link,
+  .navbar.is-fresh .navbar-links > .navbar-item.has-dropdown > .navbar-link:hover,
   #navbar-clone.navbar.is-fresh .navbar-links > a.navbar-item.is-secondary:hover,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown:hover > .navbar-link,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown > .navbar-link:hover {
+  #navbar-clone.navbar.is-fresh .navbar-links > .navbar-item.has-dropdown:hover > .navbar-link,
+  #navbar-clone.navbar.is-fresh .navbar-links > .navbar-item.has-dropdown > .navbar-link:hover {
     background: var(--openms-navbar-link-hover-bg) !important;
     background-color: var(--openms-navbar-link-hover-bg) !important;
     color: var(--openms-navbar-link-hover-color) !important;
-    border-color: rgba(var(--openms-white-rgb), 0.14);
-  }
-
-  .navbar.is-fresh .navbar-item.has-dropdown:hover > .navbar-link::after,
-  .navbar.is-fresh .navbar-item.has-dropdown > .navbar-link:hover::after,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown:hover > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown > .navbar-link:hover::after {
-    border-color: var(--openms-navbar-link-hover-color) !important;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px rgba(var(--openms-white-rgb), 0.14);
+    font-weight: 500;
   }
 
   .navbar.is-fresh a.navbar-item.is-secondary:focus-visible,
@@ -267,7 +243,8 @@
     background: var(--openms-navbar-link-hover-bg) !important;
     background-color: var(--openms-navbar-link-hover-bg) !important;
     color: var(--openms-navbar-link-hover-color) !important;
-    border-color: rgba(var(--openms-white-rgb), 0.14);
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px rgba(var(--openms-white-rgb), 0.14);
   }
 
   .navbar.is-fresh .navbar-item.has-dropdown.is-active > .navbar-link,
@@ -275,12 +252,8 @@
     background: var(--openms-navbar-link-hover-bg) !important;
     background-color: var(--openms-navbar-link-hover-bg) !important;
     color: var(--openms-navbar-link-hover-color) !important;
-    border-color: rgba(var(--openms-white-rgb), 0.14);
-  }
-
-  .navbar.is-fresh .navbar-item.has-dropdown.is-active > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown.is-active > .navbar-link::after {
-    border-color: var(--openms-navbar-link-hover-color) !important;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px rgba(var(--openms-white-rgb), 0.14);
   }
 }
 
@@ -297,7 +270,6 @@
   border: none;
   margin: 0;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -319,7 +291,6 @@
   border: none;
   margin: 0;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
 }
 

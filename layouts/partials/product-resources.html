@@ -7,8 +7,14 @@
 {{- $variant := .variant | default "" -}}
 <section class="openms-lib-block openms-lib-block--resources{{ with $variant }} openms-lib-block--resources-{{ . }}{{ end }}" aria-labelledby="{{ $id }}">
   <header class="openms-lib-block__head openms-lib-block__head--resources">
-    <p class="openms-lib-block__eyebrow">{{ $eyebrow }}</p>
-    <h2 id="{{ $id }}" class="openms-lib-block__title">{{ $title | default $eyebrow }}</h2>
+    {{- if $title }}
+    {{- with $eyebrow }}
+    <p class="openms-lib-block__eyebrow">{{ . }}</p>
+    {{- end }}
+    <h2 id="{{ $id }}" class="openms-lib-block__title">{{ $title }}</h2>
+    {{- else if $eyebrow }}
+    <h2 id="{{ $id }}" class="openms-lib-block__title">{{ $eyebrow }}</h2>
+    {{- end }}
     {{- with $lead }}
     <p class="openms-lib-block__lead">{{ . }}</p>
     {{- end }}
@@ -24,7 +30,7 @@
         {{- with .text }}
         <p class="openms-lib-list__text">{{ . }}</p>
         {{- end }}
-        <div class="openms-lib-developers__platforms openms-lib-resource-card__platforms" role="group" aria-label="Try pyOpenMS online">
+        <div class="openms-lib-developers__platforms openms-lib-resource-card__platforms" role="group" aria-label="{{ .title }}">
           {{- range .links }}
           <a
             class="openms-lib-btn openms-lib-btn--ghost openms-lib-developers__platform-btn"

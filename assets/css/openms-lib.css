@@ -178,6 +178,12 @@
   border-color: rgba(var(--openms-blue-rgb), 0.22);
 }
 
+.openms-lib-page__nav-link.is-active {
+  color: var(--openms-navy);
+  background: rgba(var(--openms-blue-rgb), 0.14);
+  border-color: rgba(var(--openms-blue-rgb), 0.28);
+}
+
 .openms-lib-page__body,
 .openms-lib-page__outro {
   border: none;
@@ -1938,6 +1944,270 @@
   text-align: center;
 }
 
+/* What is OpenMS? — simple checklist (no tiles) */
+.openms-lib-block--highlights-checklist .openms-lib-highlights__head {
+  max-width: 46rem;
+}
+
+.openms-lib-highlights__list--checklist {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.openms-lib-highlights__list--checklist .openms-lib-highlights__item {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.85rem;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.openms-lib-highlights__list--checklist .openms-lib-highlights__check {
+  margin-top: 0.2rem;
+}
+
+.openms-lib-highlights__list--checklist .openms-lib-highlights__text--solo {
+  font-size: var(--openms-body-size-lg);
+  line-height: 1.55;
+  color: rgba(var(--openms-dark-rgb), 0.84);
+}
+
+/* What is OpenMS? — 2×2 fact cards */
+.openms-lib-block--highlights-facts .openms-lib-highlights__head {
+  max-width: 46rem;
+}
+
+.openms-lib-highlights__list--facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--olib-card-gap);
+  width: 100%;
+  max-width: var(--olib-max);
+  margin-inline: auto;
+}
+
+.openms-lib-highlights__fact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.9rem;
+  min-height: 100%;
+  padding: clamp(1.35rem, 2.5vw, 1.85rem) clamp(1.1rem, 2vw, 1.4rem);
+  border: 1px solid rgba(var(--openms-navy-rgb), 0.1);
+  border-radius: var(--olib-radius);
+  background: linear-gradient(
+    180deg,
+    var(--openms-white) 0%,
+    color-mix(in srgb, var(--openms-blue) 4%, var(--openms-white)) 100%
+  );
+  box-shadow: var(--olib-shadow);
+  text-align: center;
+  transition:
+    border-color 0.2s var(--olib-ease),
+    box-shadow 0.2s var(--olib-ease),
+    transform 0.2s var(--olib-ease);
+}
+
+.openms-lib-highlights__fact:hover {
+  border-color: rgba(var(--openms-blue-rgb), 0.22);
+  box-shadow: var(--olib-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.openms-lib-highlights__fact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  border-radius: 0.85rem;
+  background: rgba(var(--openms-blue-rgb), 0.12);
+  color: var(--openms-blue);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.openms-lib-highlights__fact-check {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.openms-lib-highlights__fact-text {
+  margin: 0;
+  max-width: 22ch;
+  font-family: var(--openms-font-heading);
+  font-size: clamp(0.95rem, 1.55vw, 1.08rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--openms-navy);
+  text-wrap: balance;
+}
+
+@media (max-width: 540px) {
+  .openms-lib-highlights__list--facts {
+    grid-template-columns: 1fr;
+  }
+
+  .openms-lib-highlights__fact-text {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openms-lib-highlights__fact {
+    transition: border-color 0.2s var(--olib-ease), box-shadow 0.2s var(--olib-ease);
+  }
+
+  .openms-lib-highlights__fact:hover {
+    transform: none;
+  }
+}
+
+/* TOPP tools section */
+.openms-lib-block--topp {
+  margin: 0;
+  padding: var(--olib-section-y) 0;
+  color: var(--openms-navy);
+  background: transparent;
+}
+
+.openms-lib-topp__inner {
+  width: 100%;
+  max-width: var(--olib-max);
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.openms-lib-topp__head {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.openms-lib-topp__head .openms-lib-block__title,
+.openms-lib-topp__head .openms-lib-block__lead {
+  text-align: center;
+}
+
+.openms-lib-topp__head .openms-lib-block__lead {
+  max-width: 42ch;
+  margin-inline: auto;
+}
+
+.openms-lib-topp__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.85fr);
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+}
+
+.openms-lib-topp__cta-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+  min-height: 100%;
+  padding: clamp(1.35rem, 2.5vw, 1.85rem);
+  border: 1px solid rgba(var(--openms-blue-rgb), 0.18);
+  border-radius: var(--olib-radius);
+  background: linear-gradient(
+    165deg,
+    rgba(var(--openms-blue-rgb), 0.1) 0%,
+    var(--openms-white) 58%
+  );
+  box-shadow: var(--olib-shadow);
+}
+
+.openms-lib-topp__cta-kicker {
+  margin: 0;
+  font-size: var(--openms-text-min);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--openms-blue);
+}
+
+.openms-lib-topp__cta-blurb {
+  margin: 0;
+  font-size: var(--openms-body-size-lg);
+  line-height: 1.55;
+  color: rgba(var(--openms-dark-rgb), 0.8);
+  text-wrap: pretty;
+}
+
+.openms-lib-topp__cta-btn {
+  align-self: flex-start;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: var(--openms-btn-pill-radius, 999px);
+  border: 2px solid var(--openms-navy);
+  background: var(--openms-navy);
+  color: var(--openms-white) !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.openms-lib-topp__cta-btn:hover,
+.openms-lib-topp__cta-btn:focus-visible {
+  background: color-mix(in srgb, var(--openms-navy) 88%, var(--openms-blue));
+  border-color: color-mix(in srgb, var(--openms-navy) 88%, var(--openms-blue));
+  outline: none;
+}
+
+.openms-lib-topp__features {
+  list-style: none;
+  margin: 0;
+  padding: clamp(1.25rem, 2.2vw, 1.65rem);
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--olib-line);
+  border-radius: var(--olib-radius);
+  background: var(--openms-white);
+  box-shadow: var(--olib-shadow);
+}
+
+.openms-lib-topp__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.openms-lib-topp__feature-text {
+  margin: 0;
+  font-size: var(--openms-body-size-lg);
+  line-height: 1.55;
+  color: rgba(var(--openms-dark-rgb), 0.84);
+}
+
+.openms-lib-topp__feature-link {
+  margin-left: 0.35rem;
+  font-weight: 600;
+  color: var(--openms-blue);
+  text-decoration: none;
+}
+
+.openms-lib-topp__feature-link:hover,
+.openms-lib-topp__feature-link:focus-visible {
+  color: var(--openms-blue-secondary);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .openms-lib-topp__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Legacy tile layout (homepage keyfeatures on openms-lib embed) */
 .keyfeatures-modern--openms-lib.keyfeatures-modern--lib-tiles {
   margin: 0;
@@ -2704,6 +2974,10 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.openms-lib-developers__grid--count-6 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .openms-lib-developers__card {
   display: flex;
   flex-direction: column;
@@ -2855,6 +3129,16 @@
   color: var(--openms-navy);
 }
 
+.openms-lib-developers__cite-promo,
+.openms-lib-developers__cite-details {
+  min-width: 0;
+}
+
+.openms-lib-developers__cite-kicker {
+  display: none;
+  margin: 0;
+}
+
 .openms-lib-developers__cite-card {
   width: 100%;
   margin: 0;
@@ -2881,6 +3165,18 @@
   color: var(--openms-navy);
   text-decoration: underline;
   outline: none;
+}
+
+.openms-lib-developers__cite--separate {
+  position: static;
+  width: min(100%, 42rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--olib-line);
+}
+
+.openms-lib-block--developers .openms-lib-developers__cite--separate .openms-lib-developers__cite-intro {
+  text-align: center;
 }
 
 /* ── Responsive ── */
@@ -3499,6 +3795,225 @@
   border-color: rgba(var(--openms-pink-rgb), 0.24);
 }
 
+/* pyopenms_viz — hero REPL */
+.openms-lib-hero--viz .openms-lib-hero__content {
+  max-width: 46rem;
+}
+
+.pyopenms-viz-hero__repl {
+  margin: clamp(1.5rem, 3.5vw, 2.35rem) auto 0;
+  width: min(100%, 22rem);
+  text-align: left;
+}
+
+.pyopenms-viz-hero__repl-window {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0.75rem 2rem rgba(var(--openms-navy-rgb), 0.12);
+}
+
+.pyopenms-viz-hero__repl-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.85rem;
+  padding-inline: 0.65rem;
+  background: var(--openms-grey);
+}
+
+.pyopenms-viz-hero__repl-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+}
+
+.pyopenms-viz-hero__repl-dot--red {
+  background: var(--openms-pink);
+}
+
+.pyopenms-viz-hero__repl-dot--yellow {
+  background: var(--openms-orange);
+}
+
+.pyopenms-viz-hero__repl-dot--green {
+  background: var(--openms-yellow);
+}
+
+.pyopenms-viz-hero__repl-body {
+  background: var(--openms-dark);
+  color: #ececec;
+  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: clamp(0.78rem, 1.55vw, 0.92rem);
+  line-height: 1.55;
+  padding: 0.8rem 0.95rem;
+  max-height: 3.4rem;
+  overflow: hidden;
+  animation: pyopenms-viz-repl-scroll 0.55s ease-out 2.1s forwards;
+}
+
+.pyopenms-viz-hero__repl-scroll {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.pyopenms-viz-hero__repl-line {
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+
+.pyopenms-viz-hero__repl-prompt {
+  color: color-mix(in srgb, var(--openms-purple) 88%, white);
+  flex-shrink: 0;
+}
+
+.pyopenms-viz-hero__repl-code {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: pyopenms-viz-type 1s steps(9, end) 0.55s forwards;
+}
+
+.pyopenms-viz-hero__repl-cursor {
+  opacity: 0;
+  animation:
+    pyopenms-viz-cursor-show 0s linear 1.55s forwards,
+    pyopenms-viz-blink 0.75s step-end infinite 1.55s;
+}
+
+.pyopenms-viz-hero__repl-output {
+  margin: 0;
+  opacity: 0;
+  animation: pyopenms-viz-fade-in 0.35s ease-out 1.75s forwards;
+}
+
+.pyopenms-viz-hero__repl-muted {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@keyframes pyopenms-viz-type {
+  to {
+    width: 9ch;
+  }
+}
+
+@keyframes pyopenms-viz-cursor-show {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pyopenms-viz-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pyopenms-viz-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pyopenms-viz-repl-scroll {
+  to {
+    max-height: 5.25rem;
+  }
+}
+
+.openms-lib-list--resource-grid--getting-started:has(.openms-lib-resource-card:nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* OpenMS WebApps product page */
+.openms-lib-page--webapps .openms-lib-hero__accent--warm {
+  color: color-mix(in srgb, var(--openms-blue) 78%, var(--openms-navy));
+}
+
+.openms-lib-btn--github {
+  gap: 0.45rem;
+}
+
+.openms-lib-btn--github .fab {
+  font-size: 1.05em;
+}
+
+.openms-lib-list--resource-grid--template .openms-lib-resource-card--featured-apps {
+  grid-column: 1 / -1;
+}
+
+.openms-lib-resource-card--featured-apps {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--openms-blue-rgb), 0.05) 0%,
+    var(--openms-white) 58%
+  );
+  border-color: rgba(var(--openms-blue-rgb), 0.16);
+}
+
+.openms-lib-resource-card__app-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.openms-lib-resource-card__app-links a {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--openms-blue) 82%, var(--openms-navy));
+  text-decoration: none;
+}
+
+.openms-lib-resource-card__app-links a:hover,
+.openms-lib-resource-card__app-links a:focus-visible {
+  color: var(--openms-navy);
+  text-decoration: underline;
+}
+
+.openms-lib-page--webapps .openms-lib-page__anchor--reserved {
+  padding: 0;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.openms-lib-page--webapps .webapps-featured--page::before,
+.openms-lib-page--webapps .webapps-featured--page::after {
+  display: none;
+}
+
+.openms-lib-page--webapps .webapps-modern-wrap--page {
+  width: min(100%, var(--olib-max));
+  margin-inline: auto;
+  padding-inline: var(--olib-pad-x);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 3vw, 2rem);
+}
+
+.openms-lib-page--webapps .webapps-affiliates {
+  padding-block: clamp(1.5rem, 3vw, 2rem) clamp(3rem, 6vw, 4rem);
+  background: var(--olib-bg-soft);
+}
+
+.openms-lib-page--webapps .webapps-archived {
+  padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(3.5rem, 7vw, 5rem);
+}
+
+@media (max-width: 992px) {
+  .openms-lib-list--resource-grid--getting-started:has(.openms-lib-resource-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .openms-lib-list--resource-grid--getting-started {
     grid-template-columns: 1fr;
@@ -3557,5 +4072,25 @@
   .openms-lib-list--tiles .openms-lib-list__row:hover,
   .openms-lib-resource-card:hover {
     transform: none;
+  }
+
+  .pyopenms-viz-hero__repl-code,
+  .pyopenms-viz-hero__repl-cursor,
+  .pyopenms-viz-hero__repl-output,
+  .pyopenms-viz-hero__repl-body {
+    animation: none;
+  }
+
+  .pyopenms-viz-hero__repl-code {
+    width: 9ch;
+  }
+
+  .pyopenms-viz-hero__repl-cursor,
+  .pyopenms-viz-hero__repl-output {
+    opacity: 1;
+  }
+
+  .pyopenms-viz-hero__repl-body {
+    max-height: 5.25rem;
   }
 }

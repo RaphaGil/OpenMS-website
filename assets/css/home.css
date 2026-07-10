@@ -211,9 +211,9 @@
   height: auto;
   min-height: var(--hero-diagram-min-h, clamp(9rem, 20vw, 13rem));
   max-height: var(--hero-diagram-max-h, min(40vh, 20rem));
-  aspect-ratio: 720 / 215;
+  aspect-ratio: 720 / 260;
   overflow: visible;
-  transform: translateY(clamp(0.35rem, 0.8vh, 0.65rem));
+  transform: none;
 }
 
 .home-page__hero .hero-logo-diagram__frame {
@@ -222,16 +222,13 @@
 }
 
 .home-page__hero .hero-logo-diagram__wordmark {
-  position: relative;
+  position: absolute;
+  right: clamp(0.35rem, 2%, 0.85rem);
+  bottom: clamp(0.2rem, 0.6vh, 0.45rem);
   z-index: 5;
   opacity: 1;
-  margin: clamp(0.15rem, 0.4vh, 0.35rem) 0 0;
+  margin: 0;
   padding: 0;
-  text-align: center;
-}
-
-.home-page__hero .hero-logo-diagram__peaks {
-  opacity: 0.92;
 }
 
 .home-page__hero .hero-home__footer {
@@ -447,8 +444,9 @@
   }
 
   .home-page__hero .hero-logo-diagram__wordmark {
-    text-align: center;
-    margin: clamp(0.15rem, 0.4vh, 0.35rem) 0 0;
+    right: clamp(0.25rem, 1.5%, 0.65rem);
+    bottom: clamp(0.15rem, 0.5vh, 0.35rem);
+    margin: 0;
     padding-right: 0;
   }
 

@@ -5,12 +5,12 @@ hideShortcuts: true
 sidebar: false
 ---
 
-<article class="openms-lib-page">
+<article class="openms-lib-page openms-lib-page--hub">
 <div class="openms-lib-page__intro">
   <header class="openms-lib-hero" aria-label="OpenMS C++ core library">
     <div class="openms-lib-hero__panel">
     <div class="openms-lib-hero__content">
-      <p class="openms-lib-hero__eyebrow">Infrastructure</p>
+      <p class="openms-lib-hero__eyebrow">OpenMS-lib</p>
       <h1 class="openms-lib-hero__title">
         The <span class="openms-lib-hero__accent">Open Source</span> toolkit for <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">mass spectrometry</span>.
       </h1>
@@ -51,15 +51,16 @@ sidebar: false
     </div>
   </header>
 </div>
+
 <div class="openms-lib-page__body" aria-label="OpenMS capabilities and workflows">
   <div id="what-is-openms" class="openms-lib-page__anchor">
     {{< openms-lib-highlights >}}
   </div>
-  <div id="capabilities" class="openms-lib-page__anchor">
-    {{< heroitems variant="users" >}}
+  <div id="topp-tools" class="openms-lib-page__anchor">
+    {{< openms-lib-topp >}}
   </div>
-  <div id="developers" class="openms-lib-page__anchor">
-    {{< heroitems variant="developers" >}}
+  <div id="getting-started" class="openms-lib-page__anchor">
+    {{< openms-lib-getting-started >}}
   </div>
 </div>
 <div class="openms-lib-page__outro">

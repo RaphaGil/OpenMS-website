@@ -242,11 +242,33 @@
 
 .hero-logo-diagram__frame {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   width: 100%;
   padding-top: clamp(0.85rem, 2vh, 1.5rem);
+}
+
+.hero-logo-diagram__wordmark {
+  position: absolute;
+  right: clamp(0.35rem, 2%, 0.85rem);
+  bottom: clamp(0.2rem, 0.6vh, 0.45rem);
+  z-index: 5;
+  display: block;
+  width: clamp(3.75rem, 10vw, 5.5rem);
+  height: auto;
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 1px 2px rgba(var(--openms-dark-rgb), 0.3));
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .hero-logo-diagram__wordmark {
+    width: clamp(3.25rem, 18vw, 4.5rem);
+    right: clamp(0.25rem, 1.5%, 0.65rem);
+    bottom: clamp(0.15rem, 0.5vh, 0.35rem);
+  }
 }
 
 .hero-logo-diagram__tags {
@@ -279,13 +301,13 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  aspect-ratio: 720 / 215;
+  aspect-ratio: 720 / 260;
   min-height: clamp(10rem, 24vw, 16rem);
   max-height: min(48vh, 24rem);
   overflow: visible;
   border-radius: 0;
   box-shadow: none;
-  transform: translateY(clamp(0.35rem, 0.8vh, 0.65rem));
+  transform: none;
 }
 
 @media (max-width: 900px) {
@@ -312,102 +334,211 @@
   }
 }
 
-.hero-logo-diagram__wordmark {
-  margin: clamp(0.15rem, 0.4vh, 0.35rem) 0 0;
-  padding: 0;
-  text-align: center;
-  white-space: nowrap;
-  font-family: var(--openms-font-heading);
-  font-size: clamp(0.95rem, 1.85vw, 1.2rem);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--openms-white);
-  text-shadow: 0 1px 3px rgba(var(--openms-dark-rgb), 0.4);
-}
-
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .hero-logo-diagram__wordmark {
-    background: linear-gradient(
-      90deg,
-      rgba(var(--openms-white-rgb), 0.98) 0%,
-      rgba(var(--openms-white-rgb), 0.82) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: none;
-  }
-}
-
 .hero-logo-diagram__stage {
   transform-origin: center;
-  transform-box: fill-box;
-  animation: hero-logo-float 6.5s ease-in-out infinite;
-  opacity: 0.75;
+  opacity: 1;
 }
 
-.hero-logo-diagram__peaks {
-  opacity: 0.88;
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  transform: scaleY(1.35);
+.hero-logo-diagram__panel {
+  fill: rgba(var(--openms-white-rgb), 0.04);
+  stroke: rgba(var(--openms-white-rgb), 0.12);
+  stroke-width: 1;
+  animation: hero-diagram-panel-glow 5s ease-in-out infinite;
 }
 
-.hero-logo-diagram__bar {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: hero-logo-bar-pulse 3s ease-in-out infinite;
-  animation-delay: calc(var(--bar-i, 0) * 0.09s);
+.hero-logo-diagram__grid line {
+  stroke: rgba(var(--openms-white-rgb), 0.1);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
 }
 
-@keyframes hero-logo-float {
+.hero-logo-diagram__grid line:first-child {
+  stroke: rgba(var(--openms-white-rgb), 0.24);
+  stroke-dasharray: none;
+  stroke-width: 1.25;
+}
+
+.hero-logo-diagram__fill {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: hero-diagram-fill-breathe 4.5s ease-in-out infinite;
+}
+
+.hero-logo-diagram__line {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: hero-diagram-line-draw 6s ease-in-out infinite;
+}
+
+.hero-logo-diagram__needles {
+  opacity: 1;
+}
+
+.hero-logo-diagram__needle {
+  stroke: url(#hero-ms-spectrum-gradient);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: hero-diagram-needle-pulse 3.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  animation-delay: calc(var(--peak-i, 0) * 0.08s);
+}
+
+.hero-logo-diagram__markers {
+  opacity: 1;
+}
+
+.hero-logo-diagram__marker {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(var(--openms-blue-rgb), 0.85));
+  animation: hero-diagram-marker-pulse 3.4s ease-in-out infinite;
+  animation-delay: calc(var(--peak-i, 0) * 0.12s);
+}
+
+.hero-logo-diagram__cursor {
+  pointer-events: none;
+  animation: hero-diagram-cursor-sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes hero-diagram-panel-glow {
   0%,
   100% {
-    transform: translateY(0);
+    stroke: rgba(var(--openms-white-rgb), 0.1);
+    fill: rgba(var(--openms-white-rgb), 0.035);
   }
 
   50% {
-    transform: translateY(-6px);
+    stroke: rgba(var(--openms-white-rgb), 0.18);
+    fill: rgba(var(--openms-white-rgb), 0.055);
   }
 }
 
-@keyframes hero-logo-bar-pulse {
+@keyframes hero-diagram-fill-breathe {
   0%,
   100% {
-    transform: scaleY(0.72);
-    opacity: 0.88;
+    opacity: 0.55;
   }
 
   50% {
-    transform: scaleY(1.28);
+    opacity: 0.92;
+  }
+}
+
+@keyframes hero-diagram-line-draw {
+  0%,
+  12% {
+    stroke-dashoffset: 900;
+    opacity: 0.35;
+  }
+
+  42%,
+  58% {
+    stroke-dashoffset: 0;
     opacity: 1;
+  }
+
+  88%,
+  100% {
+    stroke-dashoffset: -120;
+    opacity: 0.4;
+  }
+}
+
+@keyframes hero-diagram-needle-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0.35;
+  }
+
+  32% {
+    transform: scaleY(0.82);
+    opacity: 0.78;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  68% {
+    transform: scaleY(0.65);
+    opacity: 0.6;
+  }
+}
+
+@keyframes hero-diagram-marker-pulse {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-diagram-cursor-sweep {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 0.9;
+  }
+
+  94% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateX(624px);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-logo-diagram__stage,
-  .hero-logo-diagram__bar {
+  .hero-logo-diagram__panel,
+  .hero-logo-diagram__fill,
+  .hero-logo-diagram__line,
+  .hero-logo-diagram__needle,
+  .hero-logo-diagram__marker,
+  .hero-logo-diagram__cursor {
     animation: none;
   }
 
   .hero-logo-diagram__stage {
-    opacity: 0.75;
+    opacity: 1;
   }
 
   .hero-logo-diagram__wordmark {
     opacity: 1;
   }
 
-  .hero-logo-diagram__peaks {
-    opacity: 0.68;
-    transform: scaleY(1.42);
+  .hero-logo-diagram__line {
+    stroke-dashoffset: 0;
+    opacity: 0.85;
   }
 
-  .hero-logo-diagram__bar {
-    transform: scaleY(1);
-    opacity: 1;
+  .hero-logo-diagram__needle {
+    transform: scaleY(0.92);
+    opacity: 0.9;
+  }
+
+  .hero-logo-diagram__marker {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+
+  .hero-logo-diagram__cursor {
+    opacity: 0;
+  }
+
+  .hero-logo-diagram__fill {
+    opacity: 0.75;
   }
 }
 

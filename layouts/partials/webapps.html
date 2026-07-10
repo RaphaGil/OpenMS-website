@@ -6,12 +6,21 @@
 {{- if $webapps }}
 {{- $eyebrow := index $section "eyebrow" }}
 {{- $title := index $section "title" | default "Featured Apps" }}
+{{- if eq $embed "page" }}
+{{- $title = index $section "pageTitle" | default "Featured Apps" }}
+{{- end }}
 {{- $titleHighlight := index $section "titleHighlight" }}
 {{- $description := index $section "description" }}
-{{- $ctaText := index $section "ctaText" | default "View project" }}
+{{- if eq $embed "page" }}
+{{- $description = index $section "pageDescription" | default $description }}
+{{- end }}
+{{- $ctaText := index $section "ctaText" | default "View app" }}
 {{- $showAll := index $section "showAll" }}
 {{- $extraLinks := index $section "links" | default (slice) }}
+{{- $contactNote := index $section "contactNote" -}}
+{{- $contactUrl := index $section "contactUrl" | default "/contact/" -}}
 {{- $cardCtx := dict "ctaText" $ctaText }}
+{{- $isPage := eq $embed "page" -}}
 <div class="webapps-modern-wrap{{ with $embed }} webapps-modern-wrap--{{ . }}{{ end }}">
   <section class="webapps-featured{{ with $embed }} webapps-featured--{{ . }}{{ end }}" aria-labelledby="webapps-featured-title">
     <div class="webapps-featured__inner">
@@ -36,11 +45,11 @@
       {{- else }}
       <header class="webapps-featured__header{{ with $embed }} webapps-featured__header--{{ . }}{{ end }}">
         <div class="webapps-featured__header-main">
-          {{- with $eyebrow }}
-          <p class="webapps-featured__eyebrow">{{ . }}</p>
+          {{- if and (not $isPage) $eyebrow }}
+          <p class="webapps-featured__eyebrow">{{ $eyebrow }}</p>
           {{- end }}
           <h2 id="webapps-featured-title" class="webapps-featured__title">
-            {{- if and $titleHighlight (in $title $titleHighlight) }}
+            {{- if and (not $isPage) $titleHighlight (in $title $titleHighlight) }}
             {{ replace $title $titleHighlight (printf "<span class=\"webapps-featured__title-accent\">%s</span>" $titleHighlight) | safeHTML }}
             {{- else }}
             {{ $title }}
@@ -53,15 +62,29 @@
       </header>
       {{- end }}
 
-      <ul class="webapps-featured__grid{{ if eq $embed "home" }} webapps-featured__grid--catalog{{ end }}" role="list" aria-label="OpenMS projects">
+      <ul
+        class="webapps-featured__grid{{ if $isPage }} webapps-featured__grid--detail{{ else if or (eq $embed "home") (eq $embed "page") }} webapps-featured__grid--catalog{{ end }}"
+        role="list"
+        aria-label="OpenMS apps"
+      >
         {{- range $webapps }}
         <li class="webapps-featured__item" role="listitem">
+          {{- if $isPage }}
+          {{ partial "webapps-project-detail-card.html" (dict "project" .) }}
+          {{- else }}
           {{ partial "webapps-project-card.html" (merge $cardCtx (dict "project" . "embed" $embed)) }}
+          {{- end }}
         </li>
         {{- end }}
       </ul>
 
-      {{- if or $extraLinks $showAll }}
+      {{- if $isPage }}
+      {{- with $contactNote }}
+      <p class="webapps-catalog__contact">
+        {{ replace . "Contact us" (printf `<a href="%s">Contact us</a>` $contactUrl) | safeHTML }}
+      </p>
+      {{- end }}
+      {{- else if or $extraLinks $showAll }}
       <div class="webapps-featured__footer{{ if eq $embed "home" }} webapps-featured__footer--home{{ end }}">
         {{- if $extraLinks }}
         <div class="webapps-featured__extras" aria-label="Core OpenMS tools">

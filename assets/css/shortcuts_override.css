@@ -92,12 +92,6 @@
   display: none;
 }
 
-/* Applications listing: hide left TOC */
-.content-padding:has(.applications-page-layout) .shortcuts-container,
-.applications-page-layout .shortcuts-container {
-  display: none;
-}
-
 /* OpenMS-lib page: hide left TOC */
 .content-padding:has(.openms-lib-layout) .shortcuts-container {
   display: none;

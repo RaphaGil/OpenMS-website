@@ -193,6 +193,14 @@
   #navbar-clone.navbar.is-fresh .navbar-links .navbar-item.has-dropdown {
     position: relative;
     flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .navbar.is-fresh .navbar-links .navbar-item.has-dropdown.is-hoverable:hover,
+  .navbar.is-fresh .navbar-links .navbar-item.has-dropdown.is-hoverable:focus-within,
+  #navbar-clone.navbar.is-fresh .navbar-links .navbar-item.has-dropdown.is-hoverable:hover,
+  #navbar-clone.navbar.is-fresh .navbar-links .navbar-item.has-dropdown.is-hoverable:focus-within {
+    z-index: 5;
   }
 
   /* Invisible bridge — keeps dropdown open while moving pointer from link to panel */
@@ -203,7 +211,7 @@
     left: 0;
     right: 0;
     top: 100%;
-    height: 0.5rem;
+    height: 0.75rem;
     background: transparent;
     pointer-events: auto;
   }
@@ -214,7 +222,7 @@
     top: 100%;
     left: auto;
     right: 0;
-    margin-top: 0;
+    margin-top: -1px;
     transform: none;
     z-index: 400;
     overflow: hidden;
@@ -237,15 +245,11 @@
     max-width: none;
     overflow: visible;
     text-overflow: clip;
-    padding-right: 0.45rem !important;
-  }
-
-  .navbar.is-fresh .navbar-links .navbar-item.has-dropdown > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-links .navbar-item.has-dropdown > .navbar-link::after {
-    position: relative;
-    top: 0.1em;
-    right: auto;
-    margin-left: 0.25rem;
+    padding-left: var(--openms-navbar-desktop-pad-x);
+    padding-right: var(--openms-navbar-desktop-pad-x);
+    min-height: 2.25rem;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
   }
 
   .site-header #nav.navbar.is-fresh .navbar-actions,
@@ -713,21 +717,6 @@
     background-color: transparent;
   }
 
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown.is-active > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown.is-active > .navbar-link::after {
-    transform: rotate(180deg);
-    border-color: rgba(var(--openms-navy-rgb), 0.45) !important;
-  }
-
-  .navbar.is-fresh .navbar-item.has-dropdown .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown .navbar-link::after {
-    position: relative;
-    top: 0.1em;
-    right: auto;
-    margin-left: 0.35rem;
-    border-color: rgba(var(--openms-navy-rgb), 0.45) !important;
-  }
-
   .navbar.is-fresh .navbar-item.has-dropdown .navbar-link,
   #navbar-clone.navbar.is-fresh .navbar-item.has-dropdown .navbar-link {
     gap: 0.35rem;
@@ -1008,13 +997,6 @@
   #navbar-clone.navbar.is-fresh .navbar-menu .navbar-link:hover svg.icon {
     color: var(--openms-chrome-nav-text);
     fill: currentColor;
-  }
-
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown:hover > .navbar-link::after,
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown > .navbar-link:hover::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown:hover > .navbar-link::after,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-item.has-dropdown > .navbar-link:hover::after {
-    border-color: rgba(var(--openms-navy-rgb), 0.45) !important;
   }
 
   /* SM–MD header chrome icons */

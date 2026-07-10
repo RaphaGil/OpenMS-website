@@ -476,6 +476,258 @@
   color: rgba(var(--openms-dark-rgb), 0.82);
 }
 
+.sponsor-tier__contribution {
+  margin: 0;
+  font-size: var(--openms-text-min);
+  font-weight: 700;
+  color: var(--openms-navy);
+}
+
+.sponsor-tier__motto {
+  margin: 0;
+  font-size: var(--openms-text-min);
+  font-style: italic;
+  color: var(--olib-text-muted, rgba(var(--openms-navy-rgb), 0.68));
+}
+
+.sponsor-tier__impact {
+  margin: 0.35rem 0 0;
+  font-size: var(--openms-text-min);
+  line-height: 1.55;
+  color: rgba(var(--openms-navy-rgb), 0.78);
+}
+
+/* About page — sponsor logo wall */
+.about-sponsors-section__intro {
+  max-width: 65ch;
+}
+
+.about-sponsors-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: clamp(0.75rem, 2vw, 1.1rem);
+  margin-top: 1rem;
+}
+
+.about-sponsors-logos__item {
+  min-height: 8.5rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(var(--openms-navy-rgb), 0.1);
+  background: var(--openms-white);
+  box-shadow: 0 0.25rem 0.85rem rgba(var(--openms-navy-rgb), 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.about-sponsors-logos__item:hover,
+.about-sponsors-logos__item:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(var(--openms-blue-rgb), 0.35);
+  box-shadow: 0 0.65rem 1.5rem rgba(var(--openms-navy-rgb), 0.1);
+  outline: none;
+}
+
+.about-sponsors-logos__item--dark {
+  background: var(--openms-navy);
+  border-color: rgba(var(--openms-white-rgb), 0.12);
+}
+
+.about-sponsors-logos__logo {
+  width: 100%;
+  max-width: 12.5rem;
+  max-height: 4rem;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.about-sponsors-logos__name {
+  font-family: var(--openms-font-heading);
+  font-size: var(--openms-text-min);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--openms-navy);
+  text-align: center;
+}
+
+.about-sponsors-section__cta,
+.about-sponsorship-program__cta {
+  margin: 1.25rem 0 0;
+  max-width: 65ch;
+}
+
+.about-sponsors-section__cta a {
+  font-weight: 600;
+}
+
+.about-sponsors-tier {
+  margin-top: 1.25rem;
+}
+
+.about-sponsors-tier__title {
+  margin: 0 0 0.65rem;
+  font-family: var(--openms-font-heading);
+  font-size: var(--openms-secondary-heading-size);
+  font-weight: 700;
+  color: var(--openms-navy);
+}
+
+/* About page — sponsorship program */
+.about-sponsorship-program__headline {
+  margin: 0.35rem 0 0;
+  font-family: var(--openms-font-heading);
+  font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--openms-navy);
+  max-width: 42rem;
+}
+
+.about-sponsorship-program__blurb {
+  margin: 0.65rem 0 0;
+  max-width: 65ch;
+  font-size: var(--openms-body-size-lg);
+  line-height: 1.65;
+  color: rgba(var(--openms-dark-rgb), 0.88);
+}
+
+.about-sponsorship-program__enables {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 0.75rem;
+  background: var(--olib-bg-soft, #f4f6f9);
+  border: 1px solid rgba(var(--openms-navy-rgb), 0.1);
+}
+
+.about-sponsorship-program__enables-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--openms-font-heading);
+  font-size: var(--openms-secondary-heading-size);
+  font-weight: 700;
+  color: var(--openms-navy);
+}
+
+.about-sponsorship-program__enables ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.about-sponsorship-program__tax {
+  margin: 1rem 0 0;
+  max-width: 65ch;
+  font-size: var(--openms-body-size);
+  color: var(--olib-text-muted, rgba(var(--openms-navy-rgb), 0.68));
+}
+
+.about-sponsorship-program__tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.25rem);
+  margin-top: 1.5rem;
+}
+
+.about-sponsorship-tier {
+  display: grid;
+  gap: 0.65rem;
+  align-content: start;
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(var(--openms-navy-rgb), 0.12);
+  background: var(--openms-white);
+  box-shadow: 0 0.25rem 0.85rem rgba(var(--openms-navy-rgb), 0.05);
+}
+
+.about-sponsorship-tier--platinum { border-top: 4px solid #b8b8c8; }
+.about-sponsorship-tier--gold { border-top: 4px solid #d4a017; }
+.about-sponsorship-tier--silver { border-top: 4px solid #9aa5b1; }
+.about-sponsorship-tier--bronze { border-top: 4px solid #b87333; }
+
+.about-sponsorship-tier__head {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.about-sponsorship-tier__badge {
+  margin: 0;
+  align-self: flex-start;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  line-height: 1.2;
+  background: rgba(var(--openms-navy-rgb), 0.08);
+  color: var(--openms-navy);
+}
+
+.about-sponsorship-tier__contribution {
+  margin: 0;
+  font-size: var(--openms-text-min);
+  font-weight: 700;
+  color: var(--openms-navy);
+}
+
+.about-sponsorship-tier__motto {
+  margin: 0;
+  font-size: var(--openms-text-min);
+  font-style: italic;
+  color: var(--olib-text-muted, rgba(var(--openms-navy-rgb), 0.68));
+}
+
+.about-sponsorship-tier__summary {
+  margin: 0;
+  font-size: var(--openms-body-size);
+  line-height: 1.55;
+}
+
+.about-sponsorship-tier__label {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(var(--openms-navy-rgb), 0.72);
+}
+
+.about-sponsorship-tier__benefits {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: var(--openms-text-min);
+  line-height: 1.55;
+}
+
+.about-sponsorship-tier__benefits li + li {
+  margin-top: 0.3rem;
+}
+
+.about-sponsorship-tier__impact {
+  margin: 0;
+  font-size: var(--openms-text-min);
+  line-height: 1.55;
+  color: rgba(var(--openms-navy-rgb), 0.82);
+}
+
+.about-page-layout .about-sponsorship-program__cta .openms-lib-btn--primary {
+  border: 2px solid var(--openms-navy);
+  background: var(--openms-navy);
+  color: var(--openms-white) !important;
+}
+
+@media (max-width: 900px) {
+  .about-sponsorship-program__tiers {
+    grid-template-columns: 1fr;
+  }
+}
+
 .sponsor-tier__benefits {
   margin: 0.25rem 0 0;
   padding-left: 1.15rem;

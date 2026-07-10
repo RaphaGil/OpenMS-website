@@ -13,6 +13,12 @@
       <header class="sponsor-tier__header">
         <p class="sponsor-tier__badge" aria-hidden="true">{{ .name }}</p>
         <h3 class="sponsor-tier__name">{{ .name }}</h3>
+        {{- with .contribution }}
+        <p class="sponsor-tier__contribution">{{ . }}</p>
+        {{- end }}
+        {{- with .motto }}
+        <p class="sponsor-tier__motto">{{ . }}</p>
+        {{- end }}
       </header>
       {{- with .summary }}
       <p class="sponsor-tier__summary">{{ . }}</p>
@@ -23,6 +29,9 @@
         <li>{{ . }}</li>
         {{- end }}
       </ul>
+      {{- end }}
+      {{- with .impact }}
+      <p class="sponsor-tier__impact"><strong>Impact:</strong> {{ . }}</p>
       {{- end }}
     </article>
     {{- end }}

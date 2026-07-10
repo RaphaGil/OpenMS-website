@@ -28,13 +28,9 @@ hidePageTitle: true
   </article>
 </section>
 
-<section class="governance-section" id="sponsors">
-  <h2>Sponsors</h2>
-  <p>
-    OpenMS receives direct funding from organizations that sponsor the project.
-    See <a href="/sponsor-us/">sponsor us</a> for current sponsors and how to support OpenMS financially.
-  </p>
-</section>
+{{< about-sponsors >}}
+
+{{< about-sponsorship-program >}}
 
 <section class="governance-section governance-section--contrast" id="institutional-partners">
   <h2>Institutional Partners</h2>
@@ -63,6 +59,7 @@ hidePageTitle: true
   <h2>See also</h2>
   <p>
     For user questions, documentation, and community support channels, see the
-    <a href="/help/">Help page</a>.
+    <a href="/help/">Help page</a>. For full sponsorship details and becoming a sponsor,
+    visit <a href="/sponsor-us/">Sponsor us</a>.
   </p>
 </section>
