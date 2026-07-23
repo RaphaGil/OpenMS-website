@@ -4,6 +4,11 @@ on:
   schedule:
     # Every Sunday at 06:00 UTC
     - cron: '0 6 * * 0'
+  push:
+    branches:
+      - main
+    paths:
+      - 'pmids.txt'
   workflow_dispatch: {}
 
 permissions:
@@ -32,12 +37,10 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install biopython pandas requests tqdm
+        run: pip install biopython pandas requests
 
       - name: Run publications update script
-        env:
-          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
-        run: python scripts/update_publications.py
+        run: python generate_bib.py
 
       - name: Check for changes
         id: git-check
@@ -51,11 +54,11 @@ jobs:
       - name: Create branch and commit
         if: steps.git-check.outputs.changed == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
+          git config user.email "${{ vars.OPENMS_GITHUB_APP_ID }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
           git checkout -b update-publications
           git add content/en/publications.md
-          git commit -m "Update publications list from PubMed collection"
+          git commit -m "Update publications list from pmids.txt"
           git push --force https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.repository }} update-publications
 
       - name: Create or update Pull Request
@@ -67,9 +70,10 @@ jobs:
             echo "PR already exists, branch updated."
           else
             gh pr create \
-              --title "Weekly publications update" \
-              --body "Automated update of \`content/en/publications.md\` from the [OpenMS PubMed collection](https://pubmed.ncbi.nlm.nih.gov/collections/67464722/public/)." \
+              --title "Automated publications update" \
+              --body "Automated update of \`content/en/publications.md\` from \`pmids.txt\`." \
               --head update-publications \
               --base main \
               --label automated,publications
           fi
+
