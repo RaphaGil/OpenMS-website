@@ -32,12 +32,10 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install biopython pandas requests tqdm
+        run: pip install biopython pandas requests
 
       - name: Run publications update script
-        env:
-          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
-        run: python scripts/update_publications.py
+        run: python generate_bib.py
 
       - name: Check for changes
         id: git-check
