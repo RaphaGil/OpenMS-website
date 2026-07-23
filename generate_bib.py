@@ -3,11 +3,6 @@ import re
 import pandas as pd
 from Bio import Entrez
 
-Entrez.email = os.getenv("NCBI_EMAIL", "openms_admin@example.com")
-api_key = os.getenv("NCBI_API_KEY")
-if api_key:
-    Entrez.api_key = api_key
-
 # Read PMIDs directly from repository file
 def load_pmids(file_path="pmids.txt"):
     with open(file_path, "r") as f:
@@ -61,9 +56,11 @@ for i in range(0, len(pmids), chunk_size):
 
 # Build Markdown
 citations = pd.DataFrame(citations_data)
-if not citations.empty:
-    citations.drop_duplicates(subset=["PubMedID"], inplace=True)
-    citations.sort_values("Year", ascending=False, inplace=True)
+
+if citations.empty:
+    raise RuntimeError("No PubMed records were retrieved; refusing to overwrite publications.md")
+citations.drop_duplicates(subset=["PubMedID"], inplace=True)
+citations.sort_values("Year", ascending=False, inplace=True)
 
 with open("content/en/publications.md", "w") as file:
     file.write("# List of OpenMS Publications\n\n")
