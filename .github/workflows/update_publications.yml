@@ -76,4 +76,3 @@ jobs:
               --base main \
               --label automated,publications
           fi
-
