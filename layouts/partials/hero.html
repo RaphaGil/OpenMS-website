@@ -22,29 +22,29 @@
             <p class="hero-home__description">{{ . }}</p>
             {{- end }}
           </div>
-        </div>
 
-        <div class="hero-home__footer">
-          <div class="hero-home__actions-block">
-            <div class="hero-home__actions" role="group" aria-label="Primary actions">
-              {{- if $buttonText }}
-              <a
-                class="hero-home__btn hero-home__btn--primary openms-btn-primary"
-                href="{{ $buttonLink }}"
-                {{- if in $buttonLink "://" }}
-                rel="noopener noreferrer"
+          <div class="hero-home__footer">
+            <div class="hero-home__actions-block">
+              <div class="hero-home__actions" role="group" aria-label="Primary actions">
+                {{- if $buttonText }}
+                <a
+                  class="hero-home__btn hero-home__btn--primary openms-btn-primary"
+                  href="{{ $buttonLink }}"
+                  {{- if in $buttonLink "://" }}
+                  rel="noopener noreferrer"
+                  {{- end }}
+                >{{ $buttonText }}</a>
                 {{- end }}
-              >{{ $buttonText }}</a>
-              {{- end }}
-              {{- if and $secondaryText $secondaryLink }}
-              <a
-                class="hero-home__btn hero-home__btn--secondary"
-                href="{{ $secondaryLink }}"
-                {{- if in $secondaryLink "://" }}
-                rel="noopener noreferrer"
+                {{- if and $secondaryText $secondaryLink }}
+                <a
+                  class="hero-home__btn hero-home__btn--secondary"
+                  href="{{ $secondaryLink }}"
+                  {{- if in $secondaryLink "://" }}
+                  rel="noopener noreferrer"
+                  {{- end }}
+                >{{ $secondaryText }}</a>
                 {{- end }}
-              >{{ $secondaryText }}</a>
-              {{- end }}
+              </div>
             </div>
           </div>
         </div>

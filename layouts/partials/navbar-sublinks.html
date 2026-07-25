@@ -2,9 +2,9 @@
 {{- if .is_heading }}
 <span class="navbar-dropdown-heading" role="presentation">{{ .title }}</span>
 {{- else }}
-<a href="{{ .url }}" class="navbar-item{{ if .is_nested }} is-nested{{ end }}">
-  {{ .title }}
-  {{ if .is_external }}{{ partial "svg-icon" "launch" }}{{ end }}
+<a href="{{ .url }}" class="navbar-item{{ if .is_nested }} is-nested{{ end }}{{ if .is_external }} has-external-icon{{ end }}"{{ if .is_external }} target="_blank" rel="noopener noreferrer"{{ end }}>
+  <span class="navbar-item__label">{{ .title }}</span>
+  {{ if .is_external }}{{ partial "svg-icon" "external-link" }}{{ end }}
 </a>
 {{- end }}
 {{- end }}

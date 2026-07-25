@@ -28,17 +28,30 @@
   margin-bottom: var(--olib-section-y);
 }
 
-.fellowship-page-hero__content {
-  max-width: 42rem;
+/* Single-column hero with the "at a glance" chips side by side under the lead */
+.fellowship-page-layout .openms-lib-hero.fellowship-page-hero .openms-lib-hero__content {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 46rem;
 }
 
+.fellowship-page-layout .openms-lib-hero.fellowship-page-hero .openms-lib-hero__chips {
+  grid-column: 1;
+  grid-row: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: none;
+  margin: 1rem 0 0;
+}
+
+
+/* Sizing comes from the shared page-hero title scale (styles_override.css) */
 .fellowship-page-hero__headline {
   margin: 0;
   font-family: var(--openms-font-heading);
-  font-size: clamp(1.65rem, 4.2vw, 2.35rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
   color: var(--openms-navy);
 }
 

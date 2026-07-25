@@ -20,9 +20,9 @@
     markReveal(block, index);
   });
 
-  var whatIsHead = page.querySelector("#what-is-openms .openms-lib-highlights__head");
+  var whatIsHead = page.querySelector("#what-is-openms .openms-lib-highlights__head, #what-is-openms .openms-lib-about__head");
   if (whatIsHead) {
-    whatIsHead.querySelectorAll(".openms-lib-block__eyebrow, .openms-lib-block__title").forEach(function (el, index) {
+    whatIsHead.querySelectorAll(".openms-lib-block__eyebrow, .openms-lib-block__title, .openms-lib-about__eyebrow, .openms-lib-about__title").forEach(function (el, index) {
       markReveal(el, index, "left");
     });
   }
@@ -36,6 +36,10 @@
     markReveal(card, index + 3, index % 2 === 0 ? "left" : "right");
   });
 
+  page.querySelectorAll("#what-is-openms .openms-lib-about__tile").forEach(function (tile, index) {
+    markReveal(tile, index + 1, index === 0 ? "scale" : index % 2 === 0 ? "left" : "right");
+  });
+
   page.querySelectorAll(".openms-lib-topp__intro").forEach(function (el) {
     markReveal(el, 0, "left");
   });
@@ -44,10 +48,34 @@
     markReveal(el, index + 1, "right");
   });
 
+  page.querySelectorAll(".openms-lib-topp-split__intro").forEach(function (el) {
+    markReveal(el, 0, "left");
+  });
+
+  page.querySelectorAll(".openms-lib-topp-split__card").forEach(function (el, index) {
+    markReveal(el, index + 1, "right");
+  });
+
   var exploreRoutes = page.querySelector(".openms-lib-explore__routes");
   if (exploreRoutes) {
     markReveal(exploreRoutes, 1, "scale");
   }
+
+  page.querySelectorAll(".openms-lib-resources__head").forEach(function (el) {
+    markReveal(el, 0, "left");
+  });
+
+  page.querySelectorAll(".openms-lib-resources__feature").forEach(function (el) {
+    markReveal(el, 0, "left");
+  });
+
+  page.querySelectorAll(".openms-lib-resources__item").forEach(function (el, index) {
+    markReveal(el, index % 4, index % 2 === 0 ? "right" : "scale");
+  });
+
+  page.querySelectorAll(".openms-lib-resources__support").forEach(function (el) {
+    markReveal(el, 2, "scale");
+  });
 
   page.querySelectorAll(".openms-lib-developers__card").forEach(function (card, index) {
     markReveal(card, index % 6, index % 3 === 0 ? "scale" : index % 2 === 0 ? "left" : "right");

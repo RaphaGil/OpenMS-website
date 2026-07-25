@@ -136,6 +136,9 @@
     var menu = nav.querySelector(".navbar-menu");
     var burger = nav.querySelector(".navbar-burger");
     var backdrop = nav.querySelector("[data-navbar-backdrop]");
+    var scrollY = document.body.style.top
+      ? Math.abs(parseInt(document.body.style.top, 10)) || 0
+      : 0;
     if (menu) menu.classList.remove("is-active");
     if (burger) {
       burger.classList.remove("is-active");
@@ -144,6 +147,13 @@
     if (backdrop) backdrop.hidden = true;
     nav.classList.remove("is-menu-open");
     document.body.classList.remove("navbar-menu-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    document.documentElement.style.removeProperty("--openms-menu-offset");
+    if (scrollY) window.scrollTo(0, scrollY);
   }
 
   function openPanel(root, toggle, panel, input) {

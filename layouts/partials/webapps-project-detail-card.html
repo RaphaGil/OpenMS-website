@@ -1,19 +1,23 @@
 {{- $project := .project -}}
-<article class="webapps-project-detail-card">
+{{- $class := .class | default "" -}}
+{{- $hideName := .hideName | default false -}}
+<article class="webapps-project-detail-card{{ with $class }} {{ . }}{{ end }}{{ if $hideName }} webapps-project-detail-card--logo-title{{ end }}">
   <div class="webapps-project-detail-card__main">
     {{- with $project.logo }}
-    <div class="webapps-project-detail-card__logo-wrap">
+    <div class="webapps-project-detail-card__logo-wrap{{ with $project.logoSize }} webapps-project-detail-card__logo-wrap--{{ . }}{{ end }}">
       <img
         class="webapps-project-detail-card__logo{{ with $project.logoSize }} webapps-project-detail-card__logo--{{ . }}{{ end }}"
-        src="{{ . | relURL }}"
-        alt=""
+        src="{{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}"
+        alt="{{ $project.name }}"
         loading="lazy"
         decoding="async"
       />
     </div>
     {{- end }}
     <div class="webapps-project-detail-card__body">
+      {{- if not $hideName }}
       <h3 class="webapps-project-detail-card__name">{{ $project.name }}</h3>
+      {{- end }}
       {{- with $project.description }}
       <p class="webapps-project-detail-card__text">{{ . }}</p>
       {{- end }}

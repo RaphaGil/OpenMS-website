@@ -416,6 +416,68 @@
   color: rgba(var(--openms-dark-rgb), 0.78);
 }
 
+/* Homepage — upcoming events: navy-first accents, blue on interaction only */
+.home-page .community-events-home {
+  --events-date-bg: rgba(var(--openms-navy-rgb), 0.05);
+  --events-date-border: rgba(var(--openms-navy-rgb), 0.1);
+  --events-accent: rgba(var(--openms-navy-rgb), 0.72);
+  --events-accent-soft: rgba(var(--openms-navy-rgb), 0.05);
+  background: var(--openms-white);
+}
+
+.home-page .community-events-home__card--developer-meeting,
+.home-page .community-events-home__card--workshop {
+  --events-accent: rgba(var(--openms-navy-rgb), 0.72);
+  --events-accent-soft: rgba(var(--openms-navy-rgb), 0.05);
+}
+
+.home-page .community-events-home__card--developer-meeting .community-events-home__date,
+.home-page .community-events-upcoming-layout .community-events-home__date,
+.home-page .community-events-upcoming-layout .community-events-home__card--developer-meeting .community-events-home__date,
+.home-page .community-events-upcoming-layout .community-events-home__card--workshop .community-events-home__date,
+.home-page .community-events-upcoming-layout .community-events-home__card--outreach .community-events-home__date {
+  background: var(--openms-navy);
+  border-color: rgba(var(--openms-white-rgb), 0.2);
+}
+
+.home-page .community-events-upcoming-layout .community-events-home__date-day,
+.home-page .community-events-upcoming-layout .community-events-home__date-month,
+.home-page .community-events-upcoming-layout .community-events-home__date-year {
+  color: var(--openms-white);
+}
+
+.home-page .community-events-upcoming-layout .community-events-home__date-month {
+  color: rgba(var(--openms-white-rgb), 0.9);
+}
+
+.home-page .community-events-upcoming-layout .community-events-home__date-year {
+  color: rgba(var(--openms-white-rgb), 0.72);
+}
+
+.home-page .community-events-home__card-link {
+  border-top-color: rgba(var(--openms-navy-rgb), 0.14);
+}
+
+.home-page .community-events-home__card-link:hover,
+.home-page .community-events-home__card-link:focus-visible {
+  border-top-color: rgba(var(--openms-navy-rgb), 0.32);
+}
+
+.home-page .community-events-home__card-link:hover .community-events-home__card-title,
+.home-page .community-events-home__card-link:focus-visible .community-events-home__card-title {
+  color: var(--openms-navy);
+}
+
+.home-page .community-events-home__card-cta,
+.home-page .community-events-home__card-location-icon {
+  color: rgba(var(--openms-navy-rgb), 0.62);
+}
+
+.home-page .community-events-home__card-link:hover .community-events-home__card-cta,
+.home-page .community-events-home__card-link:focus-visible .community-events-home__card-cta {
+  color: var(--openms-blue);
+}
+
 @media (max-width: 640px) {
   .community-events-home__title {
     font-size: clamp(1.75rem, 5vw, 2.35rem);

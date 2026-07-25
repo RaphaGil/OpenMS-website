@@ -4,12 +4,20 @@
 {{- $lead := index $cfg "lead" -}}
 {{- $items := index $cfg "items" | default (slice) -}}
 {{- $id := .id | default "openms-lib-getting-started-title" -}}
-{{- $spotlight := index $items 0 -}}
-{{- $featured := index $items 1 -}}
-{{- $python := index $items 2 -}}
-{{- $docs := index $items 3 -}}
-{{- $api := index $items 4 -}}
-{{- $support := index $items 5 -}}
+{{- $spotlightAfterRoutes := index $cfg "spotlightAfterRoutes" | default false -}}
+{{- $routeOffset := 0 -}}
+{{- $spotlight := false -}}
+{{- with index $items 0 -}}
+{{- if and (not .tag) (not .icon) -}}
+{{- $spotlight = . -}}
+{{- $routeOffset = 1 -}}
+{{- end -}}
+{{- end -}}
+{{- $featured := index $items $routeOffset -}}
+{{- $python := index $items (add $routeOffset 1) -}}
+{{- $docs := index $items (add $routeOffset 2) -}}
+{{- $api := index $items (add $routeOffset 3) -}}
+{{- $support := index $items (add $routeOffset 4) -}}
 <section class="openms-lib-block openms-lib-block--resources openms-lib-explore" aria-labelledby="{{ $id }}">
   <header class="openms-lib-explore__intro">
     {{- with $eyebrow }}
@@ -24,30 +32,14 @@
   </header>
 
   <div class="openms-lib-explore__deck">
-    {{- with $spotlight }}
-    <a
-      class="openms-lib-explore__spotlight openms-lib-explore__spotlight--topp openms-lib-hub__reveal openms-lib-hub__reveal--scale"
-      href="{{ .url }}"
-      {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-    >
-      <div class="openms-lib-explore__spotlight-main">
-        <h3 class="openms-lib-explore__spotlight-title">{{ .title }}</h3>
-        {{- with .text }}
-        <p class="openms-lib-explore__spotlight-text">{{ . }}</p>
-        {{- end }}
-        <span class="openms-lib-explore__spotlight-cta">
-          {{ .linkText | default "Learn more" }}<span aria-hidden="true"> →</span>
-        </span>
-      </div>
-    </a>
+    {{- if and $spotlight (not $spotlightAfterRoutes) }}
+    {{ partial "openms-lib-explore-spotlight.html" $spotlight }}
     {{- end }}
 
     <div class="openms-lib-explore__routes openms-lib-hub__reveal" role="navigation" aria-label="OpenMS-lib resource paths">
-      <div class="openms-lib-explore__routes-head">
+      <div class="openms-lib-explore__route-group">
         <p class="openms-lib-explore__route-label">Integrate</p>
-        <p class="openms-lib-explore__route-label">Reference</p>
-      </div>
-      <div class="openms-lib-explore__routes-grid">
+        <div class="openms-lib-explore__route-list">
         {{- with $featured }}
         <a
           class="openms-lib-explore__route-link"
@@ -63,25 +55,6 @@
             <span class="openms-lib-explore__route-text">{{ . }}</span>
             {{- end }}
           </span>
-          <span class="openms-lib-explore__route-arrow" aria-hidden="true">→</span>
-        </a>
-        {{- end }}
-        {{- with $docs }}
-        <a
-          class="openms-lib-explore__route-link"
-          href="{{ .url }}"
-          {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-        >
-          {{- with .icon }}
-          <span class="openms-lib-explore__route-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
-          {{- end }}
-          <span class="openms-lib-explore__route-copy">
-            <span class="openms-lib-explore__route-title">{{ .title }}</span>
-            {{- with .text }}
-            <span class="openms-lib-explore__route-text">{{ . }}</span>
-            {{- end }}
-          </span>
-          <span class="openms-lib-explore__route-arrow" aria-hidden="true">→</span>
         </a>
         {{- end }}
         {{- with $python }}
@@ -99,7 +72,29 @@
             <span class="openms-lib-explore__route-text">{{ . }}</span>
             {{- end }}
           </span>
-          <span class="openms-lib-explore__route-arrow" aria-hidden="true">→</span>
+        </a>
+        {{- end }}
+        </div>
+      </div>
+
+      <div class="openms-lib-explore__route-group">
+        <p class="openms-lib-explore__route-label">Reference</p>
+        <div class="openms-lib-explore__route-list">
+        {{- with $docs }}
+        <a
+          class="openms-lib-explore__route-link"
+          href="{{ .url }}"
+          {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        >
+          {{- with .icon }}
+          <span class="openms-lib-explore__route-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+          {{- end }}
+          <span class="openms-lib-explore__route-copy">
+            <span class="openms-lib-explore__route-title">{{ .title }}</span>
+            {{- with .text }}
+            <span class="openms-lib-explore__route-text">{{ . }}</span>
+            {{- end }}
+          </span>
         </a>
         {{- end }}
         {{- with $api }}
@@ -117,11 +112,15 @@
             <span class="openms-lib-explore__route-text">{{ . }}</span>
             {{- end }}
           </span>
-          <span class="openms-lib-explore__route-arrow" aria-hidden="true">→</span>
         </a>
         {{- end }}
+        </div>
       </div>
     </div>
+
+    {{- if and $spotlight $spotlightAfterRoutes }}
+    {{ partial "openms-lib-explore-spotlight.html" (dict "item" $spotlight "afterRoutes" true) }}
+    {{- end }}
 
     {{- with $support }}
     <aside class="openms-lib-explore__support openms-lib-hub__reveal" aria-label="{{ .title }}">
@@ -134,14 +133,14 @@
       <div class="openms-lib-explore__support-actions" role="group" aria-label="{{ .title }}">
         {{- range .links }}
         <a
-          class="openms-lib-explore__support-btn"
+          class="openms-lib-btn openms-lib-btn--ghost openms-lib-explore__support-btn"
           href="{{ .url }}"
           {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
         >
           {{- with .icon }}
           <i class="{{ . }}" aria-hidden="true"></i>
           {{- end }}
-          {{ .name }}
+          <span class="openms-lib-btn__label">{{ .name }}</span>
         </a>
         {{- end }}
       </div>

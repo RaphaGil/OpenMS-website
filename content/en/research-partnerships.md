@@ -5,65 +5,61 @@ hideShortcuts: true
 sidebar: false
 ---
 
-<section class="governance-grid" aria-label="How research partnerships work">
-  <article class="governance-card">
-    <p class="governance-card__eyebrow">Institutional partners</p>
-    <h2>Who we partner with</h2>
-    <p>
-      Institutional partners are organizations that support OpenMS by employing people
-      who develop, maintain, and apply the software as part of their research missions.
-    </p>
-    <ul>
-      <li>University and institute research groups</li>
-      <li>Core facilities and national infrastructure projects</li>
-      <li>Consortia building shared mass spectrometry tooling</li>
-    </ul>
-  </article>
-  <article class="governance-card">
-    <p class="governance-card__eyebrow">Collaboration</p>
-    <h2>What partnerships can include</h2>
-    <p>
-      Partnerships take many forms—from funded software engineering to joint methods
-      papers and training for your lab or facility.
-    </p>
-    <ul>
-      <li>Co-development of algorithms, workflows, and web applications</li>
-      <li>Integration with lab pipelines, KNIME, and cloud platforms</li>
-      <li>Workshops, user meetings, and contributor onboarding</li>
-    </ul>
-    <p class="governance-card__link">
-      <a href="/contribute/">Ways to contribute →</a>
-    </p>
-  </article>
+<section class="governance-section rp-include" id="partnerships-include" aria-labelledby="partnerships-include-title">
+  <p class="rp-eyebrow">Collaborate</p>
+  <h2 id="partnerships-include-title">Partnerships include:</h2>
+  <ul class="rp-include__grid">
+    <li class="rp-include__card">Joint grant proposals</li>
+    <li class="rp-include__card">Consortium &amp; collaborative projects</li>
+    <li class="rp-include__card">Workflow &amp; algorithm development</li>
+    <li class="rp-include__card">Benchmarking studies</li>
+    <li class="rp-include__card">Infrastructure &amp; sustainability initiatives</li>
+  </ul>
 </section>
 
-<section class="governance-section governance-section--contrast" id="partner-institutions" aria-labelledby="partner-institutions-title">
-  <h2 id="partner-institutions-title">Partner institutions</h2>
+<section class="governance-section governance-section--contrast rp-partners" id="our-partners" aria-labelledby="our-partners-title">
+  <p class="rp-eyebrow">Community</p>
+  <h2 id="our-partners-title">Our Partners</h2>
   <p>
-    The groups below employ contributors who advance OpenMS as part of their research.
-    Logos link to partner home pages where available.
+    OpenMS is proud to partner with academic research groups, core facilities,
+    national infrastructure, nonprofits and industry partners.
   </p>
   {{< partners >}}
 </section>
 
-<section class="governance-section" id="get-started" aria-labelledby="get-started-title">
-  <h2 id="get-started-title">Start a conversation</h2>
-  <p>
-    Tell us about your group, infrastructure needs, or ideas for joint development.
-    We can help you find the right channel—partnership discussion, sponsorship, or
-    technical support.
-  </p>
-  <div class="about-donate-actions research-partnerships-page__actions">
-    <a class="openms-step__cta openms-btn-primary about-cta-btn--sponsor" href="/contact/">Contact us</a>
-    <a class="about-cta-btn about-cta-btn--donate" href="/sponsor-us/">Sponsor OpenMS</a>
+<section class="governance-section research-partnerships-form" id="partnership-form" aria-labelledby="partnership-form-title">
+  <p class="rp-eyebrow rp-eyebrow--inverse">Get in touch</p>
+  <h2 id="partnership-form-title">Tell us about your idea</h2>
+  <div class="research-partnerships-form__body" aria-label="Partnership inquiry form">
+    <iframe
+      class="research-partnerships-form__tally-iframe"
+      data-tally-src="https://tally.so/embed/gD1o0M?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+      loading="lazy"
+      width="100%"
+      height="484"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      title="Partnership Inquiry"
+    ></iframe>
   </div>
-</section>
-
-<section class="governance-section governance-section--contrast" aria-label="Related links">
-  <h2>Related</h2>
-  <ul>
-    <li><a href="/about/">About OpenMS Inc.</a> — nonprofit stewardship and governance</li>
-    <li><a href="/sponsor-us/">Sponsor us</a> — organizations that fund OpenMS directly</li>
-    <li><a href="/governance/">Governance</a> — how the project is led and maintained</li>
-  </ul>
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  <script>
+  (function () {
+    function loadTallyEmbeds() {
+      if (typeof window.Tally !== "undefined") {
+        window.Tally.loadEmbeds();
+        return;
+      }
+      document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (iframe) {
+        iframe.src = iframe.dataset.tallySrc;
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadTallyEmbeds);
+    } else {
+      loadTallyEmbeds();
+    }
+  })();
+  </script>
 </section>

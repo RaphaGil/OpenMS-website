@@ -51,14 +51,12 @@ Main homepage hero: titles, description, CTA button, `stats` array.
 
 ### donatePage
 
-**`/donate/`** — Zeffy embed and Open Collective fallback. See [Configure the donate page (Zeffy)](../common-tasks/configure-donate-zeffy.md).
+**`/donate/`** — Zeffy embed. See [Configure the donate page (Zeffy)](../common-tasks/configure-donate-zeffy.md).
 
 | Key | Purpose |
 |-----|---------|
 | `zeffyEmbedUrl` | iframe `src` from Zeffy Share → Embed (preferred) |
 | `zeffyFormUrl` | Full Zeffy form URL if not using embed |
-| `openCollectiveUrl` | Secondary donation channel |
-| `showOpenCollective` | Show Open Collective section on donate page |
 | `taxNote` | 501(c)(3) disclaimer text |
 
 ### sponsorTiers

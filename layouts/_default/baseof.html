@@ -10,6 +10,14 @@
     <!-- Render theme css -->
     {{ partial "css.html" . }}
 
+    <script>
+      (function () {
+        if (window.innerWidth <= 1023) {
+          document.documentElement.setAttribute("data-navbar-layout", "mobile");
+        }
+      })();
+    </script>
+
     <!-- Render custom header -->
     {{ partial "head.html" . }}
 

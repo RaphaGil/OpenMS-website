@@ -1,1 +1,68 @@
-{{ partial "product-topp.html" (dict "cfg" site.Params.openmsLibTopp "id" "openms-lib-topp-title") }}
+{{- $cfg := site.Params.openmsLibTopp | default dict -}}
+{{- $eyebrow := index $cfg "eyebrow" -}}
+{{- $title := index $cfg "title" | default "Ships with the TOPP command-line tools" -}}
+{{- $lead := index $cfg "lead" -}}
+{{- $features := index $cfg "features" | default (slice) -}}
+{{- $ctaText := index $cfg "ctaText" | default "Explore TOPP tools" -}}
+{{- $ctaUrl := index $cfg "ctaUrl" -}}
+{{- $ctaBlurb := index $cfg "ctaBlurb" -}}
+{{- $featureIcons := slice "fas fa-project-diagram" "fas fa-cogs" -}}
+<section class="openms-lib-topp-split" aria-labelledby="openms-lib-topp-title">
+  <div class="openms-lib-topp-split__inner">
+    <header class="openms-lib-topp-split__intro openms-lib-hub__reveal openms-lib-hub__reveal--left">
+      <div class="openms-lib-topp-split__intro-copy">
+        {{- with $eyebrow }}
+        <p class="openms-lib-topp-split__eyebrow">{{ . }}</p>
+        {{- end }}
+        <h2 id="openms-lib-topp-title" class="openms-lib-topp-split__title">{{ $title }}</h2>
+      </div>
+      {{- with $lead }}
+      <p class="openms-lib-topp-split__lead">{{ . }}</p>
+      {{- end }}
+    </header>
+
+    <div class="openms-lib-topp-split__stage">
+      {{- with $ctaUrl }}
+      <aside class="openms-lib-topp-split__cta-panel openms-lib-hub__reveal openms-lib-hub__reveal--left">
+        <p class="openms-lib-topp-split__cta-kicker">{{ $cfg.ctaKicker | default "TOPP suite" }}</p>
+        {{- with $ctaBlurb }}
+        <p class="openms-lib-topp-split__cta-blurb">{{ . }}</p>
+        {{- end }}
+        <a
+          class="openms-lib-btn openms-lib-btn--primary openms-lib-topp-split__cta"
+          href="{{ . }}"
+          {{- if in . "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        ><span class="openms-lib-btn__label">{{ $ctaText }}</span></a>
+      </aside>
+      {{- end }}
+
+      {{- with $features }}
+      <div class="openms-lib-topp-split__cards" role="list">
+        {{- range $i, $feature := . }}
+        <article
+          class="openms-lib-topp-split__card openms-lib-hub__reveal openms-lib-hub__reveal--right"
+          role="listitem"
+        >
+          <div class="openms-lib-topp-split__card-mark">
+            <span class="openms-lib-topp-split__card-icon" aria-hidden="true"><i class="{{ index $featureIcons $i | default "fas fa-layer-group" }}"></i></span>
+          </div>
+          <div class="openms-lib-topp-split__card-body">
+            {{- with $feature.title }}
+            <h3 class="openms-lib-topp-split__card-title">{{ . }}</h3>
+            {{- end }}
+            <p class="openms-lib-topp-split__card-text">{{ $feature.text }}</p>
+            {{- with $feature.linkUrl }}
+            <a
+              class="openms-lib-topp-split__card-link"
+              href="{{ . }}"
+              {{- if in . "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+            >{{ $feature.linkText | default "Learn more" }}<span aria-hidden="true"> →</span></a>
+            {{- end }}
+          </div>
+        </article>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>

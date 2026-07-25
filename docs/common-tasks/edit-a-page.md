@@ -6,7 +6,6 @@ Most site pages are Markdown files in **`content/en/`**. The filename (without `
 
 | Page | File | URL |
 |------|------|-----|
-| About | `content/en/about.md` | `/about/` |
 | Contribute | `content/en/contribute.md` | `/contribute/` |
 | Governance | `content/en/governance.md` | `/governance/` |
 | Application guide | `content/en/applications/nuxl.md` | `/applications/nuxl/` |
@@ -79,7 +78,7 @@ Local preview with drafts: `make serve` (includes `-D`).
 
 ## Preview
 
-- `/about/`, `/contribute/`, etc. on localhost or Netlify preview.
+- `/governance/`, `/contribute/`, etc. on localhost or Netlify preview.
 
 ## Do not edit for text-only changes
 

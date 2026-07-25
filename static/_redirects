@@ -38,6 +38,18 @@ https://cdash.openms.de/* https://cdash.seqan.de/:splat 301!
 /xml-stylesheet/* https://raw.githubusercontent.com/OpenMS/OpenMS/develop/share/OpenMS/XSL/:splat  200
 /xml-schema/* https://raw.githubusercontent.com/OpenMS/OpenMS/develop/share/OpenMS/SCHEMAS/:splat  200
 
+# About / OpenMS Inc. page retired — content lives on /governance/
+/about /governance/ 301
+/about/ /governance/ 301
+
+# Citing OpenMS page retired — citations live on /publications/
+/citing-openms /publications/ 301
+/citing-openms/ /publications/ 301
+
+# Community channels page retired — content lives on /contribute/
+/communication /contribute/ 301
+/communication/ /contribute/ 301
+
 # Applications section retired — apps live on /webapps/
 /applications /webapps/ 301
 /applications/* /webapps/ 301

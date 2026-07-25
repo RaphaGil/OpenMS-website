@@ -14,11 +14,10 @@ navbar:
       - title: Featured Projects
         url: /applications
   - title: Partner with OpenMS
+    shortTitle: Partner
     url: /research-partnerships/
-    is_emphasized: true
-  - title: Donate
-    url: /donate/
     button: true
+    buttonVariant: sponsor
 ```
 
 | Field | Meaning |
@@ -51,12 +50,6 @@ footer:
     image: OpenMS_transparent_blackFont.png
     link: /
     altText: OpenMS
-  sponsor:
-    text: Sponsor us
-    link: /sponsor-us/
-  donate:
-    text: Donate
-    link: /donate/
   socialmedia:
     - link: https://discord.com/invite/v9tv5BxPch
       icon: discord
@@ -64,10 +57,12 @@ footer:
       icon: github
   quicklinks:
     column1:
-      heading: RESOURCES
+      heading: SUPPORT
       links:
-        - text: Install
-          link: https://openms.readthedocs.io/...
+        - text: Donate
+          link: /donate/
+        - text: Sponsor Us
+          link: /sponsor-us/
     column2:
       heading: COMMUNITY
       links: ...
@@ -75,7 +70,7 @@ footer:
 
 - **Four columns** under `quicklinks`: `column1` … `column4`.
 - **Social icons**: `discord`, `linkedin`, `github` (theme-supported names).
-- **Sponsor logos** in footer: `sponsorLogo1`, `sponsorLogo2`, `sponsorLogo3` — paths under `/images/...`.
+- **Sponsor logos** are no longer shown in the footer — they live on the [Our Sponsors page](update-sponsors.md) (`/our-sponsors/`).
 
 ## Preview
 

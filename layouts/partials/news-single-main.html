@@ -25,8 +25,11 @@
     </div>
   </header>
 
+  {{- $toc := .TableOfContents }}
+  {{- $hasToc := and $toc (in (printf "%s" $toc) "<li") }}
+  {{- $tocInner := replaceRE `(?s)^\s*<nav[^>]*>(.*)</nav>\s*$` "$1" (printf "%s" $toc) | safeHTML }}
   <div class="news-page-layout__content">
-    <div class="news-page news-page--article">
+    <div class="news-page news-page--article{{ if $hasToc }} news-page--has-toc{{ end }}">
       <div class="news-page__main">
         <article class="news-article">
           <header class="news-article__header">
@@ -40,11 +43,30 @@
             {{- end }}
           </header>
 
+          {{- if $hasToc }}
+          <nav class="news-article__toc news-article__toc--inline" aria-label="On this page">
+            <p class="news-article__toc-title">On this page</p>
+            {{ $tocInner }}
+          </nav>
+          {{- end }}
+
           <div class="news-article__content">
             {{ .Content }}
           </div>
+
+          <footer class="news-article__footer">
+            <a class="news-article__back-link" href="{{ $newsUrl }}">← {{ $backLabel }}</a>
+          </footer>
         </article>
       </div>
+      {{- if $hasToc }}
+      <aside class="news-page__aside" aria-label="Article outline">
+        <nav class="news-article__toc news-article__toc--sidebar" aria-label="On this page">
+          <p class="news-article__toc-title">On this page</p>
+          {{ $tocInner }}
+        </nav>
+      </aside>
+      {{- end }}
     </div>
   </div>
 </section>

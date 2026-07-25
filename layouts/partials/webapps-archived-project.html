@@ -1,0 +1,59 @@
+{{- $project := . -}}
+{{- $variant := $project.variant | default "default" -}}
+{{- if eq $variant "nfcore-pipeline" -}}
+<article class="webapps-archived-entry webapps-archived-entry--nfcore">
+  <header class="webapps-archived-entry__header">
+    {{- with $project.logo }}
+    <img
+      class="webapps-archived-entry__logo"
+      src="{{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}"
+      alt="nf-core"
+      width="140"
+      height="56"
+      loading="lazy"
+      decoding="async"
+    />
+    {{- end }}
+    <div class="webapps-archived-entry__heading">
+      <div class="webapps-archived-entry__title-row">
+        <h4 class="webapps-archived-entry__name">{{ $project.displayName | default $project.name }}</h4>
+        <span class="webapps-archived-entry__badge">Reference only</span>
+      </div>
+      {{- with $project.tag }}
+      <p class="webapps-archived-entry__type">{{ . }}</p>
+      {{- end }}
+    </div>
+  </header>
+  {{- with $project.description }}
+  <p class="webapps-archived-entry__text">{{ . }}</p>
+  {{- end }}
+  {{- with $project.maintainers }}
+  <p class="webapps-archived-entry__maintainers">
+    <span class="webapps-archived-entry__maintainers-label">Maintainers</span>
+    {{ . }}
+  </p>
+  {{- end }}
+  {{ partial "webapps-project-links.html" (dict "links" $project.links) }}
+</article>
+{{- else -}}
+<article class="webapps-archived-entry">
+  <header class="webapps-archived-entry__header">
+    <div class="webapps-archived-entry__heading">
+      <div class="webapps-archived-entry__title-row">
+        <h4 class="webapps-archived-entry__name">{{ $project.displayName | default $project.name }}</h4>
+        <span class="webapps-archived-entry__badge">Reference only</span>
+      </div>
+    </div>
+  </header>
+  {{- with $project.description }}
+  <p class="webapps-archived-entry__text">{{ . }}</p>
+  {{- end }}
+  {{- with $project.maintainers }}
+  <p class="webapps-archived-entry__maintainers">
+    <span class="webapps-archived-entry__maintainers-label">Maintainers</span>
+    {{ . }}
+  </p>
+  {{- end }}
+  {{ partial "webapps-project-links.html" (dict "links" $project.links) }}
+</article>
+{{- end -}}

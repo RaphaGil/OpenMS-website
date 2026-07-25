@@ -1,0 +1,30 @@
+{{- $page := .page -}}
+{{- $readMore := .readMore -}}
+<li class="news-entry" role="listitem"{{ if not $page.Date.IsZero }} data-news-year="{{ $page.Date.Format "2006" }}"{{ end }}>
+  <p class="news-entry__title">
+    <a class="news-entry__title-link" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+  </p>
+  {{- if not $page.Date.IsZero }}
+  <p class="news-entry__meta">
+    <time class="news-entry__date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "January 2, 2006" }}</time>
+    {{- with or $page.Params.authors $page.Params.Authors }}
+    <span class="news-entry__sep" aria-hidden="true">·</span>
+    <span class="news-entry__authors">
+      {{- range $i, $author := . }}{{ if $i }}, {{ end }}{{ $author }}{{ end }}
+    </span>
+    {{- end }}
+  </p>
+  {{- else }}
+  {{- with or $page.Params.authors $page.Params.Authors }}
+  <p class="news-entry__meta">
+    <span class="news-entry__authors">
+      {{- range $i, $author := . }}{{ if $i }}, {{ end }}{{ $author }}{{ end }}
+    </span>
+  </p>
+  {{- end }}
+  {{- end }}
+  {{- with $page.Summary }}
+  <p class="news-entry__summary">{{ . }}</p>
+  {{- end }}
+  <a class="news-entry__action" href="{{ $page.RelPermalink }}">{{ $readMore }}</a>
+</li>

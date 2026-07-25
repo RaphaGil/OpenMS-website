@@ -842,11 +842,13 @@
 }
 
 .openms-lib-hero__eyebrow::before {
+  display: block;
   content: "";
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 50%;
   background: var(--openms-blue);
+  flex-shrink: 0;
 }
 
 .openms-lib-hero__title {
@@ -867,7 +869,7 @@
 }
 
 .openms-lib-hero__accent--warm {
-  color: var(--openms-pink);
+  color: var(--openms-blue);
 }
 
 .openms-lib-hero__lead {
@@ -922,10 +924,20 @@
   text-decoration: none;
 }
 
+/* Hero buttons — one color scheme on every page (matches /openms-lib/):
+   filled primary in brand blue, ghost stays blue outline */
 .openms-lib-hero__actions .openms-lib-btn--primary {
   gap: 0.35rem;
-  border-color: var(--openms-navy);
-  background: var(--openms-navy);
+  border-color: var(--openms-blue);
+  background: var(--openms-blue);
+  color: var(--openms-white) !important;
+}
+
+.openms-lib-hero__actions .openms-lib-btn--primary:hover,
+.openms-lib-hero__actions .openms-lib-btn--primary:focus-visible,
+.openms-lib-hero__actions .openms-lib-btn--primary:active {
+  background: var(--openms-blue);
+  border-color: var(--openms-blue);
   color: var(--openms-white) !important;
 }
 
@@ -1029,22 +1041,31 @@
 .openms-lib-hero.community-calendar-hero .openms-lib-hero__eyebrow {
   grid-column: 1;
   justify-self: start;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   margin: 0 0 0.85rem;
-  padding: 0.25rem 0.62rem;
+  padding: 0;
   font-family: var(--openms-font-body);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--openms-blue);
-  background: rgba(var(--openms-blue-rgb), 0.1);
-  border: 1px solid rgba(var(--openms-blue-rgb), 0.2);
-  border-radius: 999px;
+  font-size: clamp(0.72rem, 2.2vw, var(--openms-text-min));
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--olib-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__eyebrow::before,
 .openms-lib-hero.community-calendar-hero .openms-lib-hero__eyebrow::before {
-  display: none;
+  display: block;
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--openms-blue);
+  flex-shrink: 0;
 }
 
 .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__title,
@@ -1073,7 +1094,7 @@
   background: none;
   -webkit-background-clip: unset;
   background-clip: unset;
-  color: var(--openms-pink);
+  color: var(--openms-blue);
   -webkit-text-fill-color: var(--openms-pink);
 }
 
@@ -2924,6 +2945,46 @@
 }
 
 /* 6. For Developers — contribute resources */
+.openms-lib-developers__layout {
+  display: block;
+}
+
+.openms-lib-developers__route-mark,
+.openms-lib-developers__route-arrow,
+.openms-lib-developers__route-index,
+.openms-lib-developers__route-check {
+  display: none;
+}
+
+.openms-lib-developers__route-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  width: 100%;
+  margin-bottom: 0.15rem;
+}
+
+.openms-lib-developers__route-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--openms-white);
+  background: linear-gradient(
+    135deg,
+    var(--openms-blue) 0%,
+    color-mix(in srgb, var(--openms-blue) 55%, var(--openms-navy)) 100%
+  );
+  box-shadow: 0 8px 16px -8px rgba(var(--openms-blue-rgb), 0.55);
+}
+
+.openms-lib-developers__review {
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
 .openms-lib-block--developers .openms-lib-developers__head {
   justify-items: center;
   max-width: 40rem;
@@ -2935,19 +2996,19 @@
 .openms-lib-developers__title {
   margin: 0;
   font-family: var(--openms-font-heading);
-  font-size: clamp(2.35rem, 6vw, 3.75rem);
+  font-size: clamp(1.85rem, 1rem + 3vw, 2.75rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   color: var(--openms-navy);
 }
 
 .openms-lib-developers__lead {
-  margin: 0.75rem 0 0;
-  max-width: 42ch;
+  margin: 0.85rem 0 0;
+  max-width: 38ch;
   margin-inline: auto;
   font-size: var(--openms-body-size-lg);
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--olib-text-muted);
 }
 
@@ -2974,7 +3035,8 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.openms-lib-developers__grid--count-6 {
+.openms-lib-developers__grid--count-6,
+.openms-lib-developers__grid--count-7 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -3046,6 +3108,16 @@
   border-radius: 999px;
 }
 
+.openms-lib-developers__route-top .openms-lib-developers__card-tag {
+  align-self: center;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  letter-spacing: 0.1em;
+  color: rgba(var(--openms-navy-rgb), 0.48);
+}
+
 .openms-lib-developers__card-text {
   margin: 0;
   font-size: var(--openms-text-min);
@@ -3063,6 +3135,13 @@
 
 .openms-lib-developers__card--build {
   cursor: default;
+}
+
+.openms-lib-page--hub .openms-lib-developers__card--build .openms-lib-developers__card-title {
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 
 .openms-lib-developers__platforms {
@@ -3275,6 +3354,27 @@
   .openms-lib-hero.community-calendar-hero .openms-lib-hero__content {
     grid-template-columns: 1fr;
     max-width: none;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__panel,
+  .openms-lib-hero.community-calendar-hero .openms-lib-hero__panel {
+    text-align: center;
+  }
+
+  .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__eyebrow,
+  .openms-lib-hero.community-calendar-hero .openms-lib-hero__eyebrow {
+    justify-self: center;
+    margin-inline: auto;
+  }
+
+  .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__title,
+  .openms-lib-hero.community-calendar-hero .openms-lib-hero__title,
+  .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__lead,
+  .openms-lib-hero.community-calendar-hero .openms-lib-hero__lead {
+    text-align: center;
+    margin-inline: auto;
   }
 
   .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__actions,
@@ -3286,15 +3386,19 @@
     grid-column: 1;
     grid-row: auto;
     max-width: none;
+    width: 100%;
+    margin-inline: auto;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     margin-top: 1.25rem;
   }
 
   .openms-lib-hero[class*="-page-hero"] .openms-lib-hero__chips,
   .openms-lib-hero.community-calendar-hero .openms-lib-hero__chips {
     flex-direction: row;
+    justify-content: center;
   }
 }
 
@@ -3318,7 +3422,8 @@
 
   [class$="-page-layout"] .openms-lib-hero__actions .openms-lib-btn,
   .community-calendar-layout .openms-lib-hero__actions .openms-lib-btn {
-    flex: 1 1 calc(50% - 0.375rem);
+    flex: 0 1 auto;
+    width: auto;
   }
 }
 
@@ -3363,16 +3468,20 @@
 
   [class$="-page-layout"] .openms-lib-hero__actions,
   .community-calendar-layout .openms-lib-hero__actions {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     gap: 0.55rem;
+    width: 100%;
     max-width: none;
+    margin-inline: auto;
   }
 
   [class$="-page-layout"] .openms-lib-hero__actions .openms-lib-btn,
   .community-calendar-layout .openms-lib-hero__actions .openms-lib-btn {
-    width: 100%;
-    flex: 1 1 auto;
+    width: auto;
+    flex: 0 1 auto;
     min-width: 0;
     justify-content: center;
   }
@@ -3454,20 +3563,22 @@
   }
 
   .openms-lib-hero__actions {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     gap: 0.55rem;
-    max-width: 22rem;
+    max-width: none;
     margin-inline: auto;
   }
 
   .openms-lib-hero__actions .openms-lib-btn {
-    width: 100%;
+    width: auto;
     justify-content: center;
   }
 
   .openms-lib-hero__actions .openms-lib-btn--ghost {
-    align-self: stretch;
+    align-self: auto;
     padding-inline: 1rem;
     text-align: center;
   }
@@ -3710,12 +3821,22 @@
 
 .openms-lib-page--product .openms-lib-developers__card-tag {
   color: color-mix(in srgb, var(--openms-pink) 80%, var(--openms-navy));
-  background: rgba(var(--openms-pink-rgb), 0.1);
-  border-color: rgba(var(--openms-pink-rgb), 0.18);
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  letter-spacing: 0.1em;
 }
 
-.openms-lib-page--product .openms-lib-developers__card-icon {
-  color: color-mix(in srgb, var(--openms-pink) 82%, var(--openms-navy));
+.openms-lib-page--product .openms-lib-developers__card-icon,
+.openms-lib-page--product .openms-lib-developers__route-icon {
+  color: var(--openms-white);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--openms-pink) 75%, var(--openms-navy)) 0%,
+    color-mix(in srgb, var(--openms-pink) 45%, var(--openms-navy)) 100%
+  );
+  box-shadow: 0 8px 16px -8px rgba(var(--openms-pink-rgb), 0.45);
 }
 
 .openms-lib-page--product .openms-lib-developers__cite--panel {
@@ -3933,8 +4054,45 @@
 }
 
 /* OpenMS WebApps product page */
-.openms-lib-page--webapps .openms-lib-hero__accent--warm {
-  color: color-mix(in srgb, var(--openms-blue) 78%, var(--openms-navy));
+.openms-lib-page--hub.openms-lib-page--webapps .openms-lib-hero__accent--warm {
+  color: var(--openms-blue);
+}
+
+.openms-lib-page--hub.openms-lib-page--webapps .openms-lib-page__anchor--reserved {
+  padding: 0;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.openms-lib-page--hub.openms-lib-page--webapps .webapps-featured--page::before,
+.openms-lib-page--hub.openms-lib-page--webapps .webapps-featured--page::after {
+  display: none;
+}
+
+.openms-lib-page--hub.openms-lib-page--webapps .webapps-modern-wrap--page {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+.openms-lib-page--hub.openms-lib-page--webapps #featured-webapps {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(var(--openms-yellow-rgb), 0.1), transparent 42%),
+    radial-gradient(circle at 88% 18%, rgba(var(--openms-blue-rgb), 0.08), transparent 40%),
+    var(--openms-white);
+}
+
+.openms-lib-page--hub.openms-lib-page--webapps .webapps-affiliates {
+  padding-block: 0;
+  background: transparent;
+}
+
+.openms-lib-page--hub.openms-lib-page--webapps .webapps-archived {
+  padding-block: 0;
+  background: transparent;
 }
 
 .openms-lib-btn--github {
@@ -3978,34 +4136,6 @@
 .openms-lib-resource-card__app-links a:focus-visible {
   color: var(--openms-navy);
   text-decoration: underline;
-}
-
-.openms-lib-page--webapps .openms-lib-page__anchor--reserved {
-  padding: 0;
-  margin: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.openms-lib-page--webapps .webapps-featured--page::before,
-.openms-lib-page--webapps .webapps-featured--page::after {
-  display: none;
-}
-
-.openms-lib-page--webapps .webapps-modern-wrap--page {
-  width: min(100%, var(--olib-max));
-  margin-inline: auto;
-  padding-inline: var(--olib-pad-x);
-  padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 3vw, 2rem);
-}
-
-.openms-lib-page--webapps .webapps-affiliates {
-  padding-block: clamp(1.5rem, 3vw, 2rem) clamp(3rem, 6vw, 4rem);
-  background: var(--olib-bg-soft);
-}
-
-.openms-lib-page--webapps .webapps-archived {
-  padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(3.5rem, 7vw, 5rem);
 }
 
 @media (max-width: 992px) {

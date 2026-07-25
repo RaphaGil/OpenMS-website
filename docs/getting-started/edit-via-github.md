@@ -5,7 +5,7 @@ You can update most site content using only the GitHub website. Netlify will bui
 ## When to use this workflow
 
 - Adding or editing **news posts** (`content/en/news/`)
-- Editing **text pages** (`content/en/about.md`, etc.)
+- Editing **text pages** (`content/en/governance.md`, etc.)
 - Small changes to **`config.yaml`** (banner text, hero copy, webapps list)
 
 For large `config.yaml` edits, a local preview is helpful but not required.
@@ -20,7 +20,7 @@ Examples:
 |-------------------------|------|
 | New news article | Create `content/en/news/your-slug.md` |
 | News banner on homepage | `config.yaml` → search for `newsBanner` |
-| About page | `content/en/about.md` |
+| Governance page | `content/en/governance.md` |
 
 Use the repo search (GitHub **t** shortcut) to find text that is already on the site.
 

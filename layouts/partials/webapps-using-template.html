@@ -1,72 +1,106 @@
 {{- $cfg := .cfg | default dict -}}
 {{- $eyebrow := index $cfg "eyebrow" | default "Using the template" -}}
+{{- $title := index $cfg "title" | default $eyebrow -}}
+{{- $lead := index $cfg "lead" -}}
 {{- $items := index $cfg "items" | default (slice) -}}
 {{- $id := .id | default "webapps-template-title" -}}
-<section class="openms-lib-block openms-lib-block--resources openms-lib-block--resources-template" aria-labelledby="{{ $id }}">
-  <header class="openms-lib-block__head openms-lib-block__head--resources">
-    <h2 id="{{ $id }}" class="openms-lib-block__title">{{ $eyebrow }}</h2>
-  </header>
+<section class="openms-lib-resources openms-lib-resources--toolkit openms-lib-resources--no-feature" aria-labelledby="{{ $id }}">
+  <div class="openms-lib-resources__inner">
+    <header class="openms-lib-resources__head openms-lib-hub__reveal openms-lib-hub__reveal--left">
+      {{- with $eyebrow }}
+      <p class="openms-lib-resources__eyebrow">{{ . }}</p>
+      {{- end }}
+      <h2 id="{{ $id }}" class="openms-lib-resources__title">{{ $title }}</h2>
+      {{- with $lead }}
+      <p class="openms-lib-resources__lead">{{ . }}</p>
+      {{- end }}
+    </header>
 
-  <div class="openms-lib-list openms-lib-list--resource-grid openms-lib-list--resource-grid--template" role="list" aria-label="{{ $eyebrow }}">
-    {{- range $items }}
-    {{- $type := .type | default "link" -}}
-    {{- if eq $type "static" }}
-    <article class="openms-lib-list__row openms-lib-resource-card openms-lib-resource-card--static" role="listitem">
-      <div class="openms-lib-list__body">
-        {{- with .tag }}
-        <span class="openms-lib-list__tag openms-lib-resource-card__tag">{{ . }}</span>
-        {{- end }}
-        <h3 class="openms-lib-list__title">{{ .title }}</h3>
-        {{- with .text }}
-        <p class="openms-lib-list__text">{{ . }}</p>
-        {{- end }}
-      </div>
-    </article>
-    {{- else if eq $type "featured-apps" }}
-    <article class="openms-lib-list__row openms-lib-resource-card openms-lib-resource-card--featured-apps" role="listitem">
-      <div class="openms-lib-list__body">
-        {{- with .tag }}
-        <span class="openms-lib-list__tag openms-lib-resource-card__tag">{{ . }}</span>
-        {{- end }}
-        <h3 class="openms-lib-list__title">{{ .title }}</h3>
-        {{- with .text }}
-        <p class="openms-lib-list__text">{{ . }}</p>
-        {{- end }}
-        {{- with .apps }}
-        <ul class="openms-lib-resource-card__app-links" role="list">
-          {{- range . }}
-          <li role="listitem">
-            <a
-              href="{{ .url }}"
-              {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-            >{{ .name }}<span aria-hidden="true"> →</span></a>
-          </li>
+    <div class="openms-lib-resources__toolkit">
+      <div class="openms-lib-resources__grid" role="list">
+        {{- range $i, $item := $items }}
+        {{- $type := $item.type | default "link" -}}
+        {{- if eq $type "static" }}
+        <article
+          class="openms-lib-resources__item openms-lib-resources__item--static openms-lib-hub__reveal{{- if modBool $i 2 }} openms-lib-hub__reveal--right{{- else }} openms-lib-hub__reveal--scale{{- end }}"
+          role="listitem"
+        >
+          <div class="openms-lib-resources__item-top">
+            {{- with $item.icon }}
+            <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+            {{- end }}
+            {{- with $item.tag }}
+            <span class="openms-lib-resources__item-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+          <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
+          {{- with $item.text }}
+          <p class="openms-lib-resources__item-text">{{ . }}</p>
           {{- end }}
-        </ul>
+        </article>
+        {{- else if eq $type "featured-apps" }}
+        <article
+          class="openms-lib-resources__item openms-lib-resources__item--featured-apps openms-lib-hub__reveal{{- if modBool $i 2 }} openms-lib-hub__reveal--right{{- else }} openms-lib-hub__reveal--scale{{- end }}"
+          role="listitem"
+        >
+          <div class="openms-lib-resources__item-top">
+            {{- with $item.icon }}
+            <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+            {{- end }}
+            {{- with $item.tag }}
+            <span class="openms-lib-resources__item-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+          <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
+          {{- with $item.text }}
+          <p class="openms-lib-resources__item-text">{{ . }}</p>
+          {{- end }}
+          {{- with $item.apps }}
+          <ul class="openms-lib-resources__app-links" role="list">
+            {{- range . }}
+            <li role="listitem">
+              <a
+                href="{{ .url }}"
+                {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+              >{{ .name }}<span aria-hidden="true"> →</span></a>
+            </li>
+            {{- end }}
+          </ul>
+          {{- end }}
+          {{- if $item.url }}
+          <a
+            class="openms-lib-resources__item-link"
+            href="{{ $item.url }}"
+            {{- if in $item.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+          >{{ $item.linkText | default "Featured WebApps" }}<span aria-hidden="true"> →</span></a>
+          {{- end }}
+        </article>
+        {{- else }}
+        <a
+          class="openms-lib-resources__item openms-lib-hub__reveal{{- if modBool $i 2 }} openms-lib-hub__reveal--right{{- else }} openms-lib-hub__reveal--scale{{- end }}"
+          role="listitem"
+          href="{{ $item.url }}"
+          {{- if in $item.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        >
+          <div class="openms-lib-resources__item-top">
+            {{- with $item.icon }}
+            <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+            {{- end }}
+            {{- with $item.tag }}
+            <span class="openms-lib-resources__item-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+          <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
+          {{- with $item.text }}
+          <p class="openms-lib-resources__item-text">{{ . }}</p>
+          {{- end }}
+          <span class="openms-lib-resources__item-link">
+            {{ $item.linkText | default $item.title }}<span aria-hidden="true"> →</span>
+          </span>
+        </a>
+        {{- end }}
         {{- end }}
       </div>
-    </article>
-    {{- else }}
-    <a
-      class="openms-lib-list__row openms-lib-resource-card"
-      href="{{ .url }}"
-      {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-      role="listitem"
-    >
-      <div class="openms-lib-list__body">
-        {{- with .tag }}
-        <span class="openms-lib-list__tag openms-lib-resource-card__tag">{{ . }}</span>
-        {{- end }}
-        <h3 class="openms-lib-list__title">{{ .title }}</h3>
-        {{- with .text }}
-        <p class="openms-lib-list__text">{{ . }}</p>
-        {{- end }}
-        <span class="openms-lib-list__link">
-          {{ .linkText | default "Learn more" }}<span aria-hidden="true"> →</span>
-        </span>
-      </div>
-    </a>
-    {{- end }}
-    {{- end }}
+    </div>
   </div>
 </section>

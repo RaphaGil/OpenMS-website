@@ -1,0 +1,22 @@
+{{- $cfg := .Site.Params.contributorsPage | default dict -}}
+{{- $eyebrow := index $cfg "eyebrow" | default "OpenMS community" -}}
+{{- $subtitle := index $cfg "subtitle" | default "We are an international team on a mission to support scientific and research communities worldwide by building quality, open-source software." -}}
+<section class="governance-page-layout contributors-page-layout">
+  <header class="openms-lib-hero contributors-page-hero" aria-label="OpenMS contributors">
+    <div class="openms-lib-hero__panel">
+      <div class="openms-lib-hero__content">
+        <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
+        <h1 class="openms-lib-hero__title">
+          The people behind <span class="openms-lib-hero__accent">OpenMS</span>.
+        </h1>
+        <p class="openms-lib-hero__lead">{{ $subtitle }}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="governance-page-layout__content">
+    <div class="governance-page contributors-page">
+      {{ .Content }}
+    </div>
+  </div>
+</section>

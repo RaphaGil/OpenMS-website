@@ -131,15 +131,15 @@ main.home-page:has(> section.home-page__cta:last-of-type) + #footer.footer-redes
 
 .contact-home__card:hover,
 .contact-home__card:focus-visible {
-  border-color: rgba(var(--openms-blue-rgb), 0.28);
-  box-shadow: 0 0.65rem 1.5rem rgba(var(--openms-blue-rgb), 0.1);
+  border-color: rgba(var(--openms-navy-rgb), 0.22);
+  box-shadow: 0 0.65rem 1.5rem rgba(var(--openms-navy-rgb), 0.1);
   transform: translateY(-2px);
   outline: none;
 }
 
 .contact-home__card--primary {
-  border-color: rgba(var(--openms-blue-rgb), 0.2);
-  background: rgba(var(--openms-blue-rgb), 0.03);
+  border-color: rgba(var(--openms-navy-rgb), 0.1);
+  background: var(--openms-white);
 }
 
 .contact-home__card-icon {
@@ -150,9 +150,9 @@ main.home-page:has(> section.home-page__cta:last-of-type) + #footer.footer-redes
   height: 2.25rem;
   margin-bottom: 0.85rem;
   border-radius: 0.65rem;
-  color: var(--openms-blue);
-  background: rgba(var(--openms-blue-rgb), 0.1);
-  border: 1px solid rgba(var(--openms-blue-rgb), 0.14);
+  color: var(--openms-navy);
+  background: rgba(var(--openms-navy-rgb), 0.06);
+  border: 1px solid rgba(var(--openms-navy-rgb), 0.1);
 }
 
 .contact-home__card-icon svg {
@@ -185,7 +185,7 @@ main.home-page:has(> section.home-page__cta:last-of-type) + #footer.footer-redes
   font-family: var(--openms-font-body);
   font-size: var(--openms-text-min);
   font-weight: 700;
-  color: var(--openms-blue);
+  color: var(--openms-navy);
 }
 
 .contact-home__card-cta-icon {
@@ -196,7 +196,7 @@ main.home-page:has(> section.home-page__cta:last-of-type) + #footer.footer-redes
 
 .contact-home__card:hover .contact-home__card-cta,
 .contact-home__card:focus-visible .contact-home__card-cta {
-  color: var(--openms-blue);
+  color: var(--openms-navy);
 }
 
 .contact-home__card:hover .contact-home__card-cta-icon,

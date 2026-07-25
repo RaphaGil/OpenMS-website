@@ -22,7 +22,7 @@
 {{- $cardCtx := dict "ctaText" $ctaText }}
 {{- $isPage := eq $embed "page" -}}
 <div class="webapps-modern-wrap{{ with $embed }} webapps-modern-wrap--{{ . }}{{ end }}">
-  <section class="webapps-featured{{ with $embed }} webapps-featured--{{ . }}{{ end }}" aria-labelledby="webapps-featured-title">
+  <section class="webapps-featured{{ with $embed }} webapps-featured--{{ . }}{{ end }}"{{ if $isPage }} aria-label="{{ $title }}"{{ else }} aria-labelledby="webapps-featured-title"{{ end }}>
     <div class="webapps-featured__inner">
       {{- if eq $embed "home" }}
       <header class="webapps-featured__header webapps-featured__header--home">
@@ -42,14 +42,14 @@
           {{- end }}
         </div>
       </header>
-      {{- else }}
+      {{- else if not $isPage }}
       <header class="webapps-featured__header{{ with $embed }} webapps-featured__header--{{ . }}{{ end }}">
         <div class="webapps-featured__header-main">
-          {{- if and (not $isPage) $eyebrow }}
-          <p class="webapps-featured__eyebrow">{{ $eyebrow }}</p>
+          {{- with $eyebrow }}
+          <p class="webapps-featured__eyebrow">{{ . }}</p>
           {{- end }}
           <h2 id="webapps-featured-title" class="webapps-featured__title">
-            {{- if and (not $isPage) $titleHighlight (in $title $titleHighlight) }}
+            {{- if and $titleHighlight (in $title $titleHighlight) }}
             {{ replace $title $titleHighlight (printf "<span class=\"webapps-featured__title-accent\">%s</span>" $titleHighlight) | safeHTML }}
             {{- else }}
             {{ $title }}
@@ -70,7 +70,7 @@
         {{- range $webapps }}
         <li class="webapps-featured__item" role="listitem">
           {{- if $isPage }}
-          {{ partial "webapps-project-detail-card.html" (dict "project" .) }}
+          {{ partial "webapps-project-detail-card.html" (dict "project" . "hideName" true) }}
           {{- else }}
           {{ partial "webapps-project-card.html" (merge $cardCtx (dict "project" . "embed" $embed)) }}
           {{- end }}

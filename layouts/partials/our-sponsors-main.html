@@ -1,0 +1,35 @@
+{{- /*
+  Our Sponsors page (/our-sponsors/), modelled after apache.org/foundation/sponsors.
+
+  All content is configured in config.yaml under params.aboutPage:
+    - sponsorsSection: page title, intro, list heading, contact CTA
+    - sponsors: one entry per sponsor logo (see docs/common-tasks/update-sponsors.md)
+
+  The logo wall itself is rendered by about-sponsors-section.html, which also
+  contains the (currently dormant) per-tier template for when there are enough
+  sponsors to group by level.
+*/ -}}
+{{- $about := .Site.Params.aboutPage | default dict -}}
+{{- $section := index $about "sponsorsSection" | default dict -}}
+{{- $eyebrow := index $section "eyebrow" | default "About us" -}}
+{{- $intro := index $section "intro" | default "OpenMS receives direct funding from organizations that sponsor the project." -}}
+<section class="about-page-layout">
+  <header class="openms-lib-hero about-page-hero" aria-label="OpenMS sponsors">
+    <div class="openms-lib-hero__panel">
+      <div class="openms-lib-hero__content">
+        <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
+        <h1 class="openms-lib-hero__title">
+          Our <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">Sponsors</span>.
+        </h1>
+        <p class="openms-lib-hero__lead">{{ $intro }}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="about-page-layout__content">
+    <div class="about-page">
+      {{ partial "about-sponsors-section.html" . }}
+      {{ .Content }}
+    </div>
+  </div>
+</section>

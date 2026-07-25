@@ -18,7 +18,7 @@
         <div class="navbar-mobile-toolbar navbar-mobile-ctas-end" aria-label="Search and menu">
         {{ partial "navbar-search.html" (dict "Site" .Site "variant" "mobile" "inputId" "navbar-search-input-clone-mobile") }}
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -29,18 +29,20 @@
 
     <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
       <div class="navbar-menu__panel">
+        {{ partial "navbar-menu-header.html" . }}
         <div class="navbar-menu__nav" aria-label="Site navigation">
           <div class="navbar-end">
             <div class="navbar-links">
         {{- range $navbar }}
         {{- if .sublinks }}
-        <div class="navbar-item has-dropdown is-hoverable{{ if .is_emphasized }} is-emphasized{{ end }}">
-          <a href="{{ .url | default "#" }}" class="navbar-link" role="button" aria-expanded="false">
-            {{ .title }}
+        <div class="navbar-item has-dropdown is-hoverable{{ if .is_emphasized }} is-emphasized{{ end }}" data-nav="{{ .title | urlize }}">
+          <a href="{{ .url | default "#" }}" class="navbar-link" role="button" aria-expanded="false" aria-haspopup="true">
+            <span class="navbar-link__label">{{ .title }}</span>
             {{ if .is_external }}{{ partial "svg-icon" "launch" }}{{ end }}
+            <span class="navbar-dropdown-chevron" aria-hidden="true"></span>
           </a>
 
-          <div class="navbar-dropdown">
+          <div class="navbar-dropdown" aria-hidden="true">
             {{ partial "navbar-sublinks.html" .sublinks }}
           </div>
         </div>
@@ -57,6 +59,8 @@
         {{- end }}
             </div>
 
+            {{ partial "navbar-social.html" . }}
+
             <div class="navbar-actions">
             {{ partial "navbar-search.html" (dict "Site" .Site "variant" "desktop" "inputId" "navbar-search-input-clone") }}
             {{- range $navbar }}
@@ -70,7 +74,6 @@
 
         <div class="navbar-menu__footer">
           {{ partial "navbar-mobile-ctas.html" (dict "Site" .Site "placement" "menu") }}
-          {{ partial "navbar-social.html" . }}
         </div>
       </div>
     </div>

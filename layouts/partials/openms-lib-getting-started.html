@@ -1,1 +1,119 @@
-{{ partial "openms-lib-explore-hub.html" (dict "cfg" site.Params.openmsLibGettingStarted "id" "openms-lib-getting-started-title") }}
+{{- $cfg := .cfg | default site.Params.openmsLibGettingStarted | default dict -}}
+{{- $id := .id | default "openms-lib-getting-started-title" -}}
+{{- $eyebrow := index $cfg "eyebrow" | default "Get started" -}}
+{{- $title := index $cfg "title" | default "Explore OpenMS-lib" -}}
+{{- $lead := index $cfg "lead" -}}
+{{- $featureKicker := index $cfg "featureKicker" | default "Pipeline" -}}
+{{- $featureIcon := index $cfg "featureIcon" | default "fas fa-terminal" -}}
+{{- $items := index $cfg "items" | default (slice) -}}
+{{- $topp := false -}}
+{{- $resources := slice -}}
+{{- $support := false -}}
+{{- range $i, $item := $items -}}
+{{- if eq $i 0 -}}
+{{- if and $item.url (not $item.icon) (not $item.tag) -}}
+{{- $topp = $item -}}
+{{- end -}}
+{{- else if and $item.links (not $item.url) -}}
+{{- $support = $item -}}
+{{- else if or $item.icon $item.tag -}}
+{{- $resources = $resources | append $item -}}
+{{- end -}}
+{{- end -}}
+<section class="openms-lib-resources openms-lib-resources--toolkit{{ if not $topp }} openms-lib-resources--no-feature{{ end }}" aria-labelledby="{{ $id }}">
+  <div class="openms-lib-resources__inner">
+    <header class="openms-lib-resources__head openms-lib-hub__reveal openms-lib-hub__reveal--left">
+      {{- with $eyebrow }}
+      <p class="openms-lib-resources__eyebrow">{{ . }}</p>
+      {{- end }}
+      <h2 id="{{ $id }}" class="openms-lib-resources__title">{{ $title }}</h2>
+      {{- with $lead }}
+      <p class="openms-lib-resources__lead">{{ . }}</p>
+      {{- end }}
+    </header>
+
+    <div class="openms-lib-resources__toolkit">
+      {{- with $topp }}
+      <article class="openms-lib-resources__feature openms-lib-hub__reveal openms-lib-hub__reveal--left">
+        <p class="openms-lib-resources__feature-kicker">
+          <span class="openms-lib-resources__feature-icon" aria-hidden="true"><i class="{{ $featureIcon }}"></i></span>
+          {{ $featureKicker }}
+        </p>
+        <h3 class="openms-lib-resources__feature-title">{{ .title }}</h3>
+        {{- with .text }}
+        <p class="openms-lib-resources__feature-text">{{ . }}</p>
+        {{- end }}
+        <a
+          class="openms-lib-btn openms-lib-btn--primary openms-lib-resources__feature-btn"
+          href="{{ .url }}"
+          {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        ><span class="openms-lib-btn__label">{{ .linkText | default "Explore TOPP tools" }}</span></a>
+      </article>
+      {{- end }}
+
+      <div class="openms-lib-resources__grid" role="list">
+        {{- range $i, $item := $resources }}
+        <a
+          class="openms-lib-resources__item openms-lib-hub__reveal{{- if modBool $i 2 }} openms-lib-hub__reveal--right{{- else }} openms-lib-hub__reveal--scale{{- end }}"
+          role="listitem"
+          href="{{ $item.url }}"
+          {{- if in $item.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        >
+          <div class="openms-lib-resources__item-top">
+            {{- with $item.icon }}
+            <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+            {{- end }}
+            {{- with $item.tag }}
+            <span class="openms-lib-resources__item-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+          <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
+          {{- with $item.text }}
+          <p class="openms-lib-resources__item-text">{{ . }}</p>
+          {{- end }}
+          <span class="openms-lib-resources__item-link">
+            {{ $item.linkText | default $item.title }}<span aria-hidden="true"> →</span>
+          </span>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+
+  {{- with $support }}
+  <aside class="openms-lib-resources__support openms-lib-hub__reveal openms-lib-hub__reveal--scale" aria-label="{{ .title }}">
+    <div class="openms-lib-resources__support-inner">
+      <div class="openms-lib-resources__support-copy">
+        <h3 class="openms-lib-resources__support-title">{{ .title }}</h3>
+        {{- with .text }}
+        <p class="openms-lib-resources__support-text">{{ . }}</p>
+        {{- end }}
+      </div>
+      {{- with .links }}
+      <ul class="openms-lib-resources__support-channels">
+        {{- range $link := . }}
+        <li>
+          <a
+            class="openms-lib-resources__support-channel"
+            href="{{ $link.url }}"
+            {{- if in $link.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+          >
+            {{- with $link.icon }}
+            <span class="openms-lib-resources__support-channel-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+            {{- end }}
+            <span class="openms-lib-resources__support-channel-body">
+              <span class="openms-lib-resources__support-channel-name">{{ $link.name }}</span>
+              {{- with $link.text }}
+              <span class="openms-lib-resources__support-channel-text">{{ . }}</span>
+              {{- end }}
+            </span>
+            <span class="openms-lib-resources__support-channel-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </div>
+  </aside>
+  {{- end }}
+</section>

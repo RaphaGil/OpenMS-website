@@ -1,35 +1,12 @@
 {{- $section := site.Params.affiliateSection | default dict -}}
 {{- $projects := site.Params.affiliateProjects | default (slice) -}}
 {{- if $projects }}
-<section class="webapps-affiliates" id="affiliated-apps" aria-labelledby="webapps-affiliates-title">
+<section class="webapps-affiliates" id="affiliated-apps" aria-label="Affiliated Apps">
   <div class="webapps-affiliates__inner">
-    <header class="webapps-affiliates__header">
-      <h2 id="webapps-affiliates-title" class="webapps-affiliates__title">
-        {{ index $section "title" | default "Affiliated Apps" }}
-      </h2>
-      {{- with index $section "description" }}
-      <p class="webapps-affiliates__lead">{{ . }}</p>
-      {{- end }}
-    </header>
-
     <ul class="webapps-affiliates__grid" role="list" aria-label="Affiliated apps">
       {{- range $projects }}
       <li class="webapps-affiliates__item" role="listitem">
-        <article class="webapps-project-detail-card webapps-project-detail-card--affiliate">
-          <div class="webapps-project-detail-card__body">
-            <h3 class="webapps-project-detail-card__name">{{ .name }}</h3>
-            {{- with .description }}
-            <p class="webapps-project-detail-card__text">{{ . }}</p>
-            {{- end }}
-            {{- with .maintainers }}
-            <p class="webapps-project-detail-card__maintainers">
-              <span class="webapps-project-detail-card__maintainers-label">Maintainers</span>
-              {{ . }}
-            </p>
-            {{- end }}
-            {{ partial "webapps-project-links.html" (dict "links" .links) }}
-          </div>
-        </article>
+        {{ partial "webapps-project-detail-card.html" (dict "project" . "class" "webapps-project-detail-card--affiliate") }}
       </li>
       {{- end }}
     </ul>

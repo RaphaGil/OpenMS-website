@@ -1,9 +1,6 @@
 {{- $footer := .Site.Params.footer }}
 {{- $title := index $footer "title" }}
 {{- $deployedBy := index $footer "deployedBy" }}
-{{- $sponsorLogo1 := index $footer "sponsorLogo1" }}
-{{- $sponsorLogo2 := index $footer "sponsorLogo2" }}
-{{- $sponsorLogo3 := index $footer "sponsorLogo3" }}
 {{- $quickLinks := index $footer "quicklinks" }}
 {{- $socialMedia := index $footer "socialmedia" }}
 {{- $footerLogo := index $footer "logo" | default .Site.Params.navbarlogo }}
@@ -63,42 +60,16 @@
             {{- if .heading }}
             <h4 class="footer-group-heading">{{ .heading }}</h4>
             {{- end }}
-            {{- $groupHeading := .heading }}
             <ul>
               {{- range .links }}
               <li>
                 <a href="{{ .link }}">{{ .text }}</a>
               </li>
-              {{- if and (eq $groupHeading "ABOUT") (eq .text "Governance") }}
-              <li>
-                <a class="footer-link-contact-us" href="/contact/">Contact us</a>
-              </li>
-              {{- end }}
               {{- end }}
             </ul>
           </div>
           {{- end }}
         </nav>
-
-        <div class="footer-sponsors" aria-label="Partners and supporters">
-          <p class="footer-section-label">Supported by</p>
-          <div class="footer-sponsors__logos">
-            <a href="https://www.denbi.de" target="_blank" rel="noopener noreferrer">
-              <img src="{{ $sponsorLogo1 }}" alt="Supported by deNBI" />
-            </a>
-            <a
-              class="footer-sponsors__logo-link footer-sponsors__logo-link--elixir"
-              href="https://elixir-europe.org/platforms/data/core-data-resources"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="{{ $sponsorLogo2 }}" alt="Supported by Elixir" />
-            </a>
-            <a href="https://libis.uni-heidelberg.de/" target="_blank" rel="noopener noreferrer">
-              <img src="{{ $sponsorLogo3 }}" alt="Supported by LiBiS" />
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </div>

@@ -14,7 +14,6 @@
 {{- $eventUrl := $event.news_url | default $event.url | default "" -}}
 {{- $isExternal := and $eventUrl (in $eventUrl "://") -}}
 {{- $category := $event.category | default "event" -}}
-{{- $categoryLabel := replace $category "-" " " | title -}}
 <li class="community-events-home__item{{ if $featured }} community-events-home__item--featured{{ end }}" role="listitem">
   <article class="community-events-home__card community-events-home__card--{{ $category }}{{ if $featured }} community-events-home__card--featured{{ end }}">
     {{- if and $eventUrl (not $primaryCta) }}
@@ -37,8 +36,6 @@
             <span class="community-events-home__date-year">{{ $start.Format "2006" }}</span>
           </time>
         </div>
-        <span class="community-events-home__category">{{ $categoryLabel }}</span>
-      </div>
 
       <div class="community-events-home__card-body">
         <h3 class="community-events-home__card-title">{{ $event.title }}</h3>
@@ -106,7 +103,6 @@
             {{ $event.title }}
             {{- end }}
           </h3>
-          <span class="community-events-home__category">{{ $categoryLabel }}</span>
         </div>
 
         {{- with $event.summary }}

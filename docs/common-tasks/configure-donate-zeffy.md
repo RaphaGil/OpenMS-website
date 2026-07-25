@@ -1,6 +1,6 @@
 # Configure the donate page (Zeffy)
 
-The **Donate** button and footer link go to **`/donate/`**. Donations are collected through [Zeffy](https://www.zeffy.com/) (embedded on the page when configured), with Open Collective as an optional alternative.
+The footer **Donate** link goes to **`/donate/`**. Donations are collected through [Zeffy](https://www.zeffy.com/) (embedded on the page when configured).
 
 ## 1. Create or open your Zeffy form
 
@@ -20,8 +20,6 @@ Under `languages` → `en` → `params` → `donatePage`:
 donatePage:
   zeffyEmbedUrl: "https://www.zeffy.com/embed/..."   # paste iframe src here
   zeffyFormUrl: ""                                    # optional: full form URL for a button
-  openCollectiveUrl: https://opencollective.com/openms
-  showOpenCollective: true
 ```
 
 - **`zeffyEmbedUrl`** — iframe `src` from Zeffy (form stays on openms.de).

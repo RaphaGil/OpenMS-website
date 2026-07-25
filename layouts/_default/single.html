@@ -3,7 +3,7 @@
 {{ partial "news-single-main.html" . }}
 {{- else if or (eq .File.BaseFileName "publications") (eq .File.Path "publications.md") -}}
 {{ partial "publications-main.html" . }}
-{{- else if in (slice "openms-lib" "pyopenms" "webapps" "pyopenms-viz") .File.BaseFileName -}}
+{{- else if in (slice "openms-lib" "pyopenms" "webapps" "pyopenms-viz" "featured-apps" "affiliated-apps" "archived-apps") .File.BaseFileName -}}
 {{ partial "openms-lib-main.html" . }}
 {{- else if eq .File.BaseFileName "calendar" -}}
 {{ partial "community-calendar-main.html" . }}
@@ -15,16 +15,20 @@
 {{ partial "donate-main.html" . }}
 {{- else if eq .File.BaseFileName "contribute" -}}
 {{ partial "contribute-main.html" . }}
-{{- else if eq .File.BaseFileName "about" -}}
-{{ partial "about-main.html" . }}
+{{- else if eq .File.BaseFileName "our-sponsors" -}}
+{{ partial "our-sponsors-main.html" . }}
 {{- else if eq .File.BaseFileName "governance" -}}
 {{ partial "governance-main.html" . }}
+{{- else if eq .File.BaseFileName "contributors" -}}
+{{ partial "contributors-main.html" . }}
 {{- else if eq .File.BaseFileName "contact" -}}
 {{ partial "contact-main.html" . }}
 {{- else if eq .File.BaseFileName "research-partnerships" -}}
 {{ partial "research-partnerships-main.html" . }}
 {{- else if eq .File.BaseFileName "help" -}}
 {{ partial "help-main.html" . }}
+{{- else if eq .File.BaseFileName "scientific-and-technical-support" -}}
+{{ partial "scientific-and-technical-support-main.html" . }}
 {{- else if eq .File.BaseFileName "sponsor-us" -}}
 {{ partial "sponsor-us-main.html" . }}
 {{- else if eq .File.BaseFileName "code-of-conduct" -}}
