@@ -5,7 +5,7 @@ hideShortcuts: true
 sidebar: false
 ---
 
-<article class="openms-lib-page openms-lib-page--hub openms-lib-page--webapps openms-lib-page--affiliated">
+<article class="openms-lib-page openms-lib-page--hub openms-lib-page--openms-lib openms-lib-page--webapps openms-lib-page--affiliated openms-lib-page--featured-pro">
 <div class="openms-lib-page__intro">
   <header class="openms-lib-hero openms-lib-hero--pro" aria-label="Affiliated OpenMS apps">
     <div class="openms-lib-hero__panel">

@@ -5,14 +5,16 @@
 {{- $eyebrow := index $cfg "eyebrow" | default "OpenMS" }}
 {{- $readMore := index $cfg "readMoreLabel" | default "Read article" }}
 {{- $pages := .Pages.ByDate.Reverse }}
-<section class="news-page-layout">
-  <header class="openms-lib-hero news-page-hero" aria-label="OpenMS news">
+<section class="openms-lib-layout">
+<article class="openms-lib-page openms-lib-page--hub openms-lib-page--openms-lib openms-lib-page--news">
+<div class="openms-lib-page__intro">
+  <header class="openms-lib-hero openms-lib-hero--pro" aria-label="OpenMS news">
     <div class="openms-lib-hero__panel">
       <div class="openms-lib-hero__content">
         <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
         <h1 class="openms-lib-hero__title">
           {{- if eq $title "News" -}}
-          OpenMS <span class="openms-lib-hero__accent">news</span>.
+          OpenMS <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">news</span>
           {{- else -}}
           {{ $title }}
           {{- end }}
@@ -23,59 +25,65 @@
       </div>
     </div>
   </header>
+</div>
 
-  <div class="news-page-layout__content">
-    <div class="news-page" data-news-year-filter>
-      <div class="news-body">
-        {{- if .Content }}
-        <div class="news-body__intro">{{ .Content }}</div>
-        {{- end }}
-
-        {{- $dated := slice }}
-        {{- range $pages }}
-          {{- if not .Date.IsZero }}
-            {{- $dated = $dated | append . }}
+<div class="openms-lib-page__body" aria-label="OpenMS news articles">
+  <div class="openms-lib-page__anchor">
+    <div class="openms-lib-block news-page-block">
+      <div class="news-page" data-news-year-filter>
+        <div class="news-body">
+          {{- if .Content }}
+          <div class="news-body__intro">{{ .Content }}</div>
           {{- end }}
-        {{- end }}
-        {{- if gt (len $dated) 0 }}
-        <section class="news-bibliography news-archive" aria-label="OpenMS news articles">
-          {{ partial "news-year-select.html" . }}
-          <div class="news-bibliography__entries">
-            <ul class="news-list" role="list" data-news-list>
-              {{- range $dated }}
-              {{ partial "news-entry.html" (dict "page" . "readMore" $readMore) }}
-              {{- end }}
-            </ul>
-          </div>
-          <nav class="news-pager" data-news-pager aria-label="News pages" hidden>
-            <button type="button" class="news-pager__btn" data-news-prev>&larr; {{ index $cfg "newerLabel" | default "Newer" }}</button>
-            <p class="news-pager__status" data-news-status aria-live="polite"></p>
-            <button type="button" class="news-pager__btn" data-news-next>{{ index $cfg "olderLabel" | default "Older" }} &rarr;</button>
-          </nav>
-        </section>
-        {{- end }}
 
-        {{- $undated := slice }}
-        {{- range $pages }}
-          {{- if .Date.IsZero }}
-            {{- $undated = $undated | append . }}
+          {{- $dated := slice }}
+          {{- range $pages }}
+            {{- if not .Date.IsZero }}
+              {{- $dated = $dated | append . }}
+            {{- end }}
           {{- end }}
-        {{- end }}
-        {{- if gt (len $undated) 0 }}
-        <section class="news-bibliography news-bibliography--undated" aria-label="Undated news">
-          <div class="news-bibliography__entries">
-            <section class="news-year news-year--undated">
-              <ul class="news-list" role="list">
-                {{- range $undated }}
+          {{- if gt (len $dated) 0 }}
+          <section class="news-bibliography news-archive" aria-label="OpenMS news articles">
+            {{ partial "news-year-select.html" . }}
+            <div class="news-bibliography__entries">
+              <ul class="news-list" role="list" data-news-list>
+                {{- range $dated }}
                 {{ partial "news-entry.html" (dict "page" . "readMore" $readMore) }}
                 {{- end }}
               </ul>
-            </section>
-          </div>
-        </section>
-        {{- end }}
+            </div>
+            <nav class="news-pager" data-news-pager aria-label="News pages" hidden>
+              <button type="button" class="news-pager__btn" data-news-prev>&larr; {{ index $cfg "newerLabel" | default "Newer" }}</button>
+              <p class="news-pager__status" data-news-status aria-live="polite"></p>
+              <button type="button" class="news-pager__btn" data-news-next>{{ index $cfg "olderLabel" | default "Older" }} &rarr;</button>
+            </nav>
+          </section>
+          {{- end }}
+
+          {{- $undated := slice }}
+          {{- range $pages }}
+            {{- if .Date.IsZero }}
+              {{- $undated = $undated | append . }}
+            {{- end }}
+          {{- end }}
+          {{- if gt (len $undated) 0 }}
+          <section class="news-bibliography news-bibliography--undated" aria-label="Undated news">
+            <div class="news-bibliography__entries">
+              <section class="news-year news-year--undated">
+                <ul class="news-list" role="list">
+                  {{- range $undated }}
+                  {{ partial "news-entry.html" (dict "page" . "readMore" $readMore) }}
+                  {{- end }}
+                </ul>
+              </section>
+            </div>
+          </section>
+          {{- end }}
+        </div>
       </div>
     </div>
   </div>
+</div>
+</article>
 </section>
 {{ end }}

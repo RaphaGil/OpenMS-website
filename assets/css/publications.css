@@ -1,95 +1,16 @@
 /* Publications page — unified layout and bibliography UX */
 
-.publications-page-layout {
-  --pub-max: 68rem;
+.publications-page {
   --pub-gap: clamp(2rem, 4vw, 3rem);
   --pub-line: rgba(var(--openms-navy-rgb), 0.1);
   --pub-card-radius: 0.85rem;
   --pub-card-border: rgba(var(--openms-navy-rgb), 0.12);
   --pub-card-pad: clamp(1rem, 2vw, 1.25rem);
-
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0 0 clamp(2.5rem, 5vh, 4rem);
-}
-
-.publications-page-layout__content {
-  width: min(100%, var(--pub-max));
-  max-width: var(--pub-max);
-  margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2rem);
-}
-
-.publications-page__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem 1.25rem;
-  margin: clamp(1.5rem, 4vh, 2.5rem) 0 clamp(1.5rem, 3vh, 2rem);
-}
-
-.publications-page__title {
-  margin: 0;
-  font-family: var(--openms-font-heading);
-  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--openms-navy);
-}
-
-.publications-page__scholar {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 2.5rem;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid rgba(var(--openms-blue-rgb), 0.28);
-  border-radius: 999px;
-  background: rgba(var(--openms-blue-rgb), 0.08);
-  color: var(--openms-blue);
-  font-family: var(--openms-font-body);
-  font-size: var(--openms-text-min);
-  font-weight: 600;
-  line-height: 1.3;
-  text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.publications-page__scholar:hover,
-.publications-page__scholar:focus-visible {
-  background: rgba(var(--openms-blue-rgb), 0.14);
-  border-color: rgba(var(--openms-blue-rgb), 0.45);
-  color: var(--openms-navy);
-  text-decoration: none;
-}
-
-.publications-page__scholar:focus-visible {
-  outline: 2px solid var(--openms-yellow);
-  outline-offset: 2px;
-}
-
-.publications-page__scholar-icon {
-  display: inline-flex;
-  flex-shrink: 0;
-  color: inherit;
 }
 
 .publications-body {
   display: grid;
   gap: var(--pub-gap);
-}
-
-/* Shared section label */
-.publications-section-label {
-  margin: 0 0 0.85rem;
-  font-family: var(--openms-font-body);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(var(--openms-navy-rgb), 0.55);
 }
 
 /* —— Key publications —— */
@@ -259,21 +180,6 @@
   padding: 0.15rem 0 0.35rem;
 }
 
-.publications-toolbar__intro {
-  display: grid;
-  gap: 0.2rem;
-  min-width: min(100%, 14rem);
-}
-
-.publications-toolbar__title {
-  margin: 0;
-  font-family: var(--openms-font-heading);
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--openms-navy);
-}
-
 .publications-toolbar__filter {
   display: flex;
   flex-direction: column;
@@ -423,43 +329,6 @@
   color: rgba(var(--openms-navy-rgb), 0.6);
 }
 
-/* Hero actions */
-.publications-page-layout .openms-lib-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.75rem;
-  padding: var(--openms-btn-padding);
-  border-radius: var(--openms-btn-pill-radius);
-  font-family: var(--openms-font-body);
-  font-size: var(--openms-text-min);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--openms-btn-motion);
-}
-
-.publications-page-layout .openms-lib-btn--primary {
-  border: 2px solid var(--openms-navy);
-  background: var(--openms-navy);
-  color: var(--openms-white) !important;
-}
-
-.publications-page-layout .openms-lib-btn--ghost {
-  border: 2px solid var(--openms-blue);
-  background: transparent;
-  color: var(--openms-blue) !important;
-}
-
-.publications-page-layout .openms-lib-btn--primary:hover,
-.publications-page-layout .openms-lib-btn--primary:focus-visible,
-.publications-page-layout .openms-lib-btn--ghost:hover,
-.publications-page-layout .openms-lib-btn--ghost:focus-visible {
-  transform: scale(var(--openms-btn-hover-scale));
-  box-shadow: 0 0 0 var(--openms-btn-glow-size) var(--openms-btn-glow);
-  outline: none;
-  text-decoration: none;
-}
-
 @media (max-width: 640px) {
   .publication-title {
     font-size: var(--openms-body-size);
@@ -476,12 +345,5 @@
 
   .publications-toolbar__select {
     width: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .publications-page-layout .openms-lib-btn:hover,
-  .publications-page-layout .openms-lib-btn:focus-visible {
-    transform: none;
   }
 }

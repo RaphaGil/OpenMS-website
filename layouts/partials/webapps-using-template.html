@@ -43,26 +43,42 @@
           class="openms-lib-resources__item openms-lib-resources__item--featured-apps openms-lib-hub__reveal{{- if modBool $i 2 }} openms-lib-hub__reveal--right{{- else }} openms-lib-hub__reveal--scale{{- end }}"
           role="listitem"
         >
-          <div class="openms-lib-resources__item-top">
-            {{- with $item.icon }}
-            <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
-            {{- end }}
-            {{- with $item.tag }}
-            <span class="openms-lib-resources__item-tag">{{ . }}</span>
+          <div class="openms-lib-resources__featured-head">
+            <div class="openms-lib-resources__item-top">
+              {{- with $item.icon }}
+              <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+              {{- end }}
+              {{- with $item.tag }}
+              <span class="openms-lib-resources__item-tag">{{ . }}</span>
+              {{- end }}
+            </div>
+            <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
+            {{- with $item.text }}
+            <p class="openms-lib-resources__item-text">{{ . }}</p>
             {{- end }}
           </div>
-          <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
-          {{- with $item.text }}
-          <p class="openms-lib-resources__item-text">{{ . }}</p>
-          {{- end }}
           {{- with $item.apps }}
           <ul class="openms-lib-resources__app-links" role="list">
             {{- range . }}
+            {{- $appName := .name -}}
             <li role="listitem">
               <a
+                class="openms-lib-resources__app-link"
                 href="{{ .url }}"
                 {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-              >{{ .name }}<span aria-hidden="true"> →</span></a>
+                aria-label="{{ $appName }}"
+              >
+                {{- with .logo }}
+                <span class="openms-lib-resources__app-logo">
+                  <img
+                    src="{{ if or (hasPrefix . "http://") (hasPrefix . "https://") }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}"
+                    alt="{{ $appName }}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                {{- end }}
+              </a>
             </li>
             {{- end }}
           </ul>

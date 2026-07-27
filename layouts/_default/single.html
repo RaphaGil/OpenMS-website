@@ -31,6 +31,8 @@
 {{ partial "scientific-and-technical-support-main.html" . }}
 {{- else if eq .File.BaseFileName "sponsor-us" -}}
 {{ partial "sponsor-us-main.html" . }}
+{{- else if eq .File.BaseFileName "privacy" -}}
+{{ partial "privacy-main.html" . }}
 {{- else if eq .File.BaseFileName "code-of-conduct" -}}
 {{ partial "code-of-conduct-main.html" . }}
 {{- else -}}

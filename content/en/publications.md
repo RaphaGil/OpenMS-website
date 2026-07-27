@@ -5,8 +5,12 @@ hideShortcuts: true
 hidePageTitle: true
 ---
 
-<section class="publications-featured" aria-label="Key publications">
-    <p class="publications-section-label">Key publications</p>
+<section class="publications-featured" aria-labelledby="key-publications-title">
+    <header class="openms-lib-resources__head">
+      <p class="openms-lib-resources__eyebrow">How to cite</p>
+      <h2 id="key-publications-title" class="openms-lib-resources__title">Key publications</h2>
+      <p class="openms-lib-resources__lead">Please reference these papers when you publish work that uses OpenMS or pyOpenMS.</p>
+    </header>
     <ul class="publications-featured__list" role="list">
       <li class="publications-cite-card publications-cite-card--primary" role="listitem">
         <div class="publications-cite-card__top">
@@ -41,7 +45,12 @@ hidePageTitle: true
     </ul>
   </section>
 
-<section class="publications-bibliography" aria-label="Publication bibliography">
+<section class="publications-bibliography" aria-labelledby="all-publications-title">
+    <header class="openms-lib-resources__head">
+      <p class="openms-lib-resources__eyebrow">Archive</p>
+      <h2 id="all-publications-title" class="openms-lib-resources__title">All publications</h2>
+      <p class="openms-lib-resources__lead">Browse peer-reviewed research from the OpenMS community, year by year.</p>
+    </header>
 {{< publications-year-select >}}
 <div class="publications-bibliography__entries">
 

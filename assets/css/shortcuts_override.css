@@ -70,7 +70,9 @@
 
 /* News listing & articles: hide left TOC */
 .content-padding:has(.news-page-layout) .shortcuts-container,
-.news-page-layout .shortcuts-container {
+.content-padding:has(.openms-lib-page--news) .shortcuts-container,
+.news-page-layout .shortcuts-container,
+.openms-lib-page--news .shortcuts-container {
   display: none;
 }
 
@@ -87,8 +89,8 @@
 }
 
 /* Contribute page: hide left TOC */
-.content-padding:has(.contribute-page-layout) .shortcuts-container,
-.contribute-page-layout .shortcuts-container {
+.content-padding:has(.openms-lib-page--contribute) .shortcuts-container,
+.openms-lib-page--contribute .shortcuts-container {
   display: none;
 }
 

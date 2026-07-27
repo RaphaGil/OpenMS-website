@@ -1,8 +1,15 @@
 {{- $tiers := .Site.Params.sponsorTiers | default dict -}}
-{{- $levels := index $tiers "levels" | default (slice) -}}
+{{- $allLevels := index $tiers "levels" | default (slice) -}}
+{{- $levels := slice -}}
+{{- range $allLevels -}}
+  {{- if ne .showInProgram false -}}
+    {{- $levels = $levels | append . -}}
+  {{- end -}}
+{{- end -}}
 {{- $matrix := index $tiers "benefitsMatrix" | default (slice) -}}
-{{- $benefitsTitle := index $tiers "benefitsTitle" | default "Sponsorship Benefits" -}}
+{{- $benefitsTitle := index $tiers "benefitsTitle" | default "Benefit comparison" -}}
 {{- $taxFootnote := index $tiers "taxFootnote" | default "*where applicable by law" -}}
+{{- $featuredId := index $tiers "featuredLevel" | default "gold" -}}
 {{- if gt (len $levels) 0 -}}
 <section class="governance-section sponsor-tiers" id="sponsorship-levels" aria-labelledby="sponsorship-levels-title" data-sponsor-tiers>
   <div class="sponsor-section__head">
@@ -11,47 +18,89 @@
     {{- end }}
     <h2 id="sponsorship-levels-title">{{ index $tiers "title" | default "Foundation sponsorship levels" }}</h2>
     {{- with index $tiers "intro" }}
-    <p class="sponsor-section__lead">{{ . }}</p>
+    <p class="sponsor-section__lead">{{ . | safeHTML }}</p>
     {{- end }}
   </div>
 
   <div class="sponsor-tiers__grid" role="list">
     {{- range $levels }}
-    <article class="sponsor-tier sponsor-tier--{{ .id }}" role="listitem">
+    {{- $level := . -}}
+    {{- $isFeatured := eq $level.id $featuredId -}}
+    {{- $priceParts := split (default "" $level.contribution) " / " -}}
+    {{- $priceAmount := index $priceParts 0 -}}
+    {{- $pricePeriod := "" -}}
+    {{- if gt (len $priceParts) 1 -}}
+      {{- $pricePeriod = printf "/ %s" (index $priceParts 1) -}}
+    {{- end -}}
+    <article
+      class="sponsor-tier sponsor-tier--{{ $level.id }}{{ if $isFeatured }} sponsor-tier--featured{{ end }}"
+      role="listitem"
+    >
+      {{- if $isFeatured }}
+      <p class="sponsor-tier__badge">Most popular</p>
+      {{- end }}
       {{- if $matrix }}
       <button
         type="button"
         class="sponsor-tier__toggle"
-        data-sponsor-tier="{{ .id }}"
-        aria-controls="sponsor-benefits-{{ .id }}"
-        aria-expanded="false"
+        data-sponsor-tier="{{ $level.id }}"
+        aria-controls="sponsor-benefits"
+        aria-expanded="{{ cond $isFeatured "true" "false" }}"
       >
       {{- end }}
-      <header class="sponsor-tier__header">
-        <p class="sponsor-tier__badge" aria-hidden="true">{{ .name }}</p>
-        <h3 class="sponsor-tier__name">{{ .name }}</h3>
-        {{- with .contribution }}
-        <p class="sponsor-tier__contribution">{{ . }}</p>
+        <header class="sponsor-tier__header">
+          <h3 class="sponsor-tier__name">{{ $level.name }}</h3>
+          {{- with $level.contribution }}
+          <p class="sponsor-tier__contribution">
+            <span class="sponsor-tier__amount">{{ $priceAmount }}</span>
+            {{- with $pricePeriod }}
+            <span class="sponsor-tier__period">{{ . }}</span>
+            {{- end }}
+          </p>
+          {{- end }}
+          {{- with $level.motto }}
+          <p class="sponsor-tier__motto">{{ . }}</p>
+          {{- end }}
+        </header>
+
+        {{- with $level.summary }}
+        <p class="sponsor-tier__summary">{{ . }}</p>
         {{- end }}
-        {{- with .motto }}
-        <p class="sponsor-tier__motto">{{ . }}</p>
+
+        {{- if $matrix }}
+        <ul class="sponsor-tier__benefits">
+          {{- $shown := 0 -}}
+          {{- range $matrix }}
+            {{- if ge $shown 3 -}}
+              {{- continue -}}
+            {{- end -}}
+            {{- $row := . -}}
+            {{- $cell := index $row $level.id -}}
+            {{- if gt (len $cell) 0 }}
+            {{- $shown = add $shown 1 -}}
+            <li>
+              <span class="sponsor-tier__check" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path fill="currentColor" d="M6.2 11.4 2.8 8l1.2-1.2 2.2 2.2 5-5L12.4 5.2z"/></svg>
+              </span>
+              <span class="sponsor-tier__benefit-text">
+                {{- if and (eq (len $cell) 1) (eq (index $cell 0) "✓") -}}
+                  {{ $row.category }}
+                {{- else -}}
+                  {{ index $cell 0 }}
+                {{- end -}}
+              </span>
+            </li>
+            {{- end }}
+          {{- end }}
+        </ul>
         {{- end }}
-      </header>
-      {{- with .summary }}
-      <p class="sponsor-tier__summary">{{ . }}</p>
-      {{- end }}
-      {{- with .benefits }}
-      <ul class="sponsor-tier__benefits">
-        {{- range . }}
-        <li>{{ . }}</li>
+
+        {{- if $matrix }}
+        <span class="sponsor-tier__cta">
+          <span class="sponsor-tier__cta-label">Select {{ $level.name }}</span>
+        </span>
         {{- end }}
-      </ul>
-      {{- end }}
-      {{- with .impact }}
-      <p class="sponsor-tier__impact"><strong>Impact:</strong> {{ . }}</p>
-      {{- end }}
       {{- if $matrix }}
-        <span class="sponsor-tier__cue" aria-hidden="true">View sponsorship benefits</span>
       </button>
       {{- end }}
     </article>
@@ -59,50 +108,75 @@
   </div>
 
   {{- if $matrix }}
-  <div class="sponsor-benefits" data-sponsor-benefits-wrap>
-    <h3 class="sponsor-benefits__title">{{ $benefitsTitle }}</h3>
-    {{- range $levels }}
-    {{- $tierId := .id }}
-    <div
-      class="sponsor-benefits__panel"
-      id="sponsor-benefits-{{ $tierId }}"
-      data-sponsor-benefits="{{ $tierId }}"
-      role="region"
-      aria-label="{{ .name }} sponsorship benefits"
-      hidden
-    >
-      <p class="sponsor-benefits__lead">
-        <span class="sponsor-benefits__tier-name">{{ .name }}</span>
-        {{- with .contribution }}<span class="sponsor-benefits__tier-amount">{{ . }}</span>{{ end }}
-      </p>
-      <dl class="sponsor-benefits__list">
+  <div
+    class="sponsor-benefits sponsor-benefits--columns"
+    id="sponsor-benefits"
+    data-sponsor-benefits-wrap
+    data-active-tier="{{ $featuredId }}"
+  >
+    <div class="sponsor-benefits__head">
+      <h3 class="sponsor-benefits__title">{{ $benefitsTitle }}</h3>
+      <p class="sponsor-benefits__lead">Compare acknowledgment and engagement benefits across levels.</p>
+    </div>
+
+    <div class="sponsor-benefits__scroller">
+      <div
+        class="sponsor-benefits__matrix"
+        role="table"
+        aria-label="{{ $benefitsTitle }} by sponsorship level"
+        style="--tier-cols: {{ len $levels }}"
+      >
+        <div class="sponsor-benefits__matrix-row sponsor-benefits__matrix-row--head" role="row">
+          <div class="sponsor-benefits__matrix-cell sponsor-benefits__matrix-cell--label" role="columnheader">
+            Benefit
+          </div>
+          {{- range $levels }}
+          <div
+            class="sponsor-benefits__matrix-cell sponsor-benefits__matrix-cell--tier sponsor-benefits__matrix-cell--{{ .id }}"
+            role="columnheader"
+            data-sponsor-benefits="{{ .id }}"
+          >
+            <span class="sponsor-benefits__col-name">{{ .name }}</span>
+          </div>
+          {{- end }}
+        </div>
+
         {{- range $matrix }}
-        {{- $cell := index . $tierId }}
-        <div class="sponsor-benefits__row">
-          <dt class="sponsor-benefits__category">{{ .category }}</dt>
-          <dd class="sponsor-benefits__value">
-            {{- if $cell -}}
-            <ul class="sponsor-benefits__lines">
-              {{- range $cell }}
-              {{- if eq . "✓" }}
-              <li class="sponsor-benefits__line sponsor-benefits__line--check">
-                <span class="sponsor-benefits__check" aria-hidden="true">✓</span>
-                <span>Included</span>
-              </li>
-              {{- else }}
-              <li class="sponsor-benefits__line">{{ . }}</li>
-              {{- end }}
-              {{- end }}
-            </ul>
+        {{- $row := . }}
+        <div class="sponsor-benefits__matrix-row" role="row">
+          <div class="sponsor-benefits__matrix-cell sponsor-benefits__matrix-cell--label" role="rowheader">
+            {{ $row.category }}
+          </div>
+          {{- range $levels }}
+          {{- $cell := index $row .id }}
+          {{- $hasBenefit := gt (len $cell) 0 }}
+          <div
+            class="sponsor-benefits__matrix-cell sponsor-benefits__matrix-cell--tier sponsor-benefits__matrix-cell--{{ .id }}{{ if $hasBenefit }} is-included{{ else }} is-missing{{ end }}"
+            role="cell"
+            data-sponsor-benefits="{{ .id }}"
+          >
+            {{- if $hasBenefit -}}
+              {{- if and (eq (len $cell) 1) (eq (index $cell 0) "✓") -}}
+              <span class="sponsor-benefits__check" aria-label="Included">
+                <svg viewBox="0 0 16 16" width="16" height="16" focusable="false"><path fill="currentColor" d="M6.2 11.4 2.8 8l1.2-1.2 2.2 2.2 5-5L12.4 5.2z"/></svg>
+              </span>
+              {{- else -}}
+              <ul class="sponsor-benefits__lines">
+                {{- range $cell }}
+                <li class="sponsor-benefits__line">{{ . }}</li>
+                {{- end }}
+              </ul>
+              {{- end -}}
             {{- else -}}
             <span class="sponsor-benefits__none" aria-label="Not included">—</span>
             {{- end -}}
-          </dd>
+          </div>
+          {{- end }}
         </div>
         {{- end }}
-      </dl>
+      </div>
     </div>
-    {{- end }}
+
     {{- with $taxFootnote }}
     <p class="sponsor-benefits__footnote">{{ . }}</p>
     {{- end }}
@@ -110,7 +184,15 @@
   {{- end }}
 
   {{- with index $tiers "note" }}
-  <p class="sponsor-tiers__note governance-note">{{ . }}</p>
+  <aside class="sponsor-tiers__note" aria-label="Sponsorship contribution note">
+    <div class="sponsor-tiers__note-copy">
+      <p class="sponsor-tiers__note-kicker">How contributions work</p>
+      <p class="sponsor-tiers__note-text">{{ . | safeHTML }}</p>
+    </div>
+    <a class="openms-lib-btn openms-lib-btn--primary" href="/contact/">
+      <span class="openms-lib-btn__label">Contact us</span>
+    </a>
+  </aside>
   {{- end }}
 </section>
 {{- end -}}

@@ -91,7 +91,7 @@ languages:
           Gain <span class="openms-lib-hero__accent">hands-on</span> experience
           in open-source science.
         blurb: >-
-          Work alongside researchers worldwide on the OpenMS ecosystem —
+          Work alongside researchers worldwide on the OpenMS ecosystem —<br>
           develop algorithms, test software, and write tutorials for
           computational mass spectrometry.
         chips:
@@ -129,8 +129,8 @@ languages:
         eyebrow: Annual Developer Retreat
         pageTitle: Annual Developer Retreat
         headline: >-
-          Shape the <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">future</span>
-          of computational mass spectrometry.
+          Shape the <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">future</span> of<br>
+          <span class="openms-lib-hero__title-line">computational mass spectrometry.</span>
         about: >-
           The annual OpenMS developers retreat brings together researchers
           from around the world for a week of talks, tutorials, and code
@@ -200,15 +200,13 @@ languages:
             # tier: gold
           - name: ELIXIR
             url: https://elixir-europe.org/platforms/data/core-data-resources
-            logo: /images/logos/elixir-logo-white.png
+            logo: /images/logos/Elixir.png
             alt: ELIXIR Core Data Resource
-            logoOnDark: true
             # tier: platinum
           - name: deNBI
             url: https://www.denbi.de/
-            logo: /images/logos/denbi-logo-white.svg
+            logo: /images/logos/denbi.jpeg
             alt: deNBI — German Network for Bioinformatics Infrastructure
-            logoOnDark: true
             # tier: silver
         sponsorshipProgram:
           title: Our Sponsorship Program
@@ -311,14 +309,11 @@ languages:
         eyebrow: Sponsorship levels
         title: Foundation sponsorship levels
         intro: >-
-          Foundation sponsorship is how organizations contribute substantially to OpenMS Inc.
-          In return, sponsors receive public acknowledgment on this site and other channels
-          appropriate to their level—similar to tiered programs used by foundations such as
-          the Apache Software Foundation.
+          <span class="sponsor-lead-col">Foundation sponsorship is how organizations contribute substantially to OpenMS Inc.</span>
+          <span class="sponsor-lead-col">In return, sponsors receive public acknowledgment on this site and other channels appropriate to their level—similar to tiered programs used by foundations such as the Apache Software Foundation.</span>
         note: >-
-          Contribution levels are agreed individually. To get started, contact us via the
-          form below. OpenMS Inc. is a U.S. 501(c)(3) public charity; U.S.-based sponsors
-          may be eligible for tax benefits where permitted by law.
+          <span class="sponsor-note-line">Contribution levels are agreed individually.</span>
+          <span class="sponsor-note-line">OpenMS Inc. is a U.S. 501(c)(3) public charity; U.S.-based sponsors may be eligible for tax benefits where permitted by law.</span>
         # Tier cards show: name, price, motto, and summary. Detailed benefits are
         # configured in `benefitsMatrix` below and revealed when a card is clicked.
         # Set `showInProgram: false` to hide a tier until ready.
@@ -364,7 +359,8 @@ languages:
         #   • use ["✓"]             → shows a check mark (included, no extra detail)
         #   • otherwise             → each list item is shown as a line of text
         # Tier keys must match the `id`s in `levels` above.
-        benefitsTitle: Sponsorship Benefits
+        benefitsTitle: Benefit comparison
+        featuredLevel: gold
         taxFootnote: "*where applicable by law"
         benefitsMatrix:
           - category: Annual Developer Retreat perks
@@ -978,13 +974,16 @@ languages:
               icon: fas fa-window-maximize
               text: Community apps built on the OpenMS WebApps framework.
               url: /featured-apps/
-              linkText: Featured WebApps
+              linkText: Browse all apps
               apps:
                 - name: OpenDIAKiosk
+                  logo: /images/webapp/logo/OpenDIAKiosk_logo_portrait.svg
                   url: http://opendia.webapps.openms.org/
                 - name: umetaflow
+                  logo: /images/webapp/logo/umetaflow.png
                   url: https://abi-services.cs.uni-tuebingen.de/umetaflow/
                 - name: OpenDDA
+                  logo: /images/webapp/logo/openDDA.svg
                   url: http://opendda.webapps.openms.org/
 
         developers:
@@ -1007,7 +1006,7 @@ languages:
               icon: fab fa-github
               text: Report bugs or suggest features for the Streamlit template.
               url: https://github.com/OpenMS/streamlit-template/issues/new
-              linkText: Open an issue
+              linkText: File on GitHub
 
       webappsSection:
         eyebrow: Community tools
@@ -1310,8 +1309,6 @@ languages:
           column4:
             heading: LEGAL
             links:
-              - text: Terms of use
-                link: /terms
               - text: Privacy
                 link: /privacy
               - text: Press kit

@@ -6,101 +6,91 @@
 {{- $githubDiscussions := index $links "githubDiscussions" | default "https://github.com/OpenMS/OpenMS/discussions" -}}
 {{- $githubIssues := index $links "githubIssues" | default "https://github.com/openms/openms/issues/new/choose" -}}
 {{- $communityEmail := index $cfg "communityEmail" | default "communitymanager@openms.de" -}}
-<section class="contribute-page-layout">
-  <div class="contribute-page-layout__intro">
-    <header class="openms-lib-hero contribute-page-hero" aria-label="Contributing to OpenMS">
-      <div class="openms-lib-hero__panel">
-        <div class="openms-lib-hero__content">
-          <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
-          <h1 class="openms-lib-hero__title">
-            Contribute to <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">OpenMS</span>.
-          </h1>
-          <p class="openms-lib-hero__lead">{{ $subtitle }}</p>
-          <div class="openms-lib-hero__actions" aria-label="Get started">
-            <a
-              class="openms-lib-btn openms-lib-btn--primary"
-              href="{{ $discord }}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-discord" aria-hidden="true"></i>
-              <span class="openms-lib-btn__label">Join Discord</span>
-            </a>
-            <a
-              class="openms-lib-btn openms-lib-btn--ghost"
-              href="{{ $githubDiscussions }}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fab fa-github" aria-hidden="true"></i>
-              <span class="openms-lib-btn__label">Discuss on GitHub</span>
-            </a>
-          </div>
+<section class="openms-lib-layout">
+<article class="openms-lib-page openms-lib-page--hub openms-lib-page--openms-lib openms-lib-page--contribute">
+<div class="openms-lib-page__intro">
+  <header class="openms-lib-hero openms-lib-hero--pro" aria-label="Contributing to OpenMS">
+    <div class="openms-lib-hero__panel">
+      <div class="openms-lib-hero__content">
+        <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
+        <h1 class="openms-lib-hero__title">
+          Contribute to <span class="openms-lib-hero__accent openms-lib-hero__accent--warm">OpenMS</span>
+        </h1>
+        <p class="openms-lib-hero__lead">{{ $subtitle }}</p>
+        <div class="openms-lib-hero__actions" aria-label="Get started">
+          <a
+            class="openms-lib-btn openms-lib-btn--primary"
+            href="{{ $discord }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-discord" aria-hidden="true"></i>
+            <span class="openms-lib-btn__label">Join Discord</span>
+          </a>
+          <a
+            class="openms-lib-btn openms-lib-btn--ghost"
+            href="{{ $githubDiscussions }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <span class="openms-lib-btn__label">Discuss on GitHub</span>
+          </a>
         </div>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
+</div>
 
-  <div class="contribute-page-layout__body" aria-label="How to contribute">
-    <section class="contribute-channels" id="communication-channels" aria-labelledby="communication-channels-title">
-      <div class="contribute-channels__inner">
-        <header class="contribute-channels__head">
-          <p class="contribute-eyebrow">Channels</p>
-          <h2 id="communication-channels-title" class="contribute-channels__title">Stay in touch</h2>
-          <p class="contribute-channels__lead">Most project discussions take place on GitHub and Discord.</p>
+<div class="openms-lib-page__body" aria-label="How to contribute">
+  <div id="communication-channels" class="openms-lib-page__anchor">
+    <section class="openms-lib-about" aria-labelledby="communication-channels-title">
+      <div class="openms-lib-about__inner">
+        <header class="openms-lib-about__head">
+          <div class="openms-lib-about__head-copy">
+            <p class="openms-lib-about__eyebrow">Channels</p>
+            <h2 id="communication-channels-title" class="openms-lib-about__title">Stay in touch</h2>
+            <p class="openms-lib-about__lead">Most project discussions take place on GitHub and Discord.</p>
+          </div>
         </header>
 
-        <div class="contribute-channels__grid">
-          <article class="contribute-channel">
-            <div class="contribute-channel__top">
-              <span class="contribute-channel__icon" aria-hidden="true"><i class="fab fa-github"></i></span>
-              <span class="contribute-channel__tag">Formal</span>
-            </div>
-            <h3 class="contribute-channel__title">GitHub Issues &amp; Pull Requests</h3>
-            <p class="contribute-channel__text">Best for lasting, searchable project work.</p>
-            <ul class="contribute-channel__list">
-              <li>Bug reports and feature requests</li>
-              <li>Development discussions and code reviews</li>
-              <li>Proposing and reviewing contributions</li>
-            </ul>
-            <a class="contribute-channel__link" href="{{ $githubIssues }}" target="_blank" rel="noopener noreferrer">Open a new issue<span aria-hidden="true"> →</span></a>
+        <div class="openms-lib-about__mosaic" role="list">
+          <article class="openms-lib-about__tile" role="listitem">
+            <span class="openms-lib-about__num" aria-hidden="true">01</span>
+            <h3 class="openms-lib-about__tile-title">GitHub Issues &amp; Pull Requests</h3>
+            <p class="openms-lib-about__tile-text">Best for lasting, searchable project work — bug reports, feature requests, and code review.</p>
+            <a class="openms-lib-about__tile-link" href="{{ $githubIssues }}" target="_blank" rel="noopener noreferrer">Open a new issue<span aria-hidden="true"> →</span></a>
           </article>
 
-          <article class="contribute-channel">
-            <div class="contribute-channel__top">
-              <span class="contribute-channel__icon contribute-channel__icon--discord" aria-hidden="true"><i class="fab fa-discord"></i></span>
-              <span class="contribute-channel__tag">Informal</span>
-            </div>
-            <h3 class="contribute-channel__title">Discord</h3>
-            <p class="contribute-channel__text">Best for quick questions and connecting with contributors.</p>
-            <ul class="contribute-channel__list">
-              <li>Ask quick questions</li>
-              <li>Discuss ideas before opening an issue</li>
-              <li>Meet other contributors in real time</li>
-            </ul>
-            <a class="contribute-channel__link" href="{{ $discord }}" target="_blank" rel="noopener noreferrer">Join Discord<span aria-hidden="true"> →</span></a>
+          <article class="openms-lib-about__tile" role="listitem">
+            <span class="openms-lib-about__num" aria-hidden="true">02</span>
+            <h3 class="openms-lib-about__tile-title">Discord</h3>
+            <p class="openms-lib-about__tile-text">Best for quick questions, early ideas, and connecting with contributors in real time.</p>
+            <a class="openms-lib-about__tile-link" href="{{ $discord }}" target="_blank" rel="noopener noreferrer">Join Discord<span aria-hidden="true"> →</span></a>
           </article>
         </div>
       </div>
     </section>
+  </div>
 
-    <section class="contribute-ways" id="ways-to-contribute" aria-labelledby="ways-to-contribute-title">
-      <div class="contribute-ways__inner">
-        <header class="contribute-ways__head">
-          <p class="contribute-eyebrow">Get involved</p>
-          <h2 id="ways-to-contribute-title" class="contribute-ways__title">Ways to Contribute</h2>
-          <p class="contribute-ways__lead">Your choices aren't limited to programming — there are many areas where we need <strong>your</strong> help.</p>
+  <div id="ways-to-contribute" class="openms-lib-page__anchor">
+    <section class="openms-lib-resources openms-lib-resources--toolkit" aria-labelledby="ways-to-contribute-title">
+      <div class="openms-lib-resources__inner">
+        <header class="openms-lib-resources__head">
+          <p class="openms-lib-resources__eyebrow">Get involved</p>
+          <h2 id="ways-to-contribute-title" class="openms-lib-resources__title">Ways to Contribute</h2>
+          <p class="openms-lib-resources__lead">Your choices aren't limited to programming — there are many areas where we need <strong>your</strong> help.</p>
         </header>
 
-        <div class="contribute-ways__toolkit">
-          <article class="contribute-ways__feature">
-            <p class="contribute-ways__feature-kicker">
-              <span class="contribute-ways__feature-icon" aria-hidden="true"><i class="fas fa-code"></i></span>
+        <div class="openms-lib-resources__toolkit">
+          <article class="openms-lib-resources__feature">
+            <p class="openms-lib-resources__feature-kicker">
+              <span class="openms-lib-resources__feature-icon" aria-hidden="true"><i class="fas fa-code"></i></span>
               Code
             </p>
-            <h3 class="contribute-ways__feature-title">Contribute to development</h3>
-            <p class="contribute-ways__feature-text">You do not need to understand the entire codebase to start — many people begin with docs, bug reports, or small fixes.</p>
-            <ul class="contribute-project-links">
+            <h3 class="openms-lib-resources__feature-title">Contribute to development</h3>
+            <p class="openms-lib-resources__feature-text">You do not need to understand the entire codebase to start — many people begin with docs, bug reports, or small fixes.</p>
+            <ul class="contribute-project-links" role="list">
               <li><a href="/openms-lib/#for-developers">OpenMS-lib</a></li>
               <li><a href="/pyopenms/#for-developers">pyOpenMS</a></li>
               <li><a href="/pyopenms-viz/#for-developers">pyOpenMS Viz</a></li>
@@ -108,147 +98,143 @@
             </ul>
           </article>
 
-          <div class="contribute-ways__grid" role="list">
-            <article class="contribute-way contribute-way--review" role="listitem">
-              <div class="contribute-way__top">
-                <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-code-branch"></i></span>
-                <span class="contribute-way__tag">Review</span>
+          <div class="openms-lib-resources__grid" role="list">
+            <a
+              class="openms-lib-resources__item"
+              role="listitem"
+              href="https://github.com/OpenMS/OpenMS/pulls"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-code-branch"></i></span>
+                <span class="openms-lib-resources__item-tag">Review</span>
               </div>
-              <h3 class="contribute-way__title">Review pull requests</h3>
-              <a
-                class="contribute-way__badge"
-                href="https://github.com/OpenMS/OpenMS/pulls"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://img.shields.io/github/issues-pr/OpenMS/OpenMS?label=open%20PRs&color=1a56db&style=flat-square"
-                  alt="Number of open OpenMS pull requests"
-                  loading="lazy"
-                />
-              </a>
-              <p class="contribute-way__text">Help move contributions forward by reviewing open pull requests.</p>
-              <div class="contribute-way__actions" role="group" aria-label="Review pull requests">
-                <a
-                  class="openms-lib-btn openms-lib-btn--ghost"
-                  href="https://github.com/OpenMS/OpenMS/pulls"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                  <span class="openms-lib-btn__label">View open PRs</span>
+              <h3 class="openms-lib-resources__item-title">Review pull requests</h3>
+              <p class="openms-lib-resources__item-text">Help move contributions forward by reviewing open pull requests.</p>
+              <span class="openms-lib-resources__item-link">View open PRs<span aria-hidden="true"> →</span></span>
+            </a>
+
+            <article class="openms-lib-resources__item openms-lib-resources__item--static" role="listitem">
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-terminal"></i></span>
+                <span class="openms-lib-resources__item-tag">Build</span>
+              </div>
+              <h3 class="openms-lib-resources__item-title">Build from Source</h3>
+              <p class="openms-lib-resources__item-text">Compile the latest OpenMS with platform-specific guides.</p>
+              <div class="contribute-os-buttons" role="group" aria-label="Build platforms">
+                <a class="openms-lib-btn openms-lib-btn--ghost openms-lib-developers__platform-btn" href="https://archive.openms.de/openms/Documentation/release/latest/html/install_win.html" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-windows" aria-hidden="true"></i>
+                  <span class="openms-lib-btn__label">Windows</span>
                 </a>
-                <a
-                  class="openms-lib-btn openms-lib-btn--ghost"
-                  href="https://github.com/ParadiseSS13/Paradise/discussions/19410"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fas fa-book-open" aria-hidden="true"></i>
-                  <span class="openms-lib-btn__label">How to review PRs</span>
+                <a class="openms-lib-btn openms-lib-btn--ghost openms-lib-developers__platform-btn" href="https://archive.openms.de/openms/Documentation/release/latest/html/install_mac.html" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-apple" aria-hidden="true"></i>
+                  <span class="openms-lib-btn__label">macOS</span>
+                </a>
+                <a class="openms-lib-btn openms-lib-btn--ghost openms-lib-developers__platform-btn" href="https://archive.openms.de/openms/Documentation/release/latest/html/install_linux.html" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-linux" aria-hidden="true"></i>
+                  <span class="openms-lib-btn__label">Linux</span>
                 </a>
               </div>
             </article>
 
-            <article class="contribute-way" role="listitem">
-              <div class="contribute-way__top">
-                <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-terminal"></i></span>
-                <span class="contribute-way__tag">Build</span>
+            <a
+              class="openms-lib-resources__item"
+              role="listitem"
+              href="https://github.com/OpenMS/OpenMS-docs/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+                <span class="openms-lib-resources__item-tag">Docs</span>
               </div>
-              <h3 class="contribute-way__title">Build from Source</h3>
-              <p class="contribute-way__text">Compile the latest OpenMS with platform-specific guides.</p>
-              <div class="contribute-os-buttons">
-                <a class="contribute-os-btn" href="https://archive.openms.de/openms/Documentation/release/latest/html/install_win.html" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-windows" aria-hidden="true"></i> Windows
-                </a>
-                <a class="contribute-os-btn" href="https://archive.openms.de/openms/Documentation/release/latest/html/install_mac.html" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-apple" aria-hidden="true"></i> macOS
-                </a>
-                <a class="contribute-os-btn" href="https://archive.openms.de/openms/Documentation/release/latest/html/install_linux.html" target="_blank" rel="noopener noreferrer">
-                  <i class="fab fa-linux" aria-hidden="true"></i> Linux
-                </a>
-              </div>
-            </article>
+              <h3 class="openms-lib-resources__item-title">Educational Materials</h3>
+              <p class="openms-lib-resources__item-text">Tutorials, how-tos, notebooks, and videos for the User Guide.</p>
+              <span class="openms-lib-resources__item-link">Explore OpenMS-Docs<span aria-hidden="true"> →</span></span>
+            </a>
 
-            <article class="contribute-way" role="listitem">
-              <div class="contribute-way__top">
-                <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
-                <span class="contribute-way__tag">Docs</span>
+            <a
+              class="openms-lib-resources__item"
+              role="listitem"
+              href="https://github.com/OpenMS/OpenMS-website/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-globe"></i></span>
+                <span class="openms-lib-resources__item-tag">Web</span>
               </div>
-              <h3 class="contribute-way__title">Educational Materials</h3>
-              <p class="contribute-way__text">Tutorials, how-tos, notebooks, and videos for the <a href="https://github.com/OpenMS/OpenMS/wiki">User Guide</a>.</p>
-              <a class="contribute-way__link" href="https://github.com/OpenMS/OpenMS-docs/issues" target="_blank" rel="noopener noreferrer">Explore OpenMS-Docs<span aria-hidden="true"> →</span></a>
-            </article>
+              <h3 class="openms-lib-resources__item-title">Website Development</h3>
+              <p class="openms-lib-resources__item-text">Fix bugs, improve layout, or add content on the website repo.</p>
+              <span class="openms-lib-resources__item-link">Browse open issues<span aria-hidden="true"> →</span></span>
+            </a>
 
-            <article class="contribute-way" role="listitem">
-              <div class="contribute-way__top">
-                <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-globe"></i></span>
-                <span class="contribute-way__tag">Web</span>
+            <a class="openms-lib-resources__item" role="listitem" href="mailto:{{ $communityEmail }}">
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-palette"></i></span>
+                <span class="openms-lib-resources__item-tag">Design</span>
               </div>
-              <h3 class="contribute-way__title">Website Development</h3>
-              <p class="contribute-way__text">Fix bugs, improve layout, or add content on the website repo.</p>
-              <a class="contribute-way__link" href="https://github.com/OpenMS/OpenMS-website/issues" target="_blank" rel="noopener noreferrer">Browse open issues<span aria-hidden="true"> →</span></a>
-            </article>
+              <h3 class="openms-lib-resources__item-title">Graphic Design</h3>
+              <p class="openms-lib-resources__item-text">Illustrations for docs, images for the site, and visual polish across the project.</p>
+              <span class="openms-lib-resources__item-link">Get in touch<span aria-hidden="true"> →</span></span>
+            </a>
+
+            <a class="openms-lib-resources__item" role="listitem" href="mailto:{{ $communityEmail }}">
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-bullhorn"></i></span>
+                <span class="openms-lib-resources__item-tag">Outreach</span>
+              </div>
+              <h3 class="openms-lib-resources__item-title">Community &amp; Outreach</h3>
+              <p class="openms-lib-resources__item-text">Help with social channels, events, or a newsletter.</p>
+              <span class="openms-lib-resources__item-link">Email us<span aria-hidden="true"> →</span></span>
+            </a>
+
+            <a class="openms-lib-resources__item" role="listitem" href="/sponsor-us/">
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-hand-holding-usd"></i></span>
+                <span class="openms-lib-resources__item-tag">Support</span>
+              </div>
+              <h3 class="openms-lib-resources__item-title">Fundraising</h3>
+              <p class="openms-lib-resources__item-text">Help secure grants and sponsorships that keep OpenMS stable and growing.</p>
+              <span class="openms-lib-resources__item-link">Sponsorship program<span aria-hidden="true"> →</span></span>
+            </a>
+
+            <a class="openms-lib-resources__item" role="listitem" href="/governance/">
+              <div class="openms-lib-resources__item-top">
+                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-landmark"></i></span>
+                <span class="openms-lib-resources__item-tag">Org</span>
+              </div>
+              <h3 class="openms-lib-resources__item-title">Governance</h3>
+              <p class="openms-lib-resources__item-text">Learn how the project is organized and how decisions are made.</p>
+              <span class="openms-lib-resources__item-link">Read governance<span aria-hidden="true"> →</span></span>
+            </a>
           </div>
-        </div>
-
-        <div class="contribute-ways__more" role="list">
-          <article class="contribute-way" role="listitem">
-            <div class="contribute-way__top">
-              <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-palette"></i></span>
-              <span class="contribute-way__tag">Design</span>
-            </div>
-            <h3 class="contribute-way__title">Graphic Design</h3>
-            <p class="contribute-way__text">Illustrations for docs, images for the site, and visual polish across the project.</p>
-            <a class="contribute-way__link" href="mailto:{{ $communityEmail }}">Get in touch<span aria-hidden="true"> →</span></a>
-          </article>
-
-          <article class="contribute-way" role="listitem">
-            <div class="contribute-way__top">
-              <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-bullhorn"></i></span>
-              <span class="contribute-way__tag">Outreach</span>
-            </div>
-            <h3 class="contribute-way__title">Community &amp; Outreach</h3>
-            <p class="contribute-way__text">Help with social channels, events, or a newsletter.</p>
-            <a class="contribute-way__link" href="mailto:{{ $communityEmail }}">Email us<span aria-hidden="true"> →</span></a>
-          </article>
-
-          <article class="contribute-way" role="listitem">
-            <div class="contribute-way__top">
-              <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-hand-holding-usd"></i></span>
-              <span class="contribute-way__tag">Support</span>
-            </div>
-            <h3 class="contribute-way__title">Fundraising</h3>
-            <p class="contribute-way__text">Help secure grants and sponsorships that keep OpenMS stable and growing.</p>
-            <a class="contribute-way__link" href="/sponsor-us/">Sponsorship program<span aria-hidden="true"> →</span></a>
-          </article>
-
-          <article class="contribute-way" role="listitem">
-            <div class="contribute-way__top">
-              <span class="contribute-way__icon" aria-hidden="true"><i class="fas fa-landmark"></i></span>
-              <span class="contribute-way__tag">Org</span>
-            </div>
-            <h3 class="contribute-way__title">Governance</h3>
-            <p class="contribute-way__text">Learn how the project is organized and how decisions are made.</p>
-            <a class="contribute-way__link" href="/governance/">Read governance<span aria-hidden="true"> →</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contribute-conduct" id="code-of-conduct" aria-labelledby="code-of-conduct-title">
-      <div class="contribute-conduct__inner">
-        <div class="contribute-conduct__copy">
-          <p class="contribute-eyebrow contribute-eyebrow--inverse">Community</p>
-          <h2 id="code-of-conduct-title" class="contribute-conduct__title">Code of Conduct</h2>
-          <p class="contribute-conduct__lead">We aspire to treat everyone equally and value all contributions. Our Code of Conduct helps keep the community open and welcoming.</p>
-        </div>
-        <div class="contribute-conduct__actions">
-          <a class="openms-lib-btn openms-lib-btn--ghost contribute-conduct__btn" href="/code-of-conduct">
-            <span class="openms-lib-btn__label">Read the Code of Conduct</span>
-          </a>
         </div>
       </div>
     </section>
   </div>
+</div>
+
+<div class="openms-lib-page__outro">
+  <div id="code-of-conduct" class="openms-lib-page__anchor">
+    <section class="openms-lib-block openms-lib-block--developers" aria-labelledby="code-of-conduct-title">
+      <article class="openms-lib-developers__card openms-lib-developers__card--build openms-lib-developers__review">
+        <div class="openms-lib-developers__card-body">
+          <span class="openms-lib-developers__card-tag">Community</span>
+          <h2 id="code-of-conduct-title" class="openms-lib-developers__card-title">
+            <span>Code of Conduct</span>
+          </h2>
+          <p class="openms-lib-developers__card-text">We aspire to treat everyone equally and value all contributions. Our Code of Conduct helps keep the community open and welcoming.</p>
+          <div class="openms-lib-developers__platforms" role="group" aria-label="Code of Conduct">
+            <a class="openms-lib-btn openms-lib-btn--primary" href="/code-of-conduct">
+              <span class="openms-lib-btn__label">Read the Code of Conduct</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>
+</article>
 </section>

@@ -4,17 +4,19 @@
 {{- $blurb := index $cfg "blurb" | default "" -}}
 {{- $chips := index $cfg "chips" | default (slice) -}}
 {{- $formId := index $cfg "tallyFormId" | default "44qqqd" -}}
-<section class="fellowship-page-layout">
-  <header class="openms-lib-hero fellowship-page-hero" aria-label="OpenMS Fellowship">
+<section class="openms-lib-layout">
+<article class="openms-lib-page openms-lib-page--hub openms-lib-page--openms-lib openms-lib-page--fellowship">
+<div class="openms-lib-page__intro">
+  <header class="openms-lib-hero openms-lib-hero--pro" aria-label="OpenMS Fellowship">
     <div class="openms-lib-hero__panel">
-      <div class="openms-lib-hero__content fellowship-page-hero__content">
+      <div class="openms-lib-hero__content">
         <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
-        <h1 class="openms-lib-hero__title fellowship-page-hero__headline">{{ $headline | safeHTML }}</h1>
+        <h1 class="openms-lib-hero__title">{{ $headline | safeHTML }}</h1>
         {{- if $blurb -}}
-        <p class="openms-lib-hero__lead fellowship-page-hero__blurb">{{ $blurb }}</p>
+        <p class="openms-lib-hero__lead">{{ $blurb | safeHTML }}</p>
         {{- end -}}
         {{- with $chips }}
-        <ul class="openms-lib-hero__chips" aria-label="Fellowship at a glance">
+        <ul class="openms-lib-hero__chips fellowship-hero-chips" aria-label="Fellowship at a glance">
           {{- range . }}
           <li class="openms-lib-hero__chip">{{ . }}</li>
           {{- end }}
@@ -23,22 +25,23 @@
       </div>
     </div>
   </header>
+</div>
 
-  <div class="fellowship-page-layout__content">
-    <section
-      class="fellowship-page__section fellowship-page__application"
-      id="fellowship-application"
-      aria-labelledby="fellowship-application-title"
-    >
-      <div class="fellowship-page__form-card">
-        <div class="fellowship-page__form-head">
-          <h2 id="fellowship-application-title" class="fellowship-page__form-title">Apply for the fellowship</h2>
-          <p class="fellowship-page__form-lead">
-            Complete the application below. We review submissions on a rolling basis and will follow up by email.
-          </p>
+<div class="openms-lib-page__body" aria-label="Fellowship application">
+  <div id="fellowship-application" class="openms-lib-page__anchor">
+    <section class="fellowship-application" aria-labelledby="fellowship-application-title">
+      <div class="fellowship-application__inner">
+        <header class="fellowship-application__head">
+          <p class="openms-lib-resources__eyebrow">Apply</p>
+          <h2 id="fellowship-application-title" class="openms-lib-resources__title">Apply for the fellowship</h2>
+          <p class="openms-lib-resources__lead">Complete the application below.<br>We review submissions on a rolling basis and will follow up by email.</p>
+        </header>
+        <div class="fellowship-application__form-card">
+          {{ partial "fellowship-form-embed.html" (dict "formId" $formId) }}
         </div>
-        {{ partial "fellowship-form-embed.html" (dict "formId" $formId) }}
       </div>
     </section>
   </div>
+</div>
+</article>
 </section>

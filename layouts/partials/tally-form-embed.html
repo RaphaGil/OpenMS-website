@@ -1,14 +1,15 @@
 <div class="contact-page__form-body" aria-label="OpenMS contact form">
   <iframe
     class="contact-page__tally-iframe"
-    data-tally-src="https://tally.so/embed/pbV6Qq?alignLeft=1&transparentBackground=1&dynamicHeight=1"
+    data-tally-src="https://tally.so/embed/pbV6Qq?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
     width="100%"
-    height="600"
+    height="1200"
     frameborder="0"
     marginheight="0"
     marginwidth="0"
-    title="Welcome To OpenMS"
+    title="OpenMS contact form"
     loading="lazy"
+    style="overflow: hidden; border: 0;"
   ></iframe>
 </div>
 <script async src="https://tally.so/widgets/embed.js"></script>
@@ -30,5 +31,7 @@
   } else {
     loadTallyEmbeds();
   }
+
+  window.addEventListener("load", loadTallyEmbeds);
 })();
 </script>

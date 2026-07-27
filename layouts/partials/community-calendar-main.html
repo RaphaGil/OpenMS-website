@@ -31,14 +31,16 @@
   {{- end }}
 {{- end }}
 {{- $years = sort $years | collections.Reverse -}}
-<section class="community-calendar-layout">
-  <header class="openms-lib-hero calendar-page-hero" aria-label="OpenMS community events">
+<section class="openms-lib-layout">
+<article class="openms-lib-page openms-lib-page--hub openms-lib-page--openms-lib openms-lib-page--calendar">
+<div class="openms-lib-page__intro">
+  <header class="openms-lib-hero openms-lib-hero--pro" aria-label="OpenMS community events">
     <div class="openms-lib-hero__panel">
       <div class="openms-lib-hero__content">
         <p class="openms-lib-hero__eyebrow">{{ $eyebrow }}</p>
         <h1 class="openms-lib-hero__title">
           {{- if and $titleHighlight (in $title $titleHighlight) }}
-          {{ replace $title $titleHighlight (printf "<span class=\"openms-lib-hero__accent\">%s</span>" $titleHighlight) | safeHTML }}
+          {{ replace $title $titleHighlight (printf "<span class=\"openms-lib-hero__accent openms-lib-hero__accent--warm\">%s</span>" $titleHighlight) | safeHTML }}
           {{- else }}
           {{ $title }}
           {{- end }}
@@ -46,15 +48,18 @@
         <p class="openms-lib-hero__lead">{{ $subtitle }}</p>
         <div class="openms-lib-hero__actions" aria-label="Related resources">
           {{- with $retreatUrl }}
-          <a class="openms-btn-primary openms-step__cta" href="{{ . }}">{{ $retreatText }}</a>
+          <a class="openms-lib-btn openms-lib-btn--primary" href="{{ . }}">{{ $retreatText }}</a>
           {{- end }}
-          <a class="about-cta-btn--donate community-calendar-hero__btn community-calendar-hero__btn--news" href="/news/">News</a>
+          <a class="openms-lib-btn openms-lib-btn--ghost" href="/news/">News</a>
         </div>
       </div>
     </div>
   </header>
+</div>
 
-  <div class="community-calendar-layout__content">
+<div class="openms-lib-page__body" aria-label="OpenMS community events">
+  <div class="openms-lib-page__anchor">
+    <div class="openms-lib-block community-calendar-block">
     <div class="community-events-page">
       <section class="community-events-page__section community-events-page__section--upcoming community-events-upcoming-layout" aria-labelledby="calendar-upcoming-title">
         <header class="community-events-page__header">
@@ -110,5 +115,8 @@
       </section>
       {{- end }}
     </div>
+    </div>
   </div>
+</div>
+</article>
 </section>

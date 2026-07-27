@@ -129,8 +129,10 @@
 .contact-page__tally-iframe {
   display: block;
   width: 100%;
-  min-height: 16rem;
+  min-height: 48rem;
+  height: auto;
   border: 0;
+  overflow: hidden;
   background: transparent;
 }
 

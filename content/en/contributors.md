@@ -5,8 +5,12 @@ hidePageTitle: true
 hideShortcuts: true
 ---
 
-<section class="governance-section leadership" id="leadership" aria-labelledby="leadership-board-title">
-  <h2 id="leadership-board-title">Board of directors</h2>
+<section class="contributors-section" id="leadership" aria-labelledby="leadership-board-title">
+  <header class="openms-lib-resources__head">
+    <p class="openms-lib-resources__eyebrow">Leadership</p>
+    <h2 id="leadership-board-title" class="openms-lib-resources__title">Board of directors</h2>
+    <p class="openms-lib-resources__lead">The board provides legal and financial stewardship for OpenMS Inc., our nonprofit organization.</p>
+  </header>
   <div class="leadership-grid">
     <article class="leadership-card">
       <img class="leadership-card__photo" src="/images/leadership_photos/sam_wein.jpeg" alt="Portrait of Dr. Sam Wein" loading="lazy">
@@ -88,15 +92,25 @@ hideShortcuts: true
   </div>
 </section>
 
-<section class="governance-section leadership-exec" id="executive-committee" aria-labelledby="executive-committee-title">
-  <h2 id="executive-committee-title">Executive Committee</h2>
-  <p>
-    The Executive Committee leads development of the OpenMS project.
-    Learn more on our <a href="/governance/">Governance page</a>.
+<section class="contributors-section contributors-section--exec" id="executive-committee" aria-labelledby="executive-committee-title">
+  <header class="openms-lib-resources__head">
+    <p class="openms-lib-resources__eyebrow">Project governance</p>
+    <h2 id="executive-committee-title" class="openms-lib-resources__title">Executive Committee</h2>
+    <p class="openms-lib-resources__lead">The Executive Committee leads development of the OpenMS project and sets technical priorities.</p>
+  </header>
+  <p class="contributors-exec-note">
+    Learn how the committee works on our
+    <a href="/governance/">Governance page</a>
+    or see the current
+    <a href="/exec_committee/">committee members</a>.
   </p>
 </section>
 
-<section class="governance-section leadership-members" id="members" aria-labelledby="members-title">
-  <h2 id="members-title">Members</h2>
+<section class="contributors-section" id="members" aria-labelledby="members-title">
+  <header class="openms-lib-resources__head">
+    <p class="openms-lib-resources__eyebrow">Community</p>
+    <h2 id="members-title" class="openms-lib-resources__title">Members</h2>
+    <p class="openms-lib-resources__lead"><span>Maintainers, docs contributors, and community managers</span><span>who keep OpenMS moving forward.</span></p>
+  </header>
   {{< include-html "static/gallery/members.html" >}}
 </section>
