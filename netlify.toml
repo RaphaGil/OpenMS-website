@@ -1,3 +1,2 @@
-Documentation → https://pyopenms-viz.readthedocs.io/en/latest/
- after install btn in py[build.environment]
+[build.environment]
 HUGO_VERSION = "0.155.0"
