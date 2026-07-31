@@ -45,7 +45,17 @@ sidebar: false
             href="https://anaconda.org/channels/bioconda/packages/openms/overview"
             target="_blank"
             rel="noopener noreferrer"
-          ><span class="openms-lib-btn__label">Anaconda install</span></a>
+          >
+            <img
+              class="openms-lib-btn__brand-icon"
+              src="/images/icons/anaconda.svg"
+              alt=""
+              width="16"
+              height="16"
+              aria-hidden="true"
+            >
+            <span class="openms-lib-btn__label">Anaconda install</span>
+          </a>
         </div>
       </div>
     </div>
@@ -65,5 +75,11 @@ sidebar: false
 </div>
 <div class="openms-lib-page__outro">
   {{< openms-lib-developers >}}
+</div>
+<div class="openms-lib-page__review">
+  {{< openms-lib-review >}}
+</div>
+<div class="openms-lib-page__cite">
+  {{< openms-lib-cite >}}
 </div>
 </article>

@@ -413,12 +413,18 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: start;
+  justify-items: start;
   gap: clamp(0.65rem, 1.5vw, 0.85rem);
 }
 
 .community-events-upcoming-layout .community-events-home__card-link--split .community-events-home__date-block {
   grid-column: 1;
   grid-row: 1;
+  align-self: start;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
 }
 
 .community-events-upcoming-layout .community-events-home__card-main {
@@ -458,15 +464,29 @@
 }
 
 .community-events-upcoming-layout .community-events-home__card-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.65rem 0.85rem;
-  margin-top: 0;
+  margin-top: 0.35rem;
   padding-top: 0;
   border-top: none;
 }
 
 .community-events-upcoming-layout .community-events-home__card-location {
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: var(--openms-text-min);
   line-height: 1.45;
+}
+
+.community-events-upcoming-layout .community-events-home__card-footer .events-past-card__cta {
+  flex: 0 0 auto;
+  margin-left: auto;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .community-events-upcoming-layout .community-events-home__date {
@@ -541,22 +561,38 @@
 
 @media (max-width: 640px) {
   .community-events-upcoming-layout .community-events-home__card-link--split {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    justify-items: start;
+    gap: 0.65rem;
   }
 
-  .community-events-upcoming-layout .community-events-home__card-link--split .community-events-home__date-block,
-  .community-events-upcoming-layout .community-events-home__card-main {
+  .community-events-upcoming-layout .community-events-home__card-link--split .community-events-home__date-block {
     grid-column: 1;
-    grid-row: auto;
+    grid-row: 1;
+    align-self: start;
+    justify-self: start;
+    width: fit-content;
+  }
+
+  .community-events-upcoming-layout .community-events-home__card-main {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    min-width: 0;
   }
 
   .community-events-upcoming-layout .community-events-home__card-footer {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .community-events-upcoming-layout .community-events-home__card-footer .events-past-card__cta {
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
     justify-content: center;
   }
 

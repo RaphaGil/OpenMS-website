@@ -852,13 +852,58 @@ html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .na
     fill: currentColor;
   }
 
-  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg,
-html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg *,
-html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg,
-html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg * {
-    fill: currentColor !important;
-    stroke: currentColor !important;
-    color: inherit !important;
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon,
+html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon *,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon * {
+    fill: #5865f2 !important;
+    stroke: none !important;
+    color: #5865f2 !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon,
+html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon *,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon * {
+    fill: #0a66c2 !important;
+    stroke: none !important;
+    color: #0a66c2 !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon,
+html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon *,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon * {
+    fill: #181717 !important;
+    stroke: none !important;
+    color: #181717 !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon,
+html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon *,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon * {
+    stroke: none !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(1),
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(1) {
+    fill: #4285f4 !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(2),
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(2) {
+    fill: #356ac3 !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon circle,
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon circle {
+    fill: #a0c3ff !important;
+  }
+
+  html[data-navbar-layout="mobile"] .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(3),
+html[data-navbar-layout="mobile"] #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(3) {
+    fill: #76a7fa !important;
   }
 
 

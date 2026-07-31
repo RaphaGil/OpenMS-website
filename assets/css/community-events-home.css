@@ -484,8 +484,10 @@
   }
 
   .community-events-home__card-footer {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .community-events-home__view-all {

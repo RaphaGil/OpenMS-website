@@ -44,7 +44,4 @@ sidebar: false
     {{< webapps-using-template >}}
   </div>
 </div>
-<div class="openms-lib-page__outro">
-  {{< webapps-developers >}}
-</div>
 </article>

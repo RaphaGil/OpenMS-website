@@ -1,7 +1,17 @@
 {{- $links := .links | default (slice) -}}
 {{- if $links }}
+{{- $ordered := slice -}}
+{{- $github := slice -}}
+{{- range $links }}
+  {{- if eq (.type | default "link") "github" }}
+    {{- $github = $github | append . -}}
+  {{- else }}
+    {{- $ordered = $ordered | append . -}}
+  {{- end }}
+{{- end }}
+{{- $ordered = $ordered | append $github -}}
 <ul class="webapps-project-links" role="list">
-  {{- range $links }}
+  {{- range $ordered }}
   {{- $type := .type | default "link" -}}
   {{- $label := .label -}}
   {{- if not $label }}

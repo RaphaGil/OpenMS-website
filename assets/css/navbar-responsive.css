@@ -1223,13 +1223,58 @@
     fill: currentColor;
   }
 
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg,
-  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg *,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg,
-  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg * {
-    fill: currentColor !important;
-    stroke: currentColor !important;
-    color: inherit !important;
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon,
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon *,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.discord-icon * {
+    fill: #5865f2 !important;
+    stroke: none !important;
+    color: #5865f2 !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon,
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon *,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.linkedin-icon * {
+    fill: #0a66c2 !important;
+    stroke: none !important;
+    color: #0a66c2 !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon,
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon *,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.github-icon * {
+    fill: #181717 !important;
+    stroke: none !important;
+    color: #181717 !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon,
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon *,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon * {
+    stroke: none !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(1),
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(1) {
+    fill: #4285f4 !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(2),
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(2) {
+    fill: #356ac3 !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon circle,
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon circle {
+    fill: #a0c3ff !important;
+  }
+
+  .site-header #nav.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(3),
+  #navbar-clone.navbar.is-fresh .navbar-menu .navbar-mobile-social a svg.google-scholar-icon path:nth-of-type(3) {
+    fill: #76a7fa !important;
   }
 
 }

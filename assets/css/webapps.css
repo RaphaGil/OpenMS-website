@@ -351,7 +351,9 @@ section.webapps-featured::after {
 }
 
 .webapps-featured__show-all {
-  min-width: min(100%, 13rem);
+  width: fit-content;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .webapps-featured__show-all:focus {
@@ -381,8 +383,10 @@ section.webapps-featured::after {
   }
 
   .webapps-featured__show-all {
-    width: 100%;
-    max-width: none;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: auto;
   }
 }
 

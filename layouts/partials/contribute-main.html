@@ -5,6 +5,7 @@
 {{- $discord := index $links "discord" | default "https://discord.com/invite/v9tv5BxPch" -}}
 {{- $githubDiscussions := index $links "githubDiscussions" | default "https://github.com/OpenMS/OpenMS/discussions" -}}
 {{- $githubIssues := index $links "githubIssues" | default "https://github.com/openms/openms/issues/new/choose" -}}
+{{- $governance := index $links "governance" | default "/governance/" -}}
 {{- $communityEmail := index $cfg "communityEmail" | default "communitymanager@openms.de" -}}
 <section class="openms-lib-layout">
 <article class="openms-lib-page openms-lib-page--hub openms-lib-page--openms-lib openms-lib-page--contribute">
@@ -28,7 +29,7 @@
             <span class="openms-lib-btn__label">Join Discord</span>
           </a>
           <a
-            class="openms-lib-btn openms-lib-btn--ghost"
+            class="openms-lib-btn openms-lib-btn--primary"
             href="{{ $githubDiscussions }}"
             target="_blank"
             rel="noopener noreferrer"
@@ -67,6 +68,13 @@
             <h3 class="openms-lib-about__tile-title">Discord</h3>
             <p class="openms-lib-about__tile-text">Best for quick questions, early ideas, and connecting with contributors in real time.</p>
             <a class="openms-lib-about__tile-link" href="{{ $discord }}" target="_blank" rel="noopener noreferrer">Join Discord<span aria-hidden="true"> →</span></a>
+          </article>
+
+          <article class="openms-lib-about__tile" role="listitem">
+            <span class="openms-lib-about__num" aria-hidden="true">03</span>
+            <h3 class="openms-lib-about__tile-title">Governance</h3>
+            <p class="openms-lib-about__tile-text">Learn how the project is organized and how decisions are made.</p>
+            <a class="openms-lib-about__tile-link" href="{{ $governance }}">Read governance<span aria-hidden="true"> →</span></a>
           </article>
         </div>
       </div>
@@ -198,16 +206,6 @@
               <h3 class="openms-lib-resources__item-title">Fundraising</h3>
               <p class="openms-lib-resources__item-text">Help secure grants and sponsorships that keep OpenMS stable and growing.</p>
               <span class="openms-lib-resources__item-link">Sponsorship program<span aria-hidden="true"> →</span></span>
-            </a>
-
-            <a class="openms-lib-resources__item" role="listitem" href="/governance/">
-              <div class="openms-lib-resources__item-top">
-                <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="fas fa-landmark"></i></span>
-                <span class="openms-lib-resources__item-tag">Org</span>
-              </div>
-              <h3 class="openms-lib-resources__item-title">Governance</h3>
-              <p class="openms-lib-resources__item-text">Learn how the project is organized and how decisions are made.</p>
-              <span class="openms-lib-resources__item-link">Read governance<span aria-hidden="true"> →</span></span>
             </a>
           </div>
         </div>

@@ -81,11 +81,22 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--news-events-item-gap);
+  gap: 0;
 }
 
 .news-home__item {
   min-width: 0;
+  padding-block: clamp(0.95rem, 2vw, 1.2rem);
+  border-bottom: 1px solid rgba(var(--openms-navy-rgb), 0.12);
+}
+
+.news-home__item:first-child {
+  padding-top: 0.15rem;
+}
+
+.news-home__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0.15rem;
 }
 
 .news-home__card {

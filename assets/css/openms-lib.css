@@ -978,6 +978,15 @@
   line-height: 1;
 }
 
+.openms-lib-hero__actions .openms-lib-btn--ghost .openms-lib-btn__brand-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 1.05em;
+  height: 1.05em;
+  margin-right: 0.35rem;
+  object-fit: contain;
+}
+
 /* Page heroes — split layout (matches homepage hero structure) */
 .openms-lib-hero[class*="-page-hero"],
 .openms-lib-hero.community-calendar-hero {

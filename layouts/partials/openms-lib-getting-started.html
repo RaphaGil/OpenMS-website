@@ -3,24 +3,17 @@
 {{- $eyebrow := index $cfg "eyebrow" | default "Get started" -}}
 {{- $title := index $cfg "title" | default "Explore OpenMS-lib" -}}
 {{- $lead := index $cfg "lead" -}}
-{{- $featureKicker := index $cfg "featureKicker" | default "Pipeline" -}}
-{{- $featureIcon := index $cfg "featureIcon" | default "fas fa-terminal" -}}
 {{- $items := index $cfg "items" | default (slice) -}}
-{{- $topp := false -}}
-{{- $resources := slice -}}
+{{- $catalog := slice -}}
 {{- $support := false -}}
-{{- range $i, $item := $items -}}
-{{- if eq $i 0 -}}
-{{- if and $item.url (not $item.icon) (not $item.tag) -}}
-{{- $topp = $item -}}
+{{- range $item := $items -}}
+  {{- if and $item.links (not $item.url) -}}
+    {{- $support = $item -}}
+  {{- else -}}
+    {{- $catalog = $catalog | append $item -}}
+  {{- end -}}
 {{- end -}}
-{{- else if and $item.links (not $item.url) -}}
-{{- $support = $item -}}
-{{- else if or $item.icon $item.tag -}}
-{{- $resources = $resources | append $item -}}
-{{- end -}}
-{{- end -}}
-<section class="openms-lib-resources openms-lib-resources--toolkit{{ if not $topp }} openms-lib-resources--no-feature{{ end }}" aria-labelledby="{{ $id }}">
+<section class="openms-lib-resources openms-lib-resources--explore" aria-labelledby="{{ $id }}">
   <div class="openms-lib-resources__inner">
     <header class="openms-lib-resources__head openms-lib-hub__reveal openms-lib-hub__reveal--left">
       {{- with $eyebrow }}
@@ -32,88 +25,81 @@
       {{- end }}
     </header>
 
-    <div class="openms-lib-resources__toolkit">
-      {{- with $topp }}
-      <article class="openms-lib-resources__feature openms-lib-hub__reveal openms-lib-hub__reveal--left">
-        <p class="openms-lib-resources__feature-kicker">
-          <span class="openms-lib-resources__feature-icon" aria-hidden="true"><i class="{{ $featureIcon }}"></i></span>
-          {{ $featureKicker }}
-        </p>
-        <h3 class="openms-lib-resources__feature-title">{{ .title }}</h3>
-        {{- with .text }}
-        <p class="openms-lib-resources__feature-text">{{ . }}</p>
-        {{- end }}
+    {{- with $catalog }}
+    <ul class="openms-lib-resources__explore-grid" role="list">
+      {{- range . }}
+      <li class="openms-lib-resources__explore-item openms-lib-hub__reveal openms-lib-hub__reveal--scale" role="listitem">
+        {{- if .url }}
         <a
-          class="openms-lib-btn openms-lib-btn--primary openms-lib-resources__feature-btn"
+          class="openms-lib-resources__explore-card"
           href="{{ .url }}"
           {{- if in .url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-        ><span class="openms-lib-btn__label">{{ .linkText | default "Explore TOPP tools" }}</span></a>
-      </article>
-      {{- end }}
-
-      <div class="openms-lib-resources__grid" role="list">
-        {{- range $i, $item := $resources }}
-        <a
-          class="openms-lib-resources__item openms-lib-hub__reveal{{- if modBool $i 2 }} openms-lib-hub__reveal--right{{- else }} openms-lib-hub__reveal--scale{{- end }}"
-          role="listitem"
-          href="{{ $item.url }}"
-          {{- if in $item.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
         >
-          <div class="openms-lib-resources__item-top">
-            {{- with $item.icon }}
-            <span class="openms-lib-resources__item-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
-            {{- end }}
-            {{- with $item.tag }}
-            <span class="openms-lib-resources__item-tag">{{ . }}</span>
-            {{- end }}
-          </div>
-          <h3 class="openms-lib-resources__item-title">{{ $item.title }}</h3>
-          {{- with $item.text }}
-          <p class="openms-lib-resources__item-text">{{ . }}</p>
+          {{- with .icon }}
+          <span class="openms-lib-resources__explore-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+          {{- else }}
+          <span class="openms-lib-resources__explore-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
           {{- end }}
-          <span class="openms-lib-resources__item-link">
-            {{ $item.linkText | default $item.title }}<span aria-hidden="true"> →</span>
+          {{- with .tag }}
+          <span class="openms-lib-resources__explore-tag">{{ . }}</span>
+          {{- end }}
+          <h3 class="openms-lib-resources__explore-title">{{ .title }}</h3>
+          {{- with .text }}
+          <p class="openms-lib-resources__explore-text">{{ . }}</p>
+          {{- end }}
+          <span class="openms-lib-resources__explore-link">
+            {{ .linkText | default "Learn more" }}<span aria-hidden="true"> →</span>
           </span>
         </a>
+        {{- else }}
+        <div class="openms-lib-resources__explore-card openms-lib-resources__explore-card--pending">
+          {{- with .icon }}
+          <span class="openms-lib-resources__explore-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
+          {{- else }}
+          <span class="openms-lib-resources__explore-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+          {{- end }}
+          {{- with .tag }}
+          <span class="openms-lib-resources__explore-tag">{{ . }}</span>
+          {{- end }}
+          <h3 class="openms-lib-resources__explore-title">{{ .title }}</h3>
+          {{- with .text }}
+          <p class="openms-lib-resources__explore-text">{{ . }}</p>
+          {{- end }}
+          <span class="openms-lib-resources__explore-link openms-lib-resources__explore-link--pending">
+            {{ .linkText | default "Coming soon" }}
+          </span>
+        </div>
         {{- end }}
-      </div>
-    </div>
-  </div>
+      </li>
+      {{- end }}
+    </ul>
+    {{- end }}
 
-  {{- with $support }}
-  <aside class="openms-lib-resources__support openms-lib-hub__reveal openms-lib-hub__reveal--scale" aria-label="{{ .title }}">
-    <div class="openms-lib-resources__support-inner">
-      <div class="openms-lib-resources__support-copy">
-        <h3 class="openms-lib-resources__support-title">{{ .title }}</h3>
+    {{- with $support }}
+    <aside class="openms-lib-resources__assist openms-lib-hub__reveal" aria-label="{{ .title }}">
+      <div class="openms-lib-resources__assist-copy">
+        <h3 class="openms-lib-resources__assist-title">{{ .title }}</h3>
         {{- with .text }}
-        <p class="openms-lib-resources__support-text">{{ . }}</p>
+        <p class="openms-lib-resources__assist-text">{{ . }}</p>
         {{- end }}
       </div>
       {{- with .links }}
-      <ul class="openms-lib-resources__support-channels">
-        {{- range $link := . }}
-        <li>
-          <a
-            class="openms-lib-resources__support-channel"
-            href="{{ $link.url }}"
-            {{- if in $link.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
-          >
-            {{- with $link.icon }}
-            <span class="openms-lib-resources__support-channel-icon" aria-hidden="true"><i class="{{ . }}"></i></span>
-            {{- end }}
-            <span class="openms-lib-resources__support-channel-body">
-              <span class="openms-lib-resources__support-channel-name">{{ $link.name }}</span>
-              {{- with $link.text }}
-              <span class="openms-lib-resources__support-channel-text">{{ . }}</span>
-              {{- end }}
-            </span>
-            <span class="openms-lib-resources__support-channel-arrow" aria-hidden="true">→</span>
-          </a>
-        </li>
+      <div class="openms-lib-resources__assist-actions">
+        {{- range $i, $link := . }}
+        <a
+          class="openms-lib-btn{{- if eq $i 0 }} openms-lib-btn--primary{{- else }} openms-lib-btn--ghost{{- end }} openms-lib-resources__assist-btn"
+          href="{{ $link.url }}"
+          {{- if in $link.url "://" }} target="_blank" rel="noopener noreferrer"{{- end }}
+        >
+          {{- with $link.icon }}
+          <i class="{{ . }}" aria-hidden="true"></i>
+          {{- end }}
+          <span class="openms-lib-btn__label">{{ $link.name }}</span>
+        </a>
         {{- end }}
-      </ul>
+      </div>
       {{- end }}
-    </div>
-  </aside>
-  {{- end }}
+    </aside>
+    {{- end }}
+  </div>
 </section>

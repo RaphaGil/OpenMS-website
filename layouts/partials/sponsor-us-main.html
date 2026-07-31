@@ -79,19 +79,43 @@
   </div>
 
   <div id="current-sponsors" class="openms-lib-page__anchor">
-    <section class="openms-lib-resources openms-lib-resources--no-feature" aria-labelledby="current-sponsors-title">
-      <div class="openms-lib-resources__inner">
-        <header class="openms-lib-resources__head">
-          <p class="openms-lib-resources__eyebrow">Community</p>
-          <h2 id="current-sponsors-title" class="openms-lib-resources__title">Current sponsors</h2>
-          <p class="openms-lib-resources__lead"><span>OpenMS receives direct funding from the organizations below.</span><span>We are grateful for their support of open-source mass spectrometry software.</span></p>
-        </header>
-
-        <div class="about-sponsors-logos sponsors-logo-grid" role="list" aria-label="OpenMS sponsors">
-          {{- range .Site.Params.aboutPage.sponsors -}}
-          {{ partial "about-sponsor-logo.html" . }}
-          {{- end -}}
+    <section class="sponsor-logos" aria-labelledby="current-sponsors-title">
+      <div class="sponsor-logos__inner">
+        <div class="sponsor-logos__copy">
+          <p class="sponsor-logos__eyebrow">Community</p>
+          <h2 id="current-sponsors-title" class="sponsor-logos__title">Current sponsors</h2>
+          <p class="sponsor-logos__lead">
+            OpenMS receives direct funding from the organizations below.
+            We are grateful for their support of open-source mass spectrometry software.
+          </p>
         </div>
+
+        <ul class="sponsor-logos__rail" role="list" aria-label="OpenMS sponsors">
+          {{- range .Site.Params.aboutPage.sponsors -}}
+          {{- $name := .name | default "Sponsor" -}}
+          {{- $url := .url | default "#" -}}
+          {{- $logo := .logo | default "" -}}
+          {{- $alt := .alt | default $name -}}
+          <li class="sponsor-logos__item" role="listitem">
+            <a
+              class="sponsor-logos__link"
+              href="{{ $url }}"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+            >
+              {{- if $logo -}}
+              <img class="sponsor-logos__img" src="{{ $logo }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+              {{- else -}}
+              <span class="sponsor-logos__fallback">{{ $name }}</span>
+              {{- end -}}
+            </a>
+          </li>
+          {{- end -}}
+        </ul>
+
+        <p class="sponsor-logos__more">
+          <a href="/our-sponsors/">See all sponsors<span aria-hidden="true"> →</span></a>
+        </p>
       </div>
     </section>
   </div>
@@ -149,12 +173,15 @@
           <h2 id="become-a-sponsor-title" class="openms-lib-developers__card-title">
             <span>Become a sponsor</span>
           </h2>
-          <p class="openms-lib-developers__card-text">Whether you represent a company, institute, or foundation, we would like to hear about your goals and how sponsorship can support OpenMS development and the broader community.</p>
+          <p class="openms-lib-developers__card-text">
+            <span class="sponsor-cta-line">Whether you represent a company, institute, or foundation, we would like to hear about your goals</span>
+            <span class="sponsor-cta-line">and how sponsorship can support OpenMS development and the broader community.</span>
+          </p>
           <div class="openms-lib-developers__platforms" role="group" aria-label="Sponsorship actions">
             <a class="openms-lib-btn openms-lib-btn--primary" href="/contact/">
               <span class="openms-lib-btn__label">Contact us</span>
             </a>
-            <a class="openms-lib-btn openms-lib-btn--primary" href="/donate/">
+            <a class="openms-lib-btn openms-lib-btn--ghost" href="/donate/">
               <span class="openms-lib-btn__label">Make a donation</span>
             </a>
           </div>

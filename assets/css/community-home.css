@@ -49,7 +49,7 @@
 }
 
 .community-home__content {
-  max-width: min(100%, 38rem);
+  max-width: min(100%, 52rem);
   min-width: 0;
 }
 
@@ -57,54 +57,47 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin: 0 0 0.85rem;
-  padding: 0.35rem 0.75rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
   font-family: var(--openms-font-body);
   font-size: var(--openms-text-min);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  color: var(--openms-white);
-  background: rgba(var(--openms-white-rgb), 0.12);
-  border: 1px solid rgba(var(--openms-white-rgb), 0.24);
-  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--openms-blue-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .community-home__eyebrow-icon {
-  display: inline-flex;
-  line-height: 0;
-  opacity: 0.9;
+  display: none;
 }
 
 .community-home__eyebrow-icon svg {
-  display: block;
-  width: 0.875rem;
-  height: 0.875rem;
+  display: none;
 }
 
 .community-home__title {
   margin: 0;
   font-family: var(--openms-font-heading);
-  font-size: clamp(1.85rem, 3.8vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-size: var(--home-section-head-title-size, calc(var(--openms-heading-lg-size) * 1.15));
+  font-weight: var(--openms-heading-lg-weight, 700);
+  line-height: 1.3;
+  letter-spacing: normal;
   color: var(--openms-white);
+  text-align: left;
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
 .community-home__title-accent {
   display: inline;
-  background: linear-gradient(
-    90deg,
-    var(--openms-blue-secondary) 0%,
-    var(--openms-purple) 50%,
-    var(--openms-pink) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--openms-blue-secondary);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: currentColor;
 }
 
 .community-home__lead {
@@ -174,10 +167,6 @@
   .community-home__inner {
     padding-block: clamp(3.75rem, 7.5vh, 5.75rem);
     padding-inline: var(--home-pad-x);
-  }
-
-  .community-home__title {
-    font-size: clamp(1.55rem, 5vw, 2rem);
   }
 }
 

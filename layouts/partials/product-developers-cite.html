@@ -57,7 +57,7 @@
       <a class="openms-lib-btn openms-lib-btn--primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $actionText }}</a>
       {{- end }}
       {{- with $moreUrl }}
-      <a class="openms-lib-btn openms-lib-btn--outline" href="{{ . }}">{{ $moreText }}</a>
+      <a class="openms-lib-btn {{ if $pubUrl }}openms-lib-btn--outline{{ else }}openms-lib-btn--primary{{ end }}" href="{{ . }}">{{ $moreText }}</a>
       {{- end }}
     </div>
   </article>

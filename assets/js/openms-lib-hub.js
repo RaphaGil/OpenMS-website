@@ -40,6 +40,10 @@
     markReveal(tile, index + 1, index === 0 ? "scale" : index % 2 === 0 ? "left" : "right");
   });
 
+  page.querySelectorAll("#what-is-openms .openms-lib-about__list-item").forEach(function (item, index) {
+    markReveal(item, index + 1, index % 2 === 0 ? "scale" : "right");
+  });
+
   page.querySelectorAll(".openms-lib-topp__intro").forEach(function (el) {
     markReveal(el, 0, "left");
   });

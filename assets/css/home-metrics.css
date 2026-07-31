@@ -40,8 +40,8 @@
 .home-metrics__value {
   display: flex;
   align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 0.1rem 0.15rem;
+  flex-wrap: nowrap;
+  gap: 0;
   margin: 0;
   font-family: var(--openms-font-heading);
   font-weight: 800;
@@ -49,10 +49,12 @@
   line-height: 0.9;
   letter-spacing: -0.04em;
   color: var(--openms-navy);
+  white-space: nowrap;
 }
 
 .home-metrics__prefix,
 .home-metrics__suffix {
+  flex-shrink: 0;
   font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
   line-height: 0.9;
@@ -63,6 +65,26 @@
   font: inherit;
   color: inherit;
   font-size: clamp(2.75rem, 6vw, 4.25rem);
+  min-width: 0;
+  flex: 0 1 auto;
+  order: 0;
+  white-space: nowrap;
+}
+
+.home-metrics__suffix {
+  margin-left: -0.02em;
+}
+
+.home-metrics__prefix {
+  margin-right: -0.02em;
+}
+
+.home-metrics__value[aria-label="Citations"] .home-metrics__suffix {
+  margin-left: 0.08em;
+}
+
+.home-metrics__value[aria-label="Citations"] .hero-modern__stat-number {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
 }
 
 .home-metrics__value--text {
@@ -103,5 +125,25 @@
   .home-metrics__prefix,
   .home-metrics__suffix {
     font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .home-metrics__value[aria-label="Citations"] .hero-modern__stat-number {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+  }
+
+  .home-metrics__value .hero-modern__stat-number {
+    min-width: 0;
+  }
+
+  .home-metrics__suffix {
+    margin-left: 0;
+  }
+
+  .home-metrics__prefix {
+    margin-right: 0;
+  }
+
+  .home-metrics__value[aria-label="Citations"] .home-metrics__suffix {
+    margin-left: 0.08em;
   }
 }

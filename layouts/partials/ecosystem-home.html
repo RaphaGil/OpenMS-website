@@ -1,4 +1,5 @@
 {{- $cfg := site.Params.ecosystemSection | default dict -}}
+{{- $eyebrow := index $cfg "eyebrow" | default "Ecosystem" -}}
 {{- $title := index $cfg "title" | default "Build your own pipelines using our ecosystem" -}}
 {{- $titleHighlight := index $cfg "titleHighlight" | default "ecosystem" -}}
 {{- $items := index $cfg "items" | default (slice) -}}
@@ -7,6 +8,9 @@
   <div class="ecosystem-home__inner">
     <header class="ecosystem-home__header">
       <div class="ecosystem-home__header-main">
+        {{- with $eyebrow }}
+        <p class="ecosystem-home__eyebrow">{{ . }}</p>
+        {{- end }}
         <h2 id="ecosystem-home-title" class="ecosystem-home__title">
           {{- if and $titleHighlight (in $title $titleHighlight) }}
           {{ replace $title $titleHighlight (printf "<span class=\"ecosystem-home__title-accent\">%s</span>" $titleHighlight) | safeHTML }}
@@ -30,19 +34,30 @@
           {{- if $external }} target="_blank" rel="noopener noreferrer"{{- end }}
         >
           <span class="ecosystem-home__card-accent" aria-hidden="true"></span>
-          {{- with $tag }}
           <div class="ecosystem-home__card-top">
-            <span class="ecosystem-home__card-tag">{{ . }}</span>
-          </div>
-          {{- end }}
-          <div class="ecosystem-home__card-body">
             <h3 class="ecosystem-home__card-title">{{ .name }}</h3>
+            {{- with $tag }}
+            <span class="ecosystem-home__card-tag">{{ . }}</span>
+            {{- end }}
+          </div>
+          <div class="ecosystem-home__card-body">
             {{- with .description }}
             <p class="ecosystem-home__card-text">{{ . }}</p>
             {{- end }}
-            <span class="ecosystem-home__card-link">
-              Learn more<span class="ecosystem-home__card-link-icon" aria-hidden="true">→</span>
-            </span>
+            <div class="ecosystem-home__card-footer">
+              <span class="ecosystem-home__card-link">
+                Learn more<span class="ecosystem-home__card-link-icon" aria-hidden="true">→</span>
+              </span>
+              {{- with .icon }}
+              <img
+                class="ecosystem-home__card-icon"
+                src="{{ . | relURL }}"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              {{- end }}
+            </div>
           </div>
         </a>
       </li>
