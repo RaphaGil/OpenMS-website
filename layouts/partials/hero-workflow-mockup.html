@@ -1,0 +1,54 @@
+{{- $hero := .Site.Params.hero }}
+{{- $mockup := index $hero "mockup" | default dict }}
+{{- $label := index $mockup "label" | default "Open data" }}
+{{- $labelArrow := index $mockup "labelArrow" | default "→" }}
+{{- $labelAfter := index $mockup "labelAfter" | default "clear results" }}
+{{- $brand := index $mockup "brand" | default "OPENMS" }}
+{{- $bars := index $mockup "bars" | default (slice 38 55 82 64 47 90 70 58 75 40) }}
+{{- $metrics := index $mockup "metrics" }}
+
+<aside class="hero-mockup" aria-label="{{ index $hero "imageAlt" | default "OpenMS workflow preview" }}">
+  <div class="hero-mockup__window">
+    <div class="hero-mockup__chrome" aria-hidden="true">
+      <span class="hero-mockup__chrome-dot"></span>
+      <span class="hero-mockup__chrome-dot"></span>
+      <span class="hero-mockup__chrome-dot"></span>
+    </div>
+
+    <div class="hero-mockup__body">
+      <div class="hero-mockup__meta-row">
+        <p class="hero-mockup__tagline">
+          <span class="hero-mockup__tagline-dot" aria-hidden="true"></span>
+          <span class="hero-mockup__tagline-text">
+            <span class="hero-mockup__tagline-lead">{{ $label }}</span>
+            <span class="hero-mockup__tagline-arrow" aria-hidden="true">{{ $labelArrow }}</span>
+            <span class="hero-mockup__tagline-result">{{ $labelAfter }}</span>
+          </span>
+        </p>
+        <p class="hero-mockup__brand">{{ $brand }}</p>
+      </div>
+
+      <div class="hero-mockup__chart" aria-hidden="true">
+        {{- range $i, $h := $bars }}
+        <span class="hero-mockup__bar" style="--bar-h: {{ $h }}%"></span>
+        {{- end }}
+      </div>
+
+      {{- with $metrics }}
+      <div class="hero-mockup__metrics">
+        {{- range . }}
+        <div class="hero-mockup__metric">
+          <p class="hero-mockup__metric-label">{{ .label }}</p>
+          <p class="hero-mockup__metric-value">
+            {{ .value }}
+            {{- with .delta }}
+            <span class="hero-mockup__metric-delta">{{ . }}</span>
+            {{- end }}
+          </p>
+        </div>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</aside>

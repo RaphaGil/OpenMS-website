@@ -1,13 +1,16 @@
 {{- $hero := .Site.Params.hero }}
-{{- $titleBefore := index $hero "titleBefore" | default "The " }}
-{{- $titleHighlight := index $hero "titleHighlight" | default "open-source framework" }}
-{{- $titleAfter := index $hero "titleAfter" | default " for Mass Spectrometry" }}
+{{- $eyebrow := index $hero "eyebrow" }}
+{{- $titleBefore := index $hero "titleBefore" | default "Open science. " }}
+{{- $titleMid := index $hero "titleMid" | default "Clear results for " }}
+{{- $titleHighlight := index $hero "titleHighlight" | default "mass spectrometry" }}
+{{- $titleAfter := index $hero "titleAfter" | default "." }}
 {{- $description := index $hero "description" }}
 {{- $buttonText := index $hero "buttontext" }}
 {{- $buttonLink := index $hero "buttonlink" }}
 {{- $secondaryText := index $hero "secondaryButtonText" }}
 {{- $secondaryLink := index $hero "secondaryButtonLink" }}
 {{- $microcopy := index $hero "microcopy" }}
+{{- $trustNote := index $hero "trustNote" }}
 
 <div class="hero-home">
   <section class="hero-home__main" aria-label="Homepage introduction">
@@ -15,8 +18,17 @@
       <div class="hero-home__hero-grid">
         <div class="hero-home__copy">
           <div class="hero-home__content">
+            {{- with $eyebrow }}
+            <p class="hero-home__eyebrow">
+              <span class="hero-home__eyebrow-dot" aria-hidden="true"></span>
+              {{ . }}
+            </p>
+            {{- end }}
             <h1 class="hero-home__title">
-              {{ $titleBefore }}<span class="hero-home__title-accent">{{ $titleHighlight }}</span>{{ $titleAfter }}
+              <span class="hero-home__title-line">{{ $titleBefore }}</span>
+              <span class="hero-home__title-line">
+                {{ $titleMid }}<span class="hero-home__title-accent">{{ $titleHighlight }}</span>{{ $titleAfter }}
+              </span>
             </h1>
             {{- with $description }}
             <p class="hero-home__description">{{ . }}</p>
@@ -37,7 +49,7 @@
                 {{- end }}
                 {{- if and $secondaryText $secondaryLink }}
                 <a
-                  class="hero-home__btn hero-home__btn--secondary"
+                  class="hero-home__btn hero-home__btn--secondary openms-btn-primary"
                   href="{{ $secondaryLink }}"
                   {{- if in $secondaryLink "://" }}
                   rel="noopener noreferrer"
@@ -45,23 +57,33 @@
                 >{{ $secondaryText }}</a>
                 {{- end }}
               </div>
+              {{- with $trustNote }}
+              <p class="hero-home__note">
+                {{- range $i, $item := split . " · " }}
+                <span class="hero-home__note-item hero-home__note-item--{{ add $i 1 }}">
+                  <span class="hero-home__note-dot" aria-hidden="true"></span>
+                  {{ trim $item " " }}
+                </span>
+                {{- end }}
+              </p>
+              {{- end }}
             </div>
+
+            {{- with $microcopy }}
+            <ul class="hero-home__highlights" role="list" aria-label="Platform highlights">
+              {{- range $i, $item := split . " · " }}
+              <li class="hero-home__highlight hero-home__highlight--{{ add $i 1 }}">
+                <span class="hero-home__highlight-dot" aria-hidden="true"></span>
+                {{ trim $item " " }}
+              </li>
+              {{- end }}
+            </ul>
+            {{- end }}
           </div>
         </div>
 
         <div class="hero-home__visual">
-          <div class="hero-home__visual-shell">
-            {{ partial "hero-logo-diagram.html" . }}
-            {{- with $microcopy }}
-            <div class="hero-home__visual-caption">
-              <ul class="hero-home__highlights" role="list" aria-label="Platform highlights">
-                {{- range split . " · " }}
-                <li class="hero-home__highlight">{{ trim . " " }}</li>
-                {{- end }}
-              </ul>
-            </div>
-            {{- end }}
-          </div>
+          {{ partial "hero-workflow-mockup.html" . }}
         </div>
       </div>
     </div>

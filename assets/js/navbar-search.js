@@ -246,5 +246,34 @@
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".navbar-search").forEach(setupSearch);
     updateHeaderHeight();
+
+    document.addEventListener("keydown", function (e) {
+      if (!(e.key === "k" || e.key === "K")) return;
+      if (!(e.metaKey || e.ctrlKey)) return;
+      var target = e.target;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+      var root =
+        document.querySelector(".navbar-search--desktop") ||
+        document.querySelector(".navbar-search");
+      if (!root) return;
+      var toggle = root.querySelector(".navbar-search__toggle");
+      var panel = root.querySelector(".navbar-search__panel");
+      var input = root.querySelector(".navbar-search__input");
+      if (!toggle || !panel || !input) return;
+      e.preventDefault();
+      if (root.classList.contains("is-open")) {
+        input.focus();
+        return;
+      }
+      openPanel(root, toggle, panel, input);
+    });
   });
 })();

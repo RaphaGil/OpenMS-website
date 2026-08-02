@@ -1,7 +1,7 @@
 /* Homepage — Latest news + Upcoming events side-by-side (Galaxy-style) */
 
 .community-events-home--with-news {
-  --news-events-col-gap: clamp(2rem, 5vw, 4rem);
+  --news-events-col-gap: clamp(1.25rem, 3vw, 2.25rem);
   --news-events-item-gap: clamp(1.25rem, 2.5vw, 1.75rem);
   --news-events-title-size: clamp(1.35rem, 2.4vw, 1.75rem);
 }
@@ -177,18 +177,18 @@
 
 @media (min-width: 900px) {
   .community-news-events__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     align-items: start;
     gap: var(--news-events-col-gap);
   }
 
   .community-news-events__column--news {
-    padding-right: clamp(0.5rem, 2vw, 1.5rem);
+    padding-right: clamp(0.35rem, 1.2vw, 0.85rem);
     border-right: 1px solid rgba(var(--openms-navy-rgb), 0.08);
   }
 
   .community-news-events__column--events {
-    padding-left: clamp(0.5rem, 2vw, 1.5rem);
+    padding-left: clamp(0.15rem, 0.8vw, 0.55rem);
   }
 }
 

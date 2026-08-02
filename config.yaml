@@ -473,19 +473,29 @@ languages:
         minChars: 2
         maxResults: 8
       hero:
-        titleBefore: "Open Science. "
-        titleHighlight: Clear Results
-        titleAfter: ""
+        eyebrow: Open-source · Free forever
+        titleBefore: "Open science. "
+        titleMid: "Clear results for "
+        titleHighlight: "mass spectrometry"
+        titleAfter: "."
         description: >-
           Expert-crafted ecosystem of computational mass spectrometry tools.
           Run scientifically vetted, cutting edge apps. Build custom tools on top
           of robust open-source algorithms. Join the OpenMS community.
-        imageAlt: Animated OpenMS logo with pulsing peak diagram
+        imageAlt: OpenMS peptide identification workflow preview
         buttontext: Get started
         buttonlink: https://openms.readthedocs.io/en/latest/about/installation.html
         secondaryButtonText: Explore the library
         secondaryButtonLink: /openms-lib/
-        microcopy: Ready-to-use-apps · Modular workflows · Built by the community
+        trustNote: Ready-to-use apps · Modular workflows · Built by the community
+        microcopy: ""
+        mockup:
+          label: Open data
+          labelArrow: "→"
+          labelAfter: clear results
+          brand: OPENMS
+          bars: [38, 55, 82, 64, 47, 90, 70, 58, 75, 40]
+
 
       homeMetrics:
         stats:
@@ -654,7 +664,7 @@ languages:
           - title: Open by design
             text: Open source under the BSD-3 clause license
           - title: Global community
-            text: Backed by an active community of researchers and developers
+            text: Backed by an active community of<br>researchers and developers
           - title: Built for scale
             text: High performance and optimized for scale
 
@@ -739,7 +749,12 @@ languages:
           authors: >-
             Pfeuffer, Julianus; Bielow, Chris; Wein, Samuel; Jeong, Kyowon; Netz,
             Eugen; Walter, Axel; Alka, Oliver; Nilse, Lars; Colaianni, Pasquale
-            Domenico; McCloskey, Douglas
+            Domenico; McCloskey, Douglas; Kim, Jihyung; Rosenberger, George;
+            Bichmann, Leon; Walzer, Mathias; Veit, Johannes; Boudaud, Bertrand;
+            Bernt, Matthias; Patikas, Nikolaos; Pilz, Matteo; Startek, Michał Piotr;
+            Kutuzova, Svetlana; Heumos, Lukas; Charkow, Joshua; Sing, Justin Cyril;
+            Feroz, Ayesha; Siraj, Arslan; Weisser, Hendrik; Dijkstra, Tjeerd M. H.;
+            Perez-Riverol, Yasset; Röst, Hannes; Kohlbacher, Oliver; Sachsenberg, Timo
           actionText: View on PubMed
           moreUrl: /publications/
           moreText: More citations
@@ -781,13 +796,6 @@ languages:
             hoverText: Dive into OpenMS-lib architecture, coding standards, and contribution workflows.
             url: https://openms.readthedocs.io/en/latest/manual/develop.html
             linkText: Open docs
-          - title: Add a TOPP tool
-            tag: Extend
-            icon: fas fa-puzzle-piece
-            subtitle: Extend the TOPP pipeline suite.
-            hoverText: Follow the step-by-step guide to add a new tool to the TOPP command-line pipeline suite.
-            url: https://openms.readthedocs.io/en/latest/manual/develop/adding-new-tool-to-topp.html
-            linkText: Follow the guide
           - title: Developer FAQ
             tag: Help
             icon: fas fa-question-circle
@@ -795,22 +803,30 @@ languages:
             hoverText: Find answers to frequent questions about building, testing, and contributing to OpenMS.
             url: https://openms.readthedocs.io/en/latest/manual/develop/developer-faq.html
             linkText: Browse FAQ
-
-      openmsLibReview:
-        eyebrow: Community review
-        title: Reviewing Pull Requests
-        lead: Help move contributions forward by reviewing open pull requests on GitHub.
-        badge:
-          src: https://img.shields.io/github/issues-pr/OpenMS/OpenMS?label=open%20PRs&color=1a56db&style=flat-square
-          alt: Number of open OpenMS pull requests
-          url: https://github.com/OpenMS/OpenMS/pulls
-        platforms:
-          - name: View open PRs
-            icon: fab fa-github
-            url: https://github.com/OpenMS/OpenMS/pulls
-          - name: How to review PRs
-            icon: fas fa-book-open
-            url: https://github.com/ParadiseSS13/Paradise/discussions/19410
+          - title: Add a TOPP tool
+            tag: Extend
+            icon: fas fa-puzzle-piece
+            subtitle: Extend the TOPP pipeline suite.
+            hoverText: Follow the step-by-step guide to add a new tool to the TOPP command-line pipeline suite.
+            url: https://openms.readthedocs.io/en/latest/manual/develop/adding-new-tool-to-topp.html
+            linkText: Follow the guide
+          - title: Reviewing Pull Requests
+            type: links
+            tag: Review
+            icon: fas fa-code-branch
+            subtitle: Help move contributions forward by reviewing open pull requests on GitHub.
+            platformsAlwaysVisible: true
+            badge:
+              src: https://img.shields.io/github/issues-pr/OpenMS/OpenMS?label=open%20PRs&color=1a56db&style=flat-square
+              alt: Number of open OpenMS pull requests
+              url: https://github.com/OpenMS/OpenMS/pulls
+            platforms:
+              - name: View open PRs
+                icon: fab fa-github
+                url: https://github.com/OpenMS/OpenMS/pulls
+              - name: How to review PRs
+                icon: fas fa-book-open
+                url: https://github.com/ParadiseSS13/Paradise/discussions/19410
 
       pyopenmsPage:
         highlights:
@@ -863,7 +879,7 @@ languages:
             title: >-
               pyOpenMS: a Python-based interface to the OpenMS mass-spectrometry
               algorithm library
-            url: https://www.ncbi.nlm.nih.gov/pubmed/25410388
+            url: https://pubmed.ncbi.nlm.nih.gov/24420968/
             journal: Proteomics
             year: "2014"
             authors: Röst, Hannes L; Schmitt, Uwe; Aebersold, Ruedi; Malmström, Lars
@@ -933,8 +949,13 @@ languages:
             title: >-
               pyOpenMS-viz: Streamlining Mass Spectrometry Data Visualization
               with pandas
-            journal: bioRxiv
+            url: https://pubmed.ncbi.nlm.nih.gov/40019346/
+            journal: Journal of Proteome Research
             year: "2025"
+            authors: >-
+              Sing, Justin Cyril; Charkow, Joshua; Walter, Axel; Gao, Mingxuan;
+              Müller, Tom David; Bittremieux, Wout; Sachsenberg, Timo; Röst, Hannes Luc
+            actionText: View on PubMed
             moreUrl: /publications/
             moreText: More citations
           boxes:
@@ -1013,6 +1034,7 @@ languages:
                   url: https://abi-services.cs.uni-tuebingen.de/umetaflow/
                 - name: OpenDDA
                   logo: /images/webapp/logo/openDDA.svg
+                  logoSize: large
                   url: http://opendda.webapps.openms.org/
 
         developers:
@@ -1145,6 +1167,7 @@ languages:
           variant: nfcore-pipeline
           tag: NF-Core pipeline
           logo: /images/webapp/logo/nf-core.png
+          logoSize: wide
           description: >-
             A bioinformatics analysis pipeline used for quantitative processing
             of data independent (DIA) proteomics data.
@@ -1253,7 +1276,7 @@ languages:
             tag: C++ library
             accent: openms-lib
             size: wide
-            icon: /images/logos/OpenMS_transparent_whiteFont.svg
+            icon: /images/logos/OpenMS_transparent_blackFont.svg
             description: >-
               Reusable C++ algorithms and data structures for mass spectrometry
               software. Ships with The OpenMS Pipeline (TOPP) command line tools
@@ -1335,6 +1358,8 @@ languages:
                 link: /our-sponsors/
               - text: Our Sponsorship Program
                 link: /sponsor-us/
+              - text: Research Partnerships
+                link: /research-partnerships/
               - text: Publications
                 link: /publications
               - text: Leadership
@@ -1420,14 +1445,17 @@ languages:
               url: /our-sponsors/
             - title: Our Sponsorship Program
               url: /sponsor-us/
+            - title: Research Partnerships
+              url: /research-partnerships/
             - title: Publications
               url: /publications
             - title: Leadership
               url: /contributors/
             - title: Contact
               url: /contact/
-        - title: Research Partnerships
-          url: /research-partnerships/
+        - title: Sponsor Us
+          url: /sponsor-us/
+          button: true
         - title: Partner with OpenMS
           shortTitle: Partner
           url: /research-partnerships/
