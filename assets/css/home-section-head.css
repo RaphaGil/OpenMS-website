@@ -63,6 +63,10 @@
   text-align: left;
 }
 
+.home-page .home-page__block--projects .webapps-featured__eyebrow {
+  color: var(--openms-text-soft, rgba(var(--openms-dark-rgb), 0.55)) !important;
+}
+
 .home-page .hero-home__eyebrow,
 .home-page .home-page__block--projects .webapps-featured__eyebrow,
 .home-page .community-events-home__eyebrow,
@@ -166,11 +170,16 @@
   -webkit-text-fill-color: currentColor;
 }
 
-/* Featured Apps + Ecosystem + Contact — section titles in OpenMS navy */
+/* Featured Apps — section title in gray, not navy/blue */
 .home-page .home-page__block--projects .webapps-featured__title,
+.home-page .home-page__block--projects .webapps-featured__title-accent {
+  color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72)) !important;
+  -webkit-text-fill-color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72)) !important;
+}
+
+/* Ecosystem + Contact — section titles in OpenMS navy */
 .home-page .home-page__block--ecosystem .ecosystem-home__title,
 .home-page .contact-home__title,
-.home-page .home-page__block--projects .webapps-featured__title-accent,
 .home-page .home-page__block--ecosystem .ecosystem-home__title-accent,
 .home-page .contact-home__title-accent {
   color: var(--home-title-color, var(--openms-navy)) !important;

@@ -114,6 +114,31 @@
   color: var(--openms-section-title-color, var(--openms-navy)) !important;
 }
 
+.home-page .webapps-featured__title,
+.home-page .webapps-featured__title-accent {
+  color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72)) !important;
+  -webkit-text-fill-color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72)) !important;
+}
+
+.home-page .webapps-featured__eyebrow {
+  color: var(--openms-text-soft, rgba(var(--openms-dark-rgb), 0.55)) !important;
+}
+
+.openms-lib-page--featured .openms-lib-hero__eyebrow,
+.openms-lib-page--featured-pro .openms-lib-hero__eyebrow {
+  color: var(--openms-text-soft, rgba(var(--openms-dark-rgb), 0.55)) !important;
+}
+
+.openms-lib-page--featured .openms-lib-hero__title,
+.openms-lib-page--featured .openms-lib-hero__accent,
+.openms-lib-page--featured .openms-lib-hero__accent--warm,
+.openms-lib-page--featured-pro .openms-lib-hero__title,
+.openms-lib-page--featured-pro .openms-lib-hero__accent,
+.openms-lib-page--featured-pro .openms-lib-hero__accent--warm {
+  color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72)) !important;
+  -webkit-text-fill-color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72)) !important;
+}
+
 /* Navy CTA bands — keep titles white over dark backgrounds */
 .contribute-coc-band__kicker,
 .contribute-coc-band__text strong,

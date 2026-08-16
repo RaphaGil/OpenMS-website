@@ -1920,7 +1920,7 @@
 /* Eyebrow / title / lead type: home-section-head.css */
 
 .home-page__block--projects .webapps-featured__title-accent {
-  color: var(--home-title-color, var(--openms-navy));
+  color: var(--openms-text-muted, rgba(var(--openms-dark-rgb), 0.72));
   background: none;
   -webkit-background-clip: unset;
   background-clip: unset;
