@@ -5432,7 +5432,7 @@
 
 .openms-lib-page--featured-pro .webapps-project-detail-card__name {
   font-family:var(--openms-font-heading);
-  color:var(--openms-navy)
+  color:var(--openms-card-title-color, var(--openms-text-muted))
 }
 .openms-lib-page--featured-pro .webapps-project-detail-card__text {
   margin:0;

@@ -292,13 +292,13 @@ section.webapps-featured::after {
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: var(--openms-navy);
+  color: var(--openms-card-title-color, var(--openms-text-muted));
   transition: color 0.2s ease;
 }
 
 .webapps-project-card__surface:hover .webapps-project-card__name,
 .webapps-project-card__surface:focus-visible .webapps-project-card__name {
-  color: var(--home-link-color, var(--openms-navy));
+  color: var(--openms-card-title-color, var(--openms-text-muted));
 }
 
 .webapps-project-card__text {
@@ -747,7 +747,7 @@ section.webapps-featured::after {
   font-size: 0.9375rem; /* 15px */
   font-weight: 500;
   line-height: 1.25;
-  color: var(--openms-navy);
+  color: var(--openms-card-title-color, var(--openms-text-muted));
 }
 
 .webapps-project-detail-card__text {
