@@ -967,7 +967,7 @@
     overflow: visible !important;
   }
 
-  /* Homepage Featured Apps — full-height image + blue copy on mobile */
+  /* Homepage Featured Apps — full-height image + gray copy on mobile */
   .home-page__block--projects .webapps-project-card--catalog .webapps-project-card__surface {
     grid-template-columns: var(--webapps-logo-size, 6.5rem) minmax(0, 1fr) !important;
     align-items: stretch !important;
