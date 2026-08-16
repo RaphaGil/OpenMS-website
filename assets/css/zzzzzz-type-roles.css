@@ -328,8 +328,13 @@
 .contribute-way__text,
 .news-home__card-summary,
 .contact-home__card-text,
-.contact-page__path-desc,
+.contact-page__path-desc {
+  color: var(--openms-text-muted, var(--home-body-color, var(--olib-text-muted)));
+}
+
 .home-page__block--projects .webapps-project-card--catalog .webapps-project-card__text,
+.webapps-project-card__text,
+.webapps-project-detail-card__text,
 .home-metrics__description {
   color: var(--openms-text-muted, var(--home-body-color, var(--olib-text-muted))) !important;
 }
@@ -356,6 +361,10 @@
 .members .role {
   font-size: var(--openms-text-min) !important;
   font-weight: var(--openms-meta-weight, 600) !important;
+  color: var(--openms-text-soft, var(--pro-text-soft));
+}
+
+.home-metrics__label {
   color: var(--openms-text-soft, var(--pro-text-soft)) !important;
 }
 
