@@ -1,6 +1,7 @@
 ---
 title: "OpenMS For Proteomics"
 sidebar: false
+hideShortcuts: true
 ---
 
 {{< figure src="/images/content_images/kf/PROTEINS.jpeg" >}}

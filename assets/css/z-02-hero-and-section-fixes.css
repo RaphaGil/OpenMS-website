@@ -1,0 +1,1181 @@
+/* ===== z-hero-sm.css ===== */
+/* Homepage hero — professional responsive UX/UI
+   Loads last (z-*). Preserves brand colors, fonts, and copy.
+   Goals: clear hierarchy, consistent rhythm, diagram/trust aligned,
+   2-line lead, fluid type, comfortable CTAs at every breakpoint. */
+
+html body .home-page__hero {
+  --hero-copy-max: min(38rem, 48%);
+  --hero-diagram-max: min(36rem, 46%);
+  --hero-diagram-height: clamp(9.5rem, 5.5vw + 4rem, 12rem);
+  --hero-lead-width: min(100%, 48ch);
+  --hero-col-gap: clamp(2.5rem, 5vw, 6.5rem);
+  --hero-stack-gap: clamp(1.25rem, 2.8vh, 1.75rem);
+  --hero-copy-gap: 1rem;
+  --hero-note-size: clamp(0.875rem, 2.9cqi, 1.0625rem);
+}
+
+/* ── Shared: diagram + trust one unit ─────────────────────────── */
+html body .home-page__hero .hero-home__diagram {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: min(100%, var(--hero-diagram-max)) !important;
+  max-width: var(--hero-diagram-max) !important;
+  min-width: 0 !important;
+  container-type: inline-size !important;
+  container-name: hero-diagram;
+}
+
+html body .home-page__hero .hero-home__diagram .hero-mockup,
+html body .home-page__hero .hero-home__diagram .hero-mockup__stage,
+html body .home-page__hero .hero-home__diagram .hero-mockup__chart,
+html body .home-page__hero .hero-home__diagram .hero-home__note {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+html body .home-page__hero .hero-mockup__chart,
+html body .home-page__hero .hero-home__diagram .hero-mockup__chart {
+  height: var(--hero-diagram-height) !important;
+  gap: 0.35rem !important;
+}
+
+/* ── Shared: type ─────────────────────────────────────────────── */
+html body .home-page__hero .hero-home__title,
+html body .home-page__hero .hero-home__title-accent {
+  font-size: clamp(1.95rem, 0.85rem + 3.2vw, 3.35rem) !important;
+  line-height: 1.08 !important;
+  color: var(--openms-white) !important;
+  -webkit-text-fill-color: var(--openms-white) !important;
+}
+
+html body .home-page__hero .hero-home__title {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  width: max-content !important;
+  max-width: 100% !important;
+}
+
+html body .home-page__hero .hero-home__title-line {
+  display: block !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+}
+
+html body .home-page__hero .hero-home__title-accent {
+  white-space: nowrap !important;
+}
+
+html body .home-page__hero .hero-home__eyebrow {
+  font-size: clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem) !important;
+}
+
+/* Lead: 2 lines — full mass spectrometry clause | rest */
+html body .home-page__hero .hero-home__description {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.05em !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  margin-top: 0.35rem !important;
+  font-size: clamp(1.05rem, 0.98rem + 0.28vw, 1.25rem) !important;
+  line-height: 1.5 !important;
+  text-wrap: unset !important;
+  overflow-wrap: normal !important;
+}
+
+html body .home-page__hero .hero-home__description-line {
+  display: block !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+}
+
+html body .home-page__hero .hero-home__description-line--1,
+html body .home-page__hero .hero-home__description-line--2,
+html body .home-page__hero .hero-home__description-line--3 {
+  display: block !important;
+  white-space: nowrap !important;
+  width: max-content !important;
+  max-width: 100% !important;
+}
+/* Trust labels under bars */
+html body .home-page__hero .hero-home__note,
+html body .home-page__hero .hero-home__note--under-graphic {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 1.5rem 0 0 !important;
+  gap: clamp(0.9rem, 2.5vw, 1.5rem) !important;
+  font-size: var(--hero-note-size) !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+
+html body .home-page__hero .hero-home__note-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: clamp(0.32rem, 1cqi, 0.5rem) !important;
+  white-space: nowrap !important;
+}
+
+html body .home-page__hero .hero-home__note-dot {
+  width: clamp(0.35rem, 1cqi, 0.5rem) !important;
+  height: clamp(0.35rem, 1cqi, 0.5rem) !important;
+  flex-shrink: 0 !important;
+}
+
+html body .home-page__hero .hero-home__actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: calc(var(--openms-btn-glow-size, 6px) * 2 + 0.65rem) !important;
+}
+
+html body .home-page__hero .hero-home__actions .hero-home__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 2.75rem !important;
+  white-space: nowrap !important;
+}
+
+html body .home-page__hero .hero-home__highlights {
+  display: none !important;
+}
+
+/* ── Two-column: fluid sides + steady gap until stack ─────────── */
+@media (min-width: 901px) {
+  html body .home-page__hero {
+    --hero-copy-max: min(38rem, 48%);
+    --hero-diagram-max: min(36rem, 46%);
+    --hero-diagram-height: clamp(9.5rem, 5.5vw + 4rem, 12rem);
+    --hero-col-gap: clamp(2.5rem, 5vw, 6.5rem);
+    --hero-copy-gap: 1rem;
+    --hero-note-size: clamp(0.8125rem, 2.7cqi, 1.05rem);
+  }
+
+  html body .home-page__hero .hero-home {
+    min-height: clamp(28rem, 68svh, 42rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__main {
+    padding-top: clamp(4.5rem, 8vh, 6.5rem) !important;
+    padding-bottom: clamp(2rem, 4.5vh, 3.25rem) !important;
+    padding-inline: var(--openms-page-inline, clamp(1rem, 3.5vw, 2.5rem)) !important;
+  }
+
+  html body .home-page__hero .hero-home__inner {
+    max-width: var(--pro-max, 75rem) !important;
+    width: 100% !important;
+  }
+
+  /* Text left, diagram right; gap holds the distance */
+  html body .home-page__hero .hero-home__hero-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    gap: var(--hero-col-gap) !important;
+    width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-home__copy {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    flex: 1 1 0 !important;
+    gap: var(--hero-copy-gap) !important;
+    min-width: 0 !important;
+    max-width: var(--hero-copy-max) !important;
+    width: auto !important;
+    container-type: inline-size !important;
+    container-name: hero-copy;
+  }
+
+  html body .home-page__hero .hero-home__content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.7rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  html body .home-page__hero .hero-home__title,
+  html body .home-page__hero .hero-home__title-accent {
+    font-size: clamp(1.85rem, 0.9rem + 2.4vw, 3.35rem) !important;
+    max-width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-home__description {
+    font-size: clamp(0.92rem, 0.7rem + 0.45vw, 1.2rem) !important;
+    line-height: 1.45 !important;
+    gap: 0.1em !important;
+    margin-top: 0.15rem !important;
+  }
+
+  @supports (font-size: 1cqi) {
+    html body .home-page__hero .hero-home__title,
+    html body .home-page__hero .hero-home__title-accent {
+      font-size: clamp(1.85rem, 0.7rem + 5.5cqi, 3.35rem) !important;
+    }
+
+    html body .home-page__hero .hero-home__description {
+      font-size: clamp(0.92rem, 0.55rem + 1.6cqi, 1.2rem) !important;
+    }
+  }
+
+  html body .home-page__hero .hero-home__description-line--1,
+  html body .home-page__hero .hero-home__description-line--2,
+  html body .home-page__hero .hero-home__description-line--3 {
+    display: block !important;
+    white-space: nowrap !important;
+    width: max-content !important;
+    max-width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-home__footer,
+  html body .home-page__hero .hero-home__actions-block {
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+
+  html body .home-page__hero .hero-home__actions {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: calc(var(--openms-btn-glow-size, 6px) * 2 + 0.75rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__actions .hero-home__btn {
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  html body .home-page__hero .hero-home__visual {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex: 1 1 0 !important;
+    justify-content: flex-end !important;
+    align-self: flex-end !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: var(--hero-diagram-max) !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  html body .home-page__hero .hero-home__diagram {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline-start: auto !important;
+  }
+
+  html body .home-page__hero .hero-mockup__labels {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin: 0 0 0.55rem !important;
+  }
+
+  html body .home-page__hero .hero-mockup__chrome-title,
+  html body .home-page__hero .hero-mockup__chrome-brand {
+    display: inline-flex !important;
+    font-size: clamp(0.65rem, 0.55rem + 0.2vw, 0.75rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__note,
+  html body .home-page__hero .hero-home__note--under-graphic {
+    margin-top: 0.85rem !important;
+  }
+}
+
+/* ── Stacked shell (≤900) ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  html body .home-page__hero {
+    --hero-diagram-max: min(100%, 36rem);
+    --hero-stack-gap: clamp(1.85rem, 4.2vh, 2.5rem);
+    --hero-note-size: clamp(0.9rem, 3.2cqi, 1.05rem);
+    --hero-lead-width: 100%;
+    --hero-chrome-size: 0.6875rem;
+  }
+
+  html body .home-page__hero .hero-home {
+    min-height: 0 !important;
+  }
+
+  html body .home-page__hero .hero-home__main {
+    padding-top: clamp(4.35rem, 8vh, 5.75rem) !important;
+    padding-bottom: clamp(1.85rem, 4.5vh, 2.75rem) !important;
+    padding-inline: var(--openms-page-inline, clamp(1rem, 4vw, 1.75rem)) !important;
+  }
+
+  html body .home-page__hero .hero-home__hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--hero-stack-gap) !important;
+  }
+
+  html body .home-page__hero .hero-home__copy {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: var(--hero-copy-gap) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-home__content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.35rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-home__eyebrow,
+  html body .home-page__hero .hero-mockup__chrome-title,
+  html body .home-page__hero .hero-mockup__chrome-brand {
+    margin-bottom: 0 !important;
+    font-size: var(--hero-chrome-size, 0.6875rem) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1.25 !important;
+  }
+
+  html body .home-page__hero .hero-home__title,
+  html body .home-page__hero .hero-home__title-accent {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(2.1rem, 5.2vw, 2.9rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__description {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 0.15rem !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    text-wrap: pretty !important;
+    font-size: clamp(1rem, 0.92rem + 0.45vw, 1.125rem) !important;
+    line-height: 1.55 !important;
+  }
+
+  html body .home-page__hero .hero-home__description-line,
+  html body .home-page__hero .hero-home__description-line--1,
+  html body .home-page__hero .hero-home__description-line--2,
+  html body .home-page__hero .hero-home__description-line--3 {
+    display: inline !important;
+    white-space: normal !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  html body .home-page__hero .hero-home__description-line--3::before {
+    content: " ";
+  }
+
+  html body .home-page__hero .hero-home__footer,
+  html body .home-page__hero .hero-home__actions-block {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    align-items: flex-start !important;
+  }
+
+  html body .home-page__hero .hero-home__actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    max-width: min(100%, 24rem) !important;
+    gap: 0.55rem !important;
+  }
+
+  html body .home-page__hero .hero-home__actions .hero-home__btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+
+  html body .home-page__hero .hero-home__visual {
+    display: flex !important;
+    flex-direction: column !important;
+    width: min(100%, var(--hero-diagram-max)) !important;
+    max-width: var(--hero-diagram-max) !important;
+    margin: 1.1rem 0 0 !important;
+    overflow: visible !important;
+  }
+
+  html body .home-page__hero .hero-mockup__labels,
+  html body .home-page__hero .hero-mockup__chrome-title,
+  html body .home-page__hero .hero-mockup__chrome-brand {
+    display: none !important;
+  }
+}
+
+/* ── Tablet stacked: wider diagram + 3-line lead ──────────────── */
+@media (min-width: 641px) and (max-width: 900px) {
+  html body .home-page__hero {
+    --hero-diagram-max: min(100%, 46rem);
+    --hero-diagram-height: 11rem;
+    --hero-stack-gap: clamp(1.9rem, 4vh, 2.6rem);
+    --hero-note-size: clamp(0.92rem, 2.8cqi, 1.05rem);
+  }
+
+  html body .home-page__hero .hero-home__main {
+    padding-top: clamp(4.6rem, 7.5vh, 5.85rem) !important;
+    padding-bottom: clamp(2.1rem, 4vh, 2.9rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__description {
+    font-size: clamp(1rem, 0.9rem + 0.35vw, 1.125rem) !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+  html body .home-page__hero {
+    --hero-diagram-max: min(100%, 100%);
+    --hero-diagram-height: 10.25rem;
+    --hero-note-size: clamp(0.88rem, 3cqi, 1rem);
+  }
+
+  html body .home-page__hero .hero-home__visual {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-mockup__labels,
+  html body .home-page__hero .hero-mockup__chrome-title,
+  html body .home-page__hero .hero-mockup__chrome-brand {
+    display: none !important;
+  }
+
+  html body .home-page__hero .hero-home__title,
+  html body .home-page__hero .hero-home__title-accent {
+    font-size: clamp(2.15rem, 5.6vw, 2.75rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__description {
+    font-size: clamp(0.98rem, 2.8vw, 1.08rem) !important;
+  }
+}
+
+/* ── Phones ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  html body .home-page__hero {
+    --hero-diagram-max: 100%;
+    --hero-diagram-height: 9.25rem;
+    --hero-stack-gap: 1.85rem;
+    --hero-copy-gap: 0.9rem;
+    --hero-note-size: clamp(0.68rem, 3.2cqi, 0.98rem);
+  }
+
+  html body .home-page__hero .hero-home__main {
+    padding-top: clamp(4.1rem, 8.5vh, 5rem) !important;
+    padding-bottom: clamp(1.6rem, 4vh, 2.25rem) !important;
+  }
+
+  /* At the old clamp, "Clear results for" and "mass spectrometry." (the
+     two longest of the three title lines) stop fitting their own line
+     width across most of this 361-480px range and wrap into two lines. */
+  html body .home-page__hero .hero-home__title,
+  html body .home-page__hero .hero-home__title-accent {
+    font-size: clamp(1.65rem, 7.2vw, 2.2rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__title-line,
+  html body .home-page__hero .hero-home__title-accent {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  html body .home-page__hero .hero-home__description {
+    font-size: clamp(0.95rem, 3.4vw, 1.05rem) !important;
+    line-height: 1.55 !important;
+    margin-top: 0.1rem !important;
+  }
+
+  html body .home-page__hero .hero-mockup__labels,
+  html body .home-page__hero .hero-mockup__chrome-title,
+  html body .home-page__hero .hero-mockup__chrome-brand {
+    display: none !important;
+  }
+
+  html body .home-page__hero .hero-home__actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: min(100%, 23rem) !important;
+    gap: 0.55rem !important;
+  }
+
+  html body .home-page__hero .hero-home__actions .hero-home__btn {
+    width: 100% !important;
+    min-height: 2.75rem !important;
+    padding-inline: 0.75rem !important;
+  }
+
+  html body .home-page__hero .hero-home__visual,
+  html body .home-page__hero .hero-home__diagram {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  html body .home-page__hero .hero-home__note,
+  html body .home-page__hero .hero-home__note--under-graphic {
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    gap: clamp(0.65rem, 3cqi, 1.05rem) !important;
+  }
+}
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+  /* "Clear results for" and "mass spectrometry." are the two longest
+     of the three title lines — at a shared size sized for "Open
+     science." they stop fitting their line width and wrap into two
+     lines instead of one, down at the narrow end of this range. Size
+     all three off the tightest of the three instead of leaving them
+     at inconsistent sizes or letting any of them wrap. */
+  html body .home-page__hero .hero-home__title,
+  html body .home-page__hero .hero-home__title-accent {
+    font-size: clamp(1.4rem, 6.8vw, 2.3rem) !important;
+  }
+
+  html body .home-page__hero .hero-home__description {
+    font-size: clamp(0.92rem, 3.6vw, 1rem) !important;
+  }
+  html body .home-page__hero .hero-home__actions .hero-home__btn {
+    padding-inline: 0.75rem !important;
+    font-size: var(--openms-text-min, 0.8125rem) !important;
+    white-space: normal !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .home-page__hero .hero-mockup__chart,
+  html body .home-page__hero .hero-mockup__bar {
+    animation: none !important;
+  }
+}
+
+/* Explore the library — clear hover (was only an 8% white wash) */
+html body .home-page__hero .hero-home__btn--secondary,
+html body .home-page__hero .hero-home__btn--secondary.about-cta-btn--donate {
+  border: 2px solid var(--openms-white) !important;
+  border-color: var(--openms-white) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--openms-white) !important;
+  -webkit-text-fill-color: var(--openms-white) !important;
+  box-shadow: 0 0 0 0 var(--openms-btn-glow-white, rgba(255, 255, 255, 0.22)) !important;
+  transition: var(--openms-btn-motion) !important;
+}
+
+html body .home-page__hero .hero-home__btn--secondary:is(:hover, :focus-visible, :active),
+html body .home-page__hero .hero-home__btn--secondary.about-cta-btn--donate:is(:hover, :focus-visible, :active) {
+  background: var(--openms-white) !important;
+  background-color: var(--openms-white) !important;
+  border: 2px solid var(--openms-white) !important;
+  border-color: var(--openms-white) !important;
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  transform: scale(var(--openms-btn-hover-scale, 1.03)) !important;
+  box-shadow: 0 0 0 var(--openms-btn-glow-size, 6px) var(--openms-btn-glow-white, rgba(255, 255, 255, 0.22)) !important;
+  outline: none;
+  text-decoration: none !important;
+}
+
+html body .home-page__hero .hero-home__btn--secondary:is(:hover, :focus-visible, :active) :is(i, svg, span),
+html body .home-page__hero .hero-home__btn--secondary.about-cta-btn--donate:is(:hover, :focus-visible, :active) :is(i, svg, span) {
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  fill: currentColor !important;
+}
+
+html body .home-page__hero .hero-home__btn--secondary:focus-visible,
+html body .home-page__hero .hero-home__btn--secondary.about-cta-btn--donate:focus-visible {
+  box-shadow:
+    0 0 0 3px var(--openms-navy),
+    0 0 0 5px rgba(var(--openms-white-rgb), 0.55),
+    0 0 0 calc(5px + var(--openms-btn-glow-size, 6px)) var(--openms-btn-glow-white, rgba(255, 255, 255, 0.22)) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .home-page__hero .hero-home__btn--secondary:is(:hover, :focus-visible, :active),
+  html body .home-page__hero .hero-home__btn--secondary.about-cta-btn--donate:is(:hover, :focus-visible, :active) {
+    transform: none !important;
+  }
+}
+/* Phones: stack the two buttons — Get started on top, Explore the library
+   below — instead of squeezing them side by side. */
+
+/* XL screens: `space-between` pushed the diagram to the far edge of the
+   container, leaving 200-530px between the title and the diagram. Keep them
+   together at a steady gap instead. */
+@media (min-width: 1280px) {
+  html body .home-page__hero .hero-home__hero-grid {
+    justify-content: flex-start !important;
+    gap: clamp(4rem, 5vw, 6rem) !important;
+  }
+
+  /* The copy column is a size container (its text is sized in cqi), so its
+     width sets both the text size and the room for it. The longest title
+     line ("MASS SPECTROMETRY.") is ~12.4x the font size wide, so the title is
+     sized at 7.7% of the column (~95% of its width) and never runs into the
+     diagram. */
+  html body .home-page__hero .hero-home__copy {
+    flex: 0 0 clamp(35rem, 46vw, 52rem) !important;
+    max-width: 52rem !important;
+  }
+
+  @supports (font-size: 1cqi) {
+    html body .home-page__hero .hero-home__title,
+    html body .home-page__hero .hero-home__title-accent {
+      font-size: clamp(1.85rem, 7.7cqi, 4.75rem) !important;
+    }
+
+    html body .home-page__hero .hero-home__description {
+      font-size: clamp(0.92rem, 3.2cqi, 1.6rem) !important;
+    }
+  }
+
+  html body .home-page__hero .hero-home__visual {
+    flex: 0 1 36rem !important;
+    min-width: 0 !important;
+  }
+}
+
+/* ===== z-home-partners.css ===== */
+/* Tablet (641-1024px): a smaller title (~18-19px) that fits on one line.
+   Phones (<=640px) keep the larger stacked two-line title. */
+@media (min-width: 641px) and (max-width: 1024px) {
+  html body .home-page .uni-partners--home .uni-partners__trust-title {
+    font-size: clamp(1.05rem, 2.3vw, 1.2rem) !important;
+  }
+}
+
+@media (min-width: 641px) {
+  html body .home-page .uni-partners--home .uni-partners__trust-title-line {
+    display: inline !important;
+  }
+
+  html body .home-page .uni-partners--home .uni-partners__trust-title-main {
+    white-space: nowrap !important;
+  }
+}
+
+/* Less empty blue under the hero's last line, so the partners strip below
+   it (and everything after) sits higher. */
+html body .home-page__hero .hero-home__main {
+  padding-bottom: clamp(0.75rem, 2vh, 1.25rem) !important;
+}
+
+/* Small screens: the logos wrap. Lay them out as centred, evenly spaced
+   rows (a 2-column grid left narrow logos floating in wide cells, with
+   15-137px gaps and the first column touching the screen edge). */
+@media (max-width: 768px) {
+  html body .home-page__block--partners .uni-partners--home .uni-partners__static {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.15rem 1.6rem !important;
+    width: 100% !important;
+    max-width: 34rem !important;
+    margin-inline: auto !important;
+    padding-inline: var(--openms-page-inline, 1.25rem) !important;
+    grid-template-columns: none !important;
+  }
+
+  html body .home-page__block--partners .uni-partners--home .uni-partners__static > [role="listitem"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: calc(50% - 0.8rem) !important;
+    min-width: 0 !important;
+  }
+
+  html body .home-page__block--partners .uni-partners--home .uni-partners__static .uni-partners__item {
+    width: auto !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ===== z-news-layout.css ===== */
+/* News index — full solution-page width; cards stacked one under the other */
+
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) {
+  --news-max: var(--pro-max, 75rem) !important;
+}
+
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .openms-lib-page__body > .openms-lib-page__anchor > .openms-lib-block,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-page-block,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-page,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-body,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography__entries {
+  width: 100% !important;
+  max-width: var(--pro-max, 75rem) !important;
+}
+
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: var(--pro-head-to-content, clamp(2.25rem, 4.5vw, 3.25rem)) !important;
+}
+
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .events-past-toolbar,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-year-toolbar,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography__entries,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-list,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-home__list,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .community-events-home__grid {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Stack cards one under the other */
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-list,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-home__list,
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .community-events-home__grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  column-gap: 0 !important;
+  row-gap: clamp(1.15rem, 2.2vw, 1.5rem) !important;
+}
+
+/* ===== z-openms-lib-help.css ===== */
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.15rem !important;
+  text-align: center !important;
+}
+
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-copy {
+  justify-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: min(100%, 38rem) !important;
+}
+
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-title,
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-text {
+  text-align: center !important;
+}
+
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  margin-inline: auto !important;
+}
+
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers.openms-lib-developers--cards {
+  gap: var(--pro-head-to-content) !important;
+}
+
+html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers .openms-lib-developers__cards-head {
+  margin-bottom: 0 !important;
+}
+
+html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
+html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active) {
+  transform: none !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: var(--openms-btn-min-height, 2.75rem) !important;
+  height: auto !important;
+  padding: var(--openms-btn-padding, 0.7rem 1.25rem) !important;
+  box-sizing: border-box !important;
+}
+
+/* "Need help?" (Discord / GitHub issue) — side by side, same size, matching
+   the navy CTA bands / hero buttons standard, as long as both fit at a
+   readable width (each at least 9.5rem); `auto-fit` drops the second button
+   onto its own full-width row once the screen is too narrow for both. */
+html body .openms-lib-page .openms-lib-resources__assist .openms-lib-resources__assist-actions.openms-lib-resources__assist-actions,
+html body .openms-lib-page #getting-started#getting-started .openms-lib-resources__assist-actions.openms-lib-resources__assist-actions {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)) !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 0.9rem !important;
+  width: min(100%, 24rem) !important;
+  max-width: 100% !important;
+}
+
+html body .openms-lib-page #getting-started#getting-started .openms-lib-resources__assist-actions .openms-lib-resources__assist-btn.openms-lib-resources__assist-btn.openms-lib-btn {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+  justify-content: center !important;
+  white-space: normal !important;
+  height: auto !important;
+  min-height: var(--openms-btn-min-height, 2.75rem) !important;
+  padding: var(--openms-btn-padding-y, 0.7rem) 0.9rem !important;
+  font-size: var(--openms-btn-font-size, var(--openms-text-min)) !important;
+  font-weight: var(--openms-btn-weight, 600) !important;
+}
+
+/* "Need help?" buttons: always centred in the band (on pyOpenMS the group sat
+   ~5px left of centre because another rule zeroed the auto margins). */
+:is(html, #assist-center-boost) body .openms-lib-page .openms-lib-resources__assist .openms-lib-resources__assist-actions.openms-lib-resources__assist-actions {
+  justify-self: center !important;
+  align-self: center !important;
+  margin-inline: auto !important;
+  box-sizing: border-box !important;
+  width: min(100%, 24rem) !important;
+  max-width: 100% !important;
+}
+
+/* Developer cards (Building OpenMS from Source, Reviewing Pull Requests, ...)
+   — the platform / action buttons sit side by side at the same width as long
+   as each fits at a readable width, and only once they don't fit the card do
+   they drop to full-width rows (all the same width). `auto-fit` does that
+   from the card's own width, so there's no viewport breakpoint. The 2-button
+   "Reviewing Pull Requests" card has longer labels, so it gets a larger
+   minimum than the 3-button platform row. */
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__platforms {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)) !important;
+  flex-direction: unset !important;
+  align-items: stretch !important;
+  gap: 0.9rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms {
+  grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)) !important;
+}
+
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn,
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: none !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+/* "Reviewing Pull Requests": the buttons fit their own text (not equal
+   width), side by side while they fit the card and wrapping onto the next
+   line when they don't. */
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  grid-template-columns: none !important;
+}
+
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn,
+:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review:is(:hover, :focus-within) .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn {
+  width: auto !important;
+  flex: 0 0 auto !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+}
+.openms-lib-page--privacy .governance-cta-band__actions .openms-lib-btn--primary {
+  border: 2px solid var(--openms-white);
+  background: var(--openms-white);
+  color: var(--openms-navy) !important;
+}
+
+.openms-lib-page--privacy .governance-cta-band__actions .openms-lib-btn--primary:hover,
+.openms-lib-page--privacy .governance-cta-band__actions .openms-lib-btn--primary:focus-visible {
+  border-color: var(--openms-white);
+  background: var(--openms-white);
+  color: var(--openms-navy) !important;
+  transform: scale(var(--openms-btn-hover-scale));
+  box-shadow: 0 0 0 var(--openms-btn-glow-size) rgba(255, 255, 255, 0.22);
+  outline: none;
+  text-decoration: none;
+}
+
+/* ===== z-publications.css ===== */
+/* All years / year filters — compact label inside the same-size control */
+html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-toolbar__select,
+html body .openms-lib-page--publications .publications-toolbar__select,
+html body .openms-lib-page--publications .publications-year-nav__btn,
+html body .openms-lib-page--calendar .events-past-toolbar__select {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+}
+
+html body .openms-lib-page--publications .publications-featured {
+  gap: var(--pro-head-to-content) !important;
+}
+
+html body .openms-lib-page--publications .publications-featured .openms-lib-resources__head {
+  margin-bottom: 0 !important;
+}
+
+/* More space after Key publications cards before the next section */
+html body .openms-lib-page--publications #key-publications {
+  padding-bottom: clamp(2.75rem, 6vw, 4.5rem) !important;
+}
+
+html body .openms-lib-page--publications #key-publications .publications-cite-card__action,
+html body .openms-lib-page--publications #key-publications .publications-cite-card:is(:hover, :focus-within) .publications-cite-card__action {
+  margin-top: 0.85rem !important;
+}
+
+/* ===== z-pyopenms-dev.css ===== */
+html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) {
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+}
+
+html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > :nth-child(-n + 3) {
+  grid-column: span 4 !important;
+}
+
+html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > :nth-child(4) {
+  grid-column: span 5 !important;
+}
+
+html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > :nth-child(5) {
+  grid-column: span 7 !important;
+}
+
+html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__cards-grid > :last-child .openms-lib-developers__platforms {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+}
+
+html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__cards-grid > :last-child .openms-lib-developers__platforms .openms-lib-btn {
+  flex: 0 1 auto !important;
+  width: auto !important;
+  white-space: nowrap !important;
+}
+
+/* Keep For Developers text CTAs pinned — no hover lift / min-height jump */
+html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card-link,
+html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card-cta.openms-lib-developers__card-link,
+html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link,
+html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-cta.openms-lib-developers__card-link {
+  margin-top: auto !important;
+  padding-top: 0.35rem !important;
+  min-height: 0 !important;
+  height: auto !important;
+  transform: none !important;
+  gap: 0.35rem !important;
+}
+
+@media (max-width: 700px) {
+  html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > * {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  transform: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin-top: auto !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transition: gap 0.2s ease, color 0.2s ease !important;
+}
+
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link:is(:hover, :focus-visible, :active),
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link,
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link:is(:hover, :focus-visible, :active) {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  transform: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin-top: auto !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link span[aria-hidden="true"] {
+  display: inline-block !important;
+  transform: none !important;
+  transition: transform 0.2s ease !important;
+}
+
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link:is(:hover, :focus-visible, :active) span[aria-hidden="true"],
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link span[aria-hidden="true"] {
+  transform: translateX(0.2rem) !important;
+}
+
+html body .openms-lib-page--pyopenms-viz-pro #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page--pyopenms-viz-pro #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active) {
+  transform: none !important;
+}
+
+/* ===== z-research-partnerships.css ===== */
+/* Research partnerships form — hug Tally height; modest space under submit */
+html body .openms-lib-page--research-partnerships #partnership-form,
+html body .openms-lib-page--research-partnerships .rp-application {
+  padding-bottom: clamp(1.75rem, 4vw, 3rem) !important;
+}
+
+html body .openms-lib-page--research-partnerships .rp-application__form {
+  height: auto !important;
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+html body .openms-lib-page--research-partnerships .rp-application__tally-iframe,
+html body .openms-lib-page--research-partnerships iframe.rp-application__tally-iframe {
+  display: block !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+@media (max-width: 720px) {
+  html body .openms-lib-page--research-partnerships .rp-application__tally-iframe,
+  html body .openms-lib-page--research-partnerships iframe.rp-application__tally-iframe {
+    min-height: 0 !important;
+  }
+}
+
+/* Partnerships include numbered cards — layout from z-zzz-num-strip-white.css */
+
+/* Our partners (phones) — logos were spread out (107px-tall cells, ~120px row
+   pitch and ~40px of padding around the grid). Tighten the cells so the logos
+   sit closer together. */
+@media (max-width: 600px) {
+  html body .openms-lib-page--research-partnerships .uni-partners.uni-partners {
+    padding-block: 0.5rem !important;
+  }
+
+  html body .openms-lib-page--research-partnerships .uni-partners.uni-partners .uni-partners__static {
+    gap: 0.35rem 0.75rem !important;
+  }
+
+  html body .openms-lib-page--research-partnerships .uni-partners.uni-partners .uni-partners__item.uni-partners__item {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-block: 0.4rem !important;
+  }
+}
+
+/* Hero title on phones — scale with the screen so the widest line, "RESEARCH
+   PARTNERSHIPS" (~13.5em in capitals), always fits inside the page gutters with
+   a little slack, instead of filling the width edge to edge and breaking the
+   word mid-way ("PARTNERSHI / PS") when the font renders slightly wider. */
+@media (max-width: 767px) {
+  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title.openms-lib-hero__title,
+  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title .openms-lib-hero__accent.openms-lib-hero__accent {
+    font-size: clamp(1.05rem, calc((100vw - 2.5rem) / 14.8), 2.2rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title .openms-lib-hero__title-line,
+  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title .openms-lib-hero__accent {
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+    max-width: 100%;
+  }
+}
+
+/* ===== z-retreat-highlights.css ===== */
+/* About the retreat — card layout handled in z-03-cta-and-misc-fixes.css */
+
+/* ===== z-review-pr-btns.css ===== */
+html body .openms-lib-page #for-developers .openms-lib-developers__card--review a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page #for-developers .openms-lib-developers__card--review a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
+html body .openms-lib-page #for-developers .openms-lib-developers__card--review:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page #for-developers .openms-lib-developers__card--review:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
+html body .openms-lib-page .openms-lib-developers__route--review a.openms-lib-btn.openms-lib-developers__platform-btn,
+html body .openms-lib-page .openms-lib-developers__route--review a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
+html body .openms-lib-page .openms-lib-developers__route--review:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn {
+  transform: none !important;
+  flex: 0 0 auto !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  padding: var(--openms-btn-padding, 0.7rem 1.25rem) !important;
+  border-width: 2px !important;
+  white-space: nowrap !important;
+}
+
+/* ===== z-section-stack.css ===== */
+/* Site-wide section head stack: eyebrow → title → lead
+   Canonical: 12px after top title, 20px after title before paragraph */
+html,
+body,
+.home-page,
+.openms-lib-page,
+.openms-lib-page--solution,
+.openms-lib-page--hub {
+  --openms-stack-eyebrow: 12px;
+  --openms-stack-lead: 20px;
+  --openms-stack-paragraph: 16px;
+  --pro-stack-eyebrow: var(--openms-stack-eyebrow);
+  --pro-stack-lead: var(--openms-stack-lead);
+  --sol-stack-eyebrow: var(--openms-stack-eyebrow);
+  --sol-stack-lead: var(--openms-stack-lead);
+  --home-section-head-eyebrow-gap: var(--openms-stack-eyebrow);
+  --home-section-head-lead-gap: var(--openms-stack-lead);
+}

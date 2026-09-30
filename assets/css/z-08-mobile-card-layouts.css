@@ -1,3 +1,4 @@
+/* ===== z-zzzzzzzzzzzzzzz-mobile-cards.css ===== */
 /* ============================================================================
    Mobile (<= 767px): cards that have an icon or a number keep it on the left,
    with the title and the description to its right (title level with the top of
@@ -100,13 +101,6 @@
     align-items: flex-start !important;
     gap: 1rem !important;
   }
-
-  :is(html, #m-cards-dev) body .openms-lib-developers__card > .openms-lib-developers__card-icon {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    margin: 0 !important;
-  }
-
   :is(html, #m-cards-dev) body .openms-lib-developers__card > .openms-lib-developers__card-body {
     flex: 1 1 0 !important;
     min-width: 0 !important;
@@ -119,14 +113,6 @@
     align-items: flex-start !important;
     gap: 1rem !important;
   }
-
-  :is(html, #m-cards-dev2) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card > .openms-lib-developers__card-icon {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    margin: 0 !important;
-    align-self: flex-start !important;
-  }
-
   :is(html, #m-cards-dev2) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card > .openms-lib-developers__card-body {
     flex: 1 1 0 !important;
     min-width: 0 !important;
@@ -265,15 +251,6 @@
     gap: 1rem !important;
     text-align: left !important;
   }
-
-  :is(html, #dev-cards-side) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card > .openms-lib-developers__card-icon {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    margin: 0 !important;
-    align-self: flex-start !important;
-    justify-content: flex-start !important;
-  }
-
   :is(html, #dev-cards-side) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card > .openms-lib-developers__card-body {
     flex: 1 1 0 !important;
     min-width: 0 !important;

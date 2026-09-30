@@ -1,0 +1,932 @@
+/* ===== z-zzzzz-calendar-past.css ===== */
+/* Calendar — "Last events" button at the bottom of the page. It reveals every
+   past event, oldest year first (each year has its own heading) and oldest
+   event first within a year. */
+.community-events-page__section--past {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.community-events-past__bar {
+  display: flex;
+  justify-content: center;
+}
+
+html body .community-events-past__toggle.community-events-past__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+html body .community-events-past__toggle .community-events-past__chevron {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+html body [data-past-events].is-open .community-events-past__chevron {
+  transform: rotate(180deg);
+}
+
+.community-events-past__panel {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.community-events-past__panel[hidden] {
+  display: none;
+}
+
+.events-past-year__title {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 1rem;
+  font-family: var(--openms-font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(var(--openms-dark-rgb), 0.72);
+}
+
+.events-past-year__title::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: rgba(var(--openms-navy-rgb), 0.12);
+}
+
+/* More room under the button (and under the opened list) before the footer. */
+html body .community-events-page__section--past.community-events-page__section--past {
+  padding-bottom: clamp(4rem, 10vw, 7rem);
+}
+
+/* Year chooser inside the Last events list. */
+.community-events-past__years {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+html body .community-events-past__year-btn {
+  appearance: none;
+  padding: 0.45rem 1.05rem;
+  border: 2px solid rgba(var(--openms-navy-rgb), 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--openms-navy);
+  font-family: var(--openms-font-body);
+  font-size: var(--openms-text-min, 0.875rem);
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+html body .community-events-past__year-btn:hover,
+html body .community-events-past__year-btn:focus-visible {
+  border-color: var(--openms-navy);
+  background: rgba(var(--openms-navy-rgb), 0.08);
+  outline: none;
+}
+
+html body .community-events-past__year-btn.is-active {
+  border-color: var(--openms-blue);
+  background: var(--openms-blue);
+  color: var(--openms-white);
+}
+
+.events-past-year[hidden] {
+  display: none;
+}
+/* "Sponsor OpenMS" title in capitals like the other section titles. */
+html body .openms-lib-page--contribute .contribute-support__title.contribute-support__title {
+  text-transform: uppercase !important;
+}
+
+/* ===== z-zzzzz-developers-cards.css ===== */
+/* "For Developers → Contribute" cards (/openms-lib/#for-developers).
+
+   Layout: two labelled groups on a 12-column grid.
+     Get involved   — Contributing Guidelines (featured, navy) · Report an issue · Add a TOPP tool
+     Learn and build — Developer manual · Developer FAQ · Building from source · Reviewing PRs (wide)
+   Every card: blue icon tile, capitalised title, short text, link pinned to
+   the bottom. Hover only changes the border/shadow (no lift, no colour flip).
+   Scoped to .openms-lib-developers--grouped, so other pages that share the
+   partial are unchanged. the doubled #for-developers id only adds specificity to beat the many
+   older !important card rules. */
+
+/* ---------- grid ---------- */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__cards-grid.openms-lib-developers__cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  grid-auto-rows: auto !important;
+  grid-template-rows: none !important;
+  gap: 1rem !important;
+  align-items: stretch !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__group {
+  grid-column: 1 / -1 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 1rem 0 0 !important;
+  font-family: var(--openms-font-body);
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--openms-blue) !important;
+  -webkit-text-fill-color: var(--openms-blue) !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__group:first-child {
+  margin-top: 0 !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__group::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: rgba(var(--openms-navy-rgb), 0.12);
+}
+
+/* column spans (desktop) */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--link.openms-lib-developers__card {
+  grid-column: span 3 !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured.openms-lib-developers__card {
+  grid-column: span 6 !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--build-src.openms-lib-developers__card {
+  grid-column: span 6 !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--review.openms-lib-developers__card {
+  grid-column: 1 / -1 !important;
+}
+
+/* ---------- card base ---------- */
+/* (icons are bare — no background tile — like the other card sections) */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card.openms-lib-developers__card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.9rem !important;
+  box-sizing: border-box;
+  min-height: 0 !important;
+  padding: 1.35rem 1.4rem !important;
+  background: var(--openms-white, #fff) !important;
+  background-color: var(--openms-white, #fff) !important;
+  border: 1px solid rgba(var(--openms-navy-rgb), 0.1) !important;
+  border-radius: 1rem !important;
+  box-shadow: none !important;
+  transform: none !important;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card.openms-lib-developers__card:hover,
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card.openms-lib-developers__card:focus-within {
+  border-color: rgba(var(--openms-navy-rgb), 0.35) !important;
+  box-shadow: 0 0.35rem 1rem rgba(var(--openms-blue-rgb), 0.1) !important;
+  transform: none !important;
+}
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-body.openms-lib-developers__card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto;
+  align-items: flex-start !important;
+  gap: 0.4rem !important;
+  width: 100%;
+  min-width: 0;
+  padding: 0 !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-title.openms-lib-developers__card-title {
+  margin: 0 !important;
+  font-family: var(--openms-font-heading);
+  font-size: var(--openms-card-title-size) !important;
+  font-weight: var(--openms-card-title-weight, 700) !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: uppercase !important;
+  color: rgba(var(--openms-dark-rgb), 0.72) !important;
+  -webkit-text-fill-color: rgba(var(--openms-dark-rgb), 0.72) !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-subtitle.openms-lib-developers__card-subtitle {
+  margin: 0 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.5 !important;
+  color: rgba(var(--openms-dark-rgb), 0.72) !important;
+  -webkit-text-fill-color: rgba(var(--openms-dark-rgb), 0.72) !important;
+}
+
+/* link pinned to the bottom of the card */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--link .openms-lib-developers__card-link.openms-lib-developers__card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto !important;
+  padding-top: 0.6rem;
+  font-size: var(--openms-text-min, 0.8125rem) !important;
+  font-weight: 700 !important;
+  color: var(--openms-blue) !important;
+  -webkit-text-fill-color: var(--openms-blue) !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--link .openms-lib-developers__card-link span {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--link:hover .openms-lib-developers__card-link span {
+  transform: translateX(3px);
+}
+
+/* ---------- featured card (navy, white text, white button) ---------- */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured.openms-lib-developers__card {
+  justify-content: space-between;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(var(--openms-blue-rgb), 0.35) 0%, rgba(var(--openms-blue-rgb), 0) 55%),
+    var(--openms-navy) !important;
+  border-color: var(--openms-navy) !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured.openms-lib-developers__card:hover,
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured.openms-lib-developers__card:focus-within {
+  border-color: var(--openms-navy) !important;
+  box-shadow: 0 0.6rem 1.5rem rgba(var(--openms-navy-rgb), 0.22) !important;
+}
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured .openms-lib-developers__card-title.openms-lib-developers__card-title {
+  font-size: 1.3rem !important;
+  color: var(--openms-white) !important;
+  -webkit-text-fill-color: var(--openms-white) !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured .openms-lib-developers__card-subtitle.openms-lib-developers__card-subtitle {
+  font-size: 1rem !important;
+  color: rgba(255, 255, 255, 0.84) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.84) !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured .openms-lib-developers__card-link.openms-lib-developers__card-link {
+  padding: 0.6rem 1.15rem !important;
+  border: 2px solid var(--openms-white) !important;
+  border-radius: 999px !important;
+  background: var(--openms-white) !important;
+  background-color: var(--openms-white) !important;
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.22) !important;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s !important;
+}
+
+/* Hover (card or button): same effect as the standard buttons — slight scale
+   and a glow ring (white here, as on the other navy bands). */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured:is(:hover, :focus-within) .openms-lib-developers__card-link.openms-lib-developers__card-link {
+  transform: scale(var(--openms-btn-hover-scale, 1.03)) !important;
+  box-shadow: 0 0 0 var(--openms-btn-glow-size, 6px) rgba(255, 255, 255, 0.22) !important;
+}
+
+/* ---------- "links" cards: Building from source / Reviewing PRs ---------- */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-title-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start !important;
+  gap: 0.5rem 0.75rem;
+  width: 100%;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__badge {
+  display: inline-flex !important;
+  overflow: hidden;
+  border-radius: 999px;
+  line-height: 0;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__badge img {
+  display: block;
+  height: 1.35rem;
+  width: auto;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platforms.openms-lib-developers__platforms {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.75rem !important;
+  margin-top: auto !important;
+  padding-top: 0.6rem;
+  width: auto;
+}
+
+/* Platform / action buttons use the standard outline button: 2px navy border,
+   navy text; on hover a faint navy fill, slight scale and a navy glow ring. */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platform-btn.openms-lib-developers__platform-btn.openms-lib-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  box-sizing: border-box;
+  width: auto !important;
+  min-height: var(--openms-btn-min-height, 2.75rem) !important;
+  height: auto !important;
+  padding: var(--openms-btn-padding, 0.7rem 1.25rem) !important;
+  border: 2px solid rgba(var(--openms-navy-rgb), 0.72) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  font-size: var(--openms-btn-font-size, var(--openms-text-min)) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 0 0 rgba(var(--openms-navy-rgb), 0.18) !important;
+  transform: none !important;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s, background-color 0.22s !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platform-btn.openms-lib-developers__platform-btn.openms-lib-btn:is(:hover, :focus-visible, :active) {
+  background: rgba(var(--openms-navy-rgb), 0.08) !important;
+  background-color: rgba(var(--openms-navy-rgb), 0.08) !important;
+  border-color: rgba(var(--openms-navy-rgb), 0.78) !important;
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  transform: scale(var(--openms-btn-hover-scale, 1.03)) !important;
+  box-shadow: 0 0 0 var(--openms-btn-glow-size, 6px) rgba(var(--openms-navy-rgb), 0.18) !important;
+  outline: none !important;
+}
+
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platform-btn :is(i, svg, path, span) {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+  fill: currentColor;
+}
+
+/* Reviewing PRs: wide, copy on the left and the two buttons on the right */
+@media (min-width: 768px) {
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--review.openms-lib-developers__card {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 1.1rem !important;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--review .openms-lib-developers__card-body.openms-lib-developers__card-body {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title cta"
+      "sub cta";
+    align-items: center !important;
+    column-gap: 1.5rem;
+    row-gap: 0.3rem;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--review .openms-lib-developers__card-title-row {
+    grid-area: title;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--review .openms-lib-developers__card-subtitle.openms-lib-developers__card-subtitle {
+    grid-area: sub;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--review .openms-lib-developers__platforms.openms-lib-developers__platforms {
+    grid-area: cta;
+    margin-top: 0 !important;
+    padding-top: 0;
+    justify-content: flex-end;
+  }
+}
+
+/* ---------- medium screens: 6 columns ---------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__cards-grid.openms-lib-developers__cards-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured.openms-lib-developers__card,
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--build-src.openms-lib-developers__card {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* ---------- phones: one column, buttons one per line ---------- */
+@media (max-width: 767px) {
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__cards-grid.openms-lib-developers__cards-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card.openms-lib-developers__card {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platforms.openms-lib-developers__platforms {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platform-btn.openms-lib-developers__platform-btn.openms-lib-btn {
+    width: 100% !important;
+    justify-content: center;
+  }
+}
+
+/* The title text sits in a <span> that older rules uppercase and recolour. */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-title span {
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: uppercase !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+/* Keep the open-PR badge right next to the title (the h3 was stretching). */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-title-row .openms-lib-developers__card-title.openms-lib-developers__card-title {
+  flex: 0 1 auto !important;
+  width: auto !important;
+  max-width: 100%;
+}
+
+/* The → arrow must stay visible on hover: an older hover rule turned it white
+   (invisible on a white card). It inherits the link colour instead — blue on
+   the white cards, navy inside the white button on the featured card. */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--link .openms-lib-developers__card-link span,
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--link:is(:hover, :focus-within, :focus-visible) .openms-lib-developers__card-link span {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* Platform / action buttons: the icon (Linux, macOS, Windows, GitHub, book…)
+   stays navy — also on hover and focus. */
+html body #for-developers#for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platform-btn :is(i, svg, path) {
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  fill: var(--openms-navy) !important;
+  opacity: 1 !important;
+}
+
+/* Featured card: the "Read guidelines" button sits a bit lower, with more room
+   under the description. */
+html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured .openms-lib-developers__card-subtitle.openms-lib-developers__card-subtitle {
+  margin-bottom: 0.9rem !important;
+}
+
+/* ===== z-zzzzz-eyebrow-title.css ===== */
+/* Section eyebrow → title spacing, sitewide.
+   The small label above a section title ("Developer tools", "Community", …)
+   sat 12–27px above it (12px margin, often plus 10–15px of title padding). Pull
+   every section title up under its eyebrow to ~6px, like the homepage
+   Ecosystem section. Hero eyebrows are pills with their own spacing and are left
+   alone. `:is(html, #id)` only adds specificity so this wins over the many older
+   !important spacing rules. */
+:is(html, #eyebrow-title-specificity-boost) body :is([class*="eyebrow"], [class*="kicker"]):not([class*="hero"]):not([class*="icon"]):has(+ :is(h2, h3)) {
+  margin-bottom: 0.35rem !important;
+}
+
+:is(html, #eyebrow-title-specificity-boost) body :is([class*="eyebrow"], [class*="kicker"]):not([class*="hero"]):not([class*="icon"]) + :is(h2, h3) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ===== z-zzzzzz-card-titles.css ===== */
+/* Card titles are in capitals everywhere (news / event cards, "What is OpenMS?"
+   cards, tiles, principle cards, …). Some cards had sentence-case titles.
+   Only headings inside a card-like container are affected; the Contribute
+   developer cards are handled in z-zzzzz-developers-cards.css. */
+:is(html, #card-titles-upper-boost) body :is(
+  [class*="card"],
+  [class*="tile"],
+  [class*="principle"],
+  [class*="resources__item"],
+  [class*="leadership"]
+):not(.navbar, .navbar *, .footer-redesign *) :is(h3, h4, h3 > span, h4 > span) {
+  text-transform: uppercase;
+}
+
+:is(html, #card-titles-upper-boost) body .community-news-events__press-card .community-news-events__press-title,
+:is(html, #card-titles-upper-boost) body .keyfeatures-modern__topic-card .keyfeatures-modern__topic-title {
+  text-transform: uppercase !important;
+  letter-spacing: 0.01em;
+}
+
+/* Sponsor us — "Benefit comparison" heading in capitals. */
+:is(html, #benefit-title-upper-boost) body .sponsor-benefits__title.sponsor-benefits__title {
+  text-transform: uppercase !important;
+}
+
+/* One card-title standard: capitals, the shared --openms-card-title-size,
+   weight 700. These cards had drifted (19px / 800 / 16px). The featured
+   Contribute card keeps its deliberately larger white title. */
+:is(html, #card-title-std-boost) body .keyfeatures-modern__topic-card .keyfeatures-modern__topic-title.keyfeatures-modern__topic-title,
+:is(html, #card-title-std-boost) body .openms-lib-resources__item .openms-lib-resources__item-title.openms-lib-resources__item-title,
+:is(html, #card-title-std-boost) body .community-news-events__press-card .community-news-events__press-title.community-news-events__press-title,
+:is(html, #card-title-std-boost) body .contribute-support__title.contribute-support__title {
+  font-size: var(--openms-card-title-size) !important;
+  font-weight: var(--openms-card-title-weight, 700) !important;
+}
+
+/* ===== z-zzzzzz-navy-cta-standard.css ===== */
+/* ============================================================================
+   Navy CTA bands — one consistent standard for every "bottom of page" navy
+   band on the site (Support OpenMS → Become a sponsor, Sponsor us → Get
+   started, Contact → Need a hand, Publications → Cite OpenMS, Archived apps →
+   Community opportunity, Contributors → Want to contribute, Governance/Privacy
+   → related pages):
+     - the site's standard button size (--openms-btn-*), matching every other
+       button on the same page (hero buttons, sponsorship tier "Learn more",
+       other "Contact us" instances) instead of a smaller custom pill
+     - side by side, as long as both buttons fit at a readable width (each at
+       least 9rem, enough for labels like "Make a donation" at the larger
+       standard size) — `auto-fit`/`minmax` below drops the second button
+       onto its own full-width row only once the screen is too narrow for
+       both to sit comfortably side by side
+     - within a two-button band, both buttons are exactly the same width
+   These bands had each grown their own size/breakpoint over time (button
+   heights from 39–46px, widths from 117–309px, breakpoints at 560/561/600/
+   639/720px, and two bands — Contact and Archived apps — had unequal-width
+   button pairs). `:is(html, #id)` only adds specificity to beat those older
+   page-scoped !important rules; `html` always matches, so it changes nothing
+   about which pages/elements this file targets.
+   ============================================================================ */
+
+/* ---------- two-button bands: equal-width grid, breaks down if it doesn't fit ---------- */
+:is(html, #navy-cta-boost) body #sponsor-cta .contribute-coc-band__actions.contribute-coc-band__actions,
+:is(html, #navy-cta-boost) body #become-a-sponsor .contribute-coc-band__actions.contribute-coc-band__actions,
+:is(html, #navy-cta-boost) body #get-help .contribute-coc-band__actions.contribute-coc-band__actions,
+:is(html, #navy-cta-boost) body #cite-openms .contribute-coc-band__actions.contribute-coc-band__actions,
+:is(html, #navy-cta-boost) body #join-community .webapps-archived__revival-actions.webapps-archived__revival-actions,
+:is(html, #navy-cta-boost) body .openms-lib-page--archived .webapps-archived__revival-actions.webapps-archived__revival-actions {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)) !important;
+  gap: 0.9rem !important;
+  width: min(100%, 28rem) !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  justify-items: stretch !important;
+}
+
+:is(html, #navy-cta-boost) body #sponsor-cta .contribute-coc-band__actions.contribute-coc-band__actions a.openms-lib-btn.openms-lib-btn,
+:is(html, #navy-cta-boost) body #become-a-sponsor .contribute-coc-band__actions.contribute-coc-band__actions a.openms-lib-btn.openms-lib-btn,
+:is(html, #navy-cta-boost) body #get-help .contribute-coc-band__actions.contribute-coc-band__actions a.openms-lib-btn.openms-lib-btn,
+:is(html, #navy-cta-boost) body #cite-openms .contribute-coc-band__actions.contribute-coc-band__actions a.openms-lib-btn.openms-lib-btn,
+:is(html, #navy-cta-boost) body #join-community .webapps-archived__revival-actions.webapps-archived__revival-actions a.openms-lib-btn.openms-lib-btn,
+:is(html, #navy-cta-boost) body .openms-lib-page--archived .webapps-archived__revival-actions.webapps-archived__revival-actions a.openms-lib-btn.openms-lib-btn,
+:is(html, #navy-cta-boost) body #related-pages .governance-cta-band__actions.governance-cta-band__actions a.openms-lib-btn.openms-lib-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  text-align: center !important;
+  height: auto !important;
+  min-height: var(--openms-btn-min-height, 2.75rem) !important;
+  padding: var(--openms-btn-padding-y, 0.7rem) 0.9rem !important;
+  font-size: var(--openms-btn-font-size, var(--openms-text-min)) !important;
+  font-weight: var(--openms-btn-weight, 600) !important;
+}
+
+/* ---------- single-button bands: hug their own text ---------- */
+:is(html, #navy-cta-boost) body #related-pages .governance-cta-band__actions.governance-cta-band__actions {
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+}
+
+:is(html, #navy-cta-boost) body #related-pages .governance-cta-band__actions.governance-cta-band__actions a.openms-lib-btn.openms-lib-btn {
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+}
+
+/* ===== z-zzzzzzz-hero-actions-breakpoint.css ===== */
+/* ============================================================================
+   Hero action buttons — side by side, one consistent button size (the site's
+   standard button size, --openms-btn-*, matching every other button on the
+   page — e.g. the homepage's "Get involved"/"Contact us"/nav CTAs — so hero
+   buttons aren't a visibly different height from everything below them), as
+   long as every button fits at a readable width (each at least 12.5rem,
+   tuned to labels like "Sponsorship program" / "Executive committee" /
+   "Discuss a partnership" so they stay on one line at this larger size).
+   `auto-fit` drops whichever buttons don't fit onto their own full-width
+   row(s) once the screen is too narrow, instead of squeezing, wrapping the
+   label onto two lines, or overflowing. A couple of pages with an even
+   longer label ("Explore ways to contribute", "Report handling manual") can
+   still wrap in a narrow in-between range — going wide enough to prevent
+   that everywhere would make every hero stack much sooner on phones, undoing
+   "side by side on phones" for the shorter labels that are the common case.
+   `:is(html, #id)` only adds specificity to beat a sitewide two-button
+   width:100% rule (built on :has()/:not(), which alone out-specifies a plain
+   class selector) and the homepage hero's own older breakpoint rule; html
+   always matches, so it changes nothing about which pages/elements this file
+   targets.
+   ============================================================================ */
+
+:is(html, #hero-actions-boost) .openms-lib-hero__actions,
+:is(html, #hero-actions-boost) .home-page .hero-home__actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  justify-self: stretch !important;
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+  gap: 0.75rem !important;
+}
+
+/* Buttons always fit their own text (never stretched to a shared column
+   width); they sit side by side while they fit and wrap onto the next row
+   when they don't. */
+:is(html, #hero-actions-boost) .openms-lib-hero__actions .openms-lib-btn,
+:is(html, #hero-actions-boost) .home-page .hero-home__actions .hero-home__btn {
+  width: auto !important;
+  align-self: auto !important;
+  flex: 0 0 auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  height: auto !important;
+  min-height: var(--openms-btn-min-height, 2.75rem) !important;
+  padding: var(--openms-btn-padding-y, 0.7rem) 1.25rem !important;
+  font-size: var(--openms-btn-font-size, var(--openms-text-min)) !important;
+  font-weight: var(--openms-btn-weight, 600) !important;
+}
+
+/* Homepage hero: left aligned. */
+:is(html, #hero-actions-boost) .home-page .hero-home__actions {
+  justify-content: flex-start !important;
+}
+
+/* ===== z-zzzzzzz-keyfeatures-badge-right.css ===== */
+/* "What is OpenMS?" cards (Open source / BSD licensed, C++ & Python / C++ ·
+   Python, ...) on the homepage — the tag pill sits at the top-right of the
+   card on the SAME row as the title (title left, tag right), then the text
+   below, at every screen size. Loads after openms-overrides.css, which had
+   stacked the tag above the title; this restores the two-column title row. */
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-card {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-rows: auto 1fr !important;
+  grid-template-areas:
+    "title badge"
+    "text text" !important;
+  column-gap: 0.75rem !important;
+  row-gap: 0.55rem !important;
+  align-items: start;
+}
+
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-head {
+  grid-area: badge !important;
+  justify-content: flex-end !important;
+  align-self: start !important;
+}
+
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-title {
+  grid-area: title !important;
+  align-self: start !important;
+}
+
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-text {
+  grid-area: text !important;
+}
+
+/* Code-of-conduct note under the cards: navy icon. */
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon,
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon svg,
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon path {
+  color: var(--openms-navy) !important;
+}
+
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon svg,
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon path {
+  fill: var(--openms-navy) !important;
+}
+
+/* ===== z-zzzzzzzz-donate-page.css ===== */
+/* Donate page — same look as the other hub pages (Contact, Contribute):
+   full-width left-aligned section head, three equal-height cards with a big
+   soft icon top-left and a tag top-right, then the standard navy CTA band. */
+html body .openms-lib-page--donate #donate-impact .openms-lib-resources__inner {
+  max-width: none;
+}
+
+html body .openms-lib-page--donate .donate-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pro-card-gap);
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  html body .openms-lib-page--donate .donate-impact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+html body .openms-lib-page--donate .donate-impact-grid > .openms-lib-resources__item {
+  height: 100%;
+}
+
+html body .openms-lib-page--donate .openms-lib-resources__item-icon {
+  display: grid;
+  place-items: center;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(var(--openms-blue-rgb), 0.28);
+  font-size: clamp(2.5rem, 3.8vw, 3rem);
+  line-height: 1;
+}
+
+html body .openms-lib-page--donate .openms-lib-resources__item-icon .fas,
+html body .openms-lib-page--donate .openms-lib-resources__item-icon .svg-inline--fa {
+  color: rgba(var(--openms-blue-rgb), 0.28) !important;
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+}
+
+html body .openms-lib-page--donate .openms-lib-resources__item-icon .svg-inline--fa path {
+  fill: currentColor !important;
+}
+
+/* "Make a donation" is a form section, which on every page (Research
+   partnerships, Fellowship, Contact) has a centred head — the eyebrow was
+   the only piece left-aligned, sitting off to the side of the centred title. */
+html body .openms-lib-page--donate #donate-form .openms-lib-resources__eyebrow {
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
+}
+
+html body .openms-lib-page--donate #donate-impact .openms-lib-resources__inner {
+  align-items: stretch;
+}
+
+/* Tax-deductibility line: fine print under the main notice. */
+html body .openms-lib-page--donate .donate-application__note .donate-page__tax-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* Stacked (single-column) cards: size to their content instead of the tall
+   equal-card minimum height the shared resource card carries. */
+@media (max-width: 900px) {
+  :is(html, #donate-card-boost) body .openms-lib-page--donate .donate-impact-grid {
+    grid-template-rows: none !important;
+    grid-auto-rows: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  :is(html, #donate-card-boost) body .openms-lib-page--donate .donate-impact-grid > .openms-lib-resources__item {
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    gap: 0.45rem;
+  }
+
+  :is(html, #donate-card-boost) body .openms-lib-page--donate .donate-impact-grid > .openms-lib-resources__item .openms-lib-resources__item-text {
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+}
+
+/* ===== z-zzzzzzzz-mobile-tweaks.css ===== */
+/* Homepage "Show all apps →": nudge it in a little from the right edge on
+   stacked (<900px) layouts. */
+@media (max-width: 899px) {
+  html body .home-page .home-page__block--projects .webapps-featured__header-action {
+    padding-right: 1.1rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Homepage "View all →" (News and Events headers): nudge it in a little from
+   the right edge. */
+html body .home-page .community-news-events__column-header {
+  padding-right: 1.1rem;
+  box-sizing: border-box;
+}
+
+/* Featured Apps cards on phones (one card per row): the "View app →" link
+   sits right under the description — the 3-line reserve that lines links up
+   across a row on wider screens isn't needed when each card is on its own. */
+@media (max-width: 767px) {
+  html body .home-page .webapps-project-card__text {
+    min-height: 0;
+    flex: 0 0 auto;
+  }
+
+  html body .home-page .webapps-project-card__body {
+    gap: 0.6rem;
+  }
+
+  html body .home-page .webapps-project-card__cta {
+    margin-top: 0;
+  }
+}
+
+/* Developers "Contribute" lead ("Your improvements help researchers
+   worldwide."): fill the full width on phones instead of being balanced into
+   two short, equal lines. */
+@media (max-width: 767px) {
+  html body .openms-lib-developers__lead {
+    text-wrap: wrap !important;
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+
+/* Citation cards (OpenMS 3 / pyOpenMS-viz / ... — "View on PubMed", "More
+   citations"): buttons fit their own text instead of stretching to full
+   width, side by side while they fit and wrapping when they don't. */
+:is(html, #cite-actions-boost) body .openms-lib-cite__actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.9rem !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+:is(html, #cite-actions-boost) body .openms-lib-cite__actions > a.openms-lib-btn,
+:is(html, #cite-actions-boost) body .openms-lib-cite__actions > .openms-lib-btn {
+  width: auto !important;
+  flex: 0 0 auto !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+}
+
+/* News pager (← Newer / Older →): the standard primary button; only the
+   disabled state (first/last page) is faded. */
+html body .news-pager .openms-lib-btn.news-pager__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Navbar "Sponsor Us": text (and its label spans) in the same navy as the
+   button's border, in every navbar variant (drawer, desktop, sticky clone). */
+:is(html, #sponsor-nav-boost) body .navbar.is-fresh a.navbar-item.navbar-cta-item.about-cta-btn--donate:not(:hover):not(:focus-visible):not(:active),
+:is(html, #sponsor-nav-boost) body .navbar.is-fresh a.navbar-item.navbar-cta-item.about-cta-btn--donate:not(:hover):not(:focus-visible):not(:active) .navbar-cta-label,
+:is(html, #sponsor-nav-boost) body #navbar-clone.navbar.is-fresh a.navbar-item.navbar-cta-item.about-cta-btn--donate:not(:hover):not(:focus-visible):not(:active),
+:is(html, #sponsor-nav-boost) body #navbar-clone.navbar.is-fresh a.navbar-item.navbar-cta-item.about-cta-btn--donate:not(:hover):not(:focus-visible):not(:active) .navbar-cta-label {
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  border-color: var(--openms-navy) !important;
+}
+
+/* Contribute → "Sponsor OpenMS": the button keeps its natural size at every
+   screen size instead of stretching to full width on phones. */
+:is(html, #support-cta-boost) body .openms-lib-page--contribute .contribute-support__cta.contribute-support__cta {
+  width: fit-content !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  align-self: flex-start !important;
+  justify-self: start !important;
+}
+
+:is(html, #pager-disabled-boost) body .news-pager .openms-lib-btn.news-pager__btn:disabled {
+  opacity: 0.4 !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Buttons that keep their natural (desktop) size at every screen size instead
+   of stretching to full width on phones: Developer retreat "Register here",
+   Code of Conduct "Report an incident". */
+:is(html, #keep-size-boost) body .openms-lib-page .retreat-register--closed.openms-lib-btn,
+:is(html, #keep-size-boost) body .openms-lib-page--code-of-conduct .coc-report__actions .openms-lib-btn,
+:is(html, #keep-size-boost) body .openms-lib-page--code-of-conduct .coc-report__actions {
+  width: fit-content !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+  align-self: flex-start !important;
+  justify-self: start !important;
+}
