@@ -1,6 +1,7 @@
 ---
 title: "Develop Your Own OpenMS Tools"
 sidebar: false
+hideShortcuts: true
 ---
 
 ## SOURCE CODE
