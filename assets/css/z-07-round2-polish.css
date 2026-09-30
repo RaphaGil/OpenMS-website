@@ -1363,3 +1363,10 @@ html:is(html, #footer-copy-small-boost) body .footer-copyright {
 :is(html, #privacy-who-tight-boost) body .openms-lib-page--privacy #privacy-who-we-are {
   margin-bottom: -0.1rem !important;
 }
+
+/* ---------- Generic plain pages (Develop Your Own OpenMS Tools, and any other
+   page using the default doc layout): less empty space between the last line
+   and the footer — these pages have no outro CTA band to fill that space. ---------- */
+:is(html, #doc-page-tight-footer-boost) body .openms-lib-layout:has(> .openms-lib-page--doc) {
+  padding-bottom: 1.5rem !important;
+}
