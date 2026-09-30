@@ -1,6 +1,7 @@
 ---
 title: "OpenMS For Metabolomics"
 sidebar: false
+hideShortcuts: true
 ---
 
 #### OpenMS FOR METABOLOMICS
