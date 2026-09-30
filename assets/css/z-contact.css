@@ -1,0 +1,7 @@
+/* ---------- Contact: Discord / GitHub as text links (like the other cards) ---------- */
+html body .openms-lib-page--contact .contact-path-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  margin-top: auto;
+}
