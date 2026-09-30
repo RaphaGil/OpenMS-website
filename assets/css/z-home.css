@@ -1,4 +1,122 @@
-/* ===== z-hero-sm.css ===== */
+/* Ecosystem Developer tools — logos always fit inside cards */
+
+html body .home-page .ecosystem-home {
+  --ecosystem-logo-box: clamp(5rem, 34%, 8.5rem);
+  --ecosystem-logo-box-h: clamp(2.75rem, 8vw, 4.5rem);
+}
+
+html body .home-page .ecosystem-home__card-head {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.65rem 0.85rem !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+html body .home-page .ecosystem-home__card-intro {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+html body .home-page .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--openms-lib .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--webapps .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--pyopenms .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--viz .ecosystem-home__card-icon {
+  flex: 0 1 auto !important;
+  align-self: center !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: min(100%, var(--ecosystem-logo-box, 8.5rem)) !important;
+  height: auto !important;
+  max-height: var(--ecosystem-logo-box-h, 4.5rem) !important;
+  margin: 0 0 0 auto !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+}
+
+/* pyOpenMS / pyopenms_viz — same footprint in Ecosystem cards */
+html body .home-page .home-page__block--ecosystem .ecosystem-home__card--pyopenms .ecosystem-home__card-icon,
+html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--pyopenms .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--viz .ecosystem-home__card-icon {
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  width: 6.15rem !important;
+  height: 2.65rem !important;
+  max-width: min(100%, 6.15rem) !important;
+  max-height: 2.65rem !important;
+  min-width: 0 !important;
+  margin: 0 0 0 auto !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+}
+
+/* Square viz mark: fill the same landscape frame as pyOpenMS */
+html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-icon,
+html body .home-page .ecosystem-home__card--viz .ecosystem-home__card-icon {
+  object-fit: cover !important;
+  object-position: center 62% !important;
+}
+
+html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-head,
+html body .home-page .ecosystem-home__card--viz .ecosystem-home__card-head {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 800px) {
+  html body .home-page .home-page__block--ecosystem .ecosystem-home {
+    --ecosystem-logo-box: clamp(5.5rem, 32vw, 9rem);
+    --ecosystem-logo-box-h: clamp(2.75rem, 10vw, 4.75rem);
+  }
+
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card-head,
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-head {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card-icon,
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--openms-lib .ecosystem-home__card-icon,
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--webapps .ecosystem-home__card-icon,
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--pyopenms .ecosystem-home__card-icon,
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-icon {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: min(100%, var(--ecosystem-logo-box, 9rem)) !important;
+    height: auto !important;
+    max-height: var(--ecosystem-logo-box-h, 4.75rem) !important;
+    margin: 0 0 0 auto !important;
+    object-fit: contain !important;
+    object-position: right center !important;
+  }
+
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--pyopenms .ecosystem-home__card-icon,
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-icon {
+    flex: 0 0 auto !important;
+    width: 6.75rem !important;
+    height: 2.85rem !important;
+    max-width: min(100%, 6.75rem) !important;
+    max-height: 2.85rem !important;
+  }
+
+  html body .home-page .home-page__block--ecosystem .ecosystem-home__card--viz .ecosystem-home__card-icon {
+    object-fit: cover !important;
+    object-position: center 62% !important;
+  }
+}
+
 /* Homepage hero — professional responsive UX/UI
    Loads last (z-*). Preserves brand colors, fonts, and copy.
    Goals: clear hierarchy, consistent rhythm, diagram/trust aligned,
@@ -671,7 +789,6 @@ html body .home-page__hero .hero-home__btn--secondary.about-cta-btn--donate:focu
   }
 }
 
-/* ===== z-home-partners.css ===== */
 /* Tablet (641-1024px): a smaller title (~18-19px) that fits on one line.
    Phones (<=640px) keep the larger stacked two-line title. */
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -727,455 +844,250 @@ html body .home-page__hero .hero-home__main {
   }
 }
 
-/* ===== z-news-layout.css ===== */
-/* News index — full solution-page width; cards stacked one under the other */
-
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) {
-  --news-max: var(--pro-max, 75rem) !important;
-}
-
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .openms-lib-page__body > .openms-lib-page__anchor > .openms-lib-block,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-page-block,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-page,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-body,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography__entries {
-  width: 100% !important;
-  max-width: var(--pro-max, 75rem) !important;
-}
-
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-body {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-  gap: var(--pro-head-to-content, clamp(2.25rem, 4.5vw, 3.25rem)) !important;
-}
-
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .events-past-toolbar,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-year-toolbar,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-bibliography__entries,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-list,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-home__list,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .community-events-home__grid {
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Stack cards one under the other */
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-list,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-home__list,
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .community-events-home__grid {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) !important;
-  column-gap: 0 !important;
-  row-gap: clamp(1.15rem, 2.2vw, 1.5rem) !important;
-}
-
-/* ===== z-openms-lib-help.css ===== */
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 1.15rem !important;
-  text-align: center !important;
-}
-
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-copy {
-  justify-items: center !important;
-  text-align: center !important;
-  width: 100% !important;
-  max-width: min(100%, 38rem) !important;
-}
-
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-title,
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-text {
-  text-align: center !important;
-}
-
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #getting-started .openms-lib-resources__assist-actions {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  justify-content: center !important;
-  margin-inline: auto !important;
-}
-
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers.openms-lib-developers--cards {
-  gap: var(--pro-head-to-content) !important;
-}
-
-html body .openms-lib-page--hub.openms-lib-page--openms-lib.openms-lib-page--solution:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers .openms-lib-developers__cards-head {
-  margin-bottom: 0 !important;
-}
-
-html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
-html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page--openms-lib:not(.openms-lib-page--pyopenms-pro):not(.openms-lib-page--pyopenms-viz-pro):not(.openms-lib-page--webapps) #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active) {
-  transform: none !important;
-  flex: 0 0 auto !important;
-  width: auto !important;
+/* Homepage Ecosystem cards — every card logo gets the same box, whatever the
+   proportions of the source image (a wide pyOpenMS wordmark, a square viz
+   logo, ...). The image is contained and right-aligned inside it. */
+html body .home-page .ecosystem-home__grid .ecosystem-home__item .ecosystem-home__card .ecosystem-home__card-head .ecosystem-home__card-icon.ecosystem-home__card-icon.ecosystem-home__card-icon {
+  width: 7.5rem !important;
+  height: 4.5rem !important;
   min-width: 0 !important;
-  max-width: none !important;
-  min-height: var(--openms-btn-min-height, 2.75rem) !important;
-  height: auto !important;
-  padding: var(--openms-btn-padding, 0.7rem 1.25rem) !important;
-  box-sizing: border-box !important;
-}
-
-/* "Need help?" (Discord / GitHub issue) — side by side, same size, matching
-   the navy CTA bands / hero buttons standard, as long as both fit at a
-   readable width (each at least 9.5rem); `auto-fit` drops the second button
-   onto its own full-width row once the screen is too narrow for both. */
-html body .openms-lib-page .openms-lib-resources__assist .openms-lib-resources__assist-actions.openms-lib-resources__assist-actions,
-html body .openms-lib-page #getting-started#getting-started .openms-lib-resources__assist-actions.openms-lib-resources__assist-actions {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)) !important;
-  align-items: stretch !important;
-  justify-content: center !important;
-  gap: 0.9rem !important;
-  width: min(100%, 24rem) !important;
   max-width: 100% !important;
-}
-
-html body .openms-lib-page #getting-started#getting-started .openms-lib-resources__assist-actions .openms-lib-resources__assist-btn.openms-lib-resources__assist-btn.openms-lib-btn {
-  width: 100% !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  flex: 0 0 auto !important;
-  justify-content: center !important;
-  white-space: normal !important;
-  height: auto !important;
-  min-height: var(--openms-btn-min-height, 2.75rem) !important;
-  padding: var(--openms-btn-padding-y, 0.7rem) 0.9rem !important;
-  font-size: var(--openms-btn-font-size, var(--openms-text-min)) !important;
-  font-weight: var(--openms-btn-weight, 600) !important;
-}
-
-/* "Need help?" buttons: always centred in the band (on pyOpenMS the group sat
-   ~5px left of centre because another rule zeroed the auto margins). */
-:is(html, #assist-center-boost) body .openms-lib-page .openms-lib-resources__assist .openms-lib-resources__assist-actions.openms-lib-resources__assist-actions {
-  justify-self: center !important;
-  align-self: center !important;
-  margin-inline: auto !important;
-  box-sizing: border-box !important;
-  width: min(100%, 24rem) !important;
-  max-width: 100% !important;
-}
-
-/* Developer cards (Building OpenMS from Source, Reviewing Pull Requests, ...)
-   — the platform / action buttons sit side by side at the same width as long
-   as each fits at a readable width, and only once they don't fit the card do
-   they drop to full-width rows (all the same width). `auto-fit` does that
-   from the card's own width, so there's no viewport breakpoint. The 2-button
-   "Reviewing Pull Requests" card has longer labels, so it gets a larger
-   minimum than the 3-button platform row. */
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__platforms {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)) !important;
-  flex-direction: unset !important;
-  align-items: stretch !important;
-  gap: 0.9rem !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms {
-  grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)) !important;
-}
-
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn,
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn {
-  width: 100% !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  flex: none !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  white-space: normal !important;
-  text-align: center !important;
-}
-
-/* "Reviewing Pull Requests": the buttons fit their own text (not equal
-   width), side by side while they fit the card and wrapping onto the next
-   line when they don't. */
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: flex-start !important;
-  align-items: center !important;
-  grid-template-columns: none !important;
-}
-
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn,
-:is(html, #dev-platforms-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review:is(:hover, :focus-within) .openms-lib-developers__platforms a.openms-lib-btn.openms-lib-developers__platform-btn {
-  width: auto !important;
-  flex: 0 0 auto !important;
-  max-width: 100% !important;
-  white-space: nowrap !important;
-}
-.openms-lib-page--privacy .governance-cta-band__actions .openms-lib-btn--primary {
-  border: 2px solid var(--openms-white);
-  background: var(--openms-white);
-  color: var(--openms-navy) !important;
-}
-
-.openms-lib-page--privacy .governance-cta-band__actions .openms-lib-btn--primary:hover,
-.openms-lib-page--privacy .governance-cta-band__actions .openms-lib-btn--primary:focus-visible {
-  border-color: var(--openms-white);
-  background: var(--openms-white);
-  color: var(--openms-navy) !important;
-  transform: scale(var(--openms-btn-hover-scale));
-  box-shadow: 0 0 0 var(--openms-btn-glow-size) rgba(255, 255, 255, 0.22);
-  outline: none;
-  text-decoration: none;
-}
-
-/* ===== z-publications.css ===== */
-/* All years / year filters — compact label inside the same-size control */
-html body .openms-lib-page--news:not(.openms-lib-page--news-article) .news-toolbar__select,
-html body .openms-lib-page--publications .publications-toolbar__select,
-html body .openms-lib-page--publications .publications-year-nav__btn,
-html body .openms-lib-page--calendar .events-past-toolbar__select {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.01em !important;
-}
-
-html body .openms-lib-page--publications .publications-featured {
-  gap: var(--pro-head-to-content) !important;
-}
-
-html body .openms-lib-page--publications .publications-featured .openms-lib-resources__head {
-  margin-bottom: 0 !important;
-}
-
-/* More space after Key publications cards before the next section */
-html body .openms-lib-page--publications #key-publications {
-  padding-bottom: clamp(2.75rem, 6vw, 4.5rem) !important;
-}
-
-html body .openms-lib-page--publications #key-publications .publications-cite-card__action,
-html body .openms-lib-page--publications #key-publications .publications-cite-card:is(:hover, :focus-within) .publications-cite-card__action {
-  margin-top: 0.85rem !important;
-}
-
-/* ===== z-pyopenms-dev.css ===== */
-html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) {
-  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
-}
-
-html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > :nth-child(-n + 3) {
-  grid-column: span 4 !important;
-}
-
-html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > :nth-child(4) {
-  grid-column: span 5 !important;
-}
-
-html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > :nth-child(5) {
-  grid-column: span 7 !important;
-}
-
-html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__cards-grid > :last-child .openms-lib-developers__platforms {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-}
-
-html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__cards-grid > :last-child .openms-lib-developers__platforms .openms-lib-btn {
-  flex: 0 1 auto !important;
-  width: auto !important;
-  white-space: nowrap !important;
-}
-
-/* Keep For Developers text CTAs pinned — no hover lift / min-height jump */
-html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card-link,
-html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card-cta.openms-lib-developers__card-link,
-html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link,
-html body .openms-lib-page--pyopenms-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-cta.openms-lib-developers__card-link {
-  margin-top: auto !important;
-  padding-top: 0.35rem !important;
-  min-height: 0 !important;
-  height: auto !important;
-  transform: none !important;
-  gap: 0.35rem !important;
-}
-
-@media (max-width: 700px) {
-  html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-
-  html body .openms-lib-page--pyopenms-pro .openms-lib-developers--cards .openms-lib-developers__cards-grid:has(> :nth-child(5):last-child) > * {
-    grid-column: 1 / -1 !important;
-  }
-}
-
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.35rem !important;
-  transform: none !important;
-  min-height: 0 !important;
-  height: auto !important;
-  padding: 0 !important;
-  margin-top: auto !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  transition: gap 0.2s ease, color 0.2s ease !important;
-}
-
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link:is(:hover, :focus-visible, :active),
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link,
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link:is(:hover, :focus-visible, :active) {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.55rem !important;
-  transform: none !important;
-  min-height: 0 !important;
-  height: auto !important;
-  padding: 0 !important;
-  margin-top: auto !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link span[aria-hidden="true"] {
-  display: inline-block !important;
-  transform: none !important;
-  transition: transform 0.2s ease !important;
-}
-
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card-link:is(:hover, :focus-visible, :active) span[aria-hidden="true"],
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) .openms-lib-developers__card-link span[aria-hidden="true"] {
-  transform: translateX(0.2rem) !important;
-}
-
-html body .openms-lib-page--pyopenms-viz-pro #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page--pyopenms-viz-pro #for-developers a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page--pyopenms-viz-pro #for-developers .openms-lib-developers__card:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active) {
-  transform: none !important;
-}
-
-/* ===== z-research-partnerships.css ===== */
-/* Research partnerships form — hug Tally height; modest space under submit */
-html body .openms-lib-page--research-partnerships #partnership-form,
-html body .openms-lib-page--research-partnerships .rp-application {
-  padding-bottom: clamp(1.75rem, 4vw, 3rem) !important;
-}
-
-html body .openms-lib-page--research-partnerships .rp-application__form {
-  height: auto !important;
-  min-height: 0 !important;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-html body .openms-lib-page--research-partnerships .rp-application__tally-iframe,
-html body .openms-lib-page--research-partnerships iframe.rp-application__tally-iframe {
-  display: block !important;
-  width: 100% !important;
   min-height: 0 !important;
   max-height: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-}
-
-@media (max-width: 720px) {
-  html body .openms-lib-page--research-partnerships .rp-application__tally-iframe,
-  html body .openms-lib-page--research-partnerships iframe.rp-application__tally-iframe {
-    min-height: 0 !important;
-  }
-}
-
-/* Partnerships include numbered cards — layout from z-zzz-num-strip-white.css */
-
-/* Our partners (phones) — logos were spread out (107px-tall cells, ~120px row
-   pitch and ~40px of padding around the grid). Tighten the cells so the logos
-   sit closer together. */
-@media (max-width: 600px) {
-  html body .openms-lib-page--research-partnerships .uni-partners.uni-partners {
-    padding-block: 0.5rem !important;
-  }
-
-  html body .openms-lib-page--research-partnerships .uni-partners.uni-partners .uni-partners__static {
-    gap: 0.35rem 0.75rem !important;
-  }
-
-  html body .openms-lib-page--research-partnerships .uni-partners.uni-partners .uni-partners__item.uni-partners__item {
-    min-height: 0 !important;
-    height: auto !important;
-    padding-block: 0.4rem !important;
-  }
-}
-
-/* Hero title on phones — scale with the screen so the widest line, "RESEARCH
-   PARTNERSHIPS" (~13.5em in capitals), always fits inside the page gutters with
-   a little slack, instead of filling the width edge to edge and breaking the
-   word mid-way ("PARTNERSHI / PS") when the font renders slightly wider. */
-@media (max-width: 767px) {
-  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title.openms-lib-hero__title,
-  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title .openms-lib-hero__accent.openms-lib-hero__accent {
-    font-size: clamp(1.05rem, calc((100vw - 2.5rem) / 14.8), 2.2rem) !important;
-    line-height: 1.2 !important;
-  }
-
-  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title .openms-lib-hero__title-line,
-  :is(html, #rp-title-boost) body .openms-lib-page--research-partnerships .openms-lib-hero__title .openms-lib-hero__accent {
-    white-space: nowrap !important;
-    overflow-wrap: normal !important;
-    max-width: 100%;
-  }
-}
-
-/* ===== z-retreat-highlights.css ===== */
-/* About the retreat — card layout handled in z-03-cta-and-misc-fixes.css */
-
-/* ===== z-review-pr-btns.css ===== */
-html body .openms-lib-page #for-developers .openms-lib-developers__card--review a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page #for-developers .openms-lib-developers__card--review a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
-html body .openms-lib-page #for-developers .openms-lib-developers__card--review:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page #for-developers .openms-lib-developers__card--review:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
-html body .openms-lib-page .openms-lib-developers__route--review a.openms-lib-btn.openms-lib-developers__platform-btn,
-html body .openms-lib-page .openms-lib-developers__route--review a.openms-lib-btn.openms-lib-developers__platform-btn:is(:hover, :focus-visible, :active),
-html body .openms-lib-page .openms-lib-developers__route--review:is(:hover, :focus-within) a.openms-lib-btn.openms-lib-developers__platform-btn {
-  transform: none !important;
-  flex: 0 0 auto !important;
-  flex-grow: 0 !important;
-  flex-shrink: 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+  margin-left: auto !important;
   box-sizing: border-box !important;
-  padding: var(--openms-btn-padding, 0.7rem 1.25rem) !important;
-  border-width: 2px !important;
-  white-space: nowrap !important;
 }
 
-/* ===== z-section-stack.css ===== */
-/* Site-wide section head stack: eyebrow → title → lead
-   Canonical: 12px after top title, 20px after title before paragraph */
-html,
-body,
-.home-page,
-.openms-lib-page,
-.openms-lib-page--solution,
-.openms-lib-page--hub {
-  --openms-stack-eyebrow: 12px;
-  --openms-stack-lead: 20px;
-  --openms-stack-paragraph: 16px;
-  --pro-stack-eyebrow: var(--openms-stack-eyebrow);
-  --pro-stack-lead: var(--openms-stack-lead);
-  --sol-stack-eyebrow: var(--openms-stack-eyebrow);
-  --sol-stack-lead: var(--openms-stack-lead);
-  --home-section-head-eyebrow-gap: var(--openms-stack-eyebrow);
-  --home-section-head-lead-gap: var(--openms-stack-lead);
+/* The viz PNG is a 500x500 canvas with the artwork in the middle band; cover
+   crops that empty margin so it appears as large as the other logos. */
+html body .home-page .ecosystem-home__grid .ecosystem-home__item .ecosystem-home__card--viz .ecosystem-home__card-head .ecosystem-home__card-icon.ecosystem-home__card-icon.ecosystem-home__card-icon {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Homepage hero — Explore the library: solid white fill on navy (must load last) */
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate,
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:visited {
+  border: 2px solid var(--openms-white) !important;
+  border-color: var(--openms-white) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--openms-white) !important;
+  -webkit-text-fill-color: var(--openms-white) !important;
+  box-shadow: 0 0 0 0 var(--openms-btn-glow-white, rgba(255, 255, 255, 0.22)) !important;
+  transition: var(--openms-btn-motion) !important;
+}
+
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:hover,
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:focus-visible,
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:active {
+  background: var(--openms-white) !important;
+  background-color: #ffffff !important;
+  border: 2px solid var(--openms-white) !important;
+  border-color: var(--openms-white) !important;
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  transform: scale(var(--openms-btn-hover-scale, 1.03)) !important;
+  box-shadow: 0 0 0 var(--openms-btn-glow-size, 6px)
+    var(--openms-btn-glow-white, rgba(255, 255, 255, 0.22)) !important;
+  outline: none !important;
+  text-decoration: none !important;
+}
+
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:hover :is(i, svg, span),
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:focus-visible :is(i, svg, span),
+html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:active :is(i, svg, span) {
+  color: var(--openms-navy) !important;
+  -webkit-text-fill-color: var(--openms-navy) !important;
+  fill: currentColor !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:hover,
+  html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:focus-visible,
+  html body .home-page__hero a.hero-home__btn.hero-home__btn--secondary.about-cta-btn.about-cta-btn--donate:active {
+    transform: none !important;
+  }
+}
+
+/* Homepage Featured Apps — "Show all apps →" uses the same text size as the
+   other card links (View app →, Learn more →). */
+:is(html, #home-links-specificity-boost) body .home-page .home-page__block--projects a.webapps-featured__show-all.webapps-featured__show-all {
+  font-size: var(--openms-text-min, 0.8125rem) !important;
+}
+
+/* Homepage Ecosystem — pull the "Ecosystem" title up under its "Developer
+   tools" eyebrow (they were ~27px apart: 12px margin plus 15px of title padding). */
+:is(html, #ecosystem-title-specificity-boost) body .home-page .ecosystem-home__header-main .ecosystem-home__eyebrow.ecosystem-home__eyebrow {
+  margin-bottom: 0.35rem !important;
+}
+
+:is(html, #ecosystem-title-specificity-boost) body .home-page .ecosystem-home__header-main .ecosystem-home__title.ecosystem-home__title {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Homepage Upcoming events / Latest news — "View all →" uses the same text size
+   as the other card links. */
+:is(html, #view-all-specificity-boost) body .home-page :is(a.community-news-events__view-all, a.community-events-home__view-all--inline).community-news-events__view-all,
+:is(html, #view-all-specificity-boost) body .home-page :is(a.community-news-events__view-all, a.community-events-home__view-all--inline) {
+  font-size: var(--openms-text-min, 0.8125rem) !important;
+}
+
+/* What is OpenMS? — medium screens (768–1023px): the tag pill (BSD LICENSED,
+   C++ · PYTHON, …) sits at the right of the card, level with the title. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :is(html, #md-pill-specificity-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-card.keyfeatures-modern__topic-card {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-rows: auto 1fr !important;
+    grid-template-areas:
+      "title badge"
+      "text text" !important;
+    column-gap: 0.75rem !important;
+  }
+
+  :is(html, #md-pill-specificity-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-head.keyfeatures-modern__topic-head {
+    grid-area: badge !important;
+    justify-content: flex-end !important;
+    align-self: start !important;
+    margin: 0 !important;
+  }
+}
+
+/* Homepage Upcoming events / Latest news — on phones "View all →" stays at the
+   right of the title, on the same line. */
+@media (max-width: 767px) {
+  :is(html, #view-all-row-boost) body .home-page .community-news-events__column > .community-news-events__column-header {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+    gap: 0.75rem !important;
+  }
+
+  :is(html, #view-all-row-boost) body .home-page .community-news-events__column .community-news-events__column-title {
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0 !important;
+  }
+
+  :is(html, #view-all-row-boost) body .home-page .community-news-events__column .community-news-events__column-header > a.community-news-events__view-all {
+    flex: 0 0 auto;
+    align-self: baseline !important;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
+}
+
+/* "What is OpenMS?" cards (Open source / BSD licensed, C++ & Python / C++ ·
+   Python, ...) on the homepage — the tag pill sits at the top-right of the
+   card on the SAME row as the title (title left, tag right), then the text
+   below, at every screen size. Loads after openms-overrides.css, which had
+   stacked the tag above the title; this restores the two-column title row. */
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-card {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-rows: auto 1fr !important;
+  grid-template-areas:
+    "title badge"
+    "text text" !important;
+  column-gap: 0.75rem !important;
+  row-gap: 0.55rem !important;
+  align-items: start;
+}
+
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-head {
+  grid-area: badge !important;
+  justify-content: flex-end !important;
+  align-self: start !important;
+}
+
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-title {
+  grid-area: title !important;
+  align-self: start !important;
+}
+
+html body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__topic-text {
+  grid-area: text !important;
+}
+
+/* Code-of-conduct note under the cards: navy icon. */
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon,
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon svg,
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon path {
+  color: var(--openms-navy) !important;
+}
+
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon svg,
+:is(html, #kf-note-icon-boost) body .home-page__block--overview .keyfeatures-modern--home .keyfeatures-modern__note-icon path {
+  fill: var(--openms-navy) !important;
+}
+
+/* Homepage "Show all apps →": nudge it in a little from the right edge on
+   stacked (<900px) layouts. */
+@media (max-width: 899px) {
+  html body .home-page .home-page__block--projects .webapps-featured__header-action {
+    padding-right: 1.1rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Homepage "View all →" (News and Events headers): nudge it in a little from
+   the right edge. */
+html body .home-page .community-news-events__column-header {
+  padding-right: 1.1rem;
+  box-sizing: border-box;
+}
+
+/* Featured Apps cards on phones (one card per row): the "View app →" link
+   sits right under the description — the 3-line reserve that lines links up
+   across a row on wider screens isn't needed when each card is on its own. */
+@media (max-width: 767px) {
+  html body .home-page .webapps-project-card__text {
+    min-height: 0;
+    flex: 0 0 auto;
+  }
+
+  html body .home-page .webapps-project-card__body {
+    gap: 0.6rem;
+  }
+
+  html body .home-page .webapps-project-card__cta {
+    margin-top: 0;
+  }
+}
+
+/* ---------- Homepage hero (mobile): graphic and its legend sit closer to the buttons / chart ---------- */
+@media (max-width: 767px) {
+  html:is(html, #hero-note-up-boost) body .home-page__hero .hero-home__visual {
+    margin-top: 0.25rem !important;
+  }
+
+  html:is(html, #hero-note-up-boost) body .home-page__hero .hero-home__note.hero-home__note--under-graphic {
+    margin-top: 0.4rem !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    justify-content: space-between !important;
+    column-gap: clamp(0.3rem, 1.6vw, 1rem) !important;
+    max-width: 100% !important;
+    /* scales with the screen so all three labels always fit on one line */
+    font-size: clamp(0.5rem, calc((100vw - 1.9rem) / 32.5), 0.9375rem) !important;
+  }
+
+  html:is(html, #hero-note-up-boost) body .home-page__hero .hero-home__note.hero-home__note--under-graphic .hero-home__note-item {
+    white-space: nowrap !important;
+    font-size: inherit !important;
+    gap: 0.25rem !important;
+  }
+}
+
+/* Mobile: the top title (eyebrow) stays a small label — smaller than the description below it */
+
+@media (max-width: 767px) {
+  html:is(html, #eyebrow-mobile-boost2) body :is(.openms-lib-page--contact .openms-lib-resources__eyebrow, .governance-membership__eyebrow) {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.12em !important;
+  }
 }
