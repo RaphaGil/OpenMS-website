@@ -71,18 +71,6 @@ html body .openms-lib-page--privacy #privacy-who-we-are .openms-lib-about__lead 
   margin: 0;
   text-align: left;
 }
-
-/* Topic rows: a fixed-width number column so every title starts at the same
-   x, and the same thin navy arrow as the FAQ rows. */
-html body .openms-lib-page--privacy .privacy-pro__summary {
-  grid-template-columns: 4rem minmax(0, 1fr) auto;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-index {
-  width: 4rem;
-  text-align: left;
-}
-
 /* ───────────── Press kit — standard hub-page sections and cards ───────────── */
 html body .openms-lib-page--press-kit #logos,
 html body .openms-lib-page--press-kit #usage {
@@ -308,31 +296,6 @@ html body .openms-lib-page #for-developers#for-developers .openms-lib-developers
   box-shadow: var(--pro-shadow, 0 0.2rem 0.65rem rgba(var(--openms-navy-rgb), 0.05)) !important;
   padding: var(--pro-card-pad-lg, 1.2rem) !important;
   gap: 0.45rem !important;
-}
-
-html body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured) .openms-lib-developers__card-icon {
-  font-size: var(--card-std-icon-size) !important;
-  width: auto !important;
-  height: auto !important;
-  color: var(--card-std-icon-color) !important;
-}
-
-html body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured) .openms-lib-developers__card-icon :is(i, svg, .fas, .fab, .far, .svg-inline--fa) {
-  color: var(--card-std-icon-color) !important;
-  font-size: 1em !important;
-  width: 1em !important;
-  height: 1em !important;
-}
-
-html body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured) .openms-lib-developers__card-icon svg path {
-  fill: currentColor !important;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  html body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within) .openms-lib-developers__card-icon,
-  html body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within) .openms-lib-developers__card-icon :is(i, svg, .fas, .fab, .far, .svg-inline--fa) {
-    color: var(--openms-blue) !important;
-  }
 }
 
 /* ---------- contribute tracks: the section-id rule made these icons

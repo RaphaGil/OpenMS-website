@@ -100,33 +100,6 @@ html body .community-events-past__year-btn.is-active {
 .events-past-year[hidden] {
   display: none;
 }
-
-/* ===== z-zzzzz-contribute-tweaks.css ===== */
-/* Contribute page tweaks. */
-
-/* Code of Conduct principles (01 Welcoming language …): the title and text sit
-   below the number instead of beside it, like the other numbered cards. */
-html body #code-of-conduct#code-of-conduct .coc-principle.coc-principle {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.35rem !important;
-}
-
-html body #code-of-conduct#code-of-conduct .coc-principle .coc-principle__body.coc-principle__body {
-  display: block !important;
-  width: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-html body #code-of-conduct#code-of-conduct .coc-principle .coc-principle__title.coc-principle__title,
-html body #code-of-conduct#code-of-conduct .coc-principle .coc-principle__text.coc-principle__text {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  text-align: left;
-}
-
 /* "Sponsor OpenMS" title in capitals like the other section titles. */
 html body .openms-lib-page--contribute .contribute-support__title.contribute-support__title {
   text-transform: uppercase !important;
@@ -223,40 +196,6 @@ html body #for-developers#for-developers.openms-lib-developers--grouped .openms-
   box-shadow: 0 0.35rem 1rem rgba(var(--openms-blue-rgb), 0.1) !important;
   transform: none !important;
 }
-
-html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-icon.openms-lib-developers__card-icon {
-  display: grid !important;
-  place-items: center;
-  flex: 0 0 auto;
-  width: auto !important;
-  height: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0;
-  background: transparent !important;
-  background-color: transparent !important;
-  color: var(--openms-blue) !important;
-  -webkit-text-fill-color: var(--openms-blue) !important;
-}
-
-html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-icon :is(i, svg) {
-  width: 1.85rem !important;
-  height: 1.85rem !important;
-  font-size: 1.75rem !important;
-  line-height: 1;
-  color: inherit !important;
-  -webkit-text-fill-color: currentColor !important;
-  fill: currentColor !important;
-  opacity: 1 !important;
-}
-
-html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-icon svg path {
-  color: inherit !important;
-  fill: currentColor !important;
-  opacity: 1 !important;
-}
-
 html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card-body.openms-lib-developers__card-body {
   display: flex !important;
   flex-direction: column !important;
@@ -324,13 +263,6 @@ html body #for-developers#for-developers.openms-lib-developers--grouped .openms-
   border-color: var(--openms-navy) !important;
   box-shadow: 0 0.6rem 1.5rem rgba(var(--openms-navy-rgb), 0.22) !important;
 }
-
-html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured .openms-lib-developers__card-icon.openms-lib-developers__card-icon {
-  background: transparent !important;
-  color: var(--openms-white) !important;
-  -webkit-text-fill-color: var(--openms-white) !important;
-}
-
 html body #for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured .openms-lib-developers__card-title.openms-lib-developers__card-title {
   font-size: 1.3rem !important;
   color: var(--openms-white) !important;
@@ -533,26 +465,6 @@ html body #for-developers#for-developers.openms-lib-developers--grouped .openms-
   opacity: 1 !important;
   visibility: visible !important;
 }
-
-/* Icons keep their colour on hover (blue on the white cards, white on the
-   navy featured card). Older hover rules turned them white, which vanished on a
-   white card. Triple id so nothing out-ranks this. */
-html body #for-developers#for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within, :focus-visible) .openms-lib-developers__card-icon,
-html body #for-developers#for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within, :focus-visible) .openms-lib-developers__card-icon :is(i, svg, path) {
-  color: var(--openms-blue) !important;
-  -webkit-text-fill-color: var(--openms-blue) !important;
-  fill: var(--openms-blue) !important;
-  opacity: 1 !important;
-}
-
-html body #for-developers#for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured:is(:hover, :focus-within, :focus-visible) .openms-lib-developers__card-icon,
-html body #for-developers#for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__card--featured:is(:hover, :focus-within, :focus-visible) .openms-lib-developers__card-icon :is(i, svg, path) {
-  color: var(--openms-white) !important;
-  -webkit-text-fill-color: var(--openms-white) !important;
-  fill: var(--openms-white) !important;
-  opacity: 1 !important;
-}
-
 /* Platform / action buttons: the icon (Linux, macOS, Windows, GitHub, book…)
    stays navy — also on hover and focus. */
 html body #for-developers#for-developers#for-developers.openms-lib-developers--grouped .openms-lib-developers__platform-btn :is(i, svg, path) {

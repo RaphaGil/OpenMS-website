@@ -30,39 +30,6 @@ html body #navbar-clone.navbar.is-fresh .navbar-brand img.navbar-logo {
     min-height: calc(var(--openms-navbar-logo-height) + 0.65rem);
   }
 }
-
-/* ---------- typography standard: top title (eyebrow), title, description ---------- */
-html:is(html, #eyebrow-std-boost) body :is(
-  .openms-lib-hero__eyebrow,
-  .openms-lib-about__eyebrow,
-  .openms-lib-resources__eyebrow,
-  .openms-lib-block__eyebrow,
-  .openms-lib-topp-split__eyebrow,
-  .openms-lib-cite__eyebrow,
-  .openms-lib-developers__eyebrow,
-  .contribute-channels__eyebrow,
-  .contribute-ways__eyebrow,
-  .contribute-outreach__eyebrow,
-  .contribute-support__kicker,
-  .contribute-coc-band__kicker,
-  .sponsor-eyebrow,
-  .publications-key__eyebrow,
-  .privacy-overview__eyebrow,
-  .webapps-featured__eyebrow,
-  .ecosystem-home__eyebrow,
-  .community-events-home__eyebrow,
-  .community-home__eyebrow,
-  .contact-home__eyebrow,
-  .keyfeatures-modern__eyebrow,
-  .trusted-by__home-eyebrow,
-  .home-pathways__eyebrow,
-  .uni-partners__eyebrow,
-  .news-section__eyebrow
-) {
-  font-size: 0.875rem !important;
-  line-height: 1.3 !important;
-}
-
 /* Contact page: section title / eyebrow at the standard size */
 html body .openms-lib-page--contact #contact-paths .openms-lib-resources__title {
   font-size: var(--openms-section-title-size) !important;
@@ -140,19 +107,6 @@ html body .openms-lib-page--contact .contact-path-links {
   gap: 0.4rem 1.5rem;
   margin-top: auto;
 }
-
-/* ---------- Privacy topic rows: same number / title style as other cards ---------- */
-html body .openms-lib-page--privacy .privacy-pro__summary-index {
-  font-family: var(--openms-font-heading) !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-title {
-  font-size: var(--openms-card-title-size) !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  color: rgba(var(--openms-dark-rgb), 0.72) !important;
-}
-
 /* ---------- Press kit: more space between the two usage paragraphs ---------- */
 html body .openms-lib-page--press-kit #usage .openms-lib-resources__head {
   row-gap: 1.25rem !important;
@@ -470,18 +424,6 @@ html:is(html, #hero-eyebrow-chip-boost) body .home-page__hero p.hero-home__eyebr
   font-weight: inherit !important;
   font-size: inherit !important;
 }
-
-/* ---------- Privacy topics: title and description sit right after the number ---------- */
-html body .openms-lib-page--privacy .privacy-pro__summary {
-  grid-template-columns: auto minmax(0, 1fr) auto !important;
-  column-gap: 0.75rem !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-index {
-  width: auto !important;
-  font-variant-numeric: tabular-nums;
-}
-
 /* ---------- Privacy "Who we are": always left-aligned, at every screen size ---------- */
 html:is(html, #privacy-who-left-boost) body .openms-lib-page--privacy #privacy-who-we-are :is(.openms-lib-about__head, .openms-lib-about__head-copy, .openms-lib-about__eyebrow, .openms-lib-about__title, .openms-lib-about__lead) {
   text-align: left !important;
@@ -491,134 +433,6 @@ html:is(html, #privacy-who-left-boost) body .openms-lib-page--privacy #privacy-w
   margin-left: 0 !important;
   margin-right: auto !important;
 }
-
-/* ---------- Privacy topics: number on top, title + description below it ---------- */
-html body .openms-lib-page--privacy .privacy-pro__summary {
-  grid-template-columns: minmax(0, 1fr) auto !important;
-  grid-template-areas:
-    "index arrow"
-    "copy copy" !important;
-  row-gap: 0.4rem !important;
-  align-items: start !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-index {
-  grid-area: index !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-copy {
-  grid-area: copy !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary::after {
-  grid-area: arrow !important;
-  align-self: center;
-}
-
-/* ---------- Privacy topics: cleaner, easier-to-scan cards ---------- */
-/* one card per line at every screen size */
-html body .openms-lib-page--privacy .privacy-pro__list {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.75rem;
-}
-
-/* card frame: soft hover, blue accent while open */
-html body .openms-lib-page--privacy .privacy-pro__item {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__item:hover {
-  border-color: var(--pro-line-strong, rgba(var(--openms-navy-rgb), 0.22));
-  box-shadow: var(--pro-shadow-hover, 0 0.5rem 1.25rem rgba(var(--openms-navy-rgb), 0.08));
-}
-
-html body .openms-lib-page--privacy .privacy-pro__item[open] {
-  border-color: rgba(var(--openms-blue-rgb), 0.45);
-  box-shadow: 0 0 0 1px rgba(var(--openms-blue-rgb), 0.18), var(--pro-shadow);
-}
-
-html body .openms-lib-page--privacy .privacy-pro__item[open] > .privacy-pro__summary {
-  background: rgba(var(--openms-blue-rgb), 0.04);
-}
-
-/* padding and a slightly smaller number so the collapsed cards stay compact */
-html body .openms-lib-page--privacy .privacy-pro__summary {
-  padding: 1.15rem 1.35rem !important;
-  row-gap: 0.35rem !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-index {
-  font-size: clamp(2.25rem, 4vw, 2.75rem) !important;
-  letter-spacing: -0.04em !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary:focus-visible {
-  outline: 2px solid var(--openms-blue);
-  outline-offset: -2px;
-}
-
-/* opened text: comfortable reading width and spacing */
-html body .openms-lib-page--privacy .privacy-pro__answer {
-  padding: 1.25rem 1.35rem 1.4rem !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__rich {
-  max-width: 46rem;
-  line-height: 1.7;
-}
-
-/* intro sentence: use a readable line length instead of a narrow column */
-html body .openms-lib-page--privacy #privacy-topics .openms-lib-resources__lead {
-  max-width: 44rem !important;
-}
-
-/* ---------- Privacy topics: title beside the number, description below ---------- */
-html body .openms-lib-page--privacy .privacy-pro__summary {
-  grid-template-columns: auto minmax(0, 1fr) auto !important;
-  grid-template-areas:
-    "index title arrow"
-    "index text text" !important;
-  column-gap: 0.85rem !important;
-  row-gap: 0.4rem !important;
-  align-items: start !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-copy {
-  display: contents !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-title {
-  grid-area: title !important;
-  margin: 0 !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-text {
-  grid-area: text !important;
-  margin: 0 !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-index {
-  margin: 0 !important;
-  align-self: start !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary-title {
-  margin-top: -0.3rem !important;
-  line-height: 1.3 !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary::after {
-  align-self: start !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__summary::after {
-  margin-top: 0 !important;
-}
-
-html body .openms-lib-page--privacy .privacy-pro__item[open] .privacy-pro__summary::after {
-  margin-top: 0 !important;
-}
-
 /* ---------- Governance "Separation of Responsibilities": left-aligned head on mobile ---------- */
 @media (max-width: 899px) {
   html:is(html, #gov-resp-left-boost) body .openms-lib-page #responsibilities :is(.openms-lib-about__head, .openms-lib-about__head-copy, .openms-lib-about__eyebrow, .openms-lib-about__title, .openms-lib-about__lead, .governance-lead-line) {
@@ -643,17 +457,6 @@ html body .openms-lib-page--privacy .privacy-pro__item[open] .privacy-pro__summa
 }
 
 /* ---------- "For Developers / Contribute" cards: icons on the left on mobile ---------- */
-@media (max-width: 767px) {
-  html:is(html, #dev-icons-left-boost) body .openms-lib-page #for-developers .openms-lib-developers__card-icon {
-    display: flex !important;
-    justify-content: flex-start !important;
-    align-self: flex-start !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    text-align: left !important;
-  }
-}
 
 /* ---------- "Reviewing Pull Requests" on every page: links, not buttons ---------- */
 :is(html, #dev-review-links-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card--review .openms-lib-developers__platforms {
@@ -821,39 +624,6 @@ html body .openms-lib-page--privacy .privacy-pro__item[open] .privacy-pro__summa
 }
 
 /* Mobile: the top title (eyebrow) stays a small label — smaller than the description below it */
-@media (max-width: 767px) {
-  html:is(html, #eyebrow-mobile-boost) body :is(
-  .openms-lib-hero__eyebrow,
-  .openms-lib-about__eyebrow,
-  .openms-lib-resources__eyebrow,
-  .openms-lib-block__eyebrow,
-  .openms-lib-topp-split__eyebrow,
-  .openms-lib-cite__eyebrow,
-  .openms-lib-developers__eyebrow,
-  .contribute-channels__eyebrow,
-  .contribute-ways__eyebrow,
-  .contribute-outreach__eyebrow,
-  .contribute-support__kicker,
-  .contribute-coc-band__kicker,
-  .sponsor-eyebrow,
-  .publications-key__eyebrow,
-  .privacy-overview__eyebrow,
-  .webapps-featured__eyebrow,
-  .ecosystem-home__eyebrow,
-  .community-events-home__eyebrow,
-  .community-home__eyebrow,
-  .contact-home__eyebrow,
-  .keyfeatures-modern__eyebrow,
-  .trusted-by__home-eyebrow,
-  .home-pathways__eyebrow,
-  .uni-partners__eyebrow,
-  .news-section__eyebrow
-) {
-    font-size: 0.75rem !important;
-    letter-spacing: 0.12em !important;
-    line-height: 1.3 !important;
-  }
-}
 
 @media (max-width: 767px) {
   html:is(html, #eyebrow-mobile-boost2) body :is(.openms-lib-page--contact .openms-lib-resources__eyebrow, .governance-membership__eyebrow) {
@@ -916,13 +686,6 @@ html body .openms-lib-page--privacy .privacy-pro__item[open] .privacy-pro__summa
   color: rgba(var(--openms-dark-rgb), 0.72) !important;
   -webkit-text-fill-color: rgba(var(--openms-dark-rgb), 0.72) !important;
 }
-
-:is(html, #dev-hover-white-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within) .openms-lib-developers__card-icon,
-:is(html, #dev-hover-white-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within) .openms-lib-developers__card-icon :is(i, svg, path) {
-  color: var(--openms-blue) !important;
-  fill: currentColor;
-}
-
 :is(html, #dev-hover-white-boost) body .openms-lib-page #for-developers#for-developers .openms-lib-developers__card:not(.openms-lib-developers__card--featured):is(:hover, :focus-within) .openms-lib-developers__card-link {
   color: var(--openms-blue) !important;
   -webkit-text-fill-color: var(--openms-blue) !important;
