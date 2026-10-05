@@ -1,59 +1,111 @@
-# Add images
+# Add a picture or logo to the website
 
-Static files are served from the **`static/`** folder. A file at `static/images/foo.png` is available on the site as **`/images/foo.png`**.
+Whenever a guide says "upload the logo" or "add an image", this is the page you need. Pictures live in the folder **`static/images/`** of the website files on GitHub.
 
-## Where to put images
+**Time:** about 10 minutes  ·  **Skills needed:** none
 
-| Use case | Suggested path |
-|----------|----------------|
-| Logos, general | `static/images/logos/` |
-| Webapp / project logos | `static/images/webapp/logo/` |
-| Application guide screenshots | `static/images/content_images/applications/` |
-| Homepage / hero (referenced by filename in config) | Often `static/images/` or theme assets — match existing entries in `config.yaml` |
-| Favicon | `static/images/favicon.png` |
+## The one thing to remember
 
-## Reference in Markdown (content pages)
+A file in the folder `static/images/logos/` is shown on the website at the address starting with **`/images/logos/`**. In other words: **drop `static` from the path.**
 
-Use the theme **figure** shortcode:
+| Where you upload it on GitHub | The path you write in config or in an article |
+|-------------------------------|-----------------------------------------------|
+| `static/images/logos/example.png` | `/images/logos/example.png` |
+| `static/images/webapp/logo/mytool.png` | `/images/webapp/logo/mytool.png` |
+
+## Which folder?
+
+| What the picture is | Upload it to |
+|---------------------|--------------|
+| A sponsor or a partner logo | `static/images/logos/` |
+| The logo of a **Featured App** | `static/images/webapp/logo/` |
+| The logo of an **Affiliated App** | `static/images/webapp/logo/affiliate/` |
+| A picture for the **Developer Retreat** page | `static/images/` |
+| A picture for a **news article** | `static/images/news_images/` |
+| A photo for the **community** block on the home page | `static/images/community/` |
+
+## Step by step
+
+### Step 1 – Get the picture ready
+
+- Use **PNG** or **SVG** for logos, **JPG** for photos.
+- Use a **small, simple file name**: only small letters, numbers, `-` and `_`, no spaces. For example `my-tool-logo.png`, not `My Tool Logo (1).PNG`. Capital letters matter on the website, so keep them small.
+- Keep the file **under about 500 KB**. For photos, 1600 pixels wide is plenty.
+
+### Step 2 – Open the right folder on GitHub
+
+Open the folder on GitHub. For example, for sponsor logos:
+
+**https://github.com/OpenMS/OpenMS-website/tree/main/static/images/logos**
+
+Click **Add file** (top right), then **Upload files**.
+
+![The Add file button and the Upload files entry](../images/github/6-add-file-upload.png)
+
+| Number | What to do |
+|:--:|------------|
+| 1 | Click **Add file**. (You only see it when you are signed in to GitHub. If GitHub asks you to **fork** the repository, accept.) |
+| 2 | Click **Upload files**. |
+
+### Step 3 – Drop the picture in and save
+
+![The upload page](../images/github/7-upload-page.png)
+
+| Number | What to do |
+|:--:|------------|
+| 1 | **Drag the file** from your computer into the dashed box (or click **choose your files**). Wait until it says *uploaded*. |
+| 2 | Choose **Create a new branch for this commit and start a pull request**. Add a short note above, like *Add logo for Example Institute*. |
+| 3 | Click **Propose changes**, then **Create pull request** (as in [How to make a change](../getting-started/edit-via-github.md#step-4--send-it-for-review-create-pull-request)). |
+
+### Step 4 – Use the picture
+
+Now write its path where the guide tells you to, for example in `config.yaml`:
+
+```yaml
+logo: /images/webapp/logo/mytool.png
+```
+
+or inside a news article (Markdown):
 
 ```markdown
-<center>{{< figure src="/images/content_images/applications/NuXL.png" >}}</center>
+![A short description of the picture](/images/news_images/my-photo.jpg)
 ```
 
-Path always starts with `/images/...` (not `static/`).
+The words between the square brackets are the **description** for people who can't see the picture. Please always write something short there.
 
-## Reference in config.yaml
+## Make the preview show the picture
 
-```yaml
-logo: /images/webapp/logo/nuxl.png
+The text change and the picture should be in the **same pull request**, otherwise the preview of the text change shows a broken picture. Two simple ways:
+
+- **Easiest:** upload the picture first, wait until the web team merges it, then make the text change.
+- **Faster:** after you made your text change, open the folder on GitHub, use the **branch menu** at the top left of the file list to select **your branch** (the one your pull request is on), and then upload the picture as above. Choose **Commit directly to the … branch** this time.
+
+## Check that it worked
+
+After the preview is ready, open the picture's address directly. Take the **Deploy Preview** address and add the path, for example:
+
+```
+https://deploy-preview-123--openms.netlify.app/images/logos/example.png
 ```
 
-```yaml
-navbarlogo:
-  image: OpenMS_transparent_blackFont.png
-```
+If you see the picture, the path is right.
 
-Some hero images use **filename only** (e.g. `knime-analytics.png`) — copy the pattern from neighboring entries in the same config block.
+## Common mistakes
 
-## Reference in HTML partials (web team)
+| What went wrong | How to fix it |
+|-----------------|---------------|
+| The picture is broken (a small empty frame) | The path doesn't match the file name **exactly**. Capital letters, dashes and the ending (`.png` vs `.jpg`) all matter. And the path starts with `/images/`, **not** `static/images/`. |
+| The picture is tiny or huge | Use a different file, or ask the web team to adjust the size. |
+| Upload says the file is too large | Make the picture smaller (for example in the free tool *Squoosh*: squoosh.app) and try again. |
+| A picture with a transparent background has a white box | Use a PNG or SVG with a transparent background. |
 
-```html
-<img src="/images/logos/logo-uni-tuebingen.png" alt="University of Tübingen" />
-```
+## For the web team
 
-## Tips
+Some theme images are referenced by **file name only** (for example in `heroGroup`). They are resolved by the theme: copy the pattern of the neighbouring entries in `config.yaml`. In Markdown pages the `figure` shortcode also works: `{{< figure src="/images/…" >}}`.
 
-- Prefer **PNG** or **SVG** for logos; **JPEG** for photos.
-- Keep file sizes reasonable (compress large screenshots).
-- Use descriptive **alt text** in Markdown/HTML for accessibility.
-- Use lowercase filenames to avoid case-sensitivity issues on Linux (production builds).
+## Related guides
 
-## Adding via GitHub
-
-1. In your branch, go to the target folder under `static/images/`.
-2. **Add file** → upload image.
-3. Reference `/images/...` in the same PR.
-
-## Preview
-
-Open the image URL directly: `http://localhost:1313/images/webapp/logo/my-tool.png`
+- [Featured Apps](update-featured-apps.md)
+- [Sponsors](update-sponsors.md)
+- [Add a news article](add-news-post.md)
+- Back to the [list of all guides](../README.md)

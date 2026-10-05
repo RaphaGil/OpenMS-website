@@ -1,54 +1,85 @@
-# Update sponsors
+# Add, change or remove a sponsor logo
 
-Sponsors appear on **/our-sponsors/**, in a `sponsors:` list in `config.yaml`.
+Sponsors are shown on **https://openms.de/our-sponsors/**. Each sponsor is **one logo** that links to the sponsor's website.
+
+**You will change:** one block in `config.yaml`  ·  **Time:** about 15 minutes  ·  **Skills needed:** none
+
+## What you will change
+
+![The Our Sponsors page with the intro text and the logos numbered](../images/update-sponsors/1-sponsors-page.png)
+
+1. **The introduction** sentence. This is the `intro:` line under `sponsorsSection:`.
+2. **One sponsor logo.** Each logo is one block under `sponsors:`.
+
+And this is the block for **one** sponsor in `config.yaml`:
+
+![One sponsor in config.yaml, with the lines marked](../images/update-sponsors/2-sponsor-config.png)
+
+| Number | Line | What it is |
+|:--:|------|-----------|
+| 2 | `logo:` and `url:` | The picture (its path always starts with `/images/…`), and the website that opens when someone clicks it. |
+| 3 | `name:`, `alt:`, `description:` | Not shown as text. They describe the logo for people who use screen readers and for search engines. Please fill them in. |
 
 ## Add a sponsor
 
-1. Upload the sponsor's logo under `static/images/logos/` (see [Add images](add-images.md)).
-2. In `config.yaml`, find `sponsors:` (under `aboutPage` → `sponsorsSection`) and add a new item:
+### Step 1 – Upload the logo
+
+Put the logo in the folder **`static/images/logos/`**. See [Add images](add-images.md). Remember the file name, for example `example-institute.svg`. A `.svg` or a `.png` with a transparent background looks best.
+
+### Step 2 – Add the block
+
+1. Open **https://github.com/OpenMS/OpenMS-website/blob/main/config.yaml** and click the **pencil icon**. ([Need help?](../getting-started/edit-via-github.md#step-1--open-the-file))
+2. Click inside the text box, press **Ctrl + F** (Windows) or **Cmd + F** (Mac), and search for `sponsors:`. (The first match may be a different one. Pick the one with `- name: LiBiS` below it.)
+3. Go to the end of the **last sponsor** (the line `# tier: silver` or the one before the line `sponsorshipProgram:`). Press **Enter** and paste:
 
 ```yaml
-sponsors:
-  - name: Example Institute
-    url: https://example.org/
-    logo: /images/logos/example-institute.svg
-    alt: Example Institute logo
-    description: Supporting open-source proteomics research
-    # tier: gold
+          - name: Example Institute
+            url: https://example.org/
+            logo: /images/logos/example-institute.svg
+            alt: Example Institute logo
+            description: Supporting open-source proteomics research
 ```
 
-| Field | Required | Notes |
-|-------|----------|--------|
-| `name` | Yes | Sponsor name |
-| `url` | Yes | Link when the logo is clicked |
-| `logo` | Yes | Path starting with `/images/...` (file must exist under `static/`) |
-| `alt` | Yes | Describes the logo for screen readers |
-| `description` | Yes | Short line shown under the logo |
-| `tier` | No | One of the ids in `sponsorTiers.levels` (`bronze`, `silver`, `gold`, `platinum`) — see below |
+4. Replace the example text with the real details. Keep the spaces at the start of each line **exactly** as above. They must line up with the sponsors above.
 
-3. Preview and open a pull request (see [Edit via GitHub](../getting-started/edit-via-github.md) or [Preview locally](../getting-started/preview-locally.md)).
+### Step 3 – Save and send for review
+
+[How to make a change, steps 3 to 6](../getting-started/edit-via-github.md#step-3--save-commit-changes).
+
+### Step 4 – Check the preview
+
+Open the **Deploy Preview**, add **/our-sponsors/** to the address and check that the logo looks right and opens the right website.
 
 ## Remove a sponsor
 
-Delete their block from the `sponsors:` list.
+Find the sponsor's `- name:` line and delete it together with the lines under it, up to the next `- name:` (or the next heading).
 
-## Sponsorship tiers (optional)
+## Change the text on the page
 
-Sponsors show as a plain logo list until there are enough of them to group by level. To turn on grouping:
+Under `sponsorsSection:` (just above `sponsors:`):
 
-1. Set `tier:` on each sponsor's entry in `sponsors:` (must match an `id` under `sponsorTiers.levels`, e.g. `gold`).
-2. Set `groupByTier: true` under `sponsorsSection` in `config.yaml`.
+| Line | Where it shows |
+|------|----------------|
+| `intro:` | The sentence under the page title. |
+| `contactCta:` | The text in the dark blue "Become a sponsor" box lower down. |
+| `contactButtonText:` / `contactButtonUrl:` | The words and the e-mail address of the **Email Us** button. |
 
-Only tiers that actually have a sponsor are shown. The tiers themselves (name, price, description) are configured separately under `sponsorTiers.levels` and the **Sponsorship levels** section on `/sponsor-us/` — editing a sponsor's `tier` does not change the tier's own price or description, only which group their logo appears under.
+## Group sponsors by level (optional)
 
-## Section text
+Don't do this unless you were asked to. Sponsors are shown as one row of logos. To group them as Platinum / Gold / Silver / Bronze:
 
-Eyebrow, intro paragraph, and the "Interested in sponsoring us?" call to action are under `sponsorsSection` in `config.yaml`, right above the `sponsors:` list.
+1. In each sponsor block, remove the `#` and the space in front of `tier:` and choose `platinum`, `gold`, `silver` or `bronze`.
+2. Under `sponsorsSection:`, remove the `#` in front of `groupByTier: true`.
 
-## Preview
+## Common mistakes
 
-```bash
-make serve
-```
+| What went wrong | How to fix it |
+|-----------------|---------------|
+| The preview says **Failed** | The spaces are wrong. The new block must start with the same number of spaces as the other `- name:` lines. See [Spaces matter](../getting-started/edit-via-github.md#spaces-matter-in-configyaml). |
+| The logo is a broken picture | The path in `logo:` must match the uploaded file exactly (capital letters count) and start with `/images/`. |
+| The logo is huge or tiny | Use a different logo file, or ask the web team to adjust it. |
 
-Visit [http://localhost:1313/our-sponsors/](http://localhost:1313/our-sponsors/).
+## Related guides
+
+- [Add images](add-images.md)
+- Back to the [list of all guides](../README.md)

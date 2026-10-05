@@ -1,108 +1,140 @@
-# Add a news post
+# Add a news article
 
-News articles appear on **https://openms.de/news/** and in the news listing. Each post is one Markdown file.
+News articles (releases, workshops, announcements) appear on **https://openms.de/news/**. Each article is **one small text file**. You create it on GitHub, in your browser.
 
-## Files to edit
+**You will create:** one new file  ·  **Time:** about 15 minutes  ·  **Skills needed:** none
 
-| Action | Location |
-|--------|----------|
-| New post | `content/en/news/<slug>.md` |
-| Listing page title (optional) | `content/en/news/_index.md` |
-| Section labels (filter, “Read more”, etc.) | `config.yaml` → `newsSection` |
-| Homepage announcement bar (optional) | `config.yaml` → `newsBanner` |
+## What you will change
 
-## Step-by-step
+Every article shows up in **two places**. The same four pieces of information come from the top of your file:
 
-### 1. Create the file
+**1. In the news list** (`/news/`)
 
-Filename rules:
+![A news card in the list, with title, date, summary and author marked](../images/add-news-post/1-news-card.png)
 
-- Lowercase letters, numbers, hyphens only: `helsinki-workshop-2026.md`
-- The URL will be `/news/helsinki-workshop-2026/` (from the filename without `.md`)
+**2. On the article page** (when someone clicks the title)
 
-You can copy an existing post, e.g. `content/en/news/gsoc2025.md`.
+![The article page, with title, date and author marked](../images/add-news-post/2-article-page.png)
 
-### 2. Add front matter
+| Number | What it is | Where you type it |
+|:--:|------------|-------------------|
+| 1 | **Title** (headline) | the `title:` line |
+| 2 | **Date** | the `date:` line |
+| 3 | **Short summary** (only on the list card) | the `summary:` line |
+| 4 | **Author names** | the `authors:` line |
 
-At the top of the file, between `---` lines:
+Everything **under** that top block is the article text, which only appears on the article page.
+
+## Step by step
+
+### Step 1 – Choose a file name
+
+The file name becomes the web address of your article. Use:
+
+- only **small letters, numbers and hyphens** (no spaces, no capital letters),
+- and finish with `.md`.
+
+| File name | Web address |
+|-----------|-------------|
+| `my-workshop-2026.md` | `https://openms.de/news/my-workshop-2026/` |
+
+### Step 2 – Create a new file on GitHub
+
+1. Open the news folder: **https://github.com/OpenMS/OpenMS-website/tree/main/content/en/news**
+2. Click the **Add file** button (top right), then **Create new file**.
+
+   > Don't see **Add file**? Log in to GitHub first. If GitHub offers to **fork** the repository, accept. It is safe (see [How to make a change](../getting-started/edit-via-github.md#step-1--open-the-file)).
+
+3. In the box **"Name your file…"**, type your file name from Step 1.
+
+![The new file page: 1 file name, 2 text area, 3 save button](../images/github/9-new-file.png)
+
+| Number | What to do |
+|:--:|------------|
+| 1 | Type the **file name**. |
+| 2 | Paste or type the **article** (Step 3). |
+| 3 | Save when you finish (Step 4). |
+
+### Step 3 – Copy this template into the big text box
+
+The top part (between the two lines of `---`) holds the details. Below it you write the article.
+
+![The top part of a real news file, with the lines you change marked](../images/add-news-post/3-front-matter.png)
+
+Copy this, then **replace the text in the quotes**:
 
 ```yaml
 ---
-title: GSoC 2025 – Two Projects Accepted!
-authors: ["Matteo Pilz", "Timo Sachsenberg"]
-date: 2025-05-20
-summary: We're thrilled to announce that two OpenMS projects have been accepted for Google Summer of Code 2025!
-type: news
+title: "My workshop announcement"
+authors: ["Your Name"]
+date: 2026-10-05
+summary: "One or two sentences that will appear on the news list."
 ---
+
+Write your article here. Leave an empty line between paragraphs.
 ```
 
-| Field | Required | Notes |
-|-------|----------|--------|
-| `title` | Yes | Headline on the news page and article |
-| `date` | Yes | `YYYY-MM-DD` — used for sorting and year filter |
-| `summary` | Yes | Short text on the news index card |
-| `authors` | Recommended | List of names in quotes |
-| `type` | Yes | Use `news` for news posts |
-| `draft` | Optional | `draft: true` hides the post until you remove it or publish with drafts enabled locally |
+| Number | Line | What to type |
+|:--:|------|--------------|
+| 1 | `title:` | The headline. |
+| 2 | `authors:` | Your name, **inside quotes and square brackets**. For several people: `["Anna Smith", "Ben Jones"]`. |
+| 3 | `date:` | Year-month-day, like `2026-10-05`. **No quotes.** |
+| 4 | `summary:` | A short teaser (1–2 sentences). |
 
-### 3. Write the body
+Rules that avoid problems:
 
-Below the closing `---`, use normal **Markdown**:
+- Keep both lines of three dashes `---`. They mark the top block.
+- Keep the **quotes** around title and summary, especially if they contain a colon (`:`).
+- Write `key: value` with **one space** after the colon. Do not indent these lines.
+- **Do not use a date in the future.** The website hides articles dated after today, so your article would not appear until that day.
+- Want to save it without showing it yet? Add a line `draft: true` in the top block. Remove it when you are ready.
 
-```markdown
-We're thrilled to announce...
+### Step 4 – Write the article
 
-More info: [GSoC program page](https://summerofcode.withgoogle.com/...)
-```
+Under the second `---`, write normally. A few helpful symbols:
 
-- Headings: `## Section title`
-- Line breaks in HTML: `<br>` (some older posts use this)
-- Links: `[text](https://...)`
+| You want | You type |
+|----------|----------|
+| A new paragraph | an empty line between two paragraphs |
+| **Bold** text | `**bold text**` |
+| A link | `[text people see](https://example.org)` |
+| A section title | `## Section title` |
+| A bullet list | start each line with `- ` |
+| An image | `![short description](/images/my-picture.png)` – see [Add images](add-images.md) |
 
-### 4. Preview
+### Step 5 – Save and send for review
 
-- **Local**: `make serve` → open http://localhost:1313/news/your-slug/
-- **GitHub PR**: use the Netlify deploy preview
+Follow steps 3 to 6 in **[How to make a change](../getting-started/edit-via-github.md#step-3--save-commit-changes)**:
+**Commit changes… → Create a new branch… → Propose changes → Create pull request.**
 
-### 5. Open a pull request
+For the note, write something like *Add news article: My workshop*.
 
-See [Pull requests](../workflow/pull-requests.md).
+### Step 6 – Check the preview
 
-Checklist:
+Open the **Deploy Preview** link on your pull request (see [Step 5 there](../getting-started/edit-via-github.md#step-5--check-the-preview)), then add `/news/` to the address. Check:
 
-- [ ] `date` and `summary` are set
-- [ ] `type: news` is present
-- [ ] Article looks correct on `/news` and on the article page
-- [ ] Optional: update `newsBanner` in `config.yaml` to promote the post on the homepage
+- [ ] The card is in the news list, with the right title, date and summary.
+- [ ] The article page opens and reads well.
+- [ ] Links and images work.
 
-## Optional: promote on the homepage banner
+Something wrong? Open the **Files changed** tab of your pull request, edit the file, and save again.
 
-Edit `config.yaml`:
+## Optional: show your article in the banner at the top of the site
 
-```yaml
-newsBanner:
-  enabled: true
-  label: News
-  text: Workshop at University of Helsinki on April 30th 2026.
-```
+See [Change the announcement bar](update-news-banner.md). Use `link: /news/my-workshop-2026/`.
 
-See [Update the news banner](update-news-banner.md).
+## Common mistakes
 
-## Optional: use the news archetype (local Hugo)
+| What went wrong | How to fix it |
+|-----------------|---------------|
+| My article is not in the list | The `date:` is in the future, or `draft: true` is still there. |
+| The preview says **Failed** | Usually a missing `---`, a missing quote, or a title with a `:` that has no quotes. Compare with the template above. |
+| The title shows strange symbols | Put the title inside **double quotes**. |
+| Two articles overwrite each other | Choose a different file name. Each name must be unique. |
+| An image doesn't show | The path must start with `/images/` and match the real file name exactly (small and capital letters count). |
 
-If you have Hugo installed locally:
+## Related guides
 
-```bash
-hugo new news/my-slug.md
-```
-
-This uses `archetypes/news.md` in the repo for default front matter.
-
-## What not to change
-
-- `layouts/news/` — layout for news pages; ask web team for structural changes
-- Do not add two files with the same slug (case may differ on macOS vs Linux — use lowercase consistently)
-
-## Duplicate filenames on case-insensitive systems
-
-Avoid pairs like `GSoC2025.md` and `gsoc2025.md` — they can conflict on some systems. Prefer one lowercase slug.
+- [Add images](add-images.md)
+- [Change the announcement bar](update-news-banner.md)
+- Back to the [list of all guides](../README.md)

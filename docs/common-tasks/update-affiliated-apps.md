@@ -1,57 +1,89 @@
-# Update Affiliated Apps
+# Add, change or remove an Affiliated App
 
-Affiliated Apps are community and partner projects that depend on OpenMS but aren't maintained by the core team, listed under `affiliateProjects:` in `config.yaml`, shown on **/affiliated-apps/**.
+**Affiliated Apps** are projects from partners and the community that **use OpenMS** but are **not maintained by the OpenMS team** (for example QuantMS, Casanovo, Pyprophet). They appear on **https://openms.de/affiliated-apps/**.
 
-This is a separate list from [Featured Apps](update-featured-apps.md) (`webapps:`) — Featured Apps are OpenMS-maintained; Affiliated Apps are not.
+**You will change:** one block in `config.yaml`  ·  **Time:** about 15 minutes  ·  **Skills needed:** none
 
-## Add a project
+> Apps the OpenMS team **does** maintain are different: see [Featured Apps](update-featured-apps.md).
+
+## What you will change
+
+One project is one **card**:
+
+![A project card on the Affiliated Apps page, with each part numbered](../images/update-affiliated-apps/1-card.png)
+
+and one card is one **block of lines** in `config.yaml`:
+
+![The same project in config.yaml, with matching numbers](../images/update-affiliated-apps/2-config.png)
+
+| Number | Line | What it is |
+|:--:|------|-----------|
+| 1 | `logo:` and `logoSize:` | The picture (its path always starts with `/images/…`), and its size: `standard`, `large`, `wide` or `xlarge`. Leave `logoSize` out for the standard size. |
+| 2 | `name:` | The project's name. |
+| 3 | `description:` | One sentence about the project. |
+| 4 | `maintainers:` | The people who look after it. Optional. |
+| 5 | `links:` | The buttons. Each is a `- type:` line plus a `url:` line. `type` can be `github`, `homepage` or `pypi`. |
+
+## Change an existing project
+
+1. Open **https://github.com/OpenMS/OpenMS-website/blob/main/config.yaml** and click the **pencil icon**. ([Need help?](../getting-started/edit-via-github.md#step-1--open-the-file))
+2. Click inside the text box, press **Ctrl + F** (Windows) or **Cmd + F** (Mac), and search for the project's name.
+3. Change the words after the colon. Keep the spaces at the start of each line.
+4. Save and send for review: [How to make a change, steps 3 to 6](../getting-started/edit-via-github.md#step-3--save-commit-changes).
+
+## Add a new project
+
+### Step 1 – Upload the logo
+
+Put the picture in the folder **`static/images/webapp/logo/affiliate/`**. See [Add images](add-images.md). Remember the file name.
+
+### Step 2 – Copy a block
+
+In `config.yaml`, search for `affiliateProjects:`. Go to the **end of the last project** (the next heading is `archivedSection:`). Press **Enter** and paste the template below. The spaces at the start of each line must line up with the projects above.
 
 ```yaml
-affiliateProjects:
-  - name: ExampleTool
-    logo: /images/webapp/logo/affiliate/exampletool.svg
-    logoSize: large
-    description: >-
-      One-line description of what the project does.
-    maintainers: Jane Doe, John Smith
-    links:
-      - type: github
-        url: https://github.com/example-org/exampletool
-      - type: homepage
-        url: https://exampletool.org/
+        - name: ExampleTool
+          logo: /images/webapp/logo/affiliate/exampletool.svg
+          logoSize: large
+          description: One sentence about what the project does.
+          maintainers: Jane Doe, John Smith
+          links:
+            - type: github
+              url: https://github.com/example-org/exampletool
+            - type: homepage
+              url: https://exampletool.org/
 ```
 
-| Field | Required | Notes |
-|-------|----------|--------|
-| `name` | Yes | Project name |
-| `logo` | Yes | Path starting with `/images/...` — upload under `static/images/webapp/logo/affiliate/` |
-| `logoSize` | No | `standard` (default), `large`, `wide`, or `xlarge` |
-| `description` | Yes | Short summary of what the project does |
-| `maintainers` | No | Names, comma-separated |
-| `links` | No | A list of buttons — common `type`s are `github`, `homepage`, and `pypi` |
+### Step 3 – Replace the example text
 
-**Order:** list order is display order.
+Change the name, logo file name, description, maintainers and the web addresses. Delete any button you don't need (both of its lines). The **order in the list** is the order on the page.
+
+### Step 4 – Save and send for review
+
+[How to make a change, steps 3 to 6](../getting-started/edit-via-github.md#step-3--save-commit-changes).
+
+### Step 5 – Check the preview
+
+Open the **Deploy Preview**, add **/affiliated-apps/** to the address and check that the logo and buttons work.
 
 ## Remove a project
 
-Delete its block from the `affiliateProjects:` list.
+Find its `- name:` line and delete everything up to the next `- name:` line.
 
-## Section text
+## Change the heading and introduction
 
-Eyebrow, title, and description are under `affiliateSection` in `config.yaml`, right above `affiliateProjects:`.
+The text above the cards ("Partner ecosystem / Affiliated Apps / These projects are not directly maintained…") is under `affiliateSection:`, just above `affiliateProjects:`.
 
-## Upload a logo
+## Common mistakes
 
-1. Go to `static/images/webapp/logo/affiliate/` in the repository.
-2. **Add file → Upload files**.
-3. Reference it above as `/images/webapp/logo/affiliate/<the file name>`.
+| What went wrong | How to fix it |
+|-----------------|---------------|
+| The preview says **Failed** | The spaces are wrong. The new block must start with the same number of spaces as the other `- name:` lines. See [Spaces matter](../getting-started/edit-via-github.md#spaces-matter-in-configyaml). |
+| The logo is a broken picture | The path in `logo:` must match the uploaded file name exactly and start with `/images/`. |
+| A wide logo is cut or tiny | Try `logoSize: wide` (for long logos) or `large`. |
 
-See [Add images](add-images.md).
+## Related guides
 
-## Preview
-
-```bash
-make serve
-```
-
-Visit [http://localhost:1313/affiliated-apps/](http://localhost:1313/affiliated-apps/).
+- [Add images](add-images.md)
+- [Featured Apps](update-featured-apps.md)
+- Back to the [list of all guides](../README.md)
