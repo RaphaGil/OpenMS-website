@@ -73,6 +73,19 @@ or inside a news article (Markdown):
 
 The words between the square brackets are the **description** for people who can't see the picture. Please always write something short there.
 
+## Replace a picture that is already there
+
+You want a **new photo or logo in the same place**, without touching any text? The easiest way is to upload the new picture **with exactly the same file name** as the old one. GitHub then replaces the old picture.
+
+1. Find the **current file name**. It is the last part of the path in the guide's config lines, for example `/images/dev_retreat_2026.jpeg` means the file `dev_retreat_2026.jpeg` in the folder `static/images/`.
+2. Rename your new picture on your computer to that **exact name**, including capital letters and the ending (`.jpeg` is not the same as `.jpg`).
+3. Open the folder on GitHub, click **Add file → Upload files** and upload it, as in the steps above.
+4. GitHub shows the file as **modified**. Continue with **Propose changes** as usual.
+
+> **Different ending** (the old one was `.jpeg`, your new one is `.png`)? Then the name is not the same. Upload the new picture under a **new name** and change the path in `config.yaml` to match (see Step 4 above).
+
+After the preview is ready, if you still see the old picture, refresh without the cache (**Ctrl + Shift + R**, or **Cmd + Shift + R** on Mac).
+
 ## Make the preview show the picture
 
 The text change and the picture should be in the **same pull request**, otherwise the preview of the text change shows a broken picture. Two simple ways:
@@ -107,5 +120,7 @@ Some theme images are referenced by **file name only** (for example in `heroGrou
 
 - [Featured Apps](update-featured-apps.md)
 - [Sponsors](update-sponsors.md)
+- [Developer Retreat photos](update-developer-retreat.md)
+- [Logos on the home page](update-adopted-by-logos.md)
 - [Add a news article](add-news-post.md)
 - Back to the [list of all guides](../README.md)
