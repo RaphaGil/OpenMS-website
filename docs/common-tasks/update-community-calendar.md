@@ -1,28 +1,125 @@
-# Update community events
+# Add or change an event on the Community calendar
 
-Community events on **/calendar/** come from a single data file—no layout or JavaScript changes needed for routine updates.
+The **Community events** page (**https://openms.de/calendar/**) lists upcoming and past meetings, workshops and outreach events.
 
-## Google Calendar sync
+There are **two ways** to get an event on that page:
 
-`sync_google_calendar.py`, run daily by `.github/workflows/update_calendar.yml`, can pull events from a public Google Calendar into this file automatically. It only touches entries it previously added (marked `synced: true` in the yaml) — anything you add by hand is left alone on every run.
+| | Way | Best for |
+|--|-----|----------|
+| **A** | Type the event into the **shared Google Calendar** (if your team uses it) | People who already use Google Calendar. |
+| **B** | Add the event **by hand** in one text file on GitHub | Everyone else. No Google needed. |
 
-To turn it on:
+**Time:** about 10 minutes  ·  **Skills needed:** none
 
-1. In Google Calendar, make the calendar public (or use its "Secret address in iCal format") and copy the ICS feed URL — Settings → select the calendar → **Integrate calendar**.
-2. Add it as the `GOOGLE_CALENDAR_ICS_URL` repository secret.
-3. Optionally set `googleCalendarSubscribeUrl` under `params.calendarSection` in `config.yaml` to show an "Add to Google Calendar" button in the hero — see the comment above that key for the URL format. This is separate from the ICS feed secret and is safe to be public.
+## What an event looks like
 
-Until the secret is set, the workflow runs as a no-op and the page shows no sync badge or button.
+![An event card on the calendar page, with date, title, place and link marked](../images/update-community-calendar/1-event-card.png)
 
-### How quickly changes reach the site
+| Number | What it shows | Comes from |
+|:--:|---------------|-----------|
+| 1 | The date (or date range) | `start:` and `end:` |
+| 2 | The event name | `title:` |
+| 3 | The place | `location:` |
+| 4 | A link (for example to sign up) | a web address inside `summary:` |
 
-The workflow checks the calendar **every 15 minutes** and only commits (and so only redeploys the site) when an event actually changed. Google itself can take a while to refresh its public calendar feed, so a change may show up a little after the 15-minute mark.
+## Way B – Add an event by hand (on GitHub)
 
-To make a change sync **immediately** instead of waiting for the next check, have Google Calendar notify GitHub when an event is created, edited or deleted, using a small Google Apps Script:
+### Step 1 – Open the events file
 
-1. On GitHub, create a fine-grained personal access token limited to this repository with **Contents: Read and write** (that permission is what allows triggering the workflow).
-2. Go to [script.google.com](https://script.google.com), create a project (signed in as the calendar owner), and add **Project Settings → Script properties → `GH_TOKEN`** with the token.
-3. Paste this in, replace the two placeholders, and run `setup` once (approve the permissions when asked):
+Open **https://github.com/OpenMS/OpenMS-website/blob/main/data/community_events.yaml** and click the **pencil icon** at the top right. (Not sure which one? See [How to make a change](../getting-started/edit-via-github.md#step-1--open-the-file).)
+
+### Step 2 – Look at how one event is written
+
+Every event is a small block. Here is a real one:
+
+![One event in community_events.yaml, with the lines you fill in marked](../images/update-community-calendar/2-yaml-entry.png)
+
+| Number | Line | What to type |
+|:--:|------|--------------|
+| 1 | `start:` and `end:` | Dates as `'2027-03-14'` (year-month-day, inside single quotes). `end:` is **only** for events lasting several days. |
+| 2 | `title:` | The event name. |
+| 3 | `location:` | Place, for example `Helsinki, Finland`. Optional. |
+| 4 | `summary:` | One short sentence. If you paste a web address in it, it turns into a link. Optional. |
+
+### Step 3 – Add your event at the end of the list
+
+Scroll to the **last event** in the file. Put your cursor at the very end of that block, press **Enter**, and paste the template below.
+
+> **Careful:** if you see a line starting with `last_synced:` at the very bottom (not indented), paste your event **above** it, not below. It is fine to leave `synced: true` lines of other events alone.
+
+```yaml
+- title: My workshop
+  start: '2026-11-15'
+  end: '2026-11-16'
+  location: Berlin, Germany
+  category: workshop
+  summary: Hands-on OpenMS training. Registration: https://example.org/register
+```
+
+Then change the text to your event.
+
+- The first line starts with a **dash and a space** (`- `) at the very start of the line. The lines under it start with **two spaces**. Copy that exactly. See [Spaces matter](../getting-started/edit-via-github.md#spaces-matter-in-configyaml).
+- **Do not** add a line `synced: true`. The robot adds that for events it copies from Google.
+- `category:` is optional. It picks the colour of the tag. Choose one of: `workshop`, `developer-meeting`, `outreach`, `event`.
+- Only one day? Leave out the `end:` line.
+- You can leave out `location:` and `summary:` if you do not need them.
+- Want the card to link to a news article on this site? Add the line `news_url: /news/my-article/`.
+
+The order of events in the file does not matter. The page sorts them by date.
+
+### Step 4 – Save and send for review
+
+Follow steps 3 to 6 in **[How to make a change](../getting-started/edit-via-github.md#step-3--save-commit-changes)**.
+
+### Step 5 – Check the preview
+
+Open the **Deploy Preview** link on your pull request and add `/calendar/` at the end of the address. Your event should be in the **Upcoming events** list. Events whose date has already passed appear under **Past events** instead.
+
+## Way A – Use the shared Google Calendar
+
+If the web team has connected a Google Calendar to the website, you do **not** need GitHub:
+
+1. Create the event in that Google Calendar (ask the web team for access if you don't have it).
+2. Wait up to **15 minutes**. A robot copies the event to the website by itself.
+
+Fill in the Google fields like this:
+
+| Google Calendar field | Appears on the website as | Tip |
+|----|----|----|
+| Event title | The card heading | Spelling is copied exactly. Titles containing "workshop", "developer meeting" or "summer of code" get a matching coloured tag. |
+| Date | The date | For several days, use **All day** and pick the first and the last day. |
+| Location | The place | Plain text. |
+| Description | The short text | Plain text only. Paste the raw web address if you want a link. It is cut after 160 characters. |
+
+Past events are skipped. If you correct something, **change it in Google Calendar**, not in the file. Events the robot added are overwritten at the next check.
+
+Not sure whether the connection is active? Ask the web team.
+
+## Common mistakes
+
+| What went wrong | How to fix it |
+|-----------------|---------------|
+| The preview says **Failed** | Check the spaces at the start of each line and the single quotes around the dates. Compare with the real event above your new one. |
+| My event is not in the **Upcoming** list | The date is in the past, or has a typo. It must look like `'2026-11-15'`. |
+| My change to an event was undone | That event has `synced: true`, so it comes from Google Calendar. Change it there instead. |
+| The link in the card doesn't work | Check that the web address in `summary:` starts with `https://`. |
+
+## For the web team (advanced)
+
+These parts are not needed for normal event updates.
+
+### Turn on the Google Calendar connection
+
+`sync_google_calendar.py`, started by `.github/workflows/update_calendar.yml`, copies events from a Google Calendar into `data/community_events.yaml`. It only changes entries marked `synced: true`. It opens and merges a pull request automatically when something changed.
+
+1. In Google Calendar, open **Settings → the calendar → Integrate calendar** and copy **Secret address in iCal format**.
+2. Add it on GitHub as the repository secret `GOOGLE_CALENDAR_ICS_URL` (**Settings → Secrets and variables → Actions**).
+3. **Treat that address like a password.** It gives read access to the whole calendar. Never paste it into a file, an issue or a pull request.
+4. Optional: in `config.yaml` under `calendarSection`, fill in `googleCalendarSubscribeUrl` to show an "Add to Google Calendar" button. The comment above that key explains the format. This public link is different from the secret above.
+
+### Faster updates (optional)
+
+The workflow checks every 15 minutes. To sync within seconds, a Google Apps Script can notify GitHub when an event changes (event type `calendar-updated`). It needs a GitHub token with **Contents: Read and write** stored in the script's private properties.
 
 ```js
 const REPO = 'OWNER/REPO';                    // e.g. OpenMS/OpenMS-website
@@ -45,67 +142,15 @@ function setup() {
 }
 ```
 
-Every event change then triggers the "Sync Google Calendar" workflow within seconds. The token only lives in the script's private properties — never put it in this repository.
+Never put the token in this repository.
 
-### What to put in the Google Calendar event
+### Where the page's text and layout live
 
-Each Google Calendar field maps to one of this site's event fields. Fill these in and the event will show up correctly on the next sync:
+- Headings and section text: `config.yaml` → `calendarSection`
+- Layout: `layouts/partials/community-calendar-main.html`
+- Styling: `assets/css/community-calendar.css`, `assets/css/calendar-gcal-sync.css`
 
-| Google Calendar field | Becomes | Notes |
-|---|---|---|
-| Event title | `title` | Shown as the card heading — check spelling, it's copied verbatim. Include a word like "workshop", "developer meeting", or "summer of code" if you want the matching colored tag; anything else is tagged generic "Event". |
-| Date | `start` / `end` | For a multi-day event, use Google Calendar's normal **All day** toggle and pick the first and last day the event actually runs (e.g. Mon–Fri) — the sync handles Google's internal date format correctly. Past events (already finished) are skipped automatically. |
-| Location | `location` | Plain text, e.g. `University of Helsinki, Finland`. |
-| Description | `summary` | **Plain text only** — the site strips any formatting/links Google Calendar adds, so a pasted hyperlink shows as plain text anyway. Just type or paste the raw URL directly, e.g. `Registration: https://example.com/register`. Keep it short; it's cut to 160 characters. |
+## Related guides
 
-Not supported via Google Calendar (add these by hand in `data/community_events.yaml` afterward if needed): `news_url` (link to a news post on this site) has no Google Calendar equivalent.
-
-## Edit the event list
-
-1. Open **`data/community_events.yaml`** in the repository ([on GitHub](https://github.com/OpenMS/OpenMS-website/blob/main/data/community_events.yaml)).
-2. Add a new item under `events:` or edit an existing one.
-3. Open a pull request (or commit on your branch) and merge after review.
-
-## Event fields
-
-| Field | Required | Example |
-|-------|----------|---------|
-| `title` | Yes | `OpenMS Developer Meeting 2026` |
-| `start` | Yes | `2026-03-23` (YYYY-MM-DD) |
-| `end` | No | `2026-03-27` (multi-day events) |
-| `location` | No | `University of Helsinki, Finland` |
-| `summary` | No | Short description shown in past event listings |
-| `url` | No | Registration or external link |
-| `news_url` | No | `/news/devmeeting2026/` — link to a news post on this site |
-| `category` | No | `developer-meeting`, `workshop`, or `outreach` (for styling) |
-| `synced` | No | Set by the Google Calendar sync script — don't add this by hand |
-
-Example:
-
-```yaml
-  - title: My workshop
-    start: 2026-06-15
-    end: 2026-06-16
-    location: Berlin, Germany
-    category: workshop
-    summary: Hands-on OpenMS training.
-    url: https://example.org/register
-    news_url: /news/my-workshop/
-```
-
-Events with an `end` date (or `start` when `end` is omitted) in the past appear under **Past events** on `/calendar/`, grouped by year with a year filter. Upcoming events appear at the top of the page.
-
-## Preview locally
-
-```bash
-make serve
-```
-
-Visit [http://localhost:1313/calendar/](http://localhost:1313/calendar/).
-
-## Page copy and layout
-
-- Hero and section text: `config.yaml` → `params.calendarSection`
-- Events page: `layouts/partials/community-calendar-main.html`, `assets/css/community-calendar.css`
-- Year filter: `assets/js/events-year-filter.js` (same pattern as the news page)
-- Google Calendar sync UI (badge, "Add to calendar" links): `assets/css/calendar-gcal-sync.css`, `layouts/partials/gcal-icon.html`, `layouts/partials/relative-time.html`
+- [Add a news article](add-news-post.md), to link an event to an article with `news_url`
+- Back to the [list of all guides](../README.md)

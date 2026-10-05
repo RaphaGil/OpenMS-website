@@ -1,5 +1,7 @@
-# Add a webapp to the homepage
+# Add an app to the home page
 
-> This page described an older site structure (`/applications/`, a homepage carousel) that no longer exists. The homepage "Featured Apps" section now shares the same `webapps:` list as the **/featured-apps/** page — see [Update Featured Apps](update-featured-apps.md) for the current instructions.
->
-> Looking for community/partner projects instead of OpenMS-maintained ones? See [Update Affiliated Apps](update-affiliated-apps.md).
+The home page block **"Featured Apps"** shows **the same list** as the page **/featured-apps/**. There is nothing separate to edit for the home page.
+
+- To add, change or remove an app that the OpenMS team maintains: **[Featured Apps](update-featured-apps.md)**
+- For community and partner projects: **[Affiliated Apps](update-affiliated-apps.md)**
+- To change the other text on the home page: **[Edit the text on the home page](edit-homepage-hero.md)**
