@@ -9,19 +9,23 @@
 | News article | `content/en/news/<slug>.md` |
 | News listing intro | `content/en/news/_index.md` |
 | About, governance, legal, etc. | `content/en/<name>.md` |
-| Application documentation | `content/en/applications/<name>.md` |
 | Key features detail pages | `content/en/keyfeatures/*.md` |
 
 ## Configuration
 
 | What | Where |
 |------|--------|
-| Homepage hero, stats, CTA | `config.yaml` → `params.hero` |
+| Homepage hero | `config.yaml` → `params.hero` |
+| Homepage big numbers | `config.yaml` → `params.homeMetrics` |
 | News banner (top strip) | `config.yaml` → `params.newsBanner` |
 | News page labels / filter | `config.yaml` → `params.newsSection` |
 | Key features (“What is OpenMS?”) | `config.yaml` → `params.keyfeatures` |
-| Homepage webapps carousel | `config.yaml` → `params.webapps` |
-| Trusted by section | `config.yaml` → `params.trustedBy` |
+| Featured Apps (home page and `/featured-apps/`) | `config.yaml` → `params.webapps` |
+| Affiliated Apps | `config.yaml` → `params.affiliateProjects` |
+| “Adopted by labs and institutions” logos | `config.yaml` → `params.universityPartners` |
+| Sponsors (`/our-sponsors/`) | `config.yaml` → `params.aboutPage.sponsors` |
+| Developer Retreat page | `config.yaml` → `params.developerRetreatPage` |
+| Publications list | `pmids.txt` |
 | Community calendar events | `data/community_events.yaml` |
 | Community calendar page | `content/en/calendar.md`, `layouts/partials/community-calendar-main.html` |
 | Donate page (Zeffy) | `content/en/donate.md`, `layouts/partials/donate-main.html`, `config.yaml` → `params.donatePage` |
@@ -35,7 +39,8 @@
 | Any static asset | `static/` → URL `/...` |
 | Logos | `static/images/logos/` |
 | Webapp logos | `static/images/webapp/logo/` |
-| App screenshots | `static/images/content_images/applications/` |
+| Affiliated App logos | `static/images/webapp/logo/affiliate/` |
+| News pictures | `static/images/news_images/` |
 
 ## Layout & style (web team)
 
@@ -44,7 +49,8 @@
 | Homepage section order | `layouts/index.html` |
 | News list / article layout | `layouts/news/` |
 | Homepage partials | `layouts/partials/` (hero, webapps, news-banner, …) |
-| Site CSS overrides | `assets/css/*.css` |
+| Site CSS (base) | `assets/css/*.css` |
+| Page-specific CSS (loads last) | `assets/css/overrides/<page>.css` |
 | Custom shortcodes | `layouts/shortcodes/` |
 | Base theme | `themes/scientific-python-hugo-theme/` (avoid editing) |
 
@@ -60,7 +66,8 @@
 
 | What | Where |
 |------|--------|
-| University partners marquee | `layouts/partials/university-partners.html` |
 | Sponsor logos on About (`{{< sponsors >}}`) | `layouts/shortcodes/sponsors.html` |
+| The Contact block at the bottom of the home page | `layouts/partials/contact-area.html` |
+| Most governance / press-kit page wording | `layouts/partials/governance-main.html`, `press-kit-main.html` |
 
-Consider moving these to `config.yaml` or `data/` in a future improvement.
+For a plain-language tour, see the [map of the repository](../getting-started/repo-map.md).

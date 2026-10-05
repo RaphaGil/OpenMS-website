@@ -25,11 +25,14 @@ This guide is for **non–front-end contributors** who update [openms.de](https:
 | Add, change or remove a Featured App | [Featured Apps](common-tasks/update-featured-apps.md) |
 | Add, change or remove an Affiliated App | [Affiliated Apps](common-tasks/update-affiliated-apps.md) |
 | Change the top menu, footer links or social icons | [Menu and footer](common-tasks/edit-footer-or-navbar.md) |
+| Add, change or remove a logo in “Adopted by labs and institutions” | [Adopted-by logos](common-tasks/update-adopted-by-logos.md) |
+| Change the three big numbers on the home page | [Home page numbers](common-tasks/update-home-metrics.md) |
 | Add or remove a sponsor logo | [Sponsors](common-tasks/update-sponsors.md) |
 | Connect the Donate page to Zeffy | [Donate page (Zeffy)](common-tasks/configure-donate-zeffy.md) |
 | Change the words on any other page (Code of Conduct, Impressum, …) | [Change the text of a page](common-tasks/edit-a-page.md) |
 | Add a picture or logo | [Add images](common-tasks/add-images.md) |
 | Preview the site on my computer | [Preview locally](getting-started/preview-locally.md) |
+| **Find out where things are** (pages, styling, pictures) in the website's files | [Map of the repository](getting-started/repo-map.md) |
 | **Start here:** edit without installing anything | [How to make a change](getting-started/edit-via-github.md) |
 | Open a pull request | [Pull requests](workflow/pull-requests.md) |
 | Understand what happens when we merge | [Deployment](workflow/deployment.md) |
@@ -50,11 +53,14 @@ This guide is for **non–front-end contributors** who update [openms.de](https:
 docs/
 ├── README.md                 ← you are here
 ├── getting-started/
-│   ├── preview-locally.md
-│   └── edit-via-github.md
+│   ├── edit-via-github.md
+│   ├── repo-map.md
+│   └── preview-locally.md
 ├── common-tasks/
 │   ├── add-news-post.md
 │   ├── update-community-calendar.md
+│   ├── update-adopted-by-logos.md
+│   ├── update-home-metrics.md
 │   ├── update-news-banner.md
 │   ├── edit-homepage-hero.md
 │   ├── update-developer-retreat.md

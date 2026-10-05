@@ -67,6 +67,8 @@ For a link to another page of this website, start with `/` (for example `/contri
 
 ## 2. The logos "Adopted by labs"
 
+> Full guide with pictures: **[Add, change or remove a logo](update-adopted-by-logos.md)**.
+
 Search for `universityPartners`. Each logo is **one group of three lines**:
 
 ```yaml
@@ -81,6 +83,8 @@ universityPartners:
 - `url` is where people go when they click the logo.
 
 ## 4. The three big numbers
+
+> Full guide: **[Change the three big numbers](update-home-metrics.md)**.
 
 ![The first number block on the page](../images/edit-homepage/4-metrics-on-site.png)
 
