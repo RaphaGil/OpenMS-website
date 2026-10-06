@@ -14,7 +14,9 @@
 }
 
 .openms-lib-page--impressum .openms-lib-prose p {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.1rem;
+  padding: 0;
+  line-height: 1.2;
 }
 
 .openms-lib-page--impressum .openms-lib-prose p + p {
