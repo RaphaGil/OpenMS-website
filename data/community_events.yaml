@@ -37,6 +37,11 @@ events:
     More Info: https://openms.de/news/hupo_workshop_26/
 
     Registration: https://forms.gle/S6gcDAJrLztCAGBL7'
+- title: A test event
+  start: '2026-10-06'
+  category: event
+  synced: true
+  end: '2026-10-08'
 - title: Another Test Event
   start: '2026-10-13'
   category: event
@@ -55,4 +60,4 @@ events:
   end: '2027-03-20'
   location: Resort Natura, 8100-266 Loulé, Portugal
   summary: 'Registration and Info: https://tally.so/r/aQL8XW'
-last_synced: '2026-10-06T18:39:10Z'
+last_synced: '2026-10-06T18:49:09Z'
