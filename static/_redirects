@@ -50,8 +50,21 @@ https://cdash.openms.de/* https://cdash.seqan.de/:splat 301!
 /communication /contribute/ 301
 /communication/ /contribute/ 301
 
-# Applications section retired — apps live on /webapps/
-/applications /webapps/ 301
+# Applications section retired — the main application guides live on /guides/, other apps on /webapps/
+/applications /guides/ 301
+/applications/ /guides/ 301
+/applications/nuxl /guides/nuxl/ 301
+/applications/nuxl/ /guides/nuxl/ 301
+/applications/flashdeconv /guides/flashdeconv/ 301
+/applications/flashdeconv/ /guides/flashdeconv/ 301
+/applications/mhcquant /guides/mhcquant/ 301
+/applications/mhcquant/ /guides/mhcquant/ 301
+/applications/openpepxl /guides/openpepxl/ 301
+/applications/openpepxl/ /guides/openpepxl/ 301
+/applications/epifany /guides/epifany/ 301
+/applications/epifany/ /guides/epifany/ 301
+/applications/metaprosip /guides/metaprosip/ 301
+/applications/metaprosip/ /guides/metaprosip/ 301
 /applications/* /webapps/ 301
 
 # publication related links go here
@@ -61,31 +74,31 @@ https://cdash.openms.de/* https://cdash.seqan.de/:splat 301!
 /diaproteomics /webapps/#archived-apps 301
 /DIAProteomics /webapps/#archived-apps 301
 
-/epifany /webapps/ 301
+/epifany /guides/epifany/ 301
 
-/FLASHDeconv /webapps/ 301
-/flashdeconv /webapps/ 301
-/FlashDeconv /webapps/ 301
+/FLASHDeconv /guides/flashdeconv/ 301
+/flashdeconv /guides/flashdeconv/ 301
+/FlashDeconv /guides/flashdeconv/ 301
 
 /FLASHQuant /webapps/ 301
 /flashquant /webapps/ 301
 /FlashQuant /webapps/ 301
 
-/metaprosip /webapps/ 301
+/metaprosip /guides/metaprosip/ 301
 
-/mhcquant /webapps/#featured-webapps 301
-/MHCQuant /webapps/#featured-webapps 301
+/mhcquant /guides/mhcquant/ 301
+/MHCQuant /guides/mhcquant/ 301
 
 /nase /webapps/#featured-webapps 301
 /NASE /webapps/#featured-webapps 301
 
-/openpepxl /webapps/ 301
-/OpenpepXL /webapps/ 301
+/openpepxl /guides/openpepxl/ 301
+/OpenpepXL /guides/openpepxl/ 301
 
-/rnpxl /webapps/#featured-webapps 301
-/RNPxl /webapps/#featured-webapps 301
-/nuxl /webapps/#featured-webapps 301
-/NuXL /webapps/#featured-webapps 301
+/rnpxl /guides/nuxl/ 301
+/RNPxl /guides/nuxl/ 301
+/nuxl /guides/nuxl/ 301
+/NuXL /guides/nuxl/ 301
 
 /FLASHIda /webapps/ 301
 /flashida /webapps/ 301

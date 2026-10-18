@@ -1363,6 +1363,8 @@ languages:
           links:
             - type: demo
               url: http://flashapp.webapps.openms.org/
+            - type: guide
+              url: /guides/flashdeconv/
             - type: install
               label: Install (Windows)
               url: https://github.com/OpenMS/FLASHApp/releases/latest
@@ -1425,6 +1427,8 @@ languages:
           links:
             - type: demo
               url: https://nuxl.webapps.openms.org/
+            - type: guide
+              url: /guides/nuxl/
             - type: install
               label: Install (Windows)
               url: https://github.com/Arslan-Siraj/nuxl-app/releases/latest
@@ -1439,6 +1443,8 @@ languages:
           links:
             - type: demo
               url: https://abi-services.cs.uni-tuebingen.de/mhcquant/
+            - type: guide
+              url: /guides/mhcquant/
 
       ecosystemSection:
         eyebrow: Developer tools
