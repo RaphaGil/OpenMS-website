@@ -2,10 +2,10 @@
 data/community_events.yaml.
 
 Reads the calendar's ICS feed from the GOOGLE_CALENDAR_ICS_URL environment
-variable, converts each event into this repo's event schema, and merges the
-result into data/community_events.yaml — replacing only the entries this
-script previously added (marked `synced: true`), so hand-written events are
-left untouched.
+variable, converts each event into this repo's event schema, and writes the
+result to data/community_events.yaml. Google Calendar is the only source of
+events: the file is replaced on every sync, so anything added by hand is
+removed.
 
 If GOOGLE_CALENDAR_ICS_URL isn't set yet, this exits without changing
 anything, so the scheduled workflow can run safely before the calendar URL
@@ -209,8 +209,7 @@ def main():
     print(f"Fetched {len(synced_events)} event(s) (upcoming and recent past) from Google Calendar.")
 
     data = load_data()
-    hand_written = [e for e in data.get("events", []) if not e.get("synced")]
-    new_events = hand_written + synced_events
+    new_events = synced_events
     if new_events == data.get("events", []):
         # The workflow runs every few minutes; rewriting last_synced each
         # time would commit and redeploy the site on every run for nothing.
@@ -221,11 +220,10 @@ def main():
 
     with open(DATA_FILE, "w") as f:
         f.write(
-            "# Community calendar — edit this file to add or update events "
-            "(see docs/common-tasks/update-community-calendar.md).\n"
-            "# Entries marked `synced: true` are managed automatically by "
-            "sync_google_calendar.py — edit the source calendar event "
-            "instead of this file for those.\n"
+            "# Community calendar — generated from the OpenMS Google Calendar by "
+            "sync_google_calendar.py. Do not edit: changes here are overwritten.\n"
+            "# To add or change an event, edit the Google Calendar "
+            "(see docs/common-tasks/calendar/add-or-change-event.md).\n"
         )
         yaml.safe_dump(data, f, sort_keys=False, allow_unicode=True)
 
