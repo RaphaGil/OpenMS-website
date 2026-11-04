@@ -1,0 +1,12 @@
+{
+  "name": "OpenMS website (Hugo)",
+  "user": "ubuntu",
+  "install": "bash .cursor/install.sh",
+  "terminals": [
+    {
+      "name": "hugo-serve",
+      "command": "hugo --printI18nWarnings server -D --bind 0.0.0.0 --baseURL http://localhost:1313/"
+    }
+  ],
+  "ports": [1313]
+}
